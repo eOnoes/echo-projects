@@ -32,6 +32,7 @@ The command resolves to the project's canonical `GOAL.md`.
 5. Record evidence for meaningful work.
 6. Report using the standard response format.
 7. Stop when approval, missing evidence, scope conflict, or safety uncertainty is encountered.
+8. Apply `GITHUB-BILLING-SAFETY.md` to every GitHub operation.
 
 ## Scope protection
 
@@ -45,6 +46,10 @@ Claims must be labeled `PROVEN`, `INFERRED`, `UNRESOLVED`, `DISPROVEN`, or `BLOC
 
 The doctrine applies equally to Echo, Codex, MiMo, DeepSeek, Claude, Kimi, Relay agents, and Eddie-assisted execution. Roles are assigned per project.
 
+## GitHub billing safety
+
+The default GitHub mode is repository-content-only. Agents may read and write repository files, commits, branches, and documentation. Agents may not use Actions, Codespaces, Packages, runners, deployments, hosted services, or other potentially billable GitHub functions without explicit Eddie approval.
+
 ## Hard-lock rule
 
-This doctrine is not changed for convenience during a build. A project-specific exception must be recorded in `PROJECT-OVERRIDES.md` using the asterisk convention and must not weaken safety, evidence, or scope controls.
+This doctrine is not changed for convenience during a build. A project-specific exception must be recorded in `PROJECT-OVERRIDES.md` using the asterisk convention and must not weaken safety, evidence, scope, or billing controls.

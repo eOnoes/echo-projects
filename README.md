@@ -1,6 +1,6 @@
-# Agent Project Doctrine Draft
+# Agent Project Doctrine
 
-This is the review package for the proposed agent-agnostic project-control doctrine.
+This is the review package for the agent-agnostic project-control doctrine.
 
 ## Intended repository
 
@@ -10,15 +10,15 @@ echo-projects
 
 ## Review these first
 
-1. `DOCTRINE.md`
-2. `AUTHORITY-BASELINE.md`
-3. `REPORTING-STANDARD.md`
-4. `HANDOFF-STANDARD.md`
-5. `PUBLICATION-SAFETY.md`
-6. `GITHUB-ACCESS-CHECKLIST.md`
+1. `doctrine/DOCTRINE.md`
+2. `doctrine/AUTHORITY-BASELINE.md`
+3. `doctrine/GITHUB-BILLING-SAFETY.md`
+4. `doctrine/AGENT-HANDOFF-BILLING-NOTICE.md`
+5. `doctrine/REPORTING-STANDARD.md`
+6. `doctrine/HANDOFF-STANDARD.md`
+7. `doctrine/PUBLICATION-SAFETY.md`
+8. `doctrine/GITHUB-ACCESS-CHECKLIST.md`
 
 ## Review rule
 
-These files are hard-lock drafts. Project-specific differences should be small `*` overrides in a project packet. No project override may weaken the baseline safety or evidence rules.
-
-Nothing in this draft has been pushed to GitHub.
+These files are hard-lock drafts. Project-specific differences should be small `*` overrides in a project packet. No project override may weaken baseline safety, evidence, scope, or billing controls.
