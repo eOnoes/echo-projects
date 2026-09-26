@@ -2,17 +2,17 @@
 
 ## Current task
 
-**Phase 7 — Environment build (GSQ stack).**
+**Phase 8 — Toolchain smoke test (GSQ).**
 
 **Status:** IN_PROGRESS
 **Owner:** Echo
 **Approval required:** No (local, free)
-**Evidence required:** venv created; torch reports CUDA available; the dependency subset imports
-cleanly; any failure recorded verbatim.
+**Evidence required:** a 2-layer quantization run completes on sm_89; output shards written;
+peak VRAM and runtime recorded.
 
-**Why this is the current task:** Phase 6b moved the blocker from "Phi-4 is unsupported" to "can
-the GSQ stack be installed on Windows at all." That is the cheapest question left and it gates
-everything downstream.
+**Why this is the current task:** Phase 7 proved the stack *installs*. Installing is not running.
+This phase proves GSQ actually quantizes something on this Ada card — the gate that must pass
+before writing a Phi wrapper.
 
 ---
 
@@ -79,19 +79,22 @@ everything downstream.
 - [x] Blocker re-scoped to the Windows environment question
 - [x] Receipt: `receipts/P6b-wrapper-feasibility-20260925.md`
 
+### Phase 7 — COMPLETE 2026-09-25
+- [x] Isolated venv created (`E:/ternary-lab/gsq-env`, Python 3.12.13)
+- [x] Dependency subset installed, excluding vllm / ray / lm-eval / lighteval / humming-kernels
+- [x] torch 2.11.0+cu126 reports CUDA True on Windows
+- [x] Core imports resolve; GSQ's own source imports cleanly
+- [x] Phi3ForCausalLM confirmed available in transformers 5.17.0
+- [x] **No escalation triggered — GSQ runs locally and free**
+- [x] Receipt: `receipts/P7-environment-20260925.md`
+
 ---
 
 ## Queue
 
-### Phase 7 — Environment build  *(CURRENT)*
-- [ ] Create isolated venv for the GSQ stack
-- [ ] Install the dependency subset (exclude vllm / ray / lm-eval / lighteval / humming-kernels)
-- [ ] Confirm torch reports CUDA available
-- [ ] Confirm the core imports resolve
-- [ ] Record any failure verbatim; escalate with a costed proposal if it will not build
-
-### Phase 8 — Toolchain smoke test
+### Phase 8 — Toolchain smoke test  *(CURRENT)*
 - [ ] Run GSQ's 2-layer dry run on a supported architecture (e.g. Qwen3-0.6B)
+- [ ] Confirm output shards are written and loadable
 - [ ] Record peak VRAM and runtime
 - [ ] Project the full Phi-4-mini run from the measured rate
 

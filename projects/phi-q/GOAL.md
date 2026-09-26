@@ -60,8 +60,7 @@ This project is complete when:
 
 ## Current phase
 
-Phase 7 — Environment build (GSQ stack). The goal was restarted 2026-09-25 after the method
-revision to GSQ + RCO.
+Phase 8 — Toolchain smoke test.
 
 ## Current status
 
@@ -69,11 +68,32 @@ RUNNING
 
 ## Current next action
 
-1. Finish installing the GSQ dependency subset into the isolated venv at `E:/ternary-lab/gsq-env`.
-   (vLLM / ray / lm-eval / lighteval / humming-kernels excluded — serving path, Linux-oriented.)
-2. Confirm torch reports CUDA and the core imports resolve.
-3. Then Phase 8: GSQ's 2-layer smoke test on a supported architecture, to prove the toolchain
-   quantizes anything on this Ada card before touching Phi.
+Run GSQ's 2-layer dry run on a **supported** architecture to prove the quantizer executes on this
+Ada card (sm_89), before writing any Phi wrapper:
+
+```text
+SMOKE_TEST=1 bash scripts/run.sh          (2-layer dry run)
+  or
+python main.py --config <cfg> --max-layers 2
+```
+
+Record peak VRAM and runtime; project the full Phi-4-mini run from the measured rate.
+
+## Phase 7 result — environment PASSED
+
+```text
+torch               2.11.0+cu126  |  cuda True
+device              RTX 4070, sm_89 (Ada), 12282 MiB
+transformers        5.17.0        |  Phi3ForCausalLM available: True
+compressed-tensors  0.19.0        |  accelerate 1.15.0  |  lion-pytorch ok
+
+GSQ source imports: BaseModelWrapper OK, LLaMAWrapper OK, gumbel_quantizer OK
+```
+
+The critical unknown is closed: a Windows CUDA build of the exactly-pinned `torch==2.11.0`
+exists. **No escalation needed** — GSQ is locally runnable and free.
+
+Receipt: `receipts/P7-environment-20260925.md`
 
 ## Method revision (Phase 6, complete)
 

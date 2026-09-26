@@ -2,7 +2,7 @@
 
 | Project | Executor | Manager | Status | Current phase | Next event |
 |---|---|---|---|---|---|
-| phi-q | Echo (local) | Echo | BLOCKED | Phase 6 — method revised to GSQ+RCO | Phi wrapper feasibility spike (GSQ lacks Phi-4 support) |
+| phi-q | Echo (local) | Echo | RUNNING | Phase 8 — GSQ toolchain smoke test | 2-layer dry run on sm_89 |
 | qwen36-ternary | Unassigned | Echo | NOT_CREATED | — | Doctrine packet to be written |
 | qwen-runtime | Echo | Echo | PAUSED | CUDA 13 D3 validation | Await compatible dual-GPU capacity |
 | onoes-agent | Codex | Echo | RUNNING | Windows release | Await build receipt |

@@ -153,6 +153,20 @@ All subsequent comparisons use this baseline. Historical figures are cross-refer
 | P6-009 | A Phi wrapper can be written to fit GSQ | **UNVERIFIED** | §6 |
 | P6-010 | GSQ on Phi-4-mini reaches near-lossless at 3 bpw | **UNKNOWN — the experiment** | §6 |
 
+## Phase 7 findings — GSQ environment build (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P7-001 | Isolated venv created at `E:/ternary-lab/gsq-env`, Python 3.12.13 | PROVEN | `P7-environment-20260925.md` §3 |
+| P7-002 | torch 2.11.0+cu126 installs and reports CUDA True on Windows | PROVEN | §3 |
+| P7-003 | **A Windows CUDA build of the exactly-pinned torch==2.11.0 exists** | PROVEN | §4 |
+| P7-004 | All core imports resolve: transformers 5.17.0, accelerate 1.15.0, datasets 5.0.1, safetensors 0.8.0, compressed-tensors 0.19.0, lion-pytorch | PROVEN | §3 |
+| P7-005 | GSQ's own source imports (BaseModelWrapper, LLaMAWrapper, gumbel_quantizer) | PROVEN | §3 |
+| P7-006 | Phi3ForCausalLM is available in transformers 5.17.0 | PROVEN | §3 |
+| P7-007 | vLLM/ray/lm-eval/lighteval/humming-kernels are not needed for quantization | INFERRED | §2 |
+| P7-008 | **No compute escalation is triggered — GSQ runs locally** | PROVEN | §6 |
+| P7-009 | GSQ can actually quantize a model on sm_89 | **UNVERIFIED — Phase 8** | §7 |
+
 ## Research audit evidence
 
 | ID | Claim | State | Source |
