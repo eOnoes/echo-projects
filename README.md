@@ -13,12 +13,13 @@ echo-projects
 1. `doctrine/DOCTRINE.md`
 2. `doctrine/AUTHORITY-BASELINE.md`
 3. `doctrine/PITFALLS-AND-LESSONS.md` — living record, append on every new finding
-4. `doctrine/GITHUB-BILLING-SAFETY.md`
-5. `doctrine/AGENT-HANDOFF-BILLING-NOTICE.md`
-6. `doctrine/REPORTING-STANDARD.md`
-7. `doctrine/HANDOFF-STANDARD.md`
-8. `doctrine/PUBLICATION-SAFETY.md`
-9. `doctrine/GITHUB-ACCESS-CHECKLIST.md`
+4. `doctrine/DECISION-JOURNAL.md` — living record of decisions and whether they were right
+5. `doctrine/GITHUB-BILLING-SAFETY.md`
+6. `doctrine/AGENT-HANDOFF-BILLING-NOTICE.md`
+7. `doctrine/REPORTING-STANDARD.md`
+8. `doctrine/HANDOFF-STANDARD.md`
+9. `doctrine/PUBLICATION-SAFETY.md`
+10. `doctrine/GITHUB-ACCESS-CHECKLIST.md`
 
 ## Review rule
 

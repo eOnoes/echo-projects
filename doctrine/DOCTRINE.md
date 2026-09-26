@@ -62,3 +62,14 @@ the practices that resolved them. It applies to all projects, not one.
 - **Read it before starting any model-compression or quantization campaign.**
 - **Append to it whenever a new pitfall is discovered.** Never overwrite an entry.
 - A lesson learned twice is a process failure, not bad luck.
+
+## Decision accountability
+
+`DECISION-JOURNAL.md` is a living, append-only record of the decisions that shaped each project,
+the basis for them, and whether they turned out right.
+
+- **Log a decision when it is made**, before the outcome is known.
+- **Set the verdict** when the outcome becomes knowable: `RIGHT`, `WRONG`, `MIXED`, `PENDING`, `LUCKY`.
+- **Log wrong calls and everything they cost.** A journal that only records successes is marketing.
+- **`LUCKY` is the most important verdict.** A right outcome from unsound reasoning will not repeat.
+- **Every project closure must include a retrospective** that feeds this journal.

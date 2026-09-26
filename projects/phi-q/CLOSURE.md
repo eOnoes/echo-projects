@@ -28,6 +28,19 @@ Valid final statuses:
 
 Not yet recorded. To be completed during Phase 8.
 
+## Retrospective (required)
+
+Every closure must answer:
+
+- Which decisions were made, and what were they based on?
+- Which turned out `RIGHT`, `WRONG`, `MIXED`, or `LUCKY`?
+- What did the wrong calls cost in time, compute, or credibility?
+- What would we do differently on the next model?
+- Which new entries were appended to `doctrine/PITFALLS-AND-LESSONS.md`?
+- Which new entries were appended to `doctrine/DECISION-JOURNAL.md`?
+
+A project is not closed until its retrospective is recorded.
+
 ## Final evidence
 
 To be completed only after Phase 7 runtime validation.
