@@ -2,17 +2,16 @@
 
 ## Current task
 
-**Phase 8 — Toolchain smoke test (GSQ).**
+**Phase 9 — Phi-4-mini wrapper (GSQ).**
 
 **Status:** IN_PROGRESS
 **Owner:** Echo
 **Approval required:** No (local, free)
-**Evidence required:** a 2-layer quantization run completes on sm_89; output shards written;
-peak VRAM and runtime recorded.
+**Evidence required:** wrapper loads the model; layer and parameter counts match the checkpoint;
+the fused-`qkv_proj` decision is documented.
 
-**Why this is the current task:** Phase 7 proved the stack *installs*. Installing is not running.
-This phase proves GSQ actually quantizes something on this Ada card — the gate that must pass
-before writing a Phi wrapper.
+**Why this is the current task:** Phase 8 passed — the GSQ quantizer demonstrably executes on this
+Ada card. That was the gate. Writing the wrapper is now justified work rather than a guess.
 
 ---
 
@@ -88,27 +87,34 @@ before writing a Phi wrapper.
 - [x] **No escalation triggered — GSQ runs locally and free**
 - [x] Receipt: `receipts/P7-environment-20260925.md`
 
+### Phase 8 — COMPLETE 2026-09-25
+- [x] 2-layer GSQ run on Qwen3-0.6B (target swap: Llama-3.2-1B is gated; stated, not hidden)
+- [x] GPTQ initialisation ran; Gumbel-Softmax refinement ran and its loss decreased
+- [x] Annealing completed to terminal values (temp=0.050, scale=500.0)
+- [x] Quantized shards written for both layers; `--max-layers 2` respected
+- [x] Layer cost measured: 7.8 s/layer; full Phi run projected at ~26 min (INFERRED)
+- [x] GPU returned to baseline after exit — no leaked CUDA context
+- [x] Two upstream GSQ bugs found and worked around (not patched)
+- [x] Phase 10 blocker recorded: wikitext/hub version conflict blocks the ppl eval
+- [x] Receipt: `receipts/P8-toolchain-smoke-20260925.md`
+
 ---
 
 ## Queue
 
-### Phase 8 — Toolchain smoke test  *(CURRENT)*
-- [ ] Run GSQ's 2-layer dry run on a supported architecture (e.g. Qwen3-0.6B)
-- [ ] Confirm output shards are written and loadable
-- [ ] Record peak VRAM and runtime
-- [ ] Project the full Phi-4-mini run from the measured rate
-
-### Phase 9 — Phi-4-mini wrapper
-- [ ] Implement `PhiWrapper` (7 abstract methods)
+### Phase 9 — Phi-4-mini wrapper  *(CURRENT)*
+- [ ] Implement `PhiWrapper` — 7 abstract methods
+- [ ] Port `get_layer_module`, `_layer_prefixes`, `get_mlp_input`, `get_mlp_output`, `move_embed_to`
 - [ ] Decide and document how fused `qkv_proj` is treated
 - [ ] Guard the tied `lm_head`
 - [ ] Register a `'phi'` branch in `get_model_wrapper()`
-- [ ] Verify it loads and reports layer/parameter counts matching the checkpoint
+- [ ] Verify load; layer and parameter counts match the checkpoint
 
 ### Phase 10 — GSQ on Phi-4-mini  *(the experiment)*
+- [ ] **First resolve the wikitext/hub conflict** (preferred: measure with the Phase 1 rig)
 - [ ] Run at 3-bit
 - [ ] Run at 2-bit
-- [ ] Measure perplexity on the Phase 1 rig, same corpus, same binary
+- [ ] Measure on the Phase 1 rig, same corpus, same binary
 - [ ] Compare against FP16 5.0553 and against the uniform curve at matched size
 - [ ] Label PROVEN / INFERRED / UNRESOLVED — a negative result is a valid result
 

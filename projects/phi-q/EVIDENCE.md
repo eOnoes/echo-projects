@@ -167,6 +167,24 @@ All subsequent comparisons use this baseline. Historical figures are cross-refer
 | P7-008 | **No compute escalation is triggered — GSQ runs locally** | PROVEN | §6 |
 | P7-009 | GSQ can actually quantize a model on sm_89 | **UNVERIFIED — Phase 8** | §7 |
 
+## Phase 8 findings — GSQ toolchain smoke test (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P8-001 | **GSQ's quantizer executes on sm_89** — GPTQ init and Gumbel refinement both ran | PROVEN | `P8-toolchain-smoke-20260925.md` §3 |
+| P8-002 | Gumbel loss decreased 6.48e-03 → 4.18e-03 — the quantizer learns | PROVEN | §3 |
+| P8-003 | Annealing completed to terminal values (temp=0.050, scale=500.0) | PROVEN | §3 |
+| P8-004 | Quantized shards written to disk for both layers | PROVEN | §3 |
+| P8-005 | `--max-layers 2` respected; run ended deliberately, not by crash | PROVEN | §3 |
+| P8-006 | Layer cost 7.8 s/layer on Qwen3-0.6B (GPTQ 6.5s + Gumbel 0.5s) | PROVEN | §4 |
+| P8-007 | Projected Phi-4-mini full run ≈ 26 minutes locally | **INFERRED — projection, not measured** | §4 |
+| P8-008 | GPU returned to baseline after exit (1183 MiB); no leaked CUDA context | PROVEN | §5 |
+| P8-009 | Upstream bug: `configs/config_smoke.yaml` uses retired keys and raises on load | PROVEN | §6 |
+| P8-010 | Upstream bug: `ppl_eval_every_n_layers` cannot be disabled by a large period | PROVEN | §6 |
+| P8-011 | **wikitext/hub version conflict blocks the ppl eval — a Phase 10 blocker** | PROVEN | §7 |
+| P8-012 | GSQ produces a *good* quantized model | **NOT TESTED — 2 layers of a 0.6B** | §8 |
+| P8-013 | A Phi wrapper works | **NOT TESTED — Phase 9** | §8 |
+
 ## Research audit evidence
 
 | ID | Claim | State | Source |

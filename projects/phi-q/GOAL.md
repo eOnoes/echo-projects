@@ -60,7 +60,7 @@ This project is complete when:
 
 ## Current phase
 
-Phase 8 — Toolchain smoke test.
+Phase 9 — Phi-4-mini wrapper.
 
 ## Current status
 
@@ -68,16 +68,37 @@ RUNNING
 
 ## Current next action
 
-Run GSQ's 2-layer dry run on a **supported** architecture to prove the quantizer executes on this
-Ada card (sm_89), before writing any Phi wrapper:
+Implement `PhiWrapper` for GSQ. The Phase 8 gate passed, so this is now justified:
+
+1. Implement the 7 abstract methods; port `get_layer_module`, `_layer_prefixes`,
+   `get_mlp_input`, `get_mlp_output`, and `move_embed_to` from `src/models/llama.py`.
+2. **Resolve the fused-`qkv_proj` design decision explicitly.** The base class routes attention by
+   substring (`"q_proj" in name or "k_proj" in name`); `qkv_proj` matches neither, so it would
+   silently take the general path. Decide deliberately and document it.
+3. Guard the tied `lm_head` (absent from the checkpoint index).
+4. Register a `'phi'` branch in `get_model_wrapper()` (selection is by name substring).
+5. Verify it loads and reports layer/parameter counts matching the checkpoint.
+
+## Phase 8 result — toolchain PASSED
 
 ```text
-SMOKE_TEST=1 bash scripts/run.sh          (2-layer dry run)
-  or
-python main.py --config <cfg> --max-layers 2
+Layer 1/28  GPTQ 6.5s -> Gumbel loss 6.48e-03 -> 4.18e-03 (decreasing)
+Layer 2/28  GPTQ 6.6s -> Gumbel -> val_hard_loss 6.39e-03
+            shards written for both layers; --max-layers 2 respected
+Total time: 16.83s   avg 7.8 s/layer on Qwen3-0.6B
+GPU after exit: 1183 MiB (baseline) — no leaked context
 ```
 
-Record peak VRAM and runtime; project the full Phi-4-mini run from the measured rate.
+Projected Phi-4-mini full run: **~26 minutes**, local and free. INFERRED, not measured.
+
+Two upstream GSQ bugs found (shipped smoke config raises; ppl eval cannot be disabled by period),
+and one real Phase 10 blocker: the wikitext/hub version conflict blocks the in-loop perplexity
+eval. Preferred resolution is to measure with the project's own Phase 1 llama.cpp rig after GGUF
+export, since that rig is the reference harness and baseline-comparable.
+
+Receipt: `receipts/P8-toolchain-smoke-20260925.md`
+
+## Method revision (Phase 6, complete)
 
 ## Phase 7 result — environment PASSED
 
