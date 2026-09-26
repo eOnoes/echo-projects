@@ -2,12 +2,13 @@
 
 ## Current task
 
-Build the Phase 1 evaluation harness and reproduce the three frozen baselines.
+Phase 2 — review the uncatalogued parity-harness evidence, then reproduce and classify the
+ternary failure in a new namespace.
 
 **Status:** READY
 **Owner:** Echo
 **Approval required:** No
-**Evidence required:** Harness specification + reproduced baselines + harness choice recorded
+**Evidence required:** Parity-harness review note + reproduced ternary numbers + classification
 
 ## Queue
 
@@ -17,12 +18,14 @@ Build the Phase 1 evaluation harness and reproduce the three frozen baselines.
 - [x] Transcribe prior baseline numbers into `EVIDENCE.md`
 - [x] Receipt: `receipts/P0-freeze-20260925.md`
 
-### Phase 1
-- [ ] Decide and record the reference harness
-- [ ] Build deterministic evaluation harness
-- [ ] Reproduce FP16 baseline (llama.cpp 5.0863)
-- [ ] Reproduce Q4_K_M baseline (llama.cpp 5.2827)
-- [ ] Reproduce PyTorch baseline (12.0361) or explain divergence
+### Phase 1 — COMPLETE 2026-09-25
+- [x] Corpus identified and hash-recorded (README, 7,994 tokens)
+- [x] Harness algorithm read from source
+- [x] Binary built from local source, hashed, versioned
+- [x] FP16 baseline measured: 5.0553
+- [x] Q4_K_M baseline measured: 5.2206
+- [x] Deviation from historical explained (−0.61% / −1.18%)
+- [x] Receipt: `receipts/P1-measurement-rig-20260925.md`
 
 ### Phase 2
 - [ ] Review the uncatalogued parity-harness evidence before re-deriving anything

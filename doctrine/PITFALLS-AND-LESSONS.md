@@ -187,3 +187,58 @@ handles repetition, and terminates correctly.
 calling a model deployable.
 
 **Found in:** phi-q, adopted as a standing rule.
+
+---
+
+# Environment lessons (Windows builds)
+
+These cost real time and are not specific to quantization.
+
+## L-013 — Two Visual Studio installs will silently break a link
+
+**Lesson:** a CMake cache pins an exact compiler path. If the machine has more than one Visual
+Studio install and you source the *other* one's `vcvars64.bat`, compilation succeeds and linking
+fails with unresolved `__std_*` symbols — the header STL is newer than the lib STL being linked.
+
+**Symptom:**
+
+```text
+unicode.cpp.obj : error LNK2019: unresolved external symbol __std_regex_transform_primary_char
+bin\llama.dll : fatal error LNK1120: 2 unresolved externals
+```
+
+**Fix:** read `CMAKE_CXX_COMPILER` from `CMakeCache.txt`, then source the `vcvars64.bat` from
+*that same* Visual Studio install.
+
+**Pitfall:** blaming the compiler cache. `ccache` was a plausible story and the wrong answer —
+disabling it changed nothing. Two attempts were spent on that theory.
+
+**Found in:** phi-q, Phase 1.
+
+## L-014 — Missing SDK headers mean vcvars was never sourced
+
+**Symptom:**
+
+```text
+fatal error C1083: Cannot open include file: 'stdbool.h'
+fatal error C1083: Cannot open include file: 'windows.h'
+```
+
+**Cause:** `cl.exe` was invoked without the Visual Studio developer environment. The compiler is
+on `PATH` but the include and lib paths are not.
+
+**Found in:** phi-q, Phase 1.
+
+## L-015 — In git-bash, `cmd //c` opens an interactive shell instead of running the command
+
+**Lesson:** under MSYS/git-bash on this host, `cmd //c "script.bat"` prints the cmd banner and
+drops to a prompt — the batch file never executes. Use:
+
+```bash
+MSYS_NO_PATHCONV=1 cmd /c "C:\path\to\script.bat"
+```
+
+**Pitfall:** the failure looks like the script exited immediately with no output, which reads as a
+script bug rather than an invocation bug.
+
+**Found in:** phi-q, Phase 1.

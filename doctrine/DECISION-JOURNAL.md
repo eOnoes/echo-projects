@@ -45,6 +45,10 @@ does not repeat the bad ones.
 | D-007 | 2026-09-25 | phi-q | Retract the cross-harness ternary comparison | Phase 0 evidence | RIGHT |
 | D-008 | 2026-09-25 | phi-q | Split harnesses: llama.cpp for GGUF, PyTorch for weights | Harness incompatibility | PENDING |
 | D-009 | 2026-09-25 | doctrine | Make the lessons record append-only rather than editable | Eddie's request | PENDING |
+| D-010 | 2026-09-25 | phi-q | Assume the "README corpus" is the model README and verify by chunk math | Milestone wording + arithmetic check | RIGHT |
+| D-011 | 2026-09-25 | phi-q | Build llama-perplexity from local source rather than accept the available binary's behavior | Available binary overrides n_ctx from stride | RIGHT |
+| D-012 | 2026-09-25 | phi-q | Adopt our own hashed baseline instead of treating the historical 5.0863 as the gate | Original binary unavailable; gate unachievable as written | PENDING |
+| D-013 | 2026-09-25 | phi-q | Rebuild with VS 18 vcvars after two failed build attempts | Cache pinned VS 18; VS 2022 STL was linked | RIGHT |
 
 ---
 

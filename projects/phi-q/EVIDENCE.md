@@ -30,6 +30,31 @@ comparable. Always check the Harness column before comparing.
 | P0-006 | Ternary ratios vs their own baseline: 4.97×, 3.36×, 3,670× | PROVEN | `P0-freeze-20260925.md` §5 |
 | P0-007 | Uncatalogued parity-harness evidence set exists (~90 receipts) | PROVEN | `P0-freeze-20260925.md` §8 |
 
+## Phase 1 findings (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P1-001 | Corpus is the model README; tokenizes to exactly 7,994 tokens | PROVEN | `P1-measurement-rig-20260925.md` §1 |
+| P1-002 | Harness algorithm: `n_chunk = ceil((ntokens - n_ctx) / ppl_stride)` | PROVEN | read from perplexity.cpp |
+| P1-003 | Original harness used `n_ctx=768`, stride 1024 | PROVEN | derived arithmetic + log match |
+| P1-004 | FP16 PPL on our harness = 5.0553 | PROVEN | `P1-measurement-rig-20260925.md` §5 |
+| P1-005 | Q4_K_M PPL on our harness = 5.2206 | PROVEN | `P1-measurement-rig-20260925.md` §5 |
+| P1-006 | Q4 penalty = +3.27% on our harness | PROVEN | `P1-measurement-rig-20260925.md` §5 |
+| P1-007 | Deviation from historical is −0.61% / −1.18%, directional and explained | PROVEN | larger window lowers PPL |
+| P1-008 | Original exact reproduction requires a binary that is not on this machine | PROVEN | parameter combination inexpressible |
+| P1-009 | Phase 1 gate (±0.5%) is not achievable as written | PROVEN | observed −0.61% / −1.18% |
+
+**Baseline of record for this project:**
+
+```text
+FP16     5.0553
+Q4_K_M   5.2206
+binary   f88a3a5110dba2e666dc5e86854149effa7e8817dd7a8ae15a0fab6e5dd3ab89
+corpus   03ba3dd2a779b2ddb2d37d6571900a58423ab95eb02bf9915e259432b78ee6b1
+```
+
+All subsequent comparisons use this baseline. Historical figures are cross-reference only.
+
 ## Research audit evidence
 
 | ID | Claim | State | Source |

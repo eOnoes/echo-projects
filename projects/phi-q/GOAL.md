@@ -60,7 +60,7 @@ This project is complete when:
 
 ## Current phase
 
-Phase 1 — Establish the measurement rig.
+Phase 2 — Reproduce and classify the ternary failure.
 
 ## Current status
 
@@ -68,8 +68,15 @@ RUNNING
 
 ## Current next action
 
-Resolve the harness decision, then build the deterministic evaluation harness and reproduce
-the three frozen baselines. Local GPU only. No paid resources.
+Review the uncatalogued `parity-harness/` evidence before re-deriving anything, then
+reproduce the ternary failure in a new namespace. Local GPU only. No paid resources.
+
+## Baseline of record
+
+```text
+FP16     5.0553      (binary f88a3a51..., corpus 03ba3dd2...)
+Q4_K_M   5.2206      (+3.27%)
+```
 
 ## Linked documents
 
