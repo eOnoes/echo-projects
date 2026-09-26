@@ -60,11 +60,27 @@ This project is complete when:
 
 ## Current phase
 
-Phase 6 — method revision. GSQ + RCO replaces QAD as the route to a task-lossless low-bit model.
+Phase 7 — Environment build (GSQ stack). The goal was restarted 2026-09-25 after the method
+revision to GSQ + RCO.
 
 ## Current status
 
-BLOCKED ON A FINDING — pending Eddie's restart of the goal
+RUNNING
+
+## Current next action
+
+1. Finish installing the GSQ dependency subset into the isolated venv at `E:/ternary-lab/gsq-env`.
+   (vLLM / ray / lm-eval / lighteval / humming-kernels excluded — serving path, Linux-oriented.)
+2. Confirm torch reports CUDA and the core imports resolve.
+3. Then Phase 8: GSQ's 2-layer smoke test on a supported architecture, to prove the toolchain
+   quantizes anything on this Ada card before touching Phi.
+
+## Method revision (Phase 6, complete)
+
+GSQ + RCO replaces both naive allocation and QAD. See `receipts/P6-gsq-rco-investigation-20260925.md`.
+Phase 4b's negative result was instrument-limited, not idea-limited. The Phi wrapper delta is small
+(8 of 10 module paths match the existing LLaMA wrapper) — see
+`receipts/P6b-wrapper-feasibility-20260925.md`.
 
 ## The blocker, stated plainly
 
