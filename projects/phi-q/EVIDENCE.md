@@ -2,16 +2,33 @@
 
 ## Frozen prior evidence (recorded verbatim, not re-derived)
 
-| ID | Claim | State | Source |
+**Harness warning:** two different harnesses appear below and their numbers are not
+comparable. Always check the Harness column before comparing.
+
+| ID | Claim | Harness | State | Source |
+|---|---|---|---|---|
+| E-001 | FP16 GGUF geometric PPL = 5.0863 | llama.cpp ppl_v2 | PROVEN | prior milestone receipt |
+| E-002 | Q4_K_M geometric PPL = 5.2827 (+3.86%) | llama.cpp ppl_v2 | PROVEN | prior milestone receipt |
+| E-003 | Attention-only ternarization → PPL 59.87 | PyTorch bf16 | PROVEN | prior localization receipt |
+| E-004 | MLP-only ternarization → PPL 40.48 | PyTorch bf16 | PROVEN | prior localization receipt |
+| E-005 | All four projections ternarized → PPL 44,176 | PyTorch bf16 | PROVEN | prior localization receipt |
+| E-006 | Collapse begins at the first complete ternarized block | PyTorch bf16 | PROVEN | prior localization receipt |
+| E-007 | Combined-substitution error is strongly nonlinear | derived | INFERRED | derived from E-003..E-005 |
+| E-008 | No-training strict ternary is not useful | both | PROVEN | prior milestone conclusion |
+| E-009 | PyTorch harness FP16 baseline = 12.0361 | PyTorch bf16 | PROVEN | recovered from layer-sweep receipts |
+| E-010 | Layer-count degradation is explosive, not gradual | PyTorch bf16 | PROVEN | recovered layer sweeps 1/2/4/8/16/32 |
+
+## Phase 0 findings (2026-09-25)
+
+| ID | Claim | State | Evidence |
 |---|---|---|---|
-| E-001 | FP16 GGUF geometric PPL = 5.0863 | PROVEN | prior milestone receipt |
-| E-002 | Q4_K_M geometric PPL = 5.2827 (+3.86%) | PROVEN | prior milestone receipt |
-| E-003 | Attention-only ternarization → PPL 59.87 | PROVEN | prior layer-0 localization receipt |
-| E-004 | MLP-only ternarization → PPL 40.48 | PROVEN | prior layer-0 localization receipt |
-| E-005 | All four projections ternarized → PPL 44,176 | PROVEN | prior layer-0 localization receipt |
-| E-006 | Collapse begins at the first complete ternarized block | PROVEN | prior layer-0 localization receipt |
-| E-007 | Combined-substitution error is strongly nonlinear | INFERRED | derived from E-003, E-004, E-005 |
-| E-008 | No-training strict ternary is not useful | PROVEN | prior milestone conclusion |
+| P0-001 | All required artifacts are present locally; no download needed | PROVEN | `P0-freeze-20260925.md` |
+| P0-002 | Frozen artifacts are unchanged since prior work (3 hash matches) | PROVEN | `P0-freeze-20260925.md` §3 |
+| P0-003 | Recorded baselines reproduce exactly from raw per-chunk data | PROVEN | `P0-freeze-20260925.md` §4 |
+| P0-004 | Baseline harness fully specified and reproducible | PROVEN | `P0-freeze-20260925.md` §4 |
+| P0-005 | **E-001/E-002 and E-003/E-004/E-005 are on different harnesses and must not be compared** | PROVEN | `P0-freeze-20260925.md` §5 |
+| P0-006 | Ternary ratios vs their own baseline: 4.97×, 3.36×, 3,670× | PROVEN | `P0-freeze-20260925.md` §5 |
+| P0-007 | Uncatalogued parity-harness evidence set exists (~90 receipts) | PROVEN | `P0-freeze-20260925.md` §8 |
 
 ## Research audit evidence
 

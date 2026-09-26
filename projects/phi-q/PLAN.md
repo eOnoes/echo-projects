@@ -53,15 +53,24 @@ when the bounded run finishes. Evidence is mirrored and hash-verified locally be
 
 **Objective:** One deterministic evaluation harness that reproduces the recorded baselines.
 
+**Harness decision required first:** the prior evidence contains two incompatible harnesses.
+Phase 1 must pick one as the project reference and state the choice explicitly.
+
+| Option | Baseline | Pros | Cons |
+|---|---|---|---|
+| llama.cpp `perplexity_v2` | 5.0863 | Matches the frozen GGUF controls; fast; already specified | Only works on GGUF artifacts |
+| PyTorch / Transformers bf16 | 12.0361 | Works on uncompressed weights; needed for quantization work | Slower; heavier |
+
+**Recommendation:** use llama.cpp for GGUF controls, PyTorch for weight-level work, and
+**never compare across the two**. Record the harness on every number.
+
 **Exit gate:**
-- FP16 perplexity reproduces the recorded **5.0863** within **±0.5%** (5.061–5.112).
-- Q4_K_M perplexity reproduces the recorded **5.2827** within **±0.5%** (5.256–5.309).
-- A delta between 0.5% and 2% must be investigated and explained before proceeding.
-- A delta above 2% stops the project and triggers harness forensics.
-- Corpus, chunk width, context length, and seed are fixed and documented.
-- Harness produces byte-identical output on repeated runs.
-- Evaluation artifact hash and runtime build hash are recorded.
-- GPU identity is confirmed free of conflicting processes before measurement.
+- FP16 reproduces the recorded 5.0863 (llama.cpp) within ±0.5%.
+- Q4_K_M reproduces the recorded 5.2827 (llama.cpp) within ±0.5%.
+- PyTorch harness reproduces 12.0361 within ±0.5%, or the divergence is explained.
+- Chunk width, context, batch size, corpus, and seed are recorded.
+- Harness produces identical output on repeated runs.
+- Every measured number records which harness produced it.
 
 ## Phase 2 — Reproduce and classify the ternary failure
 

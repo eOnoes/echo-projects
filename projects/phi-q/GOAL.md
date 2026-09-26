@@ -2,7 +2,7 @@
 
 **Project ID:** `phi-q`
 **Full name:** Phi-4-mini Mixed-Precision Quantization Recovery
-**Status:** READY_FOR_REVIEW
+**Status:** RUNNING
 **Owner:** Eddie
 **Manager:** Echo
 **Executor:** Echo (local RTX 4070)
@@ -60,15 +60,16 @@ This project is complete when:
 
 ## Current phase
 
-Phase 0 — Freeze and preserve.
+Phase 1 — Establish the measurement rig.
 
 ## Current status
 
-READY_FOR_REVIEW
+RUNNING
 
 ## Current next action
 
-Eddie reviews and approves this packet. No compute is started before approval.
+Resolve the harness decision, then build the deterministic evaluation harness and reproduce
+the three frozen baselines. Local GPU only. No paid resources.
 
 ## Linked documents
 
@@ -87,6 +88,12 @@ Eddie reviews and approves this packet. No compute is started before approval.
 - 2026-09-25: Research audit confirms PTQ plateau at 3–4 bpw and sharp loss at ≤2 bpw.
 - 2026-09-25: `TQ1_0`/`TQ2_0` identified as ternary storage formats for already-ternary models, not general compression methods.
 - 2026-09-25: Fine-tune-then-quantize confirmed as the correct order for moderate bit-widths; ternary requires coupled training.
+- 2026-09-25: Phase 5 corrected from 16-bit LoRA to QLoRA — local VRAM cannot fit 16-bit training of a 3.8B model.
+- 2026-09-25: Compute escalation protocol added; paid resources require a formatted proposal.
+- 2026-09-25: **Phase 0 PASSED.** All artifacts local and hash-verified. Baselines reproduce exactly.
+- 2026-09-25: **Harness correction discovered.** Prior evidence mixes two incompatible harnesses
+  (llama.cpp FP16 = 5.0863, PyTorch FP16 = 12.0361). The old "5.0863 → 44,176" framing is
+  cross-harness and retracted. Phase 1 must pin one reference harness.
 
 ## Commands
 
