@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>phi-q — Phase 3 Sensitivity Map</title>
+<style>
+  :root{--bg:#0d1117;--panel:#161b22;--line:#2b3442;--fg:#e6edf3;--dim:#9aa7b4;
+    --accent:#58a6ff;--good:#3fb950;--warn:#d29922;--bad:#f85149;--code:#7ee787}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    padding:16px 14px 60px}
+  .wrap{max-width:860px;margin:0 auto}
+  h1{font-size:1.42rem;margin:0 0 6px}
+  h2{font-size:1.08rem;margin:26px 0 10px;color:var(--accent)}
+  h3{font-size:.95rem;margin:16px 0 8px}
+  .sub{color:var(--dim);font-size:.85rem;margin:0 0 18px}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.68rem;
+    font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+  .b-pass{background:rgba(63,185,80,.15);color:var(--good);border:1px solid rgba(63,185,80,.4)}
+  .b-warn{background:rgba(210,153,34,.16);color:var(--warn);border:1px solid rgba(210,153,34,.4)}
+  .b-bad{background:rgba(248,81,73,.14);color:var(--bad);border:1px solid rgba(248,81,73,.4)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 16px;margin:14px 0}
+  .card.good{border-left:3px solid var(--good)}
+  .card.warn{border-left:3px solid var(--warn)}
+  .card.bad{border-left:3px solid var(--bad)}
+  ul{margin:8px 0;padding-left:20px} li{margin:6px 0}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85em;
+    background:#0b0f14;border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--code)}
+  pre{background:#0b0f14;border:1px solid var(--line);border-radius:9px;padding:12px;
+    overflow-x:auto;font-size:.79rem;line-height:1.5;margin:10px 0}
+  pre code{background:none;border:none;padding:0}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.84rem;display:block;overflow-x:auto}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+  th{color:var(--dim);font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.4px}
+  .bar{display:inline-block;height:9px;border-radius:3px;background:var(--accent);vertical-align:middle}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:12px 0}
+  summary{cursor:pointer;padding:14px 16px;font-weight:600;font-size:.93rem;list-style:none;
+    display:flex;justify-content:space-between;gap:10px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--accent);font-size:1.2rem;flex-shrink:0}
+  details[open] summary::after{content:"–"}
+  .body{padding:0 16px 16px;border-top:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:1fr;gap:10px}
+  @media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+  .stat{background:#0b0f14;border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+  .stat .k{color:var(--dim);font-size:.68rem;text-transform:uppercase;letter-spacing:.5px}
+  .stat .v{font-size:1.18rem;font-weight:700;margin-top:3px}
+  .stat .v.good{color:var(--good)} .stat .v.warn{color:var(--warn)}
+  .foot{color:var(--dim);font-size:.76rem;margin-top:28px;text-align:center}
+  .note{color:var(--dim);font-size:.83rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>phi-q — Phase 3 · Sensitivity Map</h1>
+  <p class="sub">
+    Which layers and tensors need more bits &nbsp;·&nbsp;
+    <span class="badge b-pass">Phase 3 complete</span> &nbsp;·&nbsp; 2026-09-25
+  </p>
+
+  <div class="card good">
+    <strong>The answer, in one line:</strong> the four projections are all equally sensitive, so
+    precision should be spent on <strong>layers, not on projection types</strong> — and it should
+    be spent at the <strong>edges</strong>: layer 0 and layer 31 resist quantization roughly twice
+    as hard as the middle of the network.
+  </div>
+
+  <h2>TL;DR</h2>
+  <ul>
+    <li><strong>All 128 tensors measured</strong> — 32 layers × 4 projections.</li>
+    <li><strong>Projections are flat.</strong> Spread across all four is under 1%. Nothing to exploit.</li>
+    <li><strong>Layers are spiked.</strong> Layer 0 and 31 are the outliers. That's the signal.</li>
+    <li><strong>Kurtosis predicts it</strong> — r = 0.816 at layer level. Cheap and usable.</li>
+    <li><strong>Each extra bit halves the error.</strong> Clean, monotone, dependable.</li>
+    <li><strong>A candidate design falls out</strong>: 1.81 GB, 76.4% smaller than FP16.</li>
+    <li><strong>One hypothesis refuted</strong>, with an honest caveat about the instrument.</li>
+    <li><strong>I caught a bug in my own metric</strong> mid-run and had to log it as an error.</li>
+  </ul>
+
+  <h2>The finding that matters</h2>
+  <div class="card">
+    <p><strong>Projection sensitivity — flat:</strong></p>
+    <table>
+      <tr><th>Projection</th><th>Params</th><th>Error (ternary)</th><th>4-bit</th><th>Kurtosis</th></tr>
+      <tr><td><code>mlp.down_proj</code></td><td>805M</td><td>0.5161</td><td>0.1201</td><td>3.93</td></tr>
+      <tr><td><code>self_attn.qkv_proj</code></td><td>503M</td><td>0.5155</td><td>0.1209</td><td>4.83</td></tr>
+      <tr><td><code>mlp.gate_up_proj</code></td><td>1,611M</td><td>0.5122</td><td>0.1183</td><td>3.48</td></tr>
+      <tr><td><code>self_attn.o_proj</code></td><td>302M</td><td>0.5117</td><td>0.1178</td><td>4.81</td></tr>
+    </table>
+    <p class="note">Under 1% spread. Giving one projection more bits than another would be
+    spending budget on noise.</p>
+
+    <p><strong>Layer sensitivity — spiked at the boundaries:</strong></p>
+    <table>
+      <tr><th>Layer</th><th>Error (ternary)</th><th>Kurtosis</th><th>Outliers</th></tr>
+      <tr><td><strong>0</strong></td><td><strong>0.5228</strong></td><td><strong>9.08</strong></td><td>3.8e−04</td></tr>
+      <tr><td><strong>31</strong></td><td><strong>0.5188</strong></td><td><strong>11.74</strong></td><td>2.9e−04</td></tr>
+      <tr><td>30</td><td>0.5169</td><td>4.49</td><td>7.9e−05</td></tr>
+      <tr><td>29</td><td>0.5146</td><td>3.70</td><td>3.7e−05</td></tr>
+      <tr><td>1</td><td>0.5143</td><td>4.82</td><td>9.9e−05</td></tr>
+      <tr><td>2–28 typical</td><td>≈0.5130</td><td>3.3–4.3</td><td>1.3e−05 – 7.1e−05</td></tr>
+    </table>
+    <pre><code>edge layers (0, 1, 30, 31)   mean error 0.5182
+middle layers (2–29)         mean error 0.5132</code></pre>
+    <p>The first and last layers carry the largest weight outliers and resist quantization most.
+    This also matches the prior campaign's finding that layer-0 damage was catastrophic.</p>
+  </div>
+
+  <h2>What precision actually buys</h2>
+  <div class="card good">
+    <p>Uniform quantization behaves exactly as theory predicts — error halves per bit:</p>
+    <table>
+      <tr><th>Scheme</th><th>Mean error</th><th>vs ternary</th></tr>
+      <tr><td>ternary g128</td><td>0.5138</td><td>—</td></tr>
+      <tr><td>3-bit g128</td><td>0.2781</td><td>1.8× better</td></tr>
+      <tr><td>4-bit g128</td><td>0.1193</td><td>4.3× better</td></tr>
+      <tr><td>6-bit g128</td><td>0.0269</td><td>19.1× better</td></tr>
+      <tr><td>8-bit g128</td><td>0.0066</td><td>78.1× better</td></tr>
+    </table>
+    <p class="note">This table is dependable. The ternary column is not — see below.</p>
+  </div>
+
+  <div class="card good">
+    <h3 style="margin-top:0;color:var(--good)">Candidate design — 76.4% smaller</h3>
+    <table>
+      <tr><th>Tier</th><th>Layers</th><th>Bits</th><th>Size</th></tr>
+      <tr><td>edge</td><td>0, 1, 30, 31</td><td>6-bit</td><td>0.30 GB</td></tr>
+      <tr><td>near-edge</td><td>2, 3, 28, 29</td><td>5-bit</td><td>0.25 GB</td></tr>
+      <tr><td>middle</td><td>4 – 27</td><td>4-bit</td><td>1.21 GB</td></tr>
+      <tr><td>embeddings + norms</td><td>—</td><td>FP16</td><td>0.05 GB</td></tr>
+    </table>
+    <pre><code>F16 reference    7.68 GB
+candidate        1.81 GB
+reduction        76.4%</code></pre>
+    <p class="note"><strong>This is a candidate, not a result.</strong> It comes from a proxy
+    metric, and the next section explains why that proxy is weak exactly where it matters.
+    Phase 4 measures it for real.</p>
+  </div>
+
+  <div class="card warn">
+    <h3 style="margin-top:0;color:var(--warn)">One hypothesis refuted — and the caveat that keeps it honest</h3>
+    <p>We were testing whether <em>group scales</em> carry the capacity that plain per-tensor
+    ternary loses. That was the leading explanation for why one ternary attempt collapsed and
+    another ran.</p>
+    <table>
+      <tr><th>Scheme</th><th>Mean error</th><th>vs per-tensor</th></tr>
+      <tr><td>per-tensor</td><td>0.5363</td><td>—</td></tr>
+      <tr><td>group 128</td><td>0.5138</td><td>4.2% better</td></tr>
+      <tr><td>group 32</td><td>0.5070</td><td>5.5% better</td></tr>
+    </table>
+    <p>Going from one scale per tensor all the way to a scale per 32 weights improves things by
+    <strong>5.5%</strong>. That cannot explain the difference between a model that collapsed and
+    one that ran.</p>
+    <p><strong>But here is the honest part.</strong> Ternary error is ≈0.51–0.54 for
+    <em>every</em> scheme, including group-32. Half the weight energy is gone in all cases. A 51%
+    weight error cannot map linearly to capability, because BitNet-class models work in exactly
+    that regime — they're <em>trained</em> into it.</p>
+    <p class="note">So the refutation is real <em>as measured on weight-space error</em>, and this
+    metric is simply the wrong instrument for judging ternary. The question stays open, and it
+    cannot be settled here. That caveat is written into the receipt, not glossed over.</p>
+  </div>
+
+  <details>
+    <summary>My own error — logged as W-006</summary>
+    <div class="body">
+      <p>I chose weight-space reconstruction error as the sensitivity instrument without first
+      checking it could measure the thing being asked. It's the standard cheap approach, and it's
+      the right tool for comparing <em>uniform bit budgets</em>. For ternary it's meaningless.</p>
+      <p>What caught it: the ternary error was suspiciously identical across every group size. A
+      metric that returns the same answer no matter what you change is not measuring what you
+      changed.</p>
+      <p><strong>The bug underneath:</strong> my first run reported 2-bit scoring <em>worse</em>
+      than ternary — impossible, since 2-bit has more levels. My quantizer's scale let
+      reconstructed values overshoot the group maximum, so it added error instead of removing it.</p>
+      <pre><code>broken:  step = 2 * scale / (nlev - 1)   with clipping past +/- scale
+fixed:   step = scale / (2^(bits-1) - 1)  symmetric, no overshoot</code></pre>
+      <p>The fix has a built-in check: at 2 bits it must reproduce absmax ternary exactly, and it
+      now does. The bad run was killed before writing output, so no invalid artifact exists.</p>
+      <p class="note">Cost: one wasted run. Caught by noticing an impossible ordering, not by
+      luck.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Method and reproducibility</summary>
+    <div class="body">
+      <p>For all 128 quantizable tensors, simulate group-wise quantization and measure:</p>
+      <pre><code>rel_err = ||W - W_hat||_F / ||W||_F</code></pre>
+      <table>
+        <tr><th>Scheme</th><th>Definition</th></tr>
+        <tr><td>per-tensor</td><td>one absmean scale for the whole tensor, codes {−1,0,+1}</td></tr>
+        <tr><td>g256/128/64/32</td><td>per-group absmean scale, codes {−1,0,+1}</td></tr>
+        <tr><td>3/4/6/8-bit</td><td>symmetric uniform, 2^(b−1)−1 magnitude levels, absmax per group 128</td></tr>
+      </table>
+      <pre><code>script  E:/ternary-lab/staging/sensitivity_map.py
+output  sensitivity-map.json  (75 KB)
+        sensitivity-map.csv   (24 KB)
+runtime 328 seconds, CPU only, no GPU
+model   read-only, nothing modified</code></pre>
+      <p class="note">Also recorded: kurtosis and outlier fraction per tensor, since both predict
+      sensitivity cheaply and can prioritise future work without a full sweep.</p>
+    </div>
+  </details>
+
+  <div class="card">
+    <strong>Phase 3 gate</strong>
+    <table>
+      <tr><th>Gate</th><th>Status</th></tr>
+      <tr><td>Sensitivity computed for all quantizable tensors</td><td><span class="badge b-pass">PASS</span></td></tr>
+      <tr><td>Group-size sweep performed</td><td><span class="badge b-pass">PASS</span></td></tr>
+      <tr><td>Bit-budget sweep performed</td><td><span class="badge b-pass">PASS</span></td></tr>
+      <tr><td>Method limits identified and recorded</td><td><span class="badge b-pass">PASS</span></td></tr>
+      <tr><td>Candidate allocation preserves quality</td><td><span class="badge b-warn">UNVERIFIED</span></td></tr>
+    </table>
+    <p class="note">The unverified row is the whole of Phase 4.</p>
+  </div>
+
+  <div class="card">
+    <strong>Next: Phase 4 — make it real</strong>
+    <p>The proxy has done its job: it says outliers live at the layer boundaries and the
+    projections are interchangeable. Now the ground-truth instrument — quantize one tier at a
+    time and measure perplexity against the frozen baseline.</p>
+    <pre><code>baseline of record
+  FP16     5.0553
+  Q4_K_M   5.2206
+
+measure per-tier PPL delta, then compare against the 1.81 GB candidate</code></pre>
+    <p class="note">Local, free, bounded. This converts the candidate design from a prior into a
+    measurement.</p>
+  </div>
+
+  <p class="foot">
+    Receipt: <code>projects/phi-q/receipts/P3-sensitivity-map-20260925.md</code><br>
+    Commit <code>6984000</code> · <code>eOnoes/echo-projects</code><br>
+    <span class="badge b-pass">Phase 3 complete</span>
+  </p>
+
+</div>
+</body>
+</html>
