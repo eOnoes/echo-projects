@@ -167,6 +167,25 @@ All subsequent comparisons use this baseline. Historical figures are cross-refer
 | P7-008 | **No compute escalation is triggered — GSQ runs locally** | PROVEN | §6 |
 | P7-009 | GSQ can actually quantize a model on sm_89 | **UNVERIFIED — Phase 8** | §7 |
 
+## Phase 10 findings — GSQ on Phi-4-mini: the experiment (2026-09-25/26)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P10-001 | **GSQ 2-bit on Phi-4-mini: PPL 14.6434 vs FP16 6.9705 = +110.1%** | PROVEN | `P10-gsq-experiment-20260926.md` §2 |
+| P10-002 | **GSQ 2-bit does NOT beat llama.cpp K-quants on Phi-4-mini** | **REFUTED (the thesis)** | §2, §9 |
+| P10-003 | The export is faithful — dequantized weights correlate 0.88-0.90 with original FP16 | PROVEN | §3b |
+| P10-004 | The quantizer emits genuine 2-bit weights — 4 distinct codes {6,7,8,9}, zero-point 8 | PROVEN | §3a |
+| P10-005 | Corruption hypothesis (scrambled weights) | **REFUTED** | §3c |
+| P10-006 | Negative scales = corruption | **REFUTED** — clean 50/50 sign convention | §3c |
+| P10-007 | The serializer pads 2-bit values into 4-bit containers (2x space waste) | PROVEN | §4 |
+| P10-008 | Attention was never quantized (`self_attn: false`) — MLP only | PROVEN | §4 |
+| P10-009 | Assembled size 3.81 GB = 2.2x Q2_K's 1.73 GB while quantizing less of the model | PROVEN | §4 |
+| P10-010 | The first Phase 10 attempt was invalid (smoke-grade config); invalidated, not reported | PROVEN | §6 |
+| P10-011 | GSQ's README claims GGUF in-format refinement; **no GGUF code exists in the repo** | PROVEN | §7 |
+| P10-012 | The assembled checkpoint loads and is measurable on Windows without vLLM | PROVEN | §8 |
+| P10-013 | A full-recipe (16x calibration) run would change the verdict | **UNKNOWN** — largest caveat | §5 |
+| P10-014 | The method works at 8B-1T as published | **NOT TESTED HERE** — Phi-4-mini is out-of-regime | §5 |
+
 ## Phase 9 findings — Phi-4-mini wrapper (2026-09-25)
 
 | ID | Claim | State | Evidence |

@@ -2,7 +2,7 @@
 
 | Project | Executor | Manager | Status | Current phase | Next event |
 |---|---|---|---|---|---|
-| phi-q | Echo (local) | Echo | RUNNING | Phase 10 — GSQ on Phi-4-mini (the experiment) | Full 32-layer 3-bit + 2-bit runs |
+| phi-q | Echo (local) | Echo | COMPLETE (negative) | Phase 10 — GSQ 2-bit LOST to llama.cpp K-quants on Phi-4-mini (+110% PPL) | Retest on a LLaMA-family model |
 | qwen36-ternary | Unassigned | Echo | NOT_CREATED | — | Doctrine packet to be written |
 | qwen-runtime | Echo | Echo | PAUSED | CUDA 13 D3 validation | Await compatible dual-GPU capacity |
 | onoes-agent | Codex | Echo | RUNNING | Windows release | Await build receipt |

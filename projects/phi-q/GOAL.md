@@ -60,24 +60,51 @@ This project is complete when:
 
 ## Current phase
 
-Phase 10 — GSQ on Phi-4-mini (the experiment).
+Phase 10 — COMPLETE. The question is answered, and the answer is NEGATIVE.
 
 ## Current status
 
-RUNNING
+COMPLETE_WITH_NEGATIVE_RESULT
+
+## Headline
+
+```text
+                        PPL       harness
+FP16 baseline          6.9705     fixed (this project)
+GSQ 2-bit             14.6434     fixed (this project)
+                     --------
+                     +110.1%
+```
+
+GSQ, as configured and run here, does **not** beat llama.cpp's K-quants on Phi-4-mini. The
+export is faithful (dequantized weights correlate 0.88-0.90 with the original), so the number
+is real rather than an artifact.
 
 ## Current next action
 
-Run the experiment the whole project exists to run.
+Do NOT proceed to RCO allocation (Phase 11). Tuning allocation on top of a configuration that
+is not competitive would be measuring noise. Instead, in order of value:
 
-1. Full 32-layer GSQ run on Phi-4-mini at **3-bit** (~11 min, local, free).
-2. Repeat at **2-bit**.
-3. Resolve the wikitext/hub conflict. **Preferred route: measure with the project's own Phase 1
-   llama.cpp rig after GGUF export** — that rig is the reference harness and its numbers are
-   already baseline-comparable (FP16 5.0553 / Q4_K_M 5.2206).
-4. Compare against FP16, against the uniform curve at matched size, and against llama.cpp's own
-   hand-tuned K-quants — which is the actual thesis.
-5. Label PROVEN / INFERRED / UNRESOLVED. A negative result is a valid result.
+1. **Report the `trainer.py` shard-grouping bug upstream** — it is LLaMA-specific and fails
+   silently for any MLP not named gate_proj/up_proj/down_proj. A genuine contribution
+   independent of this result.
+2. **Re-run the experiment on a LLaMA-family model.** GSQ ships an exercised LLaMA wrapper, so
+   the toolchain risk is zero. If GSQ beats Q4_K_M at matched size there, the method is
+   vindicated and Phi-4-mini was simply the wrong test bed. **Highest value, nearly free.**
+3. **Run the full calibration recipe** (4096x4096, ~35 h local or a bounded rental) before any
+   final claim about the method. Current run used 1/16th.
+4. **Fix the export**: quantize attention, and emit true 2-bit containers (currently 4-bit,
+   wasting 2x space).
+
+## Bounding caveats
+
+- Calibration was **1/16th** of GSQ's shipped recipe (1024x1024 vs 4096x4096).
+- **Phi-4-mini is 3.8B and dense**; GSQ's published results are 8B-1T. Small dense models have
+  far less redundancy. The negative result may reflect the regime, not the method.
+- The K-quant comparison is cross-ruler (see W-002); ratios against own-baseline are
+  comparable in character, absolute perplexities are not.
+
+Receipt: `receipts/P10-gsq-experiment-20260926.md`
 
 ## Phase 9 result — wrapper PASSED
 
