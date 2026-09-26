@@ -1,0 +1,23 @@
+# unsloth writes its compiled trainer cache into the current working directory.
+# It must never enter the control-plane repo.
+unsloth_compiled_cache/
+
+# python / tooling noise
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# large local artifacts that belong in the model vault or staging, not here
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
