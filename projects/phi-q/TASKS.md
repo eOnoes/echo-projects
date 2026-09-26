@@ -2,15 +2,21 @@
 
 ## Current task
 
-Phase 2 — review the uncatalogued parity-harness evidence, then reproduce and classify the
-ternary failure in a new namespace.
+Phase 4 — empirical per-tier ablation against the frozen baseline.
 
 **Status:** READY
 **Owner:** Echo
 **Approval required:** No
-**Evidence required:** Parity-harness review note + reproduced ternary numbers + classification
+**Evidence required:** PPL per tier at each candidate bit budget vs FP16 5.0553 / Q4 5.2206
 
 ## Queue
+
+### Phase 3 — COMPLETE 2026-09-25
+- [x] Sensitivity map over all 128 quantizable tensors
+- [x] Group-size sweep (H-002 test) — H-002 refuted on weight-space error
+- [x] Uniform bit sweep, 3/4/6/8-bit
+- [x] Layer and projection profiles; kurtosis r=0.816 layer-level
+- [x] Receipt: `receipts/P3-sensitivity-map-20260925.md`
 
 ### Phase 0 — COMPLETE 2026-09-25
 - [x] Pin and record the model revision

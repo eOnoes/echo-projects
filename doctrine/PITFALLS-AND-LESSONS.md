@@ -188,6 +188,37 @@ calling a model deployable.
 
 **Found in:** phi-q, adopted as a standing rule.
 
+## L-016 — A model that needs a chat template will produce garbage without one
+
+**Lesson:** evaluating an instruct model with raw completion — no system message, no chat
+template, no single-turn framing — measures the prompt path, not the model. Both the quantized
+*and* unquantized models fail, and the failure gets misattributed to quantization.
+
+**Symptom:** repetitive fragments (`Mar`, `pr`, `Michael`, `rerere`, `510510510510`,
+`samples samples ... blocks blocks`) instead of answers.
+
+**Practice:** before any quantization comparison, validate that the **unquantized** baseline
+answers correctly under a documented, explicit protocol. If the baseline cannot answer, the
+comparison is void. Record the protocol alongside the numbers.
+
+**Cost of missing it:** an entire prior campaign concluded that ternarization destroyed the
+model, when the benchmark was defeating the unquantized model too.
+
+**Found in:** phi-q, Phase 2; confirmed against the `v25` receipt from 2026-09-16.
+
+## L-017 — A control that crosses runtimes proves nothing
+
+**Lesson:** if the baseline runs on runtime A and the variant runs on runtime B, a difference
+between them is confounded by the runtime. Either run both through the same binary, or do not
+report the difference as a model result.
+
+**Practice:** when a control cannot be obtained (e.g. the second runtime cannot load the
+baseline model), report the comparison as **unresolved** rather than reporting the variant's
+result as a finding.
+
+**Found in:** phi-q, Phase 2 — Prism runtime produced repetition on both ternary artifacts, but
+could not load the stock F16 baseline, so the comparison was left unresolved instead of claimed.
+
 ---
 
 # Environment lessons (Windows builds)

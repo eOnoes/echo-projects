@@ -76,8 +76,24 @@ All subsequent comparisons use this baseline. Historical figures are cross-refer
 | ID | Hypothesis | State | Test |
 |---|---|---|---|
 | H-001 | Fine-tuning hardens vs relocates sensitive regions | UNRESOLVED | Phase 5b |
-| H-002 | Group-128 scales, not the ternary codes, carry the capacity. Per-tensor strict ternary collapses; per-group-128 does not. | UNRESOLVED | Line A vs Line B at matched bit budgets |
+| H-002 | Group-128 scales, not the ternary codes, carry the capacity. Per-tensor strict ternary collapses; per-group-128 does not. | **REFUTED by weight-space error** — grouping improves reconstruction by only 5.5%. Caveat: this metric is invalid for ternary, so the question stands open on functional grounds. | Line A vs Line B at matched bit budgets |
 | H-003 | The prior quality-loss measurements were protocol artifacts, not quantization loss | UNRESOLVED | fix the protocol, re-measure F16 and PQ2_0 |
+
+## Phase 3 findings — sensitivity map (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P3-001 | Relative reconstruction error computed for all 128 quantizable tensors | PROVEN | `staging/sensitivity-map.json` |
+| P3-002 | Group size (per-tensor → group-32) improves ternary weight error by only 5.5% | PROVEN | `P3-sensitivity-map-20260925.md` §2 |
+| P3-003 | **H-002 REFUTED by weight-space error** — grouping is near-irrelevant to reconstruction error | PROVEN | same |
+| P3-004 | Ternary weight error is ≈0.51–0.54 for every scheme including group-32 | PROVEN | same |
+| P3-005 | Weight-space error is an INVALID predictor of ternary functional damage | INFERRED | §3 — 51% error cannot map linearly to capability when trained-ternary models work there |
+| P3-006 | Uniform precision halves error per bit: 3b 0.278, 4b 0.119, 6b 0.027, 8b 0.0066 | PROVEN | §4 |
+| P3-007 | Sensitivity is flat across projections (under 1% spread) | PROVEN | §5 |
+| P3-008 | Sensitivity is spiked at layer boundaries: L0 0.5228, L31 0.5188 vs ≈0.5130 mid | PROVEN | §5 |
+| P3-009 | Kurtosis predicts sensitivity: layer-level r=0.816, tensor-level r=0.623 | PROVEN | §5 |
+| P3-010 | Candidate allocation at 4/5/6-bit yields ~1.81 GB, 76.4% reduction | PROVEN (arithmetic) | §6 |
+| P3-011 | The candidate allocation preserves quality | **UNVERIFIED** — derived from a proxy | §8 |
 
 ## Research audit evidence
 

@@ -136,8 +136,69 @@ Nothing was modified, moved, or deleted. The Prism artifacts, the Prism source t
 spec, and all 851 parity-harness files remain exactly where they were. This note is a reading
 of existing evidence.
 
-## 9. Phase 2 status
+## 9. Prompt protocol — FIXED and validated
 
-**IN PROGRESS — premise corrected.** The reproduction step is still ahead, but it will now be
-run against a validated baseline rather than a broken one. Proceeding to fix the prompt
-protocol is the next concrete action.
+The protocol defect identified in `v25` was reproduced and corrected.
+
+**Broken protocol** (raw completion, no chat template): produced nothing or fragments.
+
+**Working protocol** (`-sys` + single-turn conversation mode, template from the model):
+
+| Prompt | F16 output | Verdict |
+|---|---|---|
+| "What is the capital of France?" | "The capital of France is Paris." | CORRECT |
+| "What is 17 times 19?" | "17 times 19 equals 323." | CORRECT |
+| "What is 15% of 240?" | "240 * 0.15 = 36 ... So, 15% of 240 is 36." | CORRECT |
+| "Write a Python function that adds two numbers." | valid `def add_two_numbers(num1, num2)` | CORRECT |
+
+These are the same categories that failed in the prior campaign. **H-003's precondition is
+satisfied: the unquantized baseline answers correctly under a documented protocol.**
+
+## 10. Ternary artifacts under the corrected protocol
+
+Both Prism artifacts were run through the Prism runtime with the same chat-template protocol:
+
+| Artifact | Output |
+|---|---|
+| `phi4-mini-PQ2_0.gguf` | `samples samples ... laps laps blocks blocks` — repetition |
+| `phi4-strict-PQ2_0.gguf` | `510510510510510510...` — repetition |
+
+**This result is NOT reported as a finding, because the control failed.**
+
+The control required running F16 through the *same* Prism runtime. It aborted:
+
+```text
+Prism runtime loading stock F16 GGUF  ->  exit 1 at "fitting params to device"
+```
+
+Without that control, the difference between the F16 run and the ternary runs is confounded by
+the runtime, not just the model. Reporting "the ternary model is broken" from these two runs
+would repeat exactly the error recorded as W-002 (comparing numbers from different rulers).
+
+## 11. Phase 2 outcome — CAPPED
+
+**Status: CLOSED WITH UNRESOLVED ITEM.**
+
+| Item | Result |
+|---|---|
+| Premise corrected | DONE |
+| Two ternary lines identified and separated | DONE |
+| Prompt protocol fixed and validated on F16 | DONE |
+| Line B re-measured against a working baseline | **NOT ACHIEVED — clean control not obtainable locally** |
+| H-002 (group scales carry capacity) | UNRESOLVED |
+| H-003 (prior losses were protocol artifacts) | PARTIALLY SUPPORTED — protocol defect proven, but it does not follow that the artifacts are correct |
+
+**Decision (D-016):** cap the ternary reconciliation rather than chase a control that local
+tooling cannot produce. The remaining question — is the old ternary artifact good or bad — is
+answerable later, and more cheaply, by re-running Line B's export from source once the
+mixed-precision design exists. It does not block the main line.
+
+**The main line resumes at the sensitivity map on F16: identify which layers and tensors are
+most sensitive, then allocate precision where it is needed.** That is the work the project was
+actually created for.
+
+## 12. Scope note
+
+Nothing was modified, moved, or deleted. New files created are analysis logs under
+`staging/`. The Prism artifacts, the Prism source tree, the QAT spec, and all 851
+parity-harness files remain exactly where they were.

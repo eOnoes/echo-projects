@@ -60,7 +60,7 @@ This project is complete when:
 
 ## Current phase
 
-Phase 2 — Reproduce and classify the ternary failure.
+Phase 4 — Empirical per-tier ablation.
 
 ## Current status
 
@@ -68,8 +68,17 @@ RUNNING
 
 ## Current next action
 
-Review the uncatalogued `parity-harness/` evidence before re-deriving anything, then
-reproduce the ternary failure in a new namespace. Local GPU only. No paid resources.
+Quantize one tier at a time and measure PPL against the frozen baseline, converting the
+Phase 3 candidate allocation from a prior into a measurement. Local GPU only.
+
+## Sensitivity map result (Phase 3)
+
+```text
+projection sensitivity   flat (under 1% spread across all four)
+layer sensitivity        spiked at boundaries: L0 0.5228, L31 0.5188 vs ~0.5130 mid
+kurtosis predicts it     r = 0.816 layer-level, 0.623 tensor-level
+candidate allocation     layer-graded 6/5/4-bit -> ~1.81 GB, 76.4% reduction
+```
 
 ## Baseline of record
 

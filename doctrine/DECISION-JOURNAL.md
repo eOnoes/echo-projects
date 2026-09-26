@@ -50,7 +50,10 @@ does not repeat the bad ones.
 | D-012 | 2026-09-25 | phi-q | Adopt our own hashed baseline instead of treating the historical 5.0863 as the gate | Original binary unavailable; gate unachievable as written | PENDING |
 | D-013 | 2026-09-25 | phi-q | Rebuild with VS 18 vcvars after two failed build attempts | Cache pinned VS 18; VS 2022 STL was linked | RIGHT |
 | D-014 | 2026-09-25 | phi-q | Read the parity-harness evidence before reproducing the ternary failure | Doctrine requires checking prior work first | RIGHT |
-| D-015 | 2026-09-25 | phi-q | Correct Phase 2's premise instead of reproducing a confounded experiment | The F16 baseline failed the same benchmark | PENDING |
+| D-015 | 2026-09-25 | phi-q | Correct Phase 2's premise instead of reproducing a confounded experiment | The F16 baseline failed the same benchmark | RIGHT |
+| D-016 | 2026-09-25 | phi-q | Cap the ternary reconciliation rather than chase a control local tooling cannot produce | Prism runtime cannot load stock F16; control unobtainable | PENDING |
+| D-017 | 2026-09-25 | phi-q | Use weight-space reconstruction error as the first sensitivity instrument | Cheap, no GPU, no training; standard practice | MIXED — valid for uniform bits, invalid for ternary |
+| D-018 | 2026-09-25 | phi-q | Design allocation layer-graded and projection-blind | Projection spread under 1%; layer edges spike | PENDING |
 
 ---
 
@@ -66,9 +69,11 @@ how it was caught.
 | W-003 | Conclude the GitHub keyring was unreachable without re-testing | Stated a blocker that did not exist and asked Eddie for access he had already granted | Re-ran the check after his pushback | Wasted his time; avoidable |
 | W-004 | Flag 1.4 GB of VRAM use as a stuck process | It was the Windows desktop compositor and open apps. Normal overhead. | Checked the process list | Small — corrected in the same turn |
 | W-005 | Treat the Phi-4-mini ternary work as a single, understood failure | There were two separate efforts. Only one was in the project record, and the other one's "failure" was a broken benchmark that defeated the unquantized model too. | Phase 2 read the 851-file uncatalogued evidence set before reproducing anything | Nearly re-derived an experiment whose meaning was already in doubt |
+| W-006 | Choose a sensitivity metric without checking whether it can measure the thing being asked | Weight-space reconstruction error was pointed at the ternary question, where it is meaningless — 51% weight error for every scheme, including ones known to work. It answered a question it could not answer, and the group-size "refutation" needed a caveat to avoid being read as conclusive. | Noticed the ternary error was suspiciously identical across all group sizes, which is what a broken instrument looks like | One refuted hypothesis now carries a caveat that would otherwise have been a false conclusion |
 
-**Pattern across W-001 and W-002:** both came from *not verifying what a thing actually was*
-before building on it. Both were caught by going back to primary evidence.
+**Pattern across W-001, W-002 and W-006:** all three came from *not verifying what a thing
+actually was* before building on it — a format, a harness, or a metric. All three were caught by
+going back to primary evidence or by noticing a result was suspiciously uniform.
 
 ---
 
