@@ -74,13 +74,42 @@ Phase 1 must pick one as the project reference and state the choice explicitly.
 
 ## Phase 2 — Reproduce and classify the ternary failure
 
-**Objective:** Confirm the collapse is reproducible and determine its cause.
+> **CORRECTED 2026-09-25.** This phase's premise was wrong. See
+> `receipts/P2-evidence-reconciliation-20260925.md`. There are **two** ternary efforts, not one,
+> and the second one's failed quality comparison was caused by a broken benchmark that defeated
+> the unquantized model as well. The corrected objective and gate are below.
 
-**Exit gate:**
-- Ternary quantization re-run in a new namespace.
-- Collapse reproduced or divergence documented.
-- Failure classified as storage-format misuse, precision limit, or unresolved.
-- Attention-only and MLP-only cases measured again.
+**Original objective (superseded):** Confirm the collapse is reproducible and determine its cause.
+
+**Corrected objective:** Establish a *valid* baseline first, then determine what the two ternary
+efforts actually established.
+
+### Corrected steps
+
+1. **Fix the prompt protocol.** Establish a chat-template-correct harness for Phi-4-mini and
+   confirm the **unquantized F16 model answers correctly on real prompts**. Until the baseline
+   answers, no quantization comparison has meaning.
+2. **Re-measure Line B** (strict group-128 PQ2_0, `1,368,849,920` bytes) against that working
+   baseline. The old comparison cannot be rescued — it must be re-run.
+3. **Reconcile Line A vs Line B.** Line A ternarized projections directly and collapsed to
+   44,176 PPL. Line B uses strict group-128 PQ2_0 with per-group scales and produced a runnable
+   artifact. The difference — group scales — is the leading candidate explanation and is
+   directly testable at matched bit budgets.
+4. **Defer the QAT decision.** A pilot spec already exists
+   (`<TERNARY_LAB_ROOT>/prism-pq2-recovery/QAT-PILOT-SPEC.md`, never launched). Do not launch it
+   until steps 1–3 say whether training is needed at all.
+
+**Corrected exit gate:**
+- F16 baseline answers real prompts correctly under a documented chat template.
+- Line B re-measured against that baseline.
+- Line A vs Line B explained at matched bit budgets.
+- H-002 and H-003 resolved to PROVEN or DISPROVEN.
+
+**Original exit gate (superseded):**
+- ~~Ternary quantization re-run in a new namespace.~~
+- ~~Collapse reproduced or divergence documented.~~
+- ~~Failure classified as storage-format misuse, precision limit, or unresolved.~~
+- ~~Attention-only and MLP-only cases measured again.~~
 
 ## Phase 3 — Learned quantization at 2–3 bit
 

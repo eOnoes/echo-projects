@@ -55,6 +55,30 @@ corpus   03ba3dd2a779b2ddb2d37d6571900a58423ab95eb02bf9915e259432b78ee6b1
 
 All subsequent comparisons use this baseline. Historical figures are cross-reference only.
 
+## Phase 2 findings — evidence reconciliation (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P2-001 | The "uncatalogued evidence" is 851 files, not ~90 | PROVEN | `receipts/parity-harness/` file count |
+| P2-002 | There are TWO separate ternary efforts, not one | PROVEN | Line A collapse vs Line B Prism pipeline |
+| P2-003 | Line B produced a strict group-128 PQ2_0 artifact of 1,368,849,920 bytes | PROVEN | `P2-evidence-reconciliation-20260925.md` §3 |
+| P2-004 | Line B reduction is 82.18% (7,680,694,816 → 1,368,849,920) | PROVEN | same |
+| P2-005 | Line B's artifact loads and runs on CUDA | PROVEN | `v23-diagnostic-handoff-20260916.md` |
+| P2-006 | The apparent CUDA crash was a launcher timeout, not a real crash | PROVEN | `v23` |
+| P2-007 | **Line B's quality comparison is INVALID — the unquantized F16 baseline also failed** | PROVEN | `v25-quality-speed-analysis-20260916.md` |
+| P2-008 | "Ternarization destroyed Phi-4-mini quality" is NOT established for Line B | PROVEN | follows from P2-007 |
+| P2-009 | F16 and PQ2_0 achieved 10/10 semantic agreement on a locked fixture | PROVEN | `v28-deviation-analysis-20260916.md` |
+| P2-010 | A QAT pilot spec exists and was never launched | PROVEN | `prism-pq2-recovery/QAT-PILOT-SPEC.md` |
+| P2-011 | The QAT spec pins the same revision as this project | PROVEN | `75becc471c56fc34761ec998615ca6f8535c5a61` |
+
+### Hypothesis register
+
+| ID | Hypothesis | State | Test |
+|---|---|---|---|
+| H-001 | Fine-tuning hardens vs relocates sensitive regions | UNRESOLVED | Phase 5b |
+| H-002 | Group-128 scales, not the ternary codes, carry the capacity. Per-tensor strict ternary collapses; per-group-128 does not. | UNRESOLVED | Line A vs Line B at matched bit budgets |
+| H-003 | The prior quality-loss measurements were protocol artifacts, not quantization loss | UNRESOLVED | fix the protocol, re-measure F16 and PQ2_0 |
+
 ## Research audit evidence
 
 | ID | Claim | State | Source |
