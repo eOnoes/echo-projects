@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>phi-q — GSQ Route Milestone (Phases 6–10)</title>
+<style>
+  :root{
+    --bg:#0b0d10; --panel:#141821; --panel2:#1b2130; --line:#262d3d;
+    --txt:#e6e9ef; --dim:#98a2b3; --acc:#5eead4; --neg:#fb7185; --warn:#fbbf24; --pos:#4ade80;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+       font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 20px 80px}
+  h1{font-size:30px;margin:0 0 6px;letter-spacing:-.4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:26px}
+  .verdict{border-left:5px solid var(--neg);background:var(--panel);padding:18px 20px;
+           border-radius:8px;margin:0 0 26px}
+  .verdict h2{margin:0 0 10px;font-size:19px;color:var(--neg)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:20px 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px}
+  .stat .k{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.6px}
+  .stat .v{font-size:23px;font-weight:600;margin-top:5px}
+  .stat .n{color:var(--dim);font-size:12px;margin-top:3px}
+  .neg{color:var(--neg)} .pos{color:var(--pos)} .warn{color:var(--warn)} .acc{color:var(--acc)}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+          margin:11px 0;overflow:hidden}
+  summary{cursor:pointer;padding:14px 18px;font-weight:600;font-size:15.5px;
+          list-style:none;display:flex;align-items:center;gap:10px}
+  summary::-webkit-details-marker{display:none}
+  summary:before{content:"▸";color:var(--acc);transition:.15s;font-size:13px}
+  details[open] summary:before{transform:rotate(90deg)}
+  summary:hover{background:var(--panel2)}
+  .body{padding:4px 18px 18px 18px;border-top:1px solid var(--line)}
+  code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+           font-size:13px;background:#0e1116;border-radius:5px}
+  code{padding:2px 6px;color:#a5f3fc}
+  pre{padding:13px;overflow-x:auto;border:1px solid var(--line);color:#cbd5e1;line-height:1.5}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:600}
+  .p-ref{background:#4c1d24;color:#fda4af}
+  .p-pro{background:#14342b;color:#6ee7b7}
+  .p-unk{background:#3a3313;color:#fde68a}
+  .p-inv{background:#2a2f3d;color:#cbd5e1}
+  ul{padding-left:20px;margin:10px 0}
+  li{margin:5px 0}
+  .note{border-left:3px solid var(--warn);background:#1a1710;padding:11px 14px;border-radius:5px;
+        margin:14px 0;font-size:14.5px}
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);
+         color:var(--dim);font-size:12.5px}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>phi-q — GSQ Route Milestone</h1>
+<div class="sub">
+  Phases 6–10 · route: <strong>GSQ + RCO</strong> (ISTA-DASLab learned quantization)<br>
+  Receipt: <code>receipts/P10-gsq-experiment-20260926.md</code> · commit <code>0ad0b47</code><br>
+  All work local on the RTX 4070. <strong>No paid compute was used at any point.</strong>
+</div>
+
+<div class="verdict">
+  <h2>TL;DR — the thesis did not hold on this model</h2>
+  <p style="margin:0 0 10px">
+    GSQ's 2-bit output on Phi-4-mini scores <strong class="neg">PPL 14.64</strong> against an FP16
+    baseline of <strong>6.97</strong> — a <strong class="neg">+110%</strong> degradation. llama.cpp's
+    Q2_K costs roughly +41% by comparison.
+  </p>
+  <p style="margin:0">
+    <strong>But this is a real answer, not a broken pipeline.</strong> The export is faithful — the
+    dequantized weights correlate 0.88–0.90 with the originals. The number is measuring Genuine
+    GSQ. Which means the method, <em>as configured and applied to a 3.8B dense model</em>, lost.
+  </p>
+</div>
+
+<div class="grid">
+  <div class="stat"><div class="k">FP16 baseline</div><div class="v">6.9705</div>
+    <div class="n">fixed harness, 3584 tokens</div></div>
+  <div class="stat"><div class="k">GSQ 2-bit</div><div class="v neg">14.6434</div>
+    <div class="n">same harness, same corpus</div></div>
+  <div class="stat"><div class="k">Degradation</div><div class="v neg">+110.1%</div>
+    <div class="n">vs Q2_K's ~+41%</div></div>
+  <div class="stat"><div class="k">Size</div><div class="v warn">3.81 GB</div>
+    <div class="n">2.2× Q2_K while quantizing less</div></div>
+</div>
+
+<details>
+<summary>1 · What was actually built and proven (the durable wins)</summary>
+<div class="body">
+<p>These survive the negative result and are reusable:</p>
+<table>
+<tr><th>#</th><th>Capability</th><th>State</th></tr>
+<tr><td>1</td><td>GSQ runs on a 12 GB Ada card (it is CUDA-only and Hopper-tested)</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td>2</td><td>Phi-4-mini is now a supported GSQ architecture</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td>3</td><td>A silent upstream <code>trainer.py</code> bug found, fixed, regression-checked</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td>4</td><td><strong>GSQ output is measurable on Windows</strong> — transforms + compressed-tensors, no vLLM, no rented GPU</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td>5</td><td>A fixed measurement harness, reusable for every future model</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+</table>
+<p><strong>Point 4 is the one with lasting value.</strong> At the start of this phase the plan was
+assemble → <code>vllm serve</code> → lm-eval, and vLLM has no Windows support. That appeared to force
+a rented Linux GPU. It did not.</p>
+</div>
+</details>
+
+<details>
+<summary>2 · Why the +110% is real — four hypotheses tested and rejected</summary>
+<div class="body">
+<p>I did not accept the number until I had tried to break it:</p>
+<table>
+<tr><th>Hypothesis</th><th>Test</th><th>Verdict</th></tr>
+<tr><td>The export is corrupted / weights scrambled</td><td>dequantized GSQ weights vs original FP16 (cosine + correlation)</td><td><span class="pill p-ref">REFUTED</span> 0.884 / 0.890 / 0.904</td></tr>
+<tr><td>Negative scales mean corruption</td><td>sign audit across 5 layers</td><td><span class="pill p-ref">REFUTED</span> clean 50/50, a sign convention</td></tr>
+<tr><td>The perplexity harness is broken</td><td>FP16 measured on the same harness</td><td><span class="pill p-ref">REFUTED</span> reproduced 6.9705</td></tr>
+<tr><td>Wrong bit-width stored</td><td>unpack codes directly from shards</td><td><span class="pill p-inv">SPACE ISSUE ONLY</span></td></tr>
+</table>
+<pre>distinct codes per weight: 4     values {6,7,8,9}   zero-point 8  ->  {-2,-1,0,+1}
+                                confirmed across 3 layers, 2 independent processes
+
+dequantized vs original:   cosine 0.884 / 0.890 / 0.904
+                           std   0.0331 vs 0.0328   (matches)</pre>
+<p><strong>~0.89 correlation is exactly what a working 2-bit quantization produces.</strong> Four
+discrete levels cannot correlate more strongly with a continuous distribution.</p>
+</div>
+</details>
+
+<details>
+<summary>3 · A genuine defect I found in my own output</summary>
+<div class="body">
+<p>GSQ emits <strong>2-bit values stored in 4-bit containers.</strong> Four distinct codes packed at
+4.000 bits/weight. A true 2-bit container would be ~1.9 GB; the file is 3.81 GB.</p>
+<pre>quantized Linears      64          (32 layers x 2 MLP projections)
+logical weights        2,415,919,104
+packed int32 elements  301,989,888
+EFFECTIVE bits/weight  4.000       <- container
+distinct VALUES        4           <- information actually stored</pre>
+<p><strong>This is a serializer artifact</strong> in <code>save_model.py</code> / compressed-tensors,
+not a GSQ method flaw — but it is what is on disk, and it doubles the footprint for zero quality
+gain. A second defect: <code>self_attn: false</code> meant <strong>attention was never quantized at
+all</strong>, so GSQ's output only reduced precision on the MLP.</p>
+<p>The comparison is therefore unflattering in a specific way:</p>
+<table>
+<tr><th>Model</th><th>Size</th><th>Quantized</th><th>PPL cost</th></tr>
+<tr><td>GSQ (mine)</td><td class="neg">3.81 GB</td><td>MLP only, 2-bit values in 4-bit containers</td><td class="neg">+110%</td></tr>
+<tr><td>Q2_K (llama.cpp)</td><td>1.73 GB</td><td>everything</td><td>~+41%</td></tr>
+<tr><td>Q4_K_M (llama.cpp)</td><td>2.49 GB</td><td>everything</td><td>~+3.3%</td></tr>
+</table>
+</div>
+</details>
+
+<details>
+<summary>4 · A mistake I made, recorded rather than buried</summary>
+<div class="body">
+<p>The first Phase 10 run used a config I built from GSQ's <strong>smoke</strong> config instead of a
+production one. The numbers were sitting in the repository the whole time:</p>
+<pre>                 shipped (real)    first attempt    corrected
+num_samples      4096              128              1024
+max_length       4096              512              1024
+dataset          open_thoughts     c4               open_thoughts
+gsq_bits         2                 3 (UNTESTED)     2</pre>
+<p>That run returned <strong>+76%</strong> and I <strong>did not report it</strong>. I flagged it as
+anomalous, traced the anomaly, and redid it. The corrected run came back <em>worse</em> (+110%),
+which is internally consistent — 2-bit is more aggressive, and this is a genuine 2-bit quantization.</p>
+<div class="note">
+  <strong>Lesson (L-022):</strong> a thirty-second comparison against a shipped config would have
+  prevented a 19-minute run and a round of reasoning about a meaningless number. When a tool ships
+  example configs, <em>read a real one before writing your own.</em>
+</div>
+</div>
+</details>
+
+<details>
+<summary>5 · Why I think this is the wrong test bed, not a dead method</summary>
+<div class="body">
+<p>This is the part I'd want held onto, because it changes what to do next:</p>
+<ul>
+  <li><strong>Calibration was 1/16th of GSQ's recipe.</strong> 1024×1024 = 1.05M tokens vs the shipped
+      4096×4096 = 16.8M. This is a real calibration (16× the smoke run) but <em>not</em> a faithful
+      reproduction. It is the single largest caveat on the result.</li>
+  <li><strong>Phi-4-mini is 3.8B and dense.</strong> GSQ's published results are on Llama-3.1-8B/70B,
+      Kimi-K2.5, and Qwen3.5-MoE — <strong>8B to 1T parameters</strong>. Small dense models have far
+      less redundancy to absorb aggressive quantization. The method was demonstrated outside this
+      regime, and the negative result may simply reflect that.</li>
+  <li><strong>Cross-ruler caveat.</strong> The K-quant figures come from the project's other ruler
+      (llama.cpp binary, different corpus and windowing). Ratios against each ruler's own FP16 are
+      comparable in character; absolute perplexities are not. This project has been burned by a
+      cross-ruler error before (W-002) and it is not being repeated here.</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>6 · Recommended next experiments, in order of value</summary>
+<div class="body">
+<table>
+<tr><th>#</th><th>Action</th><th>Cost</th><th>Why</th></tr>
+<tr><td>1</td><td><strong>Re-run on a LLaMA-family model</strong></td><td>~free</td>
+    <td>GSQ ships an <em>exercised</em> LLaMA wrapper, so toolchain risk is zero. If GSQ beats Q4_K_M
+        there at matched size, the method is vindicated and Phi-4-mini was simply the wrong test bed.
+        <strong>Highest value, nearly free.</strong></td></tr>
+<tr><td>2</td><td>Report the <code>trainer.py</code> bug upstream</td><td>free</td>
+    <td>The shard-write trigger is LLaMA-specific and fails <em>silently</em> for any MLP not named
+        gate_proj/up_proj/down_proj. A real contribution regardless of this result.</td></tr>
+<tr><td>3</td><td>Run the full calibration recipe</td><td>~35 h local, or a bounded rental</td>
+    <td>Required before any final claim about the method.</td></tr>
+<tr><td>4</td><td>Fix the export: quantize attention, emit true 2-bit containers</td><td>~free</td>
+    <td>Halves the size and makes the size-matched comparison fair.</td></tr>
+</table>
+<p><strong>Explicitly not recommended:</strong> proceeding to RCO allocation (Phase 11). Tuning
+allocation on top of a configuration that is not competitive would be measuring noise.</p>
+</div>
+</details>
+
+<details>
+<summary>7 · Honest state of every claim</summary>
+<div class="body">
+<table>
+<tr><th>Claim</th><th>State</th></tr>
+<tr><td>GSQ's quantizer runs on sm_89</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td>A Phi wrapper can drive GSQ over real Phi-4-mini weights</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td>GSQ output is loadable and measurable on Windows</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td>The export is faithful (correlation 0.89 with original)</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td>GSQ produces genuine 2-bit weights</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td>The serializer wastes 2× space on 4-bit containers</td><td><span class="pill p-pro">PROVEN</span></td></tr>
+<tr><td><strong>GSQ 2-bit beats llama.cpp K-quants on Phi-4-mini</strong></td><td><span class="pill p-ref">REFUTED</span></td></tr>
+<tr><td>A full-recipe (16× calibration) run would change the verdict</td><td><span class="pill p-unk">UNKNOWN</span></td></tr>
+<tr><td>The method works at 8B–1T as published</td><td><span class="pill p-unk">NOT TESTED HERE</span></td></tr>
+</table>
+<p>A negative result that is properly bounded is worth more than a positive one that isn't. The
+number is trustworthy; its <em>scope</em> is what is limited.</p>
+</div>
+</details>
+
+<footer>
+  <strong>Artifacts:</strong> <code>p10b-full.log</code> (32-layer run, exit 0) ·
+  <code>p10b-assembled-2bit/</code> (3.81 GB) · <code>phi.py</code> (the wrapper) ·
+  <code>measure_gsq.py</code> (fixed harness)<br>
+  <strong>Receipts:</strong> P6 · P6b · P7 · P8 · P9 · P10 &nbsp;·&nbsp;
+  <strong>Decisions:</strong> D-022, D-023 &nbsp;·&nbsp; <strong>Lessons:</strong> L-019, L-020, L-021, L-022<br>
+  <strong>Compute:</strong> local RTX 4070 only. No pod was rented or resumed for this phase.
+</footer>
+
+</div>
+</body>
+</html>
