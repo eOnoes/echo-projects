@@ -53,3 +53,12 @@ The default GitHub mode is repository-content-only. Agents may read and write re
 ## Hard-lock rule
 
 This doctrine is not changed for convenience during a build. A project-specific exception must be recorded in `PROJECT-OVERRIDES.md` using the asterisk convention and must not weaken safety, evidence, scope, or billing controls.
+
+## Reusable lessons
+
+`PITFALLS-AND-LESSONS.md` is a living, append-only record of pitfalls found across projects and
+the practices that resolved them. It applies to all projects, not one.
+
+- **Read it before starting any model-compression or quantization campaign.**
+- **Append to it whenever a new pitfall is discovered.** Never overwrite an entry.
+- A lesson learned twice is a process failure, not bad luck.
