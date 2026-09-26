@@ -336,6 +336,22 @@ Anything above ~1300 MiB with no work running = a process is still holding VRAM.
    or a starved box gets recorded as a slow model. (§5.4)
 9. **Read the pp/tg asymmetry before theorizing.** It localizes the bottleneck
    to compute, bandwidth, residency, or a serialized per-token cost. (§5.5)
+10. **READ THE MODEL'S OWN DOCUMENTATION FIRST.** The HF model card and README
+   are the authority on how a model is meant to run - including which runtime
+   fork is required. The K2-Horizon README named the required fork and linked
+   it, and an hour of source archaeology happened because nobody read it.
+   Check the README *before* touching source, building, or benchmarking.
+11. **COPY A WORKING CONFIGURATION, DO NOT RECONSTRUCT IT.** When a build works,
+   its `CMakeCache.txt` (or equivalent) is the authoritative record of how to
+   configure it. Re-typing a build command from memory omits flags - here
+   `-D_WIN32_WINNT=0x0A00`, without which `cpp-httplib` refuses to compile.
+12. **A SMALL MODEL IS THE CONTROL.** Before benchmarking a large model on a
+   runtime, run a small model of the **same family** on it. It loads in seconds
+   instead of minutes, and it separates "the runtime is broken" from "this model
+   is inherently slow." The dense 7B was what finally explained the 36B.
+13. **Prove a hypothesis by measurement, not by code reading.** Reading source
+   produced four confident-and-wrong conclusions in one session. Each was
+   settled in minutes once actually run.
 
 ## 9. Session log — what was actually learned, and where I was wrong
 
@@ -354,10 +370,30 @@ missing K-quant kernels in ggml-et   REFUTED    GGML_ET:BOOL=OFF - not even comp
 Q4_K lacks a fast mul_mat_id path    REFUTED    q4_K_8x4/8x8/16x1 traits all present
 memory pressure is the tg cause      REFUTED    tg 3.84 -> 4.08 after freeing 43 GB
                                                 (pp moved a lot, tg did not)
-wrong fork is the cause              OPEN       a second, optimized k2-horizon build
-                                                exists on disk and has not been
-                                                benchmarked yet
+the -opt sibling build is better     REFUTED    it SEGFAULTS (exit 139) on the
+                                                real checkpoint
+wrong fork / wrong llama.cpp         REFUTED    source diff vs the official
+                                                MBZUAI-IFM fork = 0. We were on
+                                                the right build all along.
 ```
+
+**Resolution of the open item:** the model's README named the required fork
+(`MBZUAI-IFM/llama.cpp` @ `model/K2Horizon`). It was cloned, built, and diffed
+against the build already on disk — **source diff count 0.** The wrong-fork
+hypothesis, which was the strongest lead of the session, was **wrong**.
+
+**Final measured result** (official runtime, 12 threads, clean memory):
+
+```text
+                              pp512     tg128     read/token   effective BW
+dense 7B Q6_K                77.38     5.83      6.88 GiB     ~40 GB/s
+MoE 36B-A4B Q4_K_M           71.26     4.00      ~2.4 GB      ~9.6 GB/s
+```
+
+The MoE reads 2.9x less per token and runs 1.46x slower. **The bottleneck is
+llama.cpp's CPU MoE path at batch=1, not the build.** See
+`projects/k2-horizon-local/receipts/K2H-load-investigation-20260926.md`.
+
 
 **The pattern worth noticing:** every one of those was checked rather than
 assumed, and four were wrong. That is the point of checking. Two of the errors
