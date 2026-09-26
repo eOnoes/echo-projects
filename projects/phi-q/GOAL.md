@@ -60,7 +60,7 @@ This project is complete when:
 
 ## Current phase
 
-Phase 9 — Phi-4-mini wrapper.
+Phase 10 — GSQ on Phi-4-mini (the experiment).
 
 ## Current status
 
@@ -68,16 +68,37 @@ RUNNING
 
 ## Current next action
 
-Implement `PhiWrapper` for GSQ. The Phase 8 gate passed, so this is now justified:
+Run the experiment the whole project exists to run.
 
-1. Implement the 7 abstract methods; port `get_layer_module`, `_layer_prefixes`,
-   `get_mlp_input`, `get_mlp_output`, and `move_embed_to` from `src/models/llama.py`.
-2. **Resolve the fused-`qkv_proj` design decision explicitly.** The base class routes attention by
-   substring (`"q_proj" in name or "k_proj" in name`); `qkv_proj` matches neither, so it would
-   silently take the general path. Decide deliberately and document it.
-3. Guard the tied `lm_head` (absent from the checkpoint index).
-4. Register a `'phi'` branch in `get_model_wrapper()` (selection is by name substring).
-5. Verify it loads and reports layer/parameter counts matching the checkpoint.
+1. Full 32-layer GSQ run on Phi-4-mini at **3-bit** (~11 min, local, free).
+2. Repeat at **2-bit**.
+3. Resolve the wikitext/hub conflict. **Preferred route: measure with the project's own Phase 1
+   llama.cpp rig after GGUF export** — that rig is the reference harness and its numbers are
+   already baseline-comparable (FP16 5.0553 / Q4_K_M 5.2206).
+4. Compare against FP16, against the uniform curve at matched size, and against llama.cpp's own
+   hand-tuned K-quants — which is the actual thesis.
+5. Label PROVEN / INFERRED / UNRESOLVED. A negative result is a valid result.
+
+## Phase 9 result — wrapper PASSED
+
+```text
+Phi-4-mini, 2 of 32 layers
+  Layer 1/32  GPTQ 18.3s  ->  Gumbel 2.82e-03 -> 1.42e-03 -> 1.18e-03
+  Layer 2/32              ->  Gumbel 7.92e-03 -> 4.62e-03 -> 3.59e-03
+  21.6 s/layer   |  all 8 shards written  |  errors: NONE
+  full 32-layer run projected at ~11 minutes, local and free
+
+Regression: Qwen3-0.6B re-run at 7.8 s/layer — identical to pre-patch. No regression.
+```
+
+The port required a **real fork of `trainer.py`**, not just a new wrapper. Its shard-write trigger
+was keyed on the literal substring `"gate_proj"`, which is not a substring of Phi's fused
+`gate_up_proj` — so no MLP shard was written and the run died on `FileNotFoundError`. The fix
+groups by **parent module**, which is behaviour-identical for LLaMA and for MoE (per-expert shards
+preserved) and correct for Phi. I had claimed the port would be purely additive; **that was wrong**,
+and it is recorded as such in the receipt.
+
+Receipt: `receipts/P9-phi-wrapper-20260925.md`
 
 ## Phase 8 result — toolchain PASSED
 

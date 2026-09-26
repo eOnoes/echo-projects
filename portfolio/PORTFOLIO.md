@@ -2,7 +2,7 @@
 
 | Project | Executor | Manager | Status | Current phase | Next event |
 |---|---|---|---|---|---|
-| phi-q | Echo (local) | Echo | RUNNING | Phase 9 — Phi-4-mini GSQ wrapper | Wrapper loads Phi-4-mini |
+| phi-q | Echo (local) | Echo | RUNNING | Phase 10 — GSQ on Phi-4-mini (the experiment) | Full 32-layer 3-bit + 2-bit runs |
 | qwen36-ternary | Unassigned | Echo | NOT_CREATED | — | Doctrine packet to be written |
 | qwen-runtime | Echo | Echo | PAUSED | CUDA 13 D3 validation | Await compatible dual-GPU capacity |
 | onoes-agent | Codex | Echo | RUNNING | Windows release | Await build receipt |

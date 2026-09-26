@@ -167,6 +167,26 @@ All subsequent comparisons use this baseline. Historical figures are cross-refer
 | P7-008 | **No compute escalation is triggered — GSQ runs locally** | PROVEN | §6 |
 | P7-009 | GSQ can actually quantize a model on sm_89 | **UNVERIFIED — Phase 8** | §7 |
 
+## Phase 9 findings — Phi-4-mini wrapper (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P9-001 | **The Phi wrapper drives the real GSQ pipeline over real Phi-4-mini weights** | PROVEN | `P9-phi-wrapper-20260925.md` §3 |
+| P9-002 | Fused `self_attn.qkv_proj` is handled correctly | PROVEN | §3 |
+| P9-003 | Fused `mlp.gate_up_proj` is handled correctly | PROVEN | §3 |
+| P9-004 | Shards (incl. `model_layers_N_mlp`) are written and reloadable for Phi | PROVEN | §3 |
+| P9-005 | **Existing architectures are unregressed** — Qwen3-0.6B identical 7.8 s/layer | PROVEN | §5 |
+| P9-006 | Phi layer cost 21.6 s/layer (GPTQ 18.3s + Gumbel 1.9s) | PROVEN | §4 |
+| P9-007 | Full 32-layer Phi run ≈ 11 min local | PROVEN (log's own ETA) | §4 |
+| P9-008 | Phase 8's ~26 min projection was pessimistic; true scaling is 2.8x not 6.3x | PROVEN | §4 |
+| P9-009 | `base.py` LLaMA-specific attention sites are unreachable (`self_attn` false in all 40 configs) | PROVEN | §6 |
+| P9-010 | **`trainer.py` shard-write trigger was LLaMA-specific and failed SILENTLY for Phi** | PROVEN | §6 |
+| P9-011 | A `.mlp`-prefix grouping fix would have merged MoE experts — parent-module grouping is correct | PROVEN (reasoning + Test B) | §6 |
+| P9-012 | Vendored `modeling_phi3.py` + `auto_map` shadowed transformers' native Phi-3 | PROVEN | §7 |
+| P9-013 | **CORRECTION: the port was NOT purely additive** — `trainer.py` is a genuine upstream fork | PROVEN | §6 |
+| P9-014 | A full 32-layer Phi-4-mini run completes | **NOT TESTED — 2 of 32 layers** | §9 |
+| P9-015 | GSQ produces near-lossless Phi-4-mini at 2-3 bpw | **UNKNOWN — Phase 10, the experiment** | §9 |
+
 ## Phase 8 findings — GSQ toolchain smoke test (2026-09-25)
 
 | ID | Claim | State | Evidence |

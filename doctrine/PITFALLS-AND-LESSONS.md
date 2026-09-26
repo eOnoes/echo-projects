@@ -285,3 +285,67 @@ MSYS_NO_PATHCONV=1 cmd /c "C:\path\to\script.bat"
 script bug rather than an invocation bug.
 
 **Found in:** phi-q, Phase 1.
+
+---
+
+## L-019 — A substring test against a FUSED tensor name silently no-ops
+
+**Phase:** phi-q Phase 9.
+
+GSQ's trainer decided whether to write an MLP shard with:
+
+```python
+if "gate_proj" in tensor_name:
+```
+
+Phi-4-mini's MLP is a fused `gate_up_proj`. **`"gate_proj"` is not a substring of
+`"gate_up_proj"`** — after `gate_` comes `u`, not `p`. The branch never fired, no shard was
+written, and the run died later on `FileNotFoundError` for a file that was never created.
+
+Two properties made this expensive to diagnose:
+
+1. **It failed silently.** The pipeline logged `Finished writing layer checkpoint` anyway,
+   because that message is emitted unconditionally.
+2. **The error surfaced at the wrong place.** The failure appeared as a missing file at
+   *load* time, pointing at the filesystem rather than at the naming assumption that caused it.
+
+**Rule:** when matching tensor/module names by substring, always ask what the *fused* form of that
+name looks like. `q_proj`/`k_proj` → `qkv_proj`. `gate_proj`/`up_proj` → `gate_up_proj`. A
+substring test against a fused name matches nothing and raises nothing.
+
+**Rule:** prefer structural grouping (walk up to the parent module) over matching literal leaf
+names. Grouping by parent is equivalent for the architectures the code already supports and
+correct for ones it does not.
+
+## L-020 — Verify a "no change needed" claim by searching EVERY file, not the ones you remember
+
+**Phase:** phi-q Phase 9.
+
+Before starting the port, I searched `base.py` and `main.py` for hard-coded LLaMA projection names,
+found two sites, and concluded both were unreachable — so the port would be purely additive. **The
+conclusion about those two sites was correct. The conclusion about the port was wrong**, because
+the third and only-reachable site was in `trainer.py`, which I never searched.
+
+**Rule:** a claim of the form "X requires no change to file Y" is only as good as the search that
+supported it. Search the whole tree (`grep -rn <pattern> --include=*.py .`), not the files you
+happen to associate with the problem.
+
+## L-021 — `trust_remote_code=True` lets a model folder silently override transformers' own implementation
+
+**Phase:** phi-q Phase 9.
+
+Loading Phi-4-mini failed with `ImportError: cannot import name 'LossKwargs' from
+'transformers.utils'` — raised from a `modeling_phi3.py` inside the *model directory*.
+
+The model folder shipped `modeling_phi3.py` + `configuration_phi3.py` and declared them in
+`config.json`'s `auto_map`. Combined with `trust_remote_code=True` in the loader, transformers
+resolved to **the vendored copy** rather than its own built-in `Phi3ForCausalLM`. The vendored file
+targeted an older transformers.
+
+**Rule:** when a model fails to import with a symbol-version error, the failing file's *path* is the
+diagnosis. If it points into `transformers_modules/` or the model folder, the model is supplying
+its own code and you are not running transformers' implementation at all.
+
+**Fix pattern:** derive a sibling model directory with `auto_map` stripped and the vendored code
+omitted. Prefer that over setting `trust_remote_code=False` in shared loader code, which would
+break any architecture that genuinely needs remote code.

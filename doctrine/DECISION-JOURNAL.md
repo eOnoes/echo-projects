@@ -153,3 +153,52 @@ These were promoted from individual entries after the pattern repeated.
 2. **Re-test a state immediately before reporting it as a blocker.** From W-003.
 3. **Log the decision before the outcome is known.** Otherwise the journal becomes marketing.
 4. **Label `LUCKY` when the outcome was good but the reasoning was not.** Otherwise it gets copied.
+
+---
+
+## D-022 — Phi-4-mini support in GSQ requires a minimal, generic fork of `trainer.py`
+
+**Date:** 2026-09-25 · **Phase:** phi-q Phase 9 · **Status:** APPLIED AND VERIFIED
+
+**Context.** GSQ has no Phi wrapper. Adding one appeared purely additive: a new wrapper file plus a
+factory branch, no change to `base.py` or `trainer.py`.
+
+**That assessment was wrong.** The shard-write trigger in `trainer.py` was keyed on the literal
+substring `"gate_proj"`. Phi's fused `gate_up_proj` does not contain it, so no MLP shard was
+written and the run failed on `FileNotFoundError` at load time.
+
+**Decision.** Fix it generically rather than special-casing Phi: group the quantized tensors by
+**parent module** and write one shard per parent.
+
+```text
+LLaMA   ...mlp.{gate_proj,up_proj,down_proj}           parent "...mlp"           one shard
+Phi     ...mlp.{gate_up_proj,down_proj}                parent "...mlp"           one shard
+MoE     ...mlp.experts.K.{gate_proj,up_proj,down_proj} parent "...mlp.experts.K" one shard PER EXPERT
+```
+
+**Why parent-module and not a `.mlp` prefix.** A prefix-based grouping would have merged every MoE
+expert into a single shard, silently breaking GSQ's flagship MoE models. Parent-module grouping is
+behaviour-identical for LLaMA and MoE and correct for Phi.
+
+**Verification.** Qwen3-0.6B re-run at 7.8 s/layer — identical to the pre-patch run. Phi-4-mini
+2-layer run completes with all eight shards written and no errors.
+
+**Consequence accepted.** `trainer.py` is now a genuine divergence from upstream GSQ (base commit
+`03fc164`). A future `git pull` will conflict at this hunk; re-apply the parent-module grouping.
+This is worth reporting upstream: the original trigger fails silently for any architecture whose MLP
+projections are not named `gate_proj`/`up_proj`/`down_proj`.
+
+## D-023 — Resolve the wikitext conflict by measuring on our own rig, not by patching GSQ
+
+**Date:** 2026-09-25 · **Phase:** phi-q Phase 10 planning · **Status:** ADOPTED
+
+GSQ's in-loop perplexity eval loads `wikitext2` and fails on a `datasets` 5.0.1 /
+`huggingface_hub` 1.33 conflict (the legacy bare repo id `wikitext` is rejected).
+
+**Decision.** Measure with the project's own **Phase 1 llama.cpp rig** after GGUF export, rather
+than patching `wiki_eval.py` or pinning dependency versions.
+
+**Why.** Three reasons, in order: (1) that rig is the project's reference harness — its numbers
+(FP16 5.0553, Q4_K_M 5.2206) are directly comparable to every other measurement in this project;
+(2) GSQ's internal perplexity would be a second ruler, and this project has already been burned by
+a cross-ruler error (see W-002); (3) it avoids adding a third modification to a forked upstream.

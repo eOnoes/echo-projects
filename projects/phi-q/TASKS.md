@@ -2,16 +2,18 @@
 
 ## Current task
 
-**Phase 9 — Phi-4-mini wrapper (GSQ).**
+**Phase 10 — GSQ on Phi-4-mini (the experiment).**
 
-**Status:** IN_PROGRESS
+**Status:** READY_TO_START
 **Owner:** Echo
-**Approval required:** No (local, free)
-**Evidence required:** wrapper loads the model; layer and parameter counts match the checkpoint;
-the fused-`qkv_proj` decision is documented.
+**Approval required:** No (local, free, ~11 min per run)
+**Evidence required:** a full 32-layer run at 3-bit and at 2-bit; perplexity measured on the Phase 1
+rig; a comparison against FP16, against the uniform curve at matched size, and against llama.cpp's
+own K-quants.
 
-**Why this is the current task:** Phase 8 passed — the GSQ quantizer demonstrably executes on this
-Ada card. That was the gate. Writing the wrapper is now justified work rather than a guess.
+**Why this is the current task:** Phase 9 proved the wrapper drives the real pipeline and
+unregressed the existing architectures. The machinery is verified. What remains is the question the
+project exists to answer.
 
 ---
 
@@ -98,24 +100,28 @@ Ada card. That was the gate. Writing the wrapper is now justified work rather th
 - [x] Phase 10 blocker recorded: wikitext/hub version conflict blocks the ppl eval
 - [x] Receipt: `receipts/P8-toolchain-smoke-20260925.md`
 
+### Phase 9 — COMPLETE 2026-09-25
+- [x] `PhiWrapper` implemented — all 7 abstract methods
+- [x] Fused `qkv_proj` and fused `gate_up_proj` handled and verified against the live pipeline
+- [x] Tied `lm_head` safe — `_names_from_ckpt` filters vs the real index, returns []
+- [x] `'phi'` branch registered in `get_model_wrapper()`
+- [x] **`trainer.py` fork**: shard-write trigger was LLaMA-specific (`"gate_proj"`), failed
+      silently for Phi; fixed by grouping on parent module (MoE per-expert shards preserved)
+- [x] Vendored `modeling_phi3.py` trap resolved via a clean derived model dir
+- [x] 2-layer run completes; all 8 shards written; errors NONE
+- [x] Regression: Qwen3-0.6B identical 7.8 s/layer — no regression
+- [x] Receipt: `receipts/P9-phi-wrapper-20260925.md`
+
 ---
 
 ## Queue
 
-### Phase 9 — Phi-4-mini wrapper  *(CURRENT)*
-- [ ] Implement `PhiWrapper` — 7 abstract methods
-- [ ] Port `get_layer_module`, `_layer_prefixes`, `get_mlp_input`, `get_mlp_output`, `move_embed_to`
-- [ ] Decide and document how fused `qkv_proj` is treated
-- [ ] Guard the tied `lm_head`
-- [ ] Register a `'phi'` branch in `get_model_wrapper()`
-- [ ] Verify load; layer and parameter counts match the checkpoint
-
-### Phase 10 — GSQ on Phi-4-mini  *(the experiment)*
-- [ ] **First resolve the wikitext/hub conflict** (preferred: measure with the Phase 1 rig)
-- [ ] Run at 3-bit
-- [ ] Run at 2-bit
-- [ ] Measure on the Phase 1 rig, same corpus, same binary
-- [ ] Compare against FP16 5.0553 and against the uniform curve at matched size
+### Phase 10 — GSQ on Phi-4-mini  *(CURRENT)*
+- [ ] Full 32-layer run at **3-bit** (~11 min)
+- [ ] Full 32-layer run at **2-bit**
+- [ ] Export to GGUF
+- [ ] **Measure with the Phase 1 llama.cpp rig** (preferred resolution of the wikitext conflict)
+- [ ] Compare vs FP16 5.0553, vs the uniform curve at matched size, vs llama.cpp K-quants
 - [ ] Label PROVEN / INFERRED / UNRESOLVED — a negative result is a valid result
 
 ### Phase 11 — RCO allocation  *(conditional on Phase 10)*
