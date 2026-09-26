@@ -43,23 +43,39 @@ MoE model          → usually LOW or 0; see -cmoe, which is the better lever
 tool               → nvidia-smi before and after. Never guess.
 ```
 
-### 2. `-cmoe` / `--cpu-moe`
+### 2. `-cmoe` / `--cpu-moe`  and  `-ncmoe` / `--n-cpu-moe`
 
-**Keep all Mixture-of-Experts weights in system RAM.**
-
-```text
-This is THE flag for MoE models on this box.
-The experts are the bulk of the parameters but only a fraction are active per
-token, so holding them in RAM costs bandwidth, not capacity.
-```
-
-Companion flags, for partial placement:
+**These are the MoE placement flags — and they do NOT live in the same tools.**
 
 ```text
--ncmoe N   / --n-cpu-moe N    MoE weights of the first N layers -> CPU
--ncffn N   / --n-cpu-ffn N    dense FFN weights of first N layers -> CPU
-                              (for DENSE models; use -ncmoe for MoE experts)
+-cmoe  / --cpu-moe        llama-completion, llama-cli     NOT in llama-bench
+-ncmoe / --n-cpu-moe N    llama-bench AND llama-completion
 ```
+
+**VERIFY PER TOOL.** The binaries in this project have different flag sets.
+A flag that works in `llama-completion` may not exist in `llama-bench`, and a
+rejected flag prints help and exits 0 - so the test silently does nothing while
+looking successful. Confirm every flag against that binary's own `--help`.
+
+```text
+-cmoe            keep ALL MoE weights in system RAM (run-time tools)
+-ncmoe N         keep MoE weights of the FIRST N layers in CPU (both tools)
+```
+
+**On a 12 GB card the placement that matters is the parameter split, not the
+layer count.** Measured on K2-Horizon 36B-A4B:
+
+```text
+attention + MoVA value experts   ~9.3 B params   ~5.2 GB   <- fits VRAM easily
+routed FFN experts              ~26.5 B params  ~15.0 GB   <- must stay in RAM
+```
+
+So the target is **attention+MoVA on GPU, experts in RAM**. Bare `-ngl 99` does
+NOT achieve this — it offloads whole layers until VRAM fills, putting expert
+weights on the GPU while leaving attention on the CPU.
+
+`-ncffn` / `--n-cpu-ffn` was documented here earlier and does **not** exist in
+either binary's `--help` on this build. Removed as unverified.
 
 ### 3. `-fa` / `--flash-attn [on|off|auto]`
 
@@ -264,7 +280,43 @@ is not bandwidth. That single observation points at the right subsystem faster
 than any amount of profiling.
 
 
-### 5.6 Silent exit with no output (Windows)
+### 5.6 Different binaries have different flag sets
+
+```text
+Symptom   a flag documented in one tool silently does nothing in another
+Example   -cmoe / --cpu-moe exists in llama-completion and llama-cli
+          BUT NOT in llama-bench - and llama-bench has -ncmoe, which they share
+Worse     a rejected flag prints the FULL help text and exits 0, so an
+          aborted test looks like a successful one
+Rule      verify every flag against THE SPECIFIC BINARY you are invoking,
+          with that binary's own --help. Never carry a flag between tools.
+```
+
+Real cost: a benchmark leg was written up as "tested, no gain" when in fact
+the flag had been rejected and **the test never ran**.
+
+### 5.7 Thread count: fewer than you think on a multi-CCD CPU
+
+```text
+Measured on Ryzen 9 7900X (2 CCDs x 6 cores, 32 MB L3 each), CUDA build,
+K2-Horizon 36B-A4B, -ngl 99:
+
+  -t 12   11.95 t/s
+  -t  8   12.78
+  -t  6   13.10     <- peak, matches ONE CCD
+  -t 24    2.49     <- catastrophically worse (CPU-only build)
+
+On a chiplet CPU the default (all threads) can be WORSE than one CCD's worth,
+because cross-CCD traffic crosses the infinity fabric. Sweep the thread count;
+do not assume more is better.
+```
+
+**And do not assume flag wins are additive.** `-t 6` alone gave 13.10; `-t 6`
+plus explicit `-fa on` gave 13.03 - within noise. Stacking "known wins" without
+re-measuring produces confident folklore.
+
+
+### 5.8 Silent exit with no output (Windows)
 
 ```text
 Symptom   exit code with ZERO log output, sometimes 127 or a crash
@@ -273,7 +325,7 @@ Fix       export PATH="/d/Mingw64/mingw64/bin:/c/Program Files/Git/mingw64/bin:$
 Also      127 = "command not found" class error - check the binary path AND the DLLs
 ```
 
-### 5.7 Build hash "unknown (0)"
+### 5.9 Build hash "unknown (0)"
 
 ```text
 llama-bench reporting build: unknown (0) means the build was not hash-stamped.
@@ -282,7 +334,7 @@ Consequence: a benchmark number that CANNOT be tied to a specific binary.
 Action: record the binary's own hash alongside any benchmark result.
 ```
 
-### 5.8 VRAM not released after a run
+### 5.10 VRAM not released after a run
 
 ```text
 After every run, confirm:  nvidia-smi --query-gpu=memory.used --format=csv,noheader
