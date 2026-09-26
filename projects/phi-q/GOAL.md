@@ -60,16 +60,29 @@ This project is complete when:
 
 ## Current phase
 
-Phase 4 — Empirical per-tier ablation.
+Phase 4 — COMPLETE. Uniform curve measured.
 
 ## Current status
 
-RUNNING
+RUNNING — one bounded test remains, then park
 
 ## Current next action
 
-Quantize one tier at a time and measure PPL against the frozen baseline, converting the
-Phase 3 candidate allocation from a prior into a measurement. Local GPU only.
+Build one heterogeneous variant at matched size to Q4_K_M (2.494 GB / PPL 5.2206) via
+`--tensor-type-file`. If it does not beat 5.2206 by a clear margin, park heterogeneous
+quantization with a measured reason and move to the Forge harness work.
+
+## Uniform curve (Phase 4, complete)
+
+```text
+Q2_K     1.734 GB   7.1262   +40.96%
+Q3_K_M   2.122 GB   5.5222    +9.24%
+Q4_K_M   2.494 GB   5.2206    +3.27%   <- sweet spot, 67.5% smaller than FP16
+Q5_K_M   2.815 GB   5.1591    +2.05%
+Q6_K     3.156 GB   5.1552    +1.98%   (dominated by Q5_K_M)
+Q8_0     4.085 GB   5.0458    -0.19%   (effectively lossless)
+FP16     7.68  GB   5.0553        --
+```
 
 ## Sensitivity map result (Phase 3)
 

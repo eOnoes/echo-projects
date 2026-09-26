@@ -95,6 +95,22 @@ All subsequent comparisons use this baseline. Historical figures are cross-refer
 | P3-010 | Candidate allocation at 4/5/6-bit yields ~1.81 GB, 76.4% reduction | PROVEN (arithmetic) | §6 |
 | P3-011 | The candidate allocation preserves quality | **UNVERIFIED** — derived from a proxy | §8 |
 
+## Phase 4 findings — uniform bit-budget curve (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P4-001 | Q2_K: 1.734 GB, PPL 7.1262 (+40.96%) | PROVEN | `P4-uniform-curve-20260925.md` §2 |
+| P4-002 | Q3_K_M: 2.122 GB, PPL 5.5222 (+9.24%) | PROVEN | same |
+| P4-003 | Q4_K_M: 2.494 GB, PPL 5.2206 (+3.27%) — 67.5% smaller than FP16 | PROVEN | same |
+| P4-004 | Q5_K_M: 2.815 GB, PPL 5.1591 (+2.05%) | PROVEN | same |
+| P4-005 | Q6_K: 3.156 GB, PPL 5.1552 (+1.98%) | PROVEN | same |
+| P4-006 | Q8_0: 4.085 GB, PPL 5.0458 (−0.19%) — effectively lossless | PROVEN | same |
+| P4-007 | **Q6_K is strictly dominated by Q5_K_M** (0.08% PPL for +0.341 GB) | PROVEN | §3.3 |
+| P4-008 | There is a quality cliff between 3-bit and 4-bit; the curve is flat above 4-bit | PROVEN | §3.1 |
+| P4-009 | Q4_K_M reproduces at exactly 5.2206, matching the frozen baseline run | PROVEN | §3.5 |
+| P4-010 | The entire Q4→Q5 quality interval is 1.22 percentage points, for 0.321 GB | PROVEN | §4 |
+| P4-011 | Heterogeneous allocation at Q4 size can recover "well under 1%" of perplexity | **ESTIMATE, not measured** | §4 |
+
 ## Research audit evidence
 
 | ID | Claim | State | Source |
