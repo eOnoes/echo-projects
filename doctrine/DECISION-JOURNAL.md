@@ -56,7 +56,16 @@ does not repeat the bad ones.
 | D-018 | 2026-09-25 | phi-q | Design allocation layer-graded and projection-blind | Projection spread under 1%; layer edges spike | WRONG — measured, it lost |
 | D-019 | 2026-09-25 | phi-q | Run one bounded heterogeneous test before parking the thread | Cheap, decisive, stops the question being re-opened | RIGHT |
 | D-020 | 2026-09-25 | phi-q | **Park heterogeneous quantization for this model** | Built and measured it; it lost by 0.73% at matched size, and llama.cpp's own mix beats it | PENDING |
-| D-021 | 2026-09-25 | phi-q | Move the remaining quality gap from allocation to training (QAT) | Allocation headroom is measured small; training reaches the same goal by a simpler route | PENDING |
+| D-021 | 2026-09-25 | phi-q | Move the remaining quality gap from allocation to training (QAT) | Allocation headroom is measured small; training reaches the same goal by a simpler route | SUPERSEDED — see D-022 |
+| D-022 | 2026-09-25 | phi-q | **Adopt GSQ + RCO as the method**, replacing both naive allocation and QAD | Phase 4b's negative result was instrument-limited: wrong objective (reconstruction error, not task loss), fixed grid instead of learned, whole-layer instead of per-tensor, no budget constraint. ISTA reaches task-lossless at 3.50 bpw. | PENDING |
+| D-023 | 2026-09-25 | phi-q | Do not assume the Phi wrapper; spike it before committing the plan | GSQ supports LLaMA/Qwen3/Gemma/Kimi but explicitly NOT Phi-4. Writing an architecture wrapper is real engineering. | PENDING |
+
+## Wrong calls (continued)
+
+| ID | Date | Project | What I got wrong | Cost |
+|---|---|---|---|---|
+| W-007 | 2026-09-25 | phi-q | Told Eddie a 16 GB card forces the 27B model onto a 2-bit quant | Corrected myself within the same conversation once he named the actual repo. The GSQ-RCO IQ3_XXS build is 10.1 GB and the recommended IQ3_S is 11.8 GB — both fit 16 GB. I had assumed a plain 2-bit quant from the size alone instead of asking which file it was. |
+| W-008 | 2026-09-25 | phi-q | Framed Phase 4b as evidence that non-uniform allocation has little headroom | The refutation was properly scoped in the receipt, but I under-weighted that the *quantizer* (fixed grid) and the *objective* (reconstruction error) were the limiting factors, not the concept. ISTA's published results show the concept works with a learned quantizer and task-loss objective. |
 
 ---
 

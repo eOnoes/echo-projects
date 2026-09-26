@@ -60,22 +60,67 @@ This project is complete when:
 
 ## Current phase
 
-Phase 5 — QAT pilot (bounded, local). Heterogeneous thread parked.
+Phase 6 — method revision. GSQ + RCO replaces QAD as the route to a task-lossless low-bit model.
 
 ## Current status
 
-RUNNING
+BLOCKED ON A FINDING — pending Eddie's restart of the goal
+
+## The blocker, stated plainly
+
+Phi-4-mini is **not a supported architecture** in GSQ. Its wrappers cover LLaMA, Qwen3,
+Qwen3-MoE, Qwen3.5/3.6 (+MoE), Gemma-4-35B, and Kimi K2/K2.5. Phi-4/Phi-3 is absent.
+
+So phi-q cannot be revived as specified without either writing a Phi architecture wrapper
+(real engineering, plausible because Phi-4-mini is a dense standard-attention gated-MLP model
+close to the LLaMA wrapper's target — but **unverified**) or pivoting to a supported model.
 
 ## Current next action
 
-Build the **two-pass** QAD pipeline. Stage 1 proved a single-pass teacher+student design does NOT
-fit local VRAM (needs est. 12574 MiB; 3786 MiB free). But each half fits alone, so split them in
-time:
+Bounded feasibility spike, in this order:
 
-  Pass A  teacher only, FP16, no gradients  -> save soft targets (top-k logits) to disk
-  Pass B  4-bit student + LoRA              -> train against the saved targets
+1. Clone GSQ; read the wrapper interface; determine exactly what a Phi wrapper must implement.
+2. Run GSQ's documented smoke test (`--max-layers N`) to prove the toolchain runs on this
+   Ada card (RTX 4070, sm_89) at all.
+3. Only then decide: write the Phi wrapper, or pivot to a supported model.
 
-Both fit locally. No paid resource required. Targets are reusable across student configs.
+If step 2 fails, GSQ cannot run locally and the path needs a rented GPU — a costed decision
+for Eddie, never a silent substitution.
+
+## Why the method changed (Phase 6)
+
+Phase 4b's negative result was **instrument-limited, not idea-limited**.
+
+```text
+             our Phase 3-4b                    GSQ + RCO
+objective    weight-space reconstruction error  task loss directly
+quantizer    naive round-to-nearest            learned grid (Gumbel-Softmax)
+allocation   manual, whole layers              gradient search, per tensor
+constraint   none                              exact size budget, by construction
+```
+
+We optimised the wrong objective with a fixed grid, and forced the allocation across the 3-bit
+cliff. ISTA optimises the task loss with a learned quantizer under an exact budget and reaches
+**task-lossless at 3.50 bpw** on a 27B.
+
+GSQ supersedes the QAD plan: QAD trains a model to *tolerate* damage already done; GSQ avoids
+the damage. It also removes the corpus question and, via per-layer offloading, may be lighter on
+VRAM than the QAD pipeline that did not fit.
+
+## Phase 6 findings
+
+| ID | Claim | State |
+|---|---|---|
+| P6-001 | GSQ learns per-coordinate grid + per-group scales via Gumbel-Softmax; GPTQ init then refinement | PROVEN |
+| P6-002 | GSQ is layer-by-layer with meta-device offload — works beyond VRAM | PROVEN |
+| P6-003 | GSQ can refine existing GGUF K-Quants in-format (Qwen3-8B Q2_K 50.03 → 56.28) | PROVEN |
+| P6-004 | RCO assigns per-tensor types against true task loss under an exact budget | PROVEN |
+| P6-005 | GSQ trains on Ada-class GPUs (sm_89) per its own README | PROVEN |
+| P6-006 | **Phi-4 is not a supported architecture** | PROVEN |
+| P6-007 | Our Phase 4b failure is explained by objective + granularity, not by the concept | INFERRED |
+| P6-008 | 5060 Ti measured ~40 tok/s on the 11.8 GB IQ3_S build (MTP active) | PROVEN (third-party) |
+| P6-009 | A Phi wrapper can be written to fit GSQ | **UNVERIFIED** |
+| P6-010 | GSQ on Phi-4-mini reaches near-lossless at 3 bpw | **UNKNOWN — the experiment** |
 
 ## Phase 4b outcome — heterogeneous PARKED
 

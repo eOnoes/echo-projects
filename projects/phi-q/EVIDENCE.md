@@ -138,6 +138,21 @@ All subsequent comparisons use this baseline. Historical figures are cross-refer
 | P5-008 | Environment: isolated uv venv, torch 2.12.1+cu126, unsloth 2026.9.11 | PROVEN | §7 |
 | P5-009 | PyPI torch on Windows is CPU-only; CUDA builds need the PyTorch index | PROVEN | §7 |
 
+## Phase 6 findings — GSQ / RCO tooling investigation (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P6-001 | GSQ learns per-coordinate grid + per-group scales via Gumbel-Softmax; GPTQ init then refinement | PROVEN | `P6-gsq-rco-investigation-20260925.md` §2 |
+| P6-002 | GSQ is layer-by-layer with meta-device offload — quantizes beyond VRAM | PROVEN | §2 |
+| P6-003 | GSQ can refine existing GGUF K-Quants in-format (Qwen3-8B Q2_K 50.03 → 56.28) | PROVEN | §2 |
+| P6-004 | RCO assigns per-tensor types against true task loss under an exact budget | PROVEN | §3 |
+| P6-005 | GSQ trains on Ada-class GPUs (sm_89) per its own README | PROVEN | §4a |
+| P6-006 | **Phi-4 is not a supported architecture in GSQ** | PROVEN | §4b |
+| P6-007 | Our Phase 4b failure is explained by objective + granularity, not by the concept | INFERRED | §3 |
+| P6-008 | 5060 Ti measured ~40 tok/s on the 11.8 GB IQ3_S build, MTP active | PROVEN (third-party) | §4c |
+| P6-009 | A Phi wrapper can be written to fit GSQ | **UNVERIFIED** | §6 |
+| P6-010 | GSQ on Phi-4-mini reaches near-lossless at 3 bpw | **UNKNOWN — the experiment** | §6 |
+
 ## Research audit evidence
 
 | ID | Claim | State | Source |
