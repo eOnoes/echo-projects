@@ -19,7 +19,9 @@ Echo may:
 
 Echo must ask Eddie before:
 
-- Creating, starting, or resuming any paid cloud resource.
+- Creating, starting, or resuming any paid cloud resource. The request must use the escalation
+  proposal format defined in `PLAN.md` — card, rate, bounded hours, cost ceiling, runs unblocked,
+  evidence plan, and stop trigger. A vague request is not acceptable.
 - Any training run expected to exceed the agreed local time budget.
 - Deleting, moving, or renaming any existing artifact.
 - Overwriting any prior receipt, log, or model file.

@@ -12,6 +12,33 @@
 Any phase that requires more headroom than this must be escalated to Eddie for approval
 before a paid resource is created.
 
+## Compute escalation protocol
+
+Local VRAM budget is approximately **10.6 GB free**. Phases 0, 1, 2, 4, 5, and 7 are expected
+to fit. Phase 3 is the identified risk because gradient-based quantization requires a backward
+pass at roughly 2–3× forward memory.
+
+Escalation to a rented GPU happens only when one of these is demonstrably true:
+
+- A required run cannot complete locally due to memory, with the failure recorded.
+- A projected sweep exceeds the local time budget recorded in `TASKS.md`.
+- A phase requires gradient-based quantization beyond the local budget.
+
+**Every escalation proposal must state all of the following:**
+
+| Field | Required content |
+|---|---|
+| Card and VRAM | Exact GPU type being rented |
+| Hourly rate | Current price at proposal time |
+| Estimated hours | Bounded, not open-ended |
+| Maximum total cost | Hard ceiling |
+| Runs unblocked | Exactly which measurements this enables |
+| Evidence plan | What is captured and hash-verified before the pod is released |
+| Stop trigger | The condition that ends the session |
+
+No paid resource is created before Eddie approves the proposal. The pod is stopped immediately
+when the bounded run finishes. Evidence is mirrored and hash-verified locally before release.
+
 ## Phase 0 — Freeze and preserve
 
 **Objective:** Hash and preserve every relevant artifact and prior result.
