@@ -33,7 +33,10 @@ The remaining sections provide drill-down detail:
 
 ## Required status values
 
-`DRAFT`, `READY`, `RUNNING`, `PAUSED`, `BLOCKED`, `NEEDS_APPROVAL`, `FAILED_BOUNDED`, `COMPLETE`, `COMPLETE_WITH_LIMITATIONS`, `CANCELLED`.
+`DRAFT`, `READY`, `READY_FOR_REVIEW`, `RUNNING`, `PAUSED`, `BLOCKED`, `NEEDS_APPROVAL`, `FAILED_BOUNDED`, `COMPLETE`, `COMPLETE_WITH_LIMITATIONS`, `CANCELLED`.
+
+`READY_FOR_REVIEW` means the artifact or packet is complete and awaiting human judgement.
+`NEEDS_APPROVAL` means work is blocked on an explicit go/no-go decision.
 
 ## Required checkpoint fields
 
