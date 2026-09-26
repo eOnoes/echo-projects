@@ -68,10 +68,14 @@ RUNNING
 
 ## Current next action
 
-Install/prepare a training environment without disturbing the verified CUDA torch stack, then a
-bounded local QAT pilot. Pending Eddie's choice of training corpus:
-instruction data (OpenHermes/UltraChat) vs general text (WikiText/FineWeb). Recommendation:
-instruction data, because that is what the Forge harness will exercise.
+Build the **two-pass** QAD pipeline. Stage 1 proved a single-pass teacher+student design does NOT
+fit local VRAM (needs est. 12574 MiB; 3786 MiB free). But each half fits alone, so split them in
+time:
+
+  Pass A  teacher only, FP16, no gradients  -> save soft targets (top-k logits) to disk
+  Pass B  4-bit student + LoRA              -> train against the saved targets
+
+Both fit locally. No paid resource required. Targets are reusable across student configs.
 
 ## Phase 4b outcome — heterogeneous PARKED
 

@@ -124,6 +124,20 @@ All subsequent comparisons use this baseline. Historical figures are cross-refer
 | P4B-007 | Heterogeneous quantization is parked for this model, with a measured reason | DECIDED | D-020 |
 | P4B-008 | The remaining quality gap is a training problem, not an allocation problem | INFERRED | §7 |
 
+## Phase 5 findings — stage 1 smoke test (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P5-001 | Toolchain works end to end: model loads, fake-quant runs, KL computes | PROVEN | `P5-smoke-test-20260925.md` §2 |
+| P5-002 | Phi-4-mini FP16 occupies 7316.6 MiB; 3786 MiB free on a 12282 MiB card | PROVEN | §2 |
+| P5-003 | **Single-pass teacher+student co-residency does NOT fit locally** (needs est. 12574 MiB) | PROVEN | §3 |
+| P5-004 | Teacher-only pass fits (~7716 MiB peak) | PROVEN | §4 |
+| P5-005 | 4-bit student + LoRA pass fits (est. 5-6 GB) | ESTIMATE | §4 |
+| P5-006 | **Two-pass pipeline (teacher writes targets, student trains against them) fits locally** | INFERRED | §4 |
+| P5-007 | KL=205.068 measured on random tokens is a machinery check, NOT a quality metric | PROVEN | §5 |
+| P5-008 | Environment: isolated uv venv, torch 2.12.1+cu126, unsloth 2026.9.11 | PROVEN | §7 |
+| P5-009 | PyPI torch on Windows is CPU-only; CUDA builds need the PyTorch index | PROVEN | §7 |
+
 ## Research audit evidence
 
 | ID | Claim | State | Source |
