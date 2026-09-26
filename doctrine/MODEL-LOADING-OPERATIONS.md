@@ -401,7 +401,17 @@ Anything above ~1300 MiB with no work running = a process is still holding VRAM.
    runtime, run a small model of the **same family** on it. It loads in seconds
    instead of minutes, and it separates "the runtime is broken" from "this model
    is inherently slow." The dense 7B was what finally explained the 36B.
-13. **Prove a hypothesis by measurement, not by code reading.** Reading source
+13. **NEVER WRITE A HASH, PATH, OR VERSION FROM MEMORY. READ IT.**
+    A fabricated hash is not a shortcut, it is a falsified record. This happened
+    in this very project: a manifest was written with a sha256 whose first eight
+    characters were remembered correctly and whose remaining characters were
+    invented to look plausible. The real value was in `.local-sha256.tmp` in the
+    same directory. Anything a future run will VERIFY must be copied from the
+    artifact, never reconstructed.
+14. **READ A FILE BEFORE OVERWRITING IT.** A tool may warn
+    "was modified by a sibling/other process but this agent never read it" -
+    that warning means the write is destroying someone else's record. Read first.
+15. **Prove a hypothesis by measurement, not by code reading.** Reading source
    produced four confident-and-wrong conclusions in one session. Each was
    settled in minutes once actually run.
 
