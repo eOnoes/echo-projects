@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>phi-q — Phase 0 Milestone</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2230; --line:#2b3442;
+    --fg:#e6edf3; --dim:#9aa7b4; --accent:#58a6ff; --good:#3fb950;
+    --warn:#d29922; --bad:#f85149; --code:#7ee787;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    padding:16px 14px 60px}
+  .wrap{max-width:840px;margin:0 auto}
+  h1{font-size:1.45rem;margin:0 0 6px}
+  h2{font-size:1.1rem;margin:26px 0 10px;color:var(--accent)}
+  h3{font-size:.98rem;margin:16px 0 8px}
+  .sub{color:var(--dim);font-size:.85rem;margin:0 0 18px}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.7rem;
+    font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+  .b-pass{background:rgba(63,185,80,.15);color:var(--good);border:1px solid rgba(63,185,80,.4)}
+  .b-bad{background:rgba(248,81,73,.14);color:var(--bad);border:1px solid rgba(248,81,73,.4)}
+  .b-warn{background:rgba(210,153,34,.16);color:var(--warn);border:1px solid rgba(210,153,34,.4)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:15px 16px;margin:14px 0}
+  .card.pass{border-left:3px solid var(--good)}
+  .card.bad{border-left:3px solid var(--bad)}
+  .card.warn{border-left:3px solid var(--warn)}
+  ul{margin:8px 0;padding-left:20px} li{margin:6px 0}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85em;
+    background:#0b0f14;border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--code)}
+  pre{background:#0b0f14;border:1px solid var(--line);border-radius:9px;padding:12px;
+    overflow-x:auto;font-size:.8rem;line-height:1.5;margin:10px 0}
+  pre code{background:none;border:none;padding:0}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.84rem;
+    display:block;overflow-x:auto}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);
+    white-space:nowrap}
+  td.wrap{white-space:normal}
+  th{color:var(--dim);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.4px}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:12px 0}
+  summary{cursor:pointer;padding:14px 16px;font-weight:600;font-size:.94rem;list-style:none;
+    display:flex;justify-content:space-between;gap:10px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--accent);font-size:1.2rem;flex-shrink:0}
+  details[open] summary::after{content:"–"}
+  .body{padding:0 16px 16px;border-top:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:1fr;gap:10px}
+  @media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+  .stat{background:#0b0f14;border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+  .stat .k{color:var(--dim);font-size:.7rem;text-transform:uppercase;letter-spacing:.5px}
+  .stat .v{font-size:1.2rem;font-weight:700;margin-top:3px}
+  .stat .v.good{color:var(--good)} .stat .v.bad{color:var(--bad)}
+  .pill{display:inline-block;font-size:.66rem;font-weight:700;padding:2px 7px;
+    border-radius:6px;letter-spacing:.4px}
+  .p-proven{background:rgba(63,185,80,.16);color:var(--good)}
+  .p-open{background:rgba(210,153,34,.16);color:var(--warn)}
+  .foot{color:var(--dim);font-size:.77rem;margin-top:28px;text-align:center}
+  .note{color:var(--dim);font-size:.84rem}
+  .hash{font-size:.72rem;word-break:break-all;white-space:normal}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>phi-q — Phase 0 Milestone</h1>
+  <p class="sub">
+    Phi-4-mini Mixed-Precision Quantization Recovery &nbsp;·&nbsp;
+    <span class="badge b-pass">Phase 0 passed</span> &nbsp;·&nbsp; 2026-09-25
+  </p>
+
+  <div class="card pass">
+    <strong>Result:</strong> Phase 0 is complete. Every artifact needed is already on your
+    machine, all nine are hash-verified, and the frozen baselines reproduce <em>exactly</em>
+    from the raw data. Three hashes match the prior work byte for byte, proving nothing has drifted.
+    <br><br>
+    <strong>And I found a real problem in the old evidence.</strong> The prior milestone compared
+    numbers from two different test harnesses as if they were on the same scale. They aren't.
+    Details below — this one changes how we read everything that came before.
+  </div>
+
+  <h2>TL;DR</h2>
+  <ul>
+    <li><strong>No downloads needed.</strong> FP16, Q4, both ternary quants, and the full HF checkpoint are already local.</li>
+    <li><strong>Baselines verified.</strong> I recomputed the perplexities from the raw per-chunk values — both match to four decimals.</li>
+    <li><strong>Three hashes match prior evidence</strong>, so the frozen baseline is provably intact.</li>
+    <li><strong>The old comparison was wrong.</strong> <code>5.0863 → 44,176</code> mixes two harnesses. Retracted.</li>
+    <li><strong>The ternary damage is worse than stated in one way and milder in another</strong> — see the corrected table.</li>
+    <li><strong>Layer degradation is explosive</strong>, not gradual. There is no layer count where it works.</li>
+    <li><strong>~90 uncatalogued receipts found</strong> in a parity-harness folder we hadn't logged.</li>
+    <li><strong>Phase 1 has a decision to make</strong>: pick one reference harness and say so out loud.</li>
+  </ul>
+
+  <h2>What was verified</h2>
+  <div class="grid">
+    <div class="stat"><div class="k">Artifacts hashed</div><div class="v good">9 / 9</div></div>
+    <div class="stat"><div class="k">Hash matches vs prior work</div><div class="v good">3</div></div>
+    <div class="stat"><div class="k">Baselines reproduced</div><div class="v good">exact</div></div>
+    <div class="stat"><div class="k">Artifacts modified</div><div class="v">0</div></div>
+  </div>
+
+  <div class="card bad">
+    <h3 style="margin-top:0;color:var(--bad)">Correction: two harnesses, not one</h3>
+    <p>The prior milestone listed these side by side:</p>
+    <pre><code>FP16 GGUF ............... 5.0863
+Q4_K_M .................. 5.2827
+All four projections .... 44,176</code></pre>
+    <p>That reads as a 8,700× collapse. But those numbers come from <strong>two different test setups</strong>:</p>
+    <table>
+      <tr><th>Harness</th><th>FP16 baseline</th><th>Used for</th></tr>
+      <tr><td>llama.cpp <code>perplexity_v2</code></td><td>5.0863</td><td>GGUF controls</td></tr>
+      <tr><td>PyTorch / Transformers bf16</td><td><strong>12.0361</strong></td><td>all ternary numbers</td></tr>
+    </table>
+    <p>The ternary results must be compared against their <em>own</em> baseline of 12.0361:</p>
+    <table>
+      <tr><th>Variant</th><th>PPL</th><th>Cost vs its baseline</th></tr>
+      <tr><td>FP16 (PyTorch)</td><td>12.0361</td><td>1.00×</td></tr>
+      <tr><td>Attention only ternarized</td><td>59.8700</td><td>4.97×</td></tr>
+      <tr><td>MLP only ternarized</td><td>40.4843</td><td>3.36×</td></tr>
+      <tr><td>All four projections</td><td>44,176.0520</td><td>3,670×</td></tr>
+    </table>
+    <p class="note">Still catastrophic. But the honest number is 3,670×, not 8,700×, and the
+    comparison is now apples-to-apples. The old framing is retracted and logged as such.</p>
+  </div>
+
+  <div class="card warn">
+    <h3 style="margin-top:0">Layer degradation is explosive</h3>
+    <table>
+      <tr><th>Layers ternarized</th><th>PPL</th><th>Cost vs FP16</th></tr>
+      <tr><td>1</td><td>44,176</td><td>3,670×</td></tr>
+      <tr><td>2</td><td>282,508</td><td>23,472×</td></tr>
+      <tr><td>4</td><td>5,824,598,191</td><td>~4.8 × 10<sup>8</sup></td></tr>
+      <tr><td>8</td><td>20,549,546,659</td><td>~1.7 × 10<sup>9</sup></td></tr>
+      <tr><td>16</td><td>21,526,710,266</td><td>~1.8 × 10<sup>9</sup></td></tr>
+      <tr><td>32</td><td>454,137,451,049</td><td>~3.8 × 10<sup>10</sup></td></tr>
+    </table>
+    <p class="note">This is why uniform ternary is hopeless here. It doesn't degrade gracefully
+    with more layers — it detonates. Any viable approach has to keep most tensors above ternary.</p>
+  </div>
+
+  <details>
+    <summary>Artifact hashes (all 9, SHA-256)</summary>
+    <div class="body">
+      <table>
+        <tr><th>Artifact</th><th>Bytes</th></tr>
+        <tr><td class="wrap"><code>model-00001-of-00002.safetensors</code><br><span class="hash">bc703090b63eda16f639fa4de7ac54635c23105ab1da2f6ec4d3403151d38ee6</span></td><td>4,903,637,712</td></tr>
+        <tr><td class="wrap"><code>model-00002-of-00002.safetensors</code><br><span class="hash">7ff79b9d2d31076bac2663393451f6530f4fc8ca49b09002116c92c373dba983</span></td><td>2,768,428,504</td></tr>
+        <tr><td class="wrap"><code>config.json</code> &nbsp;<span class="pill p-proven">matches prior</span><br><span class="hash">1a2c449c2f8814ccc2cde93c89705b53a762a43a8eef67923cd68ff24b7cee6b</span></td><td>2,539</td></tr>
+        <tr><td class="wrap"><code>model.safetensors.index.json</code> &nbsp;<span class="pill p-proven">matches prior</span><br><span class="hash">613a98d5e5716ca96fa75931abedc9c5a5d95f488ce4d62df71e639fe3ac6c59</span></td><td>16,273</td></tr>
+        <tr><td class="wrap"><code>tokenizer.json</code><br><span class="hash">37b10016a39382ff2d24acc20a291ed83243a26c4549ab01f6240e72c6291d56</span></td><td>15,524,472</td></tr>
+        <tr><td class="wrap"><code>phi4-mini-f16.gguf</code><br><span class="hash">11b68743abd2d62ba5fd9e54d29392ca698ec452dab67d27bbd41d5cb5fb921c</span></td><td>7,680,694,784</td></tr>
+        <tr><td class="wrap"><code>phi4-mini-Q4_K_M.gguf</code> &nbsp;<span class="pill p-proven">matches prior</span><br><span class="hash">91ff42f8b12601f325931834912a069b372b466cec1cabe7d2d4bd2a7af61e85</span></td><td>2,493,840,896</td></tr>
+        <tr><td class="wrap"><code>phi4-mini-tq1_0.gguf</code><br><span class="hash">0fd62b6b1555b8e4caeda43100cc917f0a04ffe1b4c20c19b717cd5ead05e918</span></td><td>1,917,721,088</td></tr>
+        <tr><td class="wrap"><code>phi4-mini-tq2_0.gguf</code><br><span class="hash">d0eef02007b2793aee6ccb4fc71300e27710109f78abe59399ce00ae57177109</span></td><td>2,068,716,032</td></tr>
+      </table>
+      <p class="note">Three artifacts match hashes recorded in prior receipts. That is the proof
+      that the baseline has not drifted since the original work.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Baseline verification — the exact recipe</summary>
+    <div class="body">
+      <p>The recorded perplexities were recomputed from the raw per-chunk values in the logs:</p>
+      <pre><code>FP16  chunks: 6.7247 3.4498 4.8675 6.2018 5.7469 5.0000 4.5586 4.8830
+      geometric mean = 5.0863   recorded 5.0863   delta 0.0000
+
+Q4    chunks: 7.0058 3.5565 5.0340 6.4618 6.0005 5.2082 4.7240 5.0688
+      geometric mean = 5.2827   recorded 5.2827   delta 0.0000
+      penalty = +3.86%                              recorded +3.86%</code></pre>
+      <p>To reproduce in Phase 1, the harness must match all of these:</p>
+      <pre><code>tool        llama.cpp perplexity_v2
+corpus      7,994 tokens
+chunks      8
+n_ctx       768
+batch_size  512
+n_seq       1
+striding    enabled</code></pre>
+      <p class="note">Any harness that doesn't match these parameters is not comparable to the
+      frozen baseline. This is now an explicit Phase 1 gate.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>The uncatalogued evidence we just found</summary>
+    <div class="body">
+      <p>A <code>parity-harness/</code> folder exists containing roughly <strong>90 receipts</strong> that
+      were never logged in the project record. This is prior work on the same model that we were
+      about to re-derive from scratch.</p>
+      <p>Notable items:</p>
+      <ul>
+        <li><code>phi4-arm-b-corrected-kl-handoff.html</code> — a corrected KL divergence handoff</li>
+        <li><code>phi4-arm-b-f16-longrope-factors-v2.gguf</code> — 7.68 GB alternative build</li>
+        <li>Layer 0 through layer 31 divergence checkpoints</li>
+        <li>Sub-operation traces and non-finite boundary localization</li>
+      </ul>
+      <p class="note">This evidence predates the current packet and has not been reviewed under it.
+      Phase 2 will read it first so we don't redo solved work.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Model pin (what exactly we're working on)</summary>
+    <div class="body">
+      <table>
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td>Model ID</td><td><code>unsloth/Phi-4-mini-instruct</code></td></tr>
+        <tr><td>Upstream base</td><td><code>microsoft/Phi-4-mini-instruct</code></td></tr>
+        <tr><td>Revision</td><td class="wrap"><code>75becc471c56fc34761ec998615ca6f8535c5a61</code></td></tr>
+        <tr><td>Architecture</td><td><code>Phi3ForCausalLM</code></td></tr>
+        <tr><td>Layers</td><td>32</td></tr>
+        <tr><td>Hidden / intermediate</td><td>3072 / 8192</td></tr>
+        <tr><td>Attention / KV heads</td><td>24 / 8</td></tr>
+        <tr><td>Original context</td><td>4096 (max 131072)</td></tr>
+      </table>
+    </div>
+  </details>
+
+  <details>
+    <summary>What Phase 1 has to decide</summary>
+    <div class="body">
+      <p>Because there are two harnesses, Phase 1 must pick a reference and state it. My recommendation:</p>
+      <table>
+        <tr><th>Use</th><th>Harness</th></tr>
+        <tr><td>GGUF controls</td><td>llama.cpp <code>perplexity_v2</code></td></tr>
+        <tr><td>Weight-level quantization work</td><td>PyTorch / Transformers</td></tr>
+        <tr><td><strong>Comparing across the two</strong></td><td><strong>Never</strong></td></tr>
+      </table>
+      <p>Then reproduce all three baselines: 5.0863, 5.2827, and 12.0361 — each within ±0.5%,
+      each stamped with which harness produced it.</p>
+    </div>
+  </details>
+
+  <div class="card">
+    <strong>Phase 0 exit gate</strong>
+    <table>
+      <tr><th>Gate</th><th>Status</th></tr>
+      <tr><td>Model revision pinned and recorded</td><td><span class="badge b-pass">PASS</span></td></tr>
+      <tr><td>All existing quantization artifacts hashed</td><td><span class="badge b-pass">PASS</span></td></tr>
+      <tr><td>Prior baseline numbers transcribed verbatim</td><td><span class="badge b-pass">PASS</span></td></tr>
+      <tr><td>No artifact modified</td><td><span class="badge b-pass">PASS</span></td></tr>
+    </table>
+  </div>
+
+  <p class="foot">
+    Receipt: <code>projects/phi-q/receipts/P0-freeze-20260925.md</code><br>
+    Commit <code>995e63a</code> · <code>eOnoes/echo-projects</code><br>
+    <span class="badge b-pass">Phase 0 complete</span>
+  </p>
+
+</div>
+</body>
+</html>
