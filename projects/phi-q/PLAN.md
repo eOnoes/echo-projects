@@ -111,11 +111,11 @@ efforts actually established.
 - ~~Failure classified as storage-format misuse, precision limit, or unresolved.~~
 - ~~Attention-only and MLP-only cases measured again.~~
 
-## Phase 3 — Learned quantization at 2–3 bit
+## Phase 3 — Learned quantization at 2–3 bit  *(historical — attempted, superseded)*
 
-**Objective:** Replace naive rounding with a learned or gradient-guided scalar quantizer.
+**Objective (as written):** Replace naive rounding with a learned or gradient-guided scalar quantizer.
 
-**Candidate quantizers, cheapest first:**
+**Candidates considered:**
 
 | Method | Best at | Notes |
 |---|---|---|
@@ -124,82 +124,167 @@ efforts actually established.
 | AWQ | 4 bit | Activation-aware, weaker below 4 bit |
 | GSQ-class (Gumbel-Softmax grid learning) | 2–3 bit | Designed for the low-bit regime we are targeting |
 
+**What actually happened:** Phase 3 built a *sensitivity map* and Phase 4 ran a *uniform bit-budget
+sweep* — both with fixed llama.cpp formats. No learned quantizer was implemented. The uniform
+curve is real and useful; the "learned quantizer" objective was never met.
+
+**Uniform curve produced (PROVEN, retained):**
+
+```text
+Q2_K     1.734 GB   7.1262   +40.96%
+Q3_K_M   2.122 GB   5.5222    +9.24%   <- the cliff
+Q4_K_M   2.494 GB   5.2206    +3.27%   <- sweet spot
+Q5_K_M   2.815 GB   5.1591    +2.05%
+Q6_K     3.156 GB   5.1552    +1.98%
+Q8_0     4.085 GB   5.0458    -0.19%
+FP16     7.680 GB   5.0553        —
+```
+
+## Phase 4 — Mixed-precision allocation  *(historical — attempted, PARKED)*
+
+**Objective (as written):** Allocate bits by sensitivity under a fixed average budget.
+
+**What actually happened:** Built a layer-graded allocation from the Phase 3 sensitivity map and
+measured it size-matched against a uniform control. **It lost.**
+
+```text
+control   Q4_K_S   2.3456 GB   5.3568
+treatment hetero   2.3425 GB   5.3961   (+0.73% — LOSES)
+Q4_K_M (llama.cpp) 2.4940 GB   5.2206   (beats both)
+```
+
+Parked with a measured reason (D-020). **Root cause identified in Phase 6:** the objective was
+wrong (weight-space reconstruction error, not task loss), the quantizer was a fixed grid rather
+than learned, and the granularity was whole layers, which forced the allocation across the 3-bit
+cliff. The concept was not refuted — the instruments were.
+
+## Phase 5 / 5b — Fine-tune then quantize  *(historical — QAD attempted, superseded)*
+
+**Objective (as written):** Test whether adapting the weights first improves the quantized result.
+
+**What actually happened:** Built and verified a QAD environment (isolated venv, CUDA torch,
+Unsloth). Stage-1 smoke test **passed** — but also proved a single-pass teacher+student design
+does **not** fit local VRAM (needs est. 12,574 MiB; 3,786 MiB free). A two-pass design was
+identified that does fit.
+
+**Superseded in Phase 6.** GSQ avoids the damage rather than training a model to tolerate it, and
+removes the corpus requirement entirely. The environment work is retained as reusable
+infrastructure.
+
+## Phase 6 — QAT escalation  *(historical — superseded)*
+
+Superseded by the GSQ route. Kept for the record: no ternary training was ever launched, and the
+pre-existing `QAT-PILOT-SPEC.md` was never started.
+
+---
+
+# Revised route — GSQ + RCO
+
+The forward plan from Phase 6 onward. Phases below are the *current* waterfall.
+
+## Phase 6 — Method revision  ✅ COMPLETE 2026-09-25
+
+**Objective:** Replace naive allocation and QAD with the method designed for this problem.
+
+**Outcome:** **GSQ + RCO adopted** (D-022). GSQ learns per-coordinate grid assignments and
+per-group scales via a Gumbel-Softmax relaxation; RCO assigns per-tensor quantization types
+against the true task loss under an exact size budget.
+
+**Evidence:** `receipts/P6-gsq-rco-investigation-20260925.md`
+
+## Phase 6b — Wrapper feasibility  ✅ COMPLETE 2026-09-25
+
+**Objective:** Determine what a Phi-4 architecture wrapper must implement for GSQ.
+
+**Outcome:** The delta is **small**. Eight of ten Phi-4-mini module paths are byte-identical to
+GSQ's existing LLaMA wrapper. Three real deltas: fused `qkv_proj`, fused `gate_up_proj`, and a
+tied `lm_head` absent from the checkpoint. The blocker **moved** from "Phi is unsupported" to
+"can the stack be installed on Windows at all."
+
+**Evidence:** `receipts/P6b-wrapper-feasibility-20260925.md`
+
+## Phase 7 — Environment build  ⏳ IN PROGRESS
+
+**Objective:** Prove the GSQ stack installs and runs on this machine.
+
+**Method:** Isolated venv, **dependency subset excluding vLLM / ray / lm-eval / lighteval /
+humming-kernels** — those are the serving and evaluation path, which is Linux-oriented and not
+required for quantization.
+
 **Exit gate:**
-- Round-to-nearest control measured at identical bit-widths.
-- At least two learned quantizers measured at 3-bit.
-- Best-performing method carried forward to 2-bit.
-- Results compared against naive rounding at equal bits.
-- Quality-versus-bits curve recorded with the frozen baseline as reference.
+- Venv created; torch reports CUDA available.
+- `transformers`, `accelerate`, `datasets`, `safetensors`, `compressed-tensors`, `lion-pytorch`
+  import cleanly.
+- The failure mode, if any, is recorded verbatim rather than worked around silently.
 
-## Phase 4 — Mixed-precision allocation
+**If this gate fails:** GSQ cannot run locally. That becomes a costed escalation proposal for
+Eddie — Linux host or rented GPU — and the proposal follows the compute-escalation protocol
+already defined at the top of this file. **No silent substitution of an approximate method.**
 
-**Objective:** Allocate bits by sensitivity under a fixed average budget.
+## Phase 8 — Toolchain smoke test
 
-**Exit gate:**
-- Per-tensor sensitivity measured with a documented method.
-- Allocation rule defined before the sweep.
-- Mixed precision beats uniform quantization at equal average bits, or the negative result is documented.
-- Allocation fraction swept one variable at a time.
+**Objective:** Prove GSQ actually quantizes something on this card, before touching Phi.
 
-## Phase 5 — Fine-tune then quantize
-
-**Objective:** Test whether adapting the weights first improves the quantized result.
-
-**Hardware constraint:** A 3.8B model at FP16 is ~7.6 GB of weights. The local GPU has ~10.8 GB
-free, so 16-bit LoRA fine-tuning does not fit reliably. Use **QLoRA** — 4-bit base, LoRA
-adapters trained, then merged back to FP16. This is the standard pipeline for this hardware
-class, and merging restores FP16 weights for the quantization phases that follow.
+**Method:** GSQ's own dry run on a **supported** architecture —
+`SMOKE_TEST=1 bash scripts/run.sh` (2-layer) or `--max-layers 2` — against a small model such as
+Qwen3-0.6B.
 
 **Exit gate:**
-- Training method recorded as QLoRA, with the base quantization scheme stated.
-- Bounded LoRA fine-tune completed with recorded hyperparameters and time budget.
-- Adapter merged; merged-model hash recorded and distinct from the base checkpoint.
-- Same Phase 3 and Phase 4 quantization re-run on the adapted weights.
-- Improvement measured against quantize-alone, or negative result documented.
+- A 2-layer quantization run completes on the local Ada card (sm_89).
+- Output shards are written and loadable.
+- Peak VRAM recorded.
+- Runtime recorded, used to project the full Phi-4-mini run.
 
-## Phase 5b — Sensitivity re-map on adapted weights
+## Phase 9 — Phi-4-mini wrapper
 
-**Objective:** Determine whether fine-tuning moves the sensitive regions, and whether it
-hardens or softens the model against quantization.
-
-**Rationale:** Phase 4's map is measured on base weights. Sensitivity depends on the actual
-weight distribution and activation outliers, so the map may not transfer to the adapted model.
-Fine-tuning also tends to sharpen weights and enlarge outliers, which opposes quantization.
-The net direction is not assumed — it is measured.
+**Objective:** Implement the 7-method adapter plus the name-based registration.
 
 **Exit gate:**
-- Phase 4 sensitivity map re-run on the fine-tuned weights using the same method.
-- Base map and adapted map compared; agreement or divergence recorded.
-- Bounded hypothesis test: quantize base weights and fine-tuned weights at the same fixed
-  bit-width, measure each perplexity delta, and record which delta is smaller.
-- Result labeled PROVEN, INFERRED, or UNRESOLVED. No direction is assumed in advance.
+- `PhiWrapper` implements all abstract methods; `get_layer_module`, `_layer_prefixes`,
+  `get_mlp_input`, `get_mlp_output`, and `move_embed_to` port from the LLaMA wrapper.
+- Fused `qkv_proj` handled with an **explicit, documented decision** on whether it takes the
+  attention path or the general path — the base class's `q_proj`/`k_proj` substring check does
+  not match it, and that must be resolved deliberately, not by accident.
+- Tied `lm_head` guarded (absent from the checkpoint index).
+- `'phi'` branch added to `get_model_wrapper()`.
+- Wrapper loads the model and reports layer count and parameter count matching the checkpoint.
 
-## Phase 6 — QAT escalation (conditional)
+## Phase 10 — GSQ on Phi-4-mini  *(the experiment)*
 
-**Objective:** Only if Phases 3–5 leave quality unacceptable, test quantization-aware training.
-
-**Exit gate:**
-- Explicit Eddie approval obtained before any ternary training.
-- Bounded 4-bit QAT attempted first as the cheapest step.
-- Ternary-capable training treated as a separate, independently approved project.
-
-## Phase 7 — Runtime validation
-
-**Objective:** Prove the artifact actually loads and generates.
+**Objective:** Answer the actual question — can Phi-4-mini reach task-lossless at ~3 bpw the way
+the 27B did?
 
 **Exit gate:**
-- GGUF export succeeds.
-- Artifact loads in a llama.cpp-family runtime.
-- Bounded generation produces coherent output.
-- Repetition and EOS behavior recorded.
+- At least two bit budgets run (e.g. 3-bit and 2-bit).
+- Perplexity measured on the Phase 1 rig, same corpus, same binary.
+- Compared against the frozen FP16 baseline and against the uniform curve at matched size.
+- Result labeled PROVEN, INFERRED, or UNRESOLVED. **A negative result is a valid result** and is
+  reported as such, not buried.
+
+## Phase 11 — RCO allocation
+
+**Conditional on Phase 10.** RCO assigns per-tensor types under an exact budget using the task
+loss. Run only if Phase 10 shows the learned quantizer alone leaves headroom worth allocating.
+
+**Exit gate:**
+- RCO run at a stated size budget.
+- Allocation dump inspected and compared against the Phase 3 sensitivity map.
+- Measured against uniform GSQ at matched size.
+
+## Phase 12 — Export and runtime validation
+
+**Exit gate:**
+- GGUF export succeeds in a standard format.
+- Artifact loads in the llama.cpp already built and hashed in Phase 1.
+- Bounded generation produces coherent output; repetition and EOS behavior recorded.
 - Perplexity is not used as the sole quality claim.
 
-## Phase 8 — Closure
+## Phase 13 — Closure
 
 **Exit gate:**
 - Acceptance criteria met or limitations documented.
 - Evidence register complete.
-- Closure report written.
+- Retrospective written (required by `CLOSURE.md`).
 - Release decision explicitly stated.
 
 ## Failure route
@@ -209,3 +294,4 @@ any phase → PRESERVE_FAILURE → classify → retry only after a proven input 
 ```
 
 No phase may be skipped because a later result looks promising.
+
