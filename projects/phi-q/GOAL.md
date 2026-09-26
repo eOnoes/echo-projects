@@ -60,17 +60,30 @@ This project is complete when:
 
 ## Current phase
 
-Phase 4 — COMPLETE. Uniform curve measured.
+Phase 5 — QAT pilot (bounded, local). Heterogeneous thread parked.
 
 ## Current status
 
-RUNNING — one bounded test remains, then park
+RUNNING
 
 ## Current next action
 
-Build one heterogeneous variant at matched size to Q4_K_M (2.494 GB / PPL 5.2206) via
-`--tensor-type-file`. If it does not beat 5.2206 by a clear margin, park heterogeneous
-quantization with a measured reason and move to the Forge harness work.
+Install/prepare a training environment without disturbing the verified CUDA torch stack, then a
+bounded local QAT pilot. Pending Eddie's choice of training corpus:
+instruction data (OpenHermes/UltraChat) vs general text (WikiText/FineWeb). Recommendation:
+instruction data, because that is what the Forge harness will exercise.
+
+## Phase 4b outcome — heterogeneous PARKED
+
+```text
+control   Q4_K_S   2.3456 GB   5.3568
+treatment hetero   2.3425 GB   5.3961   (+0.73% — LOSES)
+Q4_K_M (llama.cpp) 2.4940 GB   5.2206   (beats both)
+```
+
+Built the allocation from the sensitivity map, measured it, and it lost at matched size.
+llama.cpp's own mix beats it for free. Parked with a measured reason (D-020). The remaining
+quality gap is a training problem, not an allocation problem (D-021).
 
 ## Uniform curve (Phase 4, complete)
 

@@ -219,6 +219,18 @@ result as a finding.
 **Found in:** phi-q, Phase 2 — Prism runtime produced repetition on both ternary artifacts, but
 could not load the stock F16 baseline, so the comparison was left unresolved instead of claimed.
 
+## L-018 — A well-tuned default is a real competitor, not a baseline
+
+**Lesson:** before designing a clever allocation, measure what the existing default already
+achieves. Hand-tuned heuristics encode a lot of empirical work, and a data-driven design that
+loses to the default has not earned its complexity.
+
+**Found in:** phi-q, Phase 4b — a layer-graded allocation derived from a real sensitivity map lost
+to llama.cpp's own `Q4_K_M` mix (`5.3961` vs `5.2206`), and also lost to plain uniform `Q4_K_S`
+at matched size. The default won for free.
+
+**Practice:** "our method beat the baseline" must mean a *tuned* baseline, not a naive one.
+
 ---
 
 # Environment lessons (Windows builds)

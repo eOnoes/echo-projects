@@ -53,7 +53,10 @@ does not repeat the bad ones.
 | D-015 | 2026-09-25 | phi-q | Correct Phase 2's premise instead of reproducing a confounded experiment | The F16 baseline failed the same benchmark | RIGHT |
 | D-016 | 2026-09-25 | phi-q | Cap the ternary reconciliation rather than chase a control local tooling cannot produce | Prism runtime cannot load stock F16; control unobtainable | PENDING |
 | D-017 | 2026-09-25 | phi-q | Use weight-space reconstruction error as the first sensitivity instrument | Cheap, no GPU, no training; standard practice | MIXED — valid for uniform bits, invalid for ternary |
-| D-018 | 2026-09-25 | phi-q | Design allocation layer-graded and projection-blind | Projection spread under 1%; layer edges spike | PENDING |
+| D-018 | 2026-09-25 | phi-q | Design allocation layer-graded and projection-blind | Projection spread under 1%; layer edges spike | WRONG — measured, it lost |
+| D-019 | 2026-09-25 | phi-q | Run one bounded heterogeneous test before parking the thread | Cheap, decisive, stops the question being re-opened | RIGHT |
+| D-020 | 2026-09-25 | phi-q | **Park heterogeneous quantization for this model** | Built and measured it; it lost by 0.73% at matched size, and llama.cpp's own mix beats it | PENDING |
+| D-021 | 2026-09-25 | phi-q | Move the remaining quality gap from allocation to training (QAT) | Allocation headroom is measured small; training reaches the same goal by a simpler route | PENDING |
 
 ---
 

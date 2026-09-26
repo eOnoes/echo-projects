@@ -2,7 +2,7 @@
 
 | Project | Executor | Manager | Status | Current phase | Next event |
 |---|---|---|---|---|---|
-| phi-q | Echo (local) | Echo | RUNNING | Phase 4 done — uniform curve | One heterogeneous test, then park |
+| phi-q | Echo (local) | Echo | RUNNING | Phase 5 — QAT pilot | Corpus choice from Eddie |
 | qwen36-ternary | Unassigned | Echo | NOT_CREATED | — | Doctrine packet to be written |
 | qwen-runtime | Echo | Echo | PAUSED | CUDA 13 D3 validation | Await compatible dual-GPU capacity |
 | onoes-agent | Codex | Echo | RUNNING | Windows release | Await build receipt |

@@ -111,6 +111,19 @@ All subsequent comparisons use this baseline. Historical figures are cross-refer
 | P4-010 | The entire Q4→Q5 quality interval is 1.22 percentage points, for 0.321 GB | PROVEN | §4 |
 | P4-011 | Heterogeneous allocation at Q4 size can recover "well under 1%" of perplexity | **ESTIMATE, not measured** | §4 |
 
+## Phase 4b findings — decisive heterogeneous test (2026-09-25)
+
+| ID | Claim | State | Evidence |
+|---|---|---|---|
+| P4B-001 | Heterogeneous allocation was built size-matched to control: 2.3425 vs 2.3456 GB | PROVEN | `P4b-heterogeneous-test-20260925.md` §3 |
+| P4B-002 | Treatment PPL 5.3961 vs control Q4_K_S 5.3568 at matched size | PROVEN | same |
+| P4B-003 | **Heterogeneous allocation LOSES by +0.73% at matched size** | PROVEN | same |
+| P4B-004 | The reallocation crossed the 3-bit cliff, paying a large loss for a small gain | INFERRED | §4 — Q3_K_M measured +9.24% vs Q4_K_M +3.27% |
+| P4B-005 | The sensitivity differential is too small to pay for size-neutral reallocation | INFERRED | §4 |
+| P4B-006 | **llama.cpp's own Q4_K_M mix beats both arms** (5.2206 vs 5.3568 / 5.3961) | PROVEN | §5 |
+| P4B-007 | Heterogeneous quantization is parked for this model, with a measured reason | DECIDED | D-020 |
+| P4B-008 | The remaining quality gap is a training problem, not an allocation problem | INFERRED | §7 |
+
 ## Research audit evidence
 
 | ID | Claim | State | Source |
