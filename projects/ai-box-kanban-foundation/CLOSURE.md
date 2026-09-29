@@ -7,10 +7,12 @@ This project is not closed. Closure requires all acceptance items below and Eddi
 
 ## Acceptance checklist
 
-- [x] AIK-01 audit and AIK-01-DOCS wording update are accepted by Echo and recorded in evidence.
-- [x] AIK-02 dashboard discovery/import is recorded with limitations.
-- [x] AIK-03 spec and acceptance matrix are complete and independently reviewed.
-- [x] Independent review findings are resolved or explicitly accepted as open limitations.
+- [x] The first three planning items have evidence and limitations recorded.
+- [x] AIK-05 loopback-only local mock is tested and independently verified; live mode remains blocked.
+- [ ] AIK-06 Control Chat navigation fix and regression check are accepted.
+- [ ] Items 4–6: D-1–D-5 decisions are recorded before shared-store/Relay/Control-view implementation.
+- [ ] Item 8: separate Mind G0–G7 report is received and reviewed; no duplicated work.
+- [ ] Items 9–10: physical hardware/topology evidence and an approved Proxmox boundary decision are recorded.
 - [ ] Evidence register and task ledger are reconciled.
 - [ ] Public packet is secret/path scanned; no private artifact is linked.
 - [ ] Final Markdown and HTML closure handoff is delivered to Eddie.

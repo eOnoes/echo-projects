@@ -1,7 +1,7 @@
 # Execution Plan
 
 **Plan state:** `RUNNING`
-**Current executor:** Codex — AIK-04-PLAN, `gpt-6-sol`, medium reasoning; project code fixes remain blocked.
+**Current executor:** Codex — AIK-06-CONTROL-CHAT-NAV, `gpt-6-sol`, medium reasoning. AIK-05 local mock is verified complete; AIK-04-PLAN is paused.
 **Rule:** one `IN_PROGRESS` task at a time.
 
 ## Owner-estimated AI-box schedule (planning only)
@@ -78,13 +78,40 @@ The spec must cover:
 
 ## Phase 4 — Prepare Inference Control security remediation plan (AIK-04-PLAN)
 
-**Status:** `RUNNING` — Codex receives only the sanitized, verified findings summarized in the task handoff.
+**Status:** `PAUSED` — independent review returned `NEEDS_CHANGES`; Eddie redirected priority to a functioning local product slice. No source edits or live-mode fixes were made under this plan task.
 **Allowed scope:** project-packet plan/acceptance/receipt artifacts only; no dashboard code, secrets, runtime, or services.
 **Exit gate:** Echo verifies the proposed fixes and acceptance cases; any code remediation requires a separate exact-file task and review.
 
-## Phase 5 — Close or split follow-on work
+## Phase 5 — Deliver the local-only Inference Control mock slice (AIK-05)
 
-Eddie decides whether to authorize documentation edits, a separate Kanban implementation packet, and/or a separate Inference Control security-remediation project. Do not silently extend this plan into implementation.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — sanitized repo branch `codex/IC-01-LOCAL-MOCK`, commit `e480d8a6f92cccc20d3fdba7397145e97b537943`; Echo reran syntax checks and 3 tests and verified remote readback.
+
+**Acceptance:** loopback-only UI, visible mock label, fixture catalogue, simulated in-memory load/unload, no real CLI/upstream side effects. This does not close F1–F7 for live mode.
+
+## Phase 6 — Repair Control Chat navigation (AIK-06)
+
+**Status:** `RUNNING` — Codex has a bounded task; exact source edits remain inside Chat navigation and its direct regression test.
+**Exit gate:** reproduce/fix the crash; verify the actual route target; do not guess or redirect to Relay without evidence; focused tests/build and diff scope pass.
+
+## Phase 7 — Resolve Kanban store and contract decisions (items 4; AIK-07)
+
+**Status:** `BLOCKED` on Eddie's D-1–D-5 decisions. No backend, identity provider, or retention policy may be guessed.
+
+## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)
+
+**Status:** `BLOCKED` until Phase 7 selects and reviews the authoritative service contract. One task authority; Relay consumes it; Control remains oversight/approval only.
+
+## Phase 9 — Mind G0–G7 review (item 8; external task)
+
+**Status:** `BLOCKED` on the separate Codex/Mind effort's reviewed evidence. Do not duplicate or inspect the dirty Mind workspace.
+
+## Phase 10 — Verify hardware and choose the initial Proxmox boundary (items 9–10; AIK-10)
+
+**Status:** `BLOCKED` until physical delivery and topology inspection. Parts/assembly/boot dates are estimates. Candidate remains an isolated Linux VM with PCI passthrough; no installation, BIOS/OS change, firmware change, or live inference is authorized here.
+
+## Product-first execution order
+
+Use two dependency-based chunks: software/product work first (Phase 6 now; Phase 7 requires owner decisions; Phase 8 follows; Phase 9 stays with the separate Mind effort), then hardware boundary work (Phase 10 after physical inspection). A functioning prototype is the milestone; production readiness remains a separate gate.
 
 ## Milestone/error protocol
 

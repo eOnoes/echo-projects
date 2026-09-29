@@ -29,9 +29,13 @@ Codex may **not** edit the Control repository during AIK-01. Source-document edi
 
 After AIK-01’s output is reviewed, Codex may create/update the Kanban specification and acceptance matrix inside this project packet only. This is design-only: no backend, database, API, Relay, Control, or Mind source changes.
 
+## AIK-06 — Control Chat navigation
+
+After Eddie's 2026-09-29 scope expansion, Codex may modify only the private Onoes-Control Chat navigation path and a directly related regression test in the task-named branch. The task may identify exact files by inspecting the clean Control checkout, but any edit beyond the Chat path/test or any Relay URL requires a stop and decision. No Mind/Relay source, credential, deployment, or live runtime access.
+
 ### Later, separately approved work
 
-Only a new task can authorize edits to the exact listed Markdown files in Control. Any Inference Control security implementation requires a separate scope decision and task. This packet never authorizes live model operations.
+Only a new task can authorize live-mode Inference Control security changes. Any live model operations require a separate scope decision and independent review. This packet never authorizes live model operations.
 
 ## Allowed error handling
 
@@ -47,9 +51,8 @@ Codex must not skip/xfail a failing test, loosen an acceptance threshold, delete
 
 ## Milestone recording and GitHub
 
-- Codex records each completed milestone in the project packet: update `TASKS.md`, append evidence to `EVIDENCE.md`, refresh `HANDOFF.md`, write a task receipt, and provide Markdown plus HTML milestone handoff.
-- After task assignment, Codex may create and push a scoped branch named `codex/<TASK-ID>` containing changes only under `projects/ai-box-kanban-foundation/`. No force push and no direct push to `main`.
-- Echo reads back the remote branch, inspects the exact diff, independently runs/reads the stated checks, and only then promotes accepted project-packet changes to `main`.
+- Codex records receipts and evidence for each task. For packet-only tasks, it may push only the project packet to `codex/<TASK-ID>`; for source-repo tasks, it may edit only the task-named repository/branch and paths, never push `main`, and must return the exact commit for Echo to verify.
+- Echo verifies the source diff, checks, and remote readback, then updates/promotes the project packet separately.
 - A pushed milestone is a reviewable claim, not completion by itself. Echo records `COMPLETE` only after acceptance evidence passes.
 
 ## Absolute project restrictions

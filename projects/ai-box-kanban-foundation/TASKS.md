@@ -2,15 +2,23 @@
 
 ## Current task
 
-**Task:** `AIK-04-PLAN` — draft a read-only Inference Control security-remediation plan
+**Task:** `AIK-06-CONTROL-CHAT-NAV` — repair Onoes-Control Chat navigation
 **Status:** `IN_PROGRESS`
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
-**Owner direction:** Eddie asked Echo to keep Codex moving toward AI-box readiness; this task is planning-only.
-**Allowed output:** security plan, acceptance matrix, receipt, and handoff under this project packet only; no dashboard source change, credential, or runtime.
+**Owner direction:** Eddie expanded work through items 4–10 and asked to move toward a functioning product; item 7 is the next independent software slice.
+**Allowed output:** Chat navigation fix and directly related regression test in the named private Control repo branch. No Relay URL guessing, unrelated app changes, credentials, deployments, or live runtime.
 
-AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-03 decisions D-1–D-5 remain open; D-4 should specify idempotency-outcome retention before implementation.
+AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-05 local mock is complete with limitations. AIK-04-PLAN is paused after independent review `NEEDS_CHANGES`. D-1–D-5 remain open; item 8 is assigned separately on Mind; items 9–10 wait for physical hardware evidence.
 
 ## Completed
+
+### AIK-05 — Inference Control local-mock prototype
+
+**Status:** `COMPLETE_WITH_LIMITATIONS` — commit `e480d8a6f92cccc20d3fdba7397145e97b537943` on private branch `codex/IC-01-LOCAL-MOCK`; Echo reran syntax checks, all 3 tests, diff hygiene, and remote readback.
+
+- [x] Loopback-only server, persistent mock-mode UI label, fixture catalogue, in-memory simulated load/unload.
+- [x] Tests prove non-loopback/agent startup denied and no real process spawn/upstream fetch in mock workflow.
+- [x] Live-mode security and operator auth remain unresolved; no real model/upstream action enabled.
 
 ### AIK-01 — Control boundary audit
 
@@ -64,8 +72,13 @@ The successful import is not runtime validation and does not close the dashboard
 |---|---|---|---|---|
 | `AIK-01-DOCS` | Apply delegated boundary wording to two Control Markdown docs | `COMPLETE` | Remote readback verified | Echo |
 | `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `COMPLETE_WITH_LIMITATIONS` | Echo + independent review passed; D-1–D-5 pending | Codex, Echo verified |
-| `AIK-04-PLAN` | Draft read-only security remediation plan from the sanitized audit findings | `IN_PROGRESS` | User asked to prepare the remaining readiness work; no source edits | Codex (`gpt-6-sol`, medium) |
-| `AIK-04` | Inference Control security remediation/code changes | `BLOCKED` | Separate exact-file implementation task, review, and authorization | Unassigned |
+| `AIK-04-PLAN` | Draft security remediation plan | `PAUSED` | Independent review `NEEDS_CHANGES`; product-first priority | Echo |
+| `AIK-05` | Local-mock Inference Control slice | `COMPLETE_WITH_LIMITATIONS` | Remote branch and 3 tests verified; no live mode | Codex, Echo verified |
+| `AIK-06-CONTROL-CHAT-NAV` | Repair Control Chat navigation | `IN_PROGRESS` | Independent software task; verified route target required | Codex (`gpt-6-sol`, medium) |
+| `AIK-07-KANBAN-DECISIONS` | Resolve D-1–D-5 / authoritative store | `BLOCKED` | Eddie's choices required before backend selection | Eddie / Echo |
+| `AIK-08-BOARD-UI` | Relay task UI + Control oversight views | `BLOCKED` | AIK-07 contract/store decision and review | Unassigned |
+| `AIK-09-MIND-GATES` | G0–G7 review | `BLOCKED` | Separate active Mind task; consume its verified report only | Separate Codex effort |
+| `AIK-10-HARDWARE-BOUNDARY` | Confirm topology and Proxmox boundary | `BLOCKED` | Physical parts/assembly and authorization | Eddie / Echo |
 
 ## Task rules
 
@@ -73,6 +86,7 @@ The successful import is not runtime validation and does not close the dashboard
 - `AIK-01` is complete with limitations; its deliverable is the verified boundary matrix in this packet.
 - `AIK-01-DOCS` is complete; only the two named Control Markdown files changed, with remote readback verification.
 - `AIK-03` is design-only and complete with limitations; D-1–D-5 remain open and no backend or UI implementation is authorized.
-- `AIK-04-PLAN` is read-only planning from the sanitized audit findings; no dashboard source or credential access.
-- `AIK-04` remediation/code changes remain blocked until a separate exact-file task is authorized and reviewed.
+- `AIK-05` is local mock only; live security, remote access, and real model/upstream operations remain blocked.
+- `AIK-06` is limited to Chat navigation and a regression test; do not guess Relay routing.
+- Items 4–6 wait for D-1–D-5; item 8 stays with the separate Mind effort; items 9–10 wait for physical evidence.
 - Never mark a task complete from an executor summary alone; Echo verifies evidence and remote files.
