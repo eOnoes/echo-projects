@@ -13,6 +13,17 @@ Provide one agent-agnostic operating doctrine for planning, delegating, executin
 
 The project documents are authoritative. The executing agent is replaceable.
 
+## Product-first rule — functioning slice before polish
+
+For product work, the default milestone is a minimal, functioning end-to-end product that the owner can test, trial, and tweak. It need not be 100% complete or production-ready.
+
+1. Define the core user workflow and an observable condition for “works.”
+2. Choose the simplest suitable implementation and build that working slice before broad polish, speculative threat analysis, optimization, or premature language/runtime rewrites.
+3. Verify the core workflow in an appropriately bounded environment and record actual limitations.
+4. Once the slice works, assess the product that exists. Prioritize fixes from observed behavior and credible risks. Consider a rewrite (for example, Python to Rust) only when evidence shows concrete benefits worth its cost and trade-offs.
+5. Block the slice only for a specific, credible issue that makes the intended trial unsafe or the core workflow unusable. Apply the minimum safeguards needed for a local or controlled trial; put low-likelihood or low-impact speculation and nonessential polish in a visible backlog with a reason or trigger for revisiting.
+6. A working prototype is not production approval. Before real-user, real-data, public-service, credential, or live-operation exposure, apply the appropriate security and reliability gates.
+
 ## Goal command
 
 Projects are selected by a stable command:
@@ -33,6 +44,7 @@ The command resolves to the project's canonical `GOAL.md`.
 6. Report using the standard response format.
 7. Stop when approval, missing evidence, scope conflict, or safety uncertainty is encountered.
 8. Apply `GITHUB-BILLING-SAFETY.md` to every GitHub operation.
+9. For product work, apply the Product-first rule: deliver and verify a functioning, testable slice before broad polish; distinguish a controlled prototype from production readiness.
 
 ## Scope protection
 

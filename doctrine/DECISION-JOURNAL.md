@@ -59,6 +59,7 @@ does not repeat the bad ones.
 | D-021 | 2026-09-25 | phi-q | Move the remaining quality gap from allocation to training (QAT) | Allocation headroom is measured small; training reaches the same goal by a simpler route | SUPERSEDED — see D-022 |
 | D-022 | 2026-09-25 | phi-q | **Adopt GSQ + RCO as the method**, replacing both naive allocation and QAD | Phase 4b's negative result was instrument-limited: wrong objective (reconstruction error, not task loss), fixed grid instead of learned, whole-layer instead of per-tensor, no budget constraint. ISTA reaches task-lossless at 3.50 bpw. | PENDING |
 | D-023 | 2026-09-25 | phi-q | Do not assume the Phi wrapper; spike it before committing the plan | GSQ supports LLaMA/Qwen3/Gemma/Kimi but explicitly NOT Phi-4. Writing an architecture wrapper is real engineering. | PENDING |
+| D-024 | 2026-09-29 | doctrine | Prioritize a functioning, testable product slice before broad polish; evaluate hardening and rewrites against the working product and credible risks | Eddie's explicit direction; focus on test, trial, and iteration | PENDING |
 
 ## Wrong calls (continued)
 
@@ -202,3 +203,15 @@ than patching `wiki_eval.py` or pinning dependency versions.
 (FP16 5.0553, Q4_K_M 5.2206) are directly comparable to every other measurement in this project;
 (2) GSQ's internal perplexity would be a second ruler, and this project has already been burned by
 a cross-ruler error (see W-002); (3) it avoids adding a third modification to a forked upstream.
+
+---
+
+## D-024 — Deliver a functioning product slice before broad polish
+
+**Date:** 2026-09-29 · **Project:** doctrine · **Status:** ADOPTED
+
+**Decision.** Product work should reach a minimal, working, testable end-to-end slice before broad polish, speculative hardening, optimization, or language/runtime rewrites. Once it works, assess the actual product and prioritize from observed behavior and credible risk. Use the simplest suitable implementation; consider alternatives such as Python-to-Rust only when evidence supports the benefit and justifies the cost.
+
+**Basis.** Eddie's direction: reach something simple that works so it can be tested, trialed, and tweaked; then assess what should change based on what exists.
+
+**Boundary.** This does not waive the minimum safeguards needed for a bounded trial or the appropriate gates before real-user, real-data, public-service, credential, or live-operation exposure. **Verdict:** PENDING — review after subsequent product outcomes.
