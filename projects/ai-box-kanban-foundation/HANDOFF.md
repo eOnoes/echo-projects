@@ -2,21 +2,21 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `RUNNING` — AIK-01/01-DOCS/03 and AIK-05/06 complete with limitations; AIK-07 brief ready for Echo review.
-**Current phase:** Software/product chunk, item 4 decision gate — D-1–D-5 recommendation brief.
-**Current task:** `AIK-07-KANBAN-DECISION-BRIEF`, Codex (`gpt-6-sol`, medium); packet-only brief drafted for Echo review, with D-1–D-5 `PENDING`.
+**Current status:** `WAITING_FOR_OWNER_DECISIONS` — AIK-07 is complete with limitations; D-1–D-5 remain pending.
+**Current phase:** Item 4 owner decision gate; no implementation task is active.
+**Current task:** Eddie to review the decision brief and answer D-1–D-5; Codex is idle until a new bounded task is authorized.
 **Manager:** Echo
-**Executor:** Codex; no dashboard source edits, credentials, services, or runtimes.
+**Executor:** Echo coordinates; no active Codex task. No credentials, services, or runtimes.
 
 ## TL;DR
 
-The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. The Kanban MVP contract passed independent review, but D-1–D-5 remain open. AIK-07 drafted the [owner decision brief](reports/KANBAN-DECISION-BRIEF.md) and [HTML companion](reports/KANBAN-DECISION-BRIEF.html); all five choices remain Eddie's. Item 8 stays with the separate Mind effort, and items 9–10 wait for physical hardware inspection.
+The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. AIK-07's [owner decision brief](reports/KANBAN-DECISION-BRIEF.md) and [HTML companion](reports/KANBAN-DECISION-BRIEF.html) are independently verified; D-1–D-5 remain Eddie's choices. Item 8 stays with the separate Mind effort, and items 9–10 wait for physical hardware inspection.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
 ## Last completed action
 
-AIK-05 local mock was pushed on private `codex/IC-01-LOCAL-MOCK` at `e480d8a6f92cccc20d3fdba7397145e97b537943`; Echo verified the five-file scope, remote readback, syntax checks, and 3 passing tests. AIK-06 is on `codex/AIK-06-CONTROL-CHAT-NAV` at `6c2a86551a49412ad7c3c4c9a65b1ff9fab2c66c`; Echo reran its focused test and build, compared the six failing full-suite cases against base, and verified remote blobs. It is not merged/deployed. AIK-03's independent review returned **PASS — ZERO GAPS**.
+AIK-07 is on `codex/AIK-07-KANBAN-DECISION-BRIEF` at `fa8fc4bedb1eb94006e230a1d85e75b7f253dc64`; Echo independently verified the six allowed task-output paths against remote blobs, pending markers, links, HTML, and public-content scan. All five owner choices remain pending. AIK-05 local mock was pushed on private `codex/IC-01-LOCAL-MOCK` at `e480d8a6f92cccc20d3fdba7397145e97b537943`; Echo verified the five-file scope, remote readback, syntax checks, and 3 passing tests. AIK-06 is on `codex/AIK-06-CONTROL-CHAT-NAV` at `6c2a86551a49412ad7c3c4c9a65b1ff9fab2c66c`; Echo reran its focused test and build, compared the six failing full-suite cases against base, and verified remote blobs. It is not merged/deployed. AIK-03's independent review returned **PASS — ZERO GAPS**.
 
 ## Verified context
 
@@ -28,11 +28,11 @@ AIK-05 local mock was pushed on private `codex/IC-01-LOCAL-MOCK` at `e480d8a6f92
 
 ## Current constraint
 
-AIK-07 may write only its decision brief, HTML, receipt, and packet tracking entries. Do not change the Kanban contract or resolve owner decisions. AIK-06's Control fix remains branch-only; do not guess a Relay URL or modify boundary/security surfaces. Inference Control stays mock-only; live auth/security and remote exposure remain blocked.
+No new Codex scope is active until Eddie answers D-1–D-5. Do not change the Kanban contract or resolve owner decisions. AIK-06's Control fix remains branch-only; do not guess a Relay URL or modify boundary/security surfaces. Inference Control stays mock-only; live auth/security and remote exposure remain blocked.
 
 ## Next safe action
 
-Echo verifies AIK-07 citations, option recommendations, links, and remote packet branch using the [receipt](receipts/AIK-07-DECISION-BRIEF.md). Then give Eddie the brief's compact D-1–D-5 decision prompt; do not start shared-board implementation until he answers and a separate implementation task is scoped. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
+Eddie reviews the [D-1–D-5 decision brief](reports/KANBAN-DECISION-BRIEF.md) and supplies the owner choices. Do not start shared-board implementation until those answers are recorded and a separate scoped task is approved. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
 
 ## Owner decisions still open
 

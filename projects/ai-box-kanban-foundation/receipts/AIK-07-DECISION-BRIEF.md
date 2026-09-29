@@ -4,7 +4,7 @@
 **Branch:** `codex/AIK-07-KANBAN-DECISION-BRIEF`
 **Starting HEAD:** `6fc3e9f329e0ffb829652186ecc5d33b4aaeb1d4`
 **Starting HEAD parent:** `e2a419a9bf164707e7c7a31996219bfa49103a67`
-**State:** ready for Echo review; D-1–D-5 remain **PENDING**.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo verified the pushed branch `codex/AIK-07-KANBAN-DECISION-BRIEF` at `fa8fc4bedb1eb94006e230a1d85e75b7f253dc64`; the six allowed task-output paths match remote blobs, all report links resolve, the HTML parses, D-1–D-5 remain pending, and public-content checks pass.
 
 ## Output
 
@@ -33,6 +33,6 @@ Local checks on the six AIK-07 changed paths:
 | Diff hygiene | Initial unstaged `git diff --check` passed. Staged `git diff --cached --check` then found four trailing-space lines in this new receipt; those spaces were removed and the staged check rerun. Git also reported working-copy LF-to-CRLF conversion warnings. |
 | Workflow pre-push inspection | `.github/workflows/` is absent in this checkout; no active push, pull-request, tag, schedule, or manual workflow was found. |
 
-No service, source repository, runtime, or workflow was used. Echo still needs to independently verify the pushed branch; no runtime acceptance test was run.
+No service, source repository, runtime, or workflow was used. Echo independently verified the final branch commit `fa8fc4bedb1eb94006e230a1d85e75b7f253dc64`: six authorized task-output blobs match remote readback; Markdown/HTML relative links, HTML parse, pending markers, public-content scan, and `git diff --check` pass. No runtime acceptance test was run or claimed.
 
 **Recorded check failure and repair:** For AIK-07, `git diff --cached --check` reported `trailing whitespace` at `receipts/AIK-07-DECISION-BRIEF.md` lines 3–6 after staging. The cause was Markdown hard-break spaces in the newly created receipt. They were removed in the same allowed path before push; the final staged and committed checks are reported with the handoff.

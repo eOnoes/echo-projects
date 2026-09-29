@@ -85,7 +85,10 @@ Verify AIK-06 against its exact acceptance criteria. Then prepare the D-1–D-5 
 - [`tasks/AIK-01-DOCS-CHANGE.md`](tasks/AIK-01-DOCS-CHANGE.md) — completed two-file documentation task.
 - [`tasks/AIK-03-CODEX-HANDOFF.md`](tasks/AIK-03-CODEX-HANDOFF.md) — completed design-only assignment.
 - [`tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md`](tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md) — bounded Control Chat source task, now complete with limitations.
-- [`tasks/AIK-07-KANBAN-DECISION-BRIEF-HANDOFF.md`](tasks/AIK-07-KANBAN-DECISION-BRIEF-HANDOFF.md) — current packet-only D-1–D-5 recommendation task.
+- [`tasks/AIK-07-KANBAN-DECISION-BRIEF-HANDOFF.md`](tasks/AIK-07-KANBAN-DECISION-BRIEF-HANDOFF.md) — completed recommendation-only task; all D-1–D-5 remain pending.
+- [`reports/KANBAN-DECISION-BRIEF.md`](reports/KANBAN-DECISION-BRIEF.md) — owner decision brief.
+- [`reports/KANBAN-DECISION-BRIEF.html`](reports/KANBAN-DECISION-BRIEF.html) — phone-friendly brief.
+- [`receipts/AIK-07-DECISION-BRIEF.md`](receipts/AIK-07-DECISION-BRIEF.md) — task and verification receipt.
 - [`receipts/AIK-05-LOCAL-MOCK.md`](receipts/AIK-05-LOCAL-MOCK.md) — verified local-mock prototype receipt.
 - [`receipts/AIK-06-CONTROL-CHAT-NAV.md`](receipts/AIK-06-CONTROL-CHAT-NAV.md) — verified branch-only Chat fix receipt.
 - [`tasks/AIK-04-PLAN-CODEX-HANDOFF.md`](tasks/AIK-04-PLAN-CODEX-HANDOFF.md) — paused read-only security-plan task.

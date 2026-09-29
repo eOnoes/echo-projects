@@ -95,7 +95,7 @@ The spec must cover:
 
 ## Phase 7 — Prepare D-1–D-5 owner decisions (items 4; AIK-07)
 
-**Status:** `RUNNING` — Codex prepares a concise evidence-based recommendation brief from the project packet only. The decisions themselves remain `PENDING` and implementation stays blocked until Eddie answers. No backend, identity provider, or retention period may be guessed.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex's packet-only brief is independently checked and ready for Eddie. D-1–D-5 remain `PENDING`; service implementation and items 5–6 stay blocked until Eddie decides. No backend, identity provider, or retention period was guessed.
 
 ## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)
 
@@ -111,7 +111,7 @@ The spec must cover:
 
 ## Product-first execution order
 
-Use two dependency-based chunks: software/product first (Phase 6 branch verified; Phase 7 decision brief now; Phase 8 after owner choices; Phase 9 stays with the separate Mind effort), then hardware boundary work (Phase 10 after physical inspection). A functioning prototype is the milestone; production readiness remains a separate gate.
+Use two dependency-based chunks: software/product first (Phase 6 branch verified; Phase 7 brief delivered, awaiting Eddie's choices; Phase 8 after owner choices; Phase 9 stays with the separate Mind effort), then hardware boundary work (Phase 10 after physical inspection). A functioning prototype is the milestone; production readiness remains a separate gate.
 
 ## Milestone/error protocol
 

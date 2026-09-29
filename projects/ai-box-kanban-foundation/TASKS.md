@@ -1,17 +1,25 @@
 # Task Ledger
 
-## Current task
+## Current gate / most recent task
 
-**Task:** `AIK-07-KANBAN-DECISION-BRIEF` — prepare owner-ready recommendations for D-1–D-5
-**Status:** `READY_FOR_ECHO_REVIEW` — brief drafted; D-1–D-5 remain `PENDING`.
+**Task:** `AIK-07-KANBAN-DECISION-BRIEF` — completed; awaiting Eddie's D-1–D-5 choices
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo independently verified the brief and remote branch; D-1–D-5 remain `PENDING` for Eddie.
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
 **Owner direction:** Eddie asked Codex to continue through the product-first plan. AIK-06 is verified on its source branch; this bounded packet-only task prepares the decisions required for Kanban work.
 **Allowed output:** A cited D-1–D-5 decision brief in Markdown/HTML plus receipt/ledger updates. It may recommend but must not decide for Eddie or change the contract.
-**Review artifacts:** [`reports/KANBAN-DECISION-BRIEF.md`](reports/KANBAN-DECISION-BRIEF.md), [`reports/KANBAN-DECISION-BRIEF.html`](reports/KANBAN-DECISION-BRIEF.html), and [`receipts/AIK-07-DECISION-BRIEF.md`](receipts/AIK-07-DECISION-BRIEF.md). Echo must verify the branch before accepting completion.
+**Review artifacts:** [`reports/KANBAN-DECISION-BRIEF.md`](reports/KANBAN-DECISION-BRIEF.md), [`reports/KANBAN-DECISION-BRIEF.html`](reports/KANBAN-DECISION-BRIEF.html), and [`receipts/AIK-07-DECISION-BRIEF.md`](receipts/AIK-07-DECISION-BRIEF.md). Echo verified the branch; no implementation task is active.
 
 AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-05 local mock is complete with limitations. AIK-04-PLAN is paused after independent review `NEEDS_CHANGES`. D-1–D-5 remain open; item 8 is assigned separately on Mind; items 9–10 wait for physical hardware evidence.
 
 ## Completed
+
+### AIK-07 — Kanban D-1–D-5 owner decision brief
+
+**Status:** `COMPLETE_WITH_LIMITATIONS` — branch `codex/AIK-07-KANBAN-DECISION-BRIEF`, commit `fa8fc4bedb1eb94006e230a1d85e75b7f253dc64`; six changed task-output blobs match remote and links/content checks pass.
+
+- [x] Provides packet-cited facts, supported options, recommendations, tradeoffs, unknowns, and a first testable slice.
+- [x] D-1–D-5 remain `PENDING`; no code, backend, identity provider, numeric retention period, protocol, or deployment was selected.
+- [x] Echo review complete; brief is ready for Eddie's choices.
 
 ### AIK-06 — Control Chat navigation fix
 
@@ -85,7 +93,7 @@ The successful import is not runtime validation and does not close the dashboard
 | `AIK-04-PLAN` | Draft security remediation plan | `PAUSED` | Independent review `NEEDS_CHANGES`; product-first priority | Echo |
 | `AIK-05` | Local-mock Inference Control slice | `COMPLETE_WITH_LIMITATIONS` | Remote branch and 3 tests verified; no live mode | Codex, Echo verified |
 | `AIK-06-CONTROL-CHAT-NAV` | Repair Control Chat navigation | `COMPLETE_WITH_LIMITATIONS` | Branch verified, not merged; six baseline failures remain | Codex, Echo verified |
-| `AIK-07-KANBAN-DECISION-BRIEF` | Recommend options for D-1–D-5 from packet evidence | `READY_FOR_ECHO_REVIEW` | D-1–D-5 pending; packet-only branch verification | Codex (`gpt-6-sol`, medium) |
+| `AIK-07-KANBAN-DECISION-BRIEF` | Recommend options for D-1–D-5 from packet evidence | `COMPLETE_WITH_LIMITATIONS` | Brief verified; Eddie's five choices pending | Codex, Echo verified |
 | `AIK-08-KANBAN-VERTICAL-SLICE` | Implement first shared-board slice and Relay/Control views | `BLOCKED` | Eddie's D-1–D-5 choices and reviewed service contract | Unassigned |
 | `AIK-09-MIND-GATES` | G0–G7 review | `BLOCKED` | Separate active Mind task; consume its verified report only | Separate Codex effort |
 | `AIK-10-HARDWARE-BOUNDARY` | Confirm topology and Proxmox boundary | `BLOCKED` | Physical parts/assembly and authorization | Eddie / Echo |
@@ -97,7 +105,7 @@ The successful import is not runtime validation and does not close the dashboard
 - `AIK-01-DOCS` is complete; only the two named Control Markdown files changed, with remote readback verification.
 - `AIK-03` is design-only and complete with limitations; D-1–D-5 remain open and no backend or UI implementation is authorized.
 - `AIK-05` is local mock only; live security, remote access, and real model/upstream operations remain blocked.
-- `AIK-07` is read-only against the project packet; recommendations do not resolve D-1–D-5.
+- `AIK-07` is complete as a recommendation brief; it does not resolve D-1–D-5.
 - AIK-06 remains on a branch, not merged or deployed; do not guess Relay routing.
 - Items 4–6 wait for Eddie's D-1–D-5 answers; item 8 stays with the separate Mind effort; items 9–10 wait for physical evidence.
 - Never mark a task complete from an executor summary alone; Echo verifies evidence and remote files.
