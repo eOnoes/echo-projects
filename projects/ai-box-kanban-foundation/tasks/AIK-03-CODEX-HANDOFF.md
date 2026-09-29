@@ -2,7 +2,7 @@
 
 **Project:** `ai-box-kanban-foundation`
 **Task:** `AIK-03` — define shared Kanban MVP requirements
-**Status:** `IN_PROGRESS`
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo verified the branch and a separate `mimo-v2.5` reviewer returned PASS; Eddie's D-1–D-5 remain open.
 **Executor:** Codex, `gpt-6-sol`, medium reasoning
 **Manager/reviewer:** Echo
 **Owner direction:** Eddie asked to work through items 1–3 and delegated project management to Echo.

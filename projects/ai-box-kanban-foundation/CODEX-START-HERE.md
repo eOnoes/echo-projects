@@ -3,8 +3,8 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `RUNNING` — AIK-03 spec task is assigned to Codex (`gpt-6-sol`, medium reasoning).
-Read `tasks/AIK-03-CODEX-HANDOFF.md` and work only inside this packet. Produce the design spec and acceptance matrix; do not choose a backend or implement code.
+**Current status:** `RUNNING` — AIK-04-PLAN assigned to Codex (`gpt-6-sol`, medium reasoning).
+Read `tasks/AIK-04-PLAN-CODEX-HANDOFF.md` and work only in the project packet. Do not access dashboard source, Git history, keys, services, or runtime.
 
 ## Read order
 
@@ -16,7 +16,7 @@ Read `tasks/AIK-03-CODEX-HANDOFF.md` and work only inside this packet. Produce t
 
 ## Current assignment
 
-AIK-03 is the active assignment. Use only the files and scope in `tasks/AIK-03-CODEX-HANDOFF.md`; do not implement any backend or source code.
+AIK-04-PLAN is active. Use only its bounded task file; do not implement code or access dashboard credentials, source, or runtime.
 
 ## Milestone and error rule
 

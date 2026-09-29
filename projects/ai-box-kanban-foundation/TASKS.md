@@ -2,15 +2,13 @@
 
 ## Current task
 
-**Task:** `AIK-03` — define shared Kanban MVP requirements
-**Status:** `READY_FOR_REVIEW` — draft delivered on `codex/AIK-03`; Echo's independent review is pending.
+**Task:** `AIK-04-PLAN` — draft a read-only Inference Control security-remediation plan
+**Status:** `IN_PROGRESS`
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
-**Owner direction:** The original project scope covers items 1–3; Eddie delegated project management to Echo.
-**Allowed output:** spec, acceptance matrix, receipt, and handoff under this packet only; no backend or source-code implementation.
+**Owner direction:** Eddie asked Echo to keep Codex moving toward AI-box readiness; this task is planning-only.
+**Allowed output:** security plan, acceptance matrix, receipt, and handoff under this project packet only; no dashboard source change, credential, or runtime.
 
-AIK-01 and AIK-01-DOCS are complete and verified. AIK-03 is the sole active task; no task is marked complete from the executor's draft alone.
-
-**AIK-03 deliverables:** [`deliverables/KANBAN-MVP.md`](deliverables/KANBAN-MVP.md), [`reports/KANBAN-ACCEPTANCE-MATRIX.md`](reports/KANBAN-ACCEPTANCE-MATRIX.md), [`receipts/AIK-03.md`](receipts/AIK-03.md), and [`reports/AIK-03-HANDOFF.md`](reports/AIK-03-HANDOFF.md) / [HTML](reports/AIK-03-HANDOFF.html). Eddie's D-1–D-5 decisions and independent review remain open.
+AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-03 decisions D-1–D-5 remain open; D-4 should specify idempotency-outcome retention before implementation.
 
 ## Completed
 
@@ -27,6 +25,15 @@ AIK-01 and AIK-01-DOCS are complete and verified. AIK-03 is the sole active task
 - [x] Fast-forwarded commit `12633d4c2ccc06a7dc9b25af80b56f3e249a05ab` to Control `master`; remote blob readback matched and source worktree is clean.
 - [x] Preserved the operations freeze; no code/runtime work.
 - **Receipt:** `receipts/AIK-01-DOCS.md`; **HTML:** `reports/AIK-01-DOCS-HANDOFF.html`.
+
+### AIK-03 — Define Kanban MVP requirements
+
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex draft verified by Echo and independently reviewed `PASS — ZERO GAPS` by Mimo v2.5. D-1–D-5 remain owner decisions; D-4 should explicitly include idempotency-outcome retention/expiry before implementation.
+
+- [x] Compact contract and A-01–A-12 acceptance matrix.
+- [x] Exact eight-file project-packet scope, remote readback, links, JSON example, diff check, and content scan verified.
+- [x] No backend or implementation selected.
+- **Review:** [`reports/AIK-03-ECHO-REVIEW.md`](reports/AIK-03-ECHO-REVIEW.md); **HTML handoff:** [`reports/AIK-03-HANDOFF.html`](reports/AIK-03-HANDOFF.html).
 
 ### AIK-00 — Create and publish the project packet
 
@@ -56,14 +63,16 @@ The successful import is not runtime validation and does not close the dashboard
 | Task | Summary | Status | Dependency | Executor |
 |---|---|---|---|---|
 | `AIK-01-DOCS` | Apply delegated boundary wording to two Control Markdown docs | `COMPLETE` | Remote readback verified | Echo |
-| `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `READY_FOR_REVIEW` | Echo review and Eddie decisions pending | Codex (`gpt-6-sol`, medium) |
-| `AIK-04` | Inference Control security remediation | `BLOCKED` | Separate scope, approval, and review | Unassigned |
+| `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `COMPLETE_WITH_LIMITATIONS` | Echo + independent review passed; D-1–D-5 pending | Codex, Echo verified |
+| `AIK-04-PLAN` | Draft read-only security remediation plan from the sanitized audit findings | `IN_PROGRESS` | User asked to prepare the remaining readiness work; no source edits | Codex (`gpt-6-sol`, medium) |
+| `AIK-04` | Inference Control security remediation/code changes | `BLOCKED` | Separate exact-file implementation task, review, and authorization | Unassigned |
 
 ## Task rules
 
 - One task may be `IN_PROGRESS` at a time.
 - `AIK-01` is complete with limitations; its deliverable is the verified boundary matrix in this packet.
 - `AIK-01-DOCS` is complete; only the two named Control Markdown files changed, with remote readback verification.
-- `AIK-03` is design-only; no backend or UI implementation.
-- `AIK-04` is not authorized by this packet and must precede any live model/runtime use.
+- `AIK-03` is design-only and complete with limitations; D-1–D-5 remain open and no backend or UI implementation is authorized.
+- `AIK-04-PLAN` is read-only planning from the sanitized audit findings; no dashboard source or credential access.
+- `AIK-04` remediation/code changes remain blocked until a separate exact-file task is authorized and reviewed.
 - Never mark a task complete from an executor summary alone; Echo verifies evidence and remote files.

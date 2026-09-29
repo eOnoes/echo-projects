@@ -5,7 +5,7 @@
 **Status:** `RUNNING`
 **Owner:** Eddie
 **Manager:** Echo
-**Executor:** Codex (`gpt-6-sol`, medium) for AIK-03; Echo manages and independently verifies. Codex completed AIK-01.
+**Current executor:** Codex (`gpt-6-sol`, medium) on AIK-04-PLAN; Echo verifies. AIK-03 is complete with limitations.
 **Created:** 2026-09-28
 
 ## Project keyword
@@ -41,15 +41,23 @@ The audits found that Mind’s current `work_items` and `stage_executions` are i
 - Do not install Proxmox, change OS/BIOS/GPU settings, buy hardware, or start paid resources.
 - Do not use GitHub Actions, Codespaces, Packages, deployments, runners, or other potentially billable features.
 
+## Owner-estimated AI-box schedule (recorded 2026-09-28)
+
+- All parts expected by **October 6, 2026**.
+- Unit assembled by **October 11, 2026**.
+- Boot/load testing targeted for **October 12, 2026**.
+
+Eddie called these estimates, not commitments. They do not authorize purchases, OS/BIOS changes, service exposure, or live testing before the applicable gates pass.
+
 ## Current phase and task
 
-**Current phase:** Phase 3 — Kanban MVP requirements (AIK-03) is in progress.
-**Current task:** `AIK-03` — design-only shared-task contract and acceptance matrix.
-**Current status:** `RUNNING` — Codex (`gpt-6-sol`, medium) assigned; no backend or implementation work.
+**Current phase:** Phase 4 — Inference Control security remediation plan (read-only).
+**Current task:** `AIK-04-PLAN` — derive a reviewed remediation plan and acceptance matrix from the sanitized audit findings.
+**Current status:** `RUNNING` — Codex assigned; no dashboard source, credentials, runtime, or services may be touched.
 
 ## Next safe action
 
-AIK-01 and AIK-01-DOCS are complete. Codex is drafting the AIK-03 specification and acceptance matrix under the packet, with no backend or code implementation. Echo will independently review the result.
+AIK-03 is complete with limitations and independently reviewed; the next task is a read-only security remediation plan from the sanitized dashboard findings. Eddie's estimated schedule is parts by Oct 6, assembly by Oct 11, boot/load testing Oct 12. The dates are estimates; no live testing starts before security approval.
 
 ## Decision log
 
@@ -71,7 +79,8 @@ AIK-01 and AIK-01-DOCS are complete. Codex is drafting the AIK-03 specification 
 - [`CODEX-START-HERE.md`](CODEX-START-HERE.md) — short entrypoint for Codex.
 - [`tasks/AIK-01-CODEX-HANDOFF.md`](tasks/AIK-01-CODEX-HANDOFF.md) — completed bounded audit assignment.
 - [`tasks/AIK-01-DOCS-CHANGE.md`](tasks/AIK-01-DOCS-CHANGE.md) — completed two-file documentation task.
-- [`tasks/AIK-03-CODEX-HANDOFF.md`](tasks/AIK-03-CODEX-HANDOFF.md) — active design-only assignment.
-- [`receipts/AIK-01-DOCS.md`](receipts/AIK-01-DOCS.md) — verification receipt.
-- [`reports/AIK-01-DOCS-HANDOFF.html`](reports/AIK-01-DOCS-HANDOFF.html) — completion handoff.
-- [`reports/AIK-01-DOCS-HANDOFF.md`](reports/AIK-01-DOCS-HANDOFF.md) — Markdown completion handoff.
+- [`tasks/AIK-03-CODEX-HANDOFF.md`](tasks/AIK-03-CODEX-HANDOFF.md) — completed design-only assignment.
+- [`tasks/AIK-04-PLAN-CODEX-HANDOFF.md`](tasks/AIK-04-PLAN-CODEX-HANDOFF.md) — active read-only security-plan assignment.
+- [`reports/AIK-03-ECHO-REVIEW.md`](reports/AIK-03-ECHO-REVIEW.md) — Echo and independent review record.
+- [`reports/AIK-03-HANDOFF.html`](reports/AIK-03-HANDOFF.html) — AIK-03 completion handoff.
+- [`receipts/AIK-01-DOCS.md`](receipts/AIK-01-DOCS.md) — Control wording verification receipt.

@@ -1,30 +1,12 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AIK-03 — Review handoff</title>
-  <style>body{font:16px/1.5 system-ui,sans-serif;max-width:54rem;margin:2rem auto;padding:0 1rem;color:#202124}h1,h2{line-height:1.2}a{color:#0757a6}li{margin:.4rem 0}.status{background:#eef5ff;border-left:4px solid #0757a6;padding:.8rem 1rem}</style>
-</head>
-<body>
-  <h1>AIK-03 — Review handoff</h1>
-  <h2>TL;DR</h2>
-  <p class="status">The shared Kanban MVP contract and A-01–A-12 acceptance cases are drafted for Echo's independent review. They require authenticated board-scoped actors, attributed and idempotent writes, approval-controlled removal, and a durable replayable feed. This is a design proposal. AIK-03 is <strong>READY_FOR_REVIEW</strong>, not accepted or complete.</p>
-  <h2>What to review</h2>
-  <ul>
-    <li><a href="../deliverables/KANBAN-MVP.md">Compact contract</a>: task shape, minimal lifecycle, authorization, audit, retry, and event recovery guarantees.</li>
-    <li><a href="KANBAN-ACCEPTANCE-MATRIX.md">Acceptance matrix</a>: A-01–A-12 pass/fail cases and coverage map.</li>
-    <li><a href="../receipts/AIK-03.md">Receipt</a>: inputs, outputs, checks, and scope.</li>
-  </ul>
-  <h2>Exact decisions required from Eddie</h2>
-  <ol>
-    <li><strong>D-1:</strong> Name the future authoritative shared task service/store and operator; the packet qualifies none of Mind, Relay, or Control.</li>
-    <li><strong>D-2:</strong> Choose the trusted identity source and lifecycle for human/agent IDs, and who grants and revokes board roles.</li>
-    <li><strong>D-3:</strong> Set removal approver eligibility, self-approval policy, and reason/revision requirements. No removal approval implementation is authorized while these remain open.</li>
-    <li><strong>D-4:</strong> Set audit/event retention and replay window, expired-cursor handling, and access to removed-task history.</li>
-    <li><strong>D-5:</strong> Choose snapshot/feed interface semantics and confirm priority/source-reference conventions for the first board.</li>
-  </ol>
-  <h2>Gate and next action</h2>
-  <p>Echo verifies the remote branch's exact project-scoped diff, links, coverage, and evidence claims, then requests an independent review. Eddie can decide D-1–D-5 after seeing findings. Implementation requires a separate authorized packet. Control's operations freeze and Mind G0–G7 remain open; Onoes-Inference-Control's security gate is separate.</p>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>AIK-03 — Completion handoff</title><style>
+:root{--ink:#17212b;--muted:#526171;--bg:#f3f6f9;--card:#fff;--line:#d8e0e8;--blue:#155eef;--pale:#edf3ff;--green:#147747;--palegreen:#eaf7ef;--amber:#855300;--paleamber:#fff6e5}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:860px;margin:auto;padding:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:17px;margin:12px 0}.hero{border-top:5px solid var(--blue)}h1{font-size:clamp(1.65rem,5vw,2.25rem);line-height:1.15;margin:.2rem 0 .6rem}h2{font-size:1.15rem;margin:.1rem 0 .5rem}.label{color:var(--blue);font-size:.75rem;letter-spacing:.12em;font-weight:800;text-transform:uppercase}.tldr{background:var(--pale);border-radius:9px;padding:12px}.status{color:var(--green);font-weight:800}.dates{background:var(--paleamber);border-radius:9px;padding:12px;margin-top:12px}li{margin:.4rem 0}a{color:#0758a6}code{background:#eef1f4;padding:.1rem .3rem;border-radius:4px}details{border-top:1px solid var(--line);padding:11px 0}summary{font-weight:750;cursor:pointer}.muted{color:var(--muted)}footer{border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:.9rem}@media(max-width:520px){main{padding:9px}.card{padding:13px}}
+</style></head><body><main>
+<header class="card hero"><div class="label">Project milestone · design gate</div><h1>Shared Kanban MVP contract</h1><p><strong>Task:</strong> AIK-03 · <span class="status">COMPLETE_WITH_LIMITATIONS</span></p>
+<section class="tldr"><h2>TL;DR</h2><p>The MVP contract and A-01–A-12 acceptance matrix passed Echo's scope/content checks and an independent <strong>Mimo v2.5 PASS — ZERO GAPS</strong> review. No backend, identity provider, code, or runtime was selected. D-1–D-5 remain Eddie's decisions before implementation; Echo recommends including idempotency-outcome retention in D-4.</p></section>
+<div class="dates"><strong>Eddie's AI-box estimates:</strong> parts by Oct 6 · assemble by Oct 11 · boot/load test Oct 12. These are estimates, not commitments. Live model control remains blocked until dashboard security remediation and independent review pass.</div></header>
+<section class="card"><h2>Verified deliverables</h2><ul><li><a href="../deliverables/KANBAN-MVP.md">Compact MVP contract</a></li><li><a href="KANBAN-ACCEPTANCE-MATRIX.md">A-01–A-12 acceptance matrix</a></li><li><a href="AIK-03-ECHO-REVIEW.md">Echo's review record</a></li><li><a href="../receipts/AIK-03.md">Codex receipt and checks</a></li></ul><p>Echo verified the exact eight-file scope, remote readback of all 27 packet blobs, relative links, JSON example, HTML parsing, diff check, and secret/private-path scan.</p></section>
+<section class="card"><h2>Decisions still open</h2><ol><li><strong>D-1:</strong> authoritative task service/store and operator.</li><li><strong>D-2:</strong> identity source and board-role grant/revocation authority.</li><li><strong>D-3:</strong> removal approver eligibility and self-approval/reason/revision policy.</li><li><strong>D-4:</strong> audit/event and idempotency-result retention, replay window, expiry behavior, and removed-task history access.</li><li><strong>D-5:</strong> snapshot/feed semantics and first-board priority/source-reference conventions.</li></ol></section>
+<details><summary>What this does not authorize</summary><p>No shared board implementation, backend selection, Relay/Control/Mind source change, credential work, service exposure, or live model test. Control's operation freeze and Mind G0–G7 remain open.</p></details>
+<footer>Next task: AIK-04-PLAN, a read-only dashboard security-remediation plan. Code remediation requires a separate reviewed and authorized task.</footer>
+</main></body></html>

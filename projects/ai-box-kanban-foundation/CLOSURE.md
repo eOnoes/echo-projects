@@ -9,8 +9,8 @@ This project is not closed. Closure requires all acceptance items below and Eddi
 
 - [x] AIK-01 audit and AIK-01-DOCS wording update are accepted by Echo and recorded in evidence.
 - [x] AIK-02 dashboard discovery/import is recorded with limitations.
-- [ ] AIK-03 spec and acceptance matrix are complete and independently reviewed.
-- [ ] Independent review findings are resolved or explicitly accepted as open limitations.
+- [x] AIK-03 spec and acceptance matrix are complete and independently reviewed.
+- [x] Independent review findings are resolved or explicitly accepted as open limitations.
 - [ ] Evidence register and task ledger are reconciled.
 - [ ] Public packet is secret/path scanned; no private artifact is linked.
 - [ ] Final Markdown and HTML closure handoff is delivered to Eddie.

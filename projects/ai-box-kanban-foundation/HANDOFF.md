@@ -2,46 +2,47 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `RUNNING` — AIK-01 and AIK-01-DOCS complete; AIK-03 draft ready for Echo review.
-**Current phase:** Phase 3 — AIK-03 Kanban MVP design.
-**Current task:** `AIK-03`, `READY_FOR_REVIEW` on `codex/AIK-03` (`gpt-6-sol`, medium).
+**Current status:** `RUNNING` — AIK-01 and AIK-01-DOCS complete; AIK-03 complete with limitations; AIK-04-PLAN active.
+**Current phase:** Phase 4 — read-only Inference Control security-remediation planning.
+**Current task:** `AIK-04-PLAN`, Codex (`gpt-6-sol`, medium); Echo independently verifies.
 **Manager:** Echo
-**Executor:** Codex; Echo independently verifies before accepting.
+**Executor:** Codex; no dashboard source edits, credentials, services, or runtimes.
 
 ## TL;DR
 
-The AIK-03 spec and acceptance matrix are drafted for Echo's independent review. They define authenticated board actors, task lifecycle, mutation history, safe retries, and recoverable events without choosing an authoritative store or identity provider. Eddie must resolve D-1–D-5 before implementation scope is opened. See the [AIK-03 Markdown handoff](reports/AIK-03-HANDOFF.md) and [HTML handoff](reports/AIK-03-HANDOFF.html).
+The Control boundary wording is corrected and verified. The Kanban MVP contract and acceptance matrix are complete with limitations: an independent reviewer passed them, but Eddie's D-1–D-5 decisions remain open; D-4 should explicitly cover idempotency-outcome retention before implementation. Codex is now drafting a **read-only** security-remediation plan from the sanitized audit findings.
 
-**Last completed action**
+Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
-Codex drafted the AIK-03 contract, A-01–A-12 acceptance cases, and task receipt under the project packet. AIK-01-DOCS remains the last independently accepted milestone.
+## Last completed action
+
+AIK-03 was pushed on `codex/AIK-03`; Echo verified the eight-file project-only scope, 27 remote packet blobs, links, JSON example, HTML, diff, and safety scans. Independent `mimo-v2.5` review returned **PASS — ZERO GAPS**.
 
 ## Verified context
 
-- Mind’s execution ledger is internal infrastructure, not a qualified shared board.
-- Relay is a candidate UI, not an authenticated shared task service yet.
+- Mind's `work_items` and `stage_executions` remain internal execution records, not a shared task backend.
+- Relay remains a candidate UI, not an authenticated shared task service.
 - Control is an oversight/approval surface, not an execution authority from Mind data.
-- Onoes-Inference-Control has a sanitized private repo; current security findings block runtime use.
-
-See `EVIDENCE.md` for claim labels and pointers.
+- Onoes-Inference-Control is a sanitized private repo, but the current security audit says it is not safe to run or expose.
+- The existing shared key was not rotated or copied; do not inspect, print, or publish any credential.
 
 ## Current constraint
 
-AIK-03 remains design-only. Its proposed contract is not evidence of implementation or runtime qualification. Control's operation freeze and Mind G0–G7 remain open.
+AIK-04-PLAN may write only project-packet documents from the supplied sanitized findings. It must not inspect dashboard source or history, access keys, run services, connect live models, or make code changes. Actual security remediation requires a separate exact-file task and review.
 
 ## Next safe action
 
-Echo reads back the scoped branch, checks the draft and acceptance coverage independently, and records review findings. Eddie then decides D-1–D-5 or explicitly keeps them open. No backend choice, code change, or live integration follows automatically.
+Verify Codex's AIK-04-PLAN deliverables and remote readback. Then present the plan and acceptance criteria for owner review before any source-code remediation task is opened. No live boot/load test may bypass the security gate.
+
+## Owner decisions still open
+
+- Kanban D-1–D-5: authoritative store/operator, identity and board grants, removal policy, retention (including idempotency outcomes), and snapshot/feed interface.
+- Exact implementation scope for Inference Control security remediation after its plan is reviewed.
 
 ## Do not do
 
-- Do not edit any Control file outside the two exact Markdown paths authorized by AIK-01-DOCS.
-- Do not implement a Kanban backend or modify Relay, Control, or Mind code.
-- Do not read or handle credentials; do not rotate the existing key.
-- Do not inspect the dirty Mind workspace or legacy dashboard configuration.
-- Do not start any service or run live model operations.
-- Do not use paid GitHub features or push a task branch directly to `main`.
-
-## Required executor return
-
-Return task ID/status, files changed, exact checks/results, commit/branch, receipt and HTML/Markdown report paths, scope confirmation, blockers, and next action. Echo verifies the remote content before accepting a milestone.
+- Do not rotate, inspect, copy, print, or publish credentials.
+- Do not inspect the legacy credential-bearing dashboard tree or dirty Mind workspace.
+- Do not modify dashboard, Control, Mind, or Relay source code in the current task.
+- Do not install Proxmox, alter BIOS/OS/GPU settings, expose services, or start live model operations.
+- Do not use paid GitHub features, workflows, deployments, or CI.

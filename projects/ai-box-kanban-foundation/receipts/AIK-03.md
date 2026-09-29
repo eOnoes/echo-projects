@@ -1,7 +1,7 @@
 # AIK-03 receipt
 
 **Task:** `AIK-03` — shared Kanban MVP requirements
-**Status:** `READY_FOR_REVIEW`; Echo has not yet accepted the draft.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo verified; independent review PASS; owner decisions D-1–D-5 remain open.
 **Branch:** `codex/AIK-03`
 **Executor:** Codex, `gpt-6-sol`, medium reasoning.
 
@@ -38,3 +38,9 @@ Spec D-1–D-5 leave the authoritative store/operator, identity and board-grant 
 ## Scope confirmation
 
 Only project-packet documentation was written. No backend/vendor/identity-provider selection, code, API implementation, UI, migration, service, credential, provider lookup, paid feature, Actions, or CI was used. No private source repository was inspected or fetched.
+
+## Echo and independent review
+
+Echo verified the remote commit, eight project-only paths, 27 matching project-packet blobs, 23 relative links, valid JSON example, 55-line spec, HTML parse, diff check, and secret/private-path scan. The independent `mimo-v2.5` reviewer returned `PASS — ZERO GAPS` on the supplied design and acceptance matrix. No runtime behavior is claimed.
+
+Echo's remaining design note: D-4 should explicitly include idempotency-outcome retention and expiry before implementation. D-1–D-5 remain owner decisions.

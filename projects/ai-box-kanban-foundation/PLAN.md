@@ -1,8 +1,16 @@
 # Execution Plan
 
 **Plan state:** `RUNNING`
-**Current executor:** Codex — AIK-03, `gpt-6-sol`, medium reasoning.
+**Current executor:** Codex — AIK-04-PLAN, `gpt-6-sol`, medium reasoning; project code fixes remain blocked.
 **Rule:** one `IN_PROGRESS` task at a time.
+
+## Owner-estimated AI-box schedule (planning only)
+
+- **October 6, 2026:** expected to have all parts.
+- **October 11, 2026:** target to have the unit put together.
+- **October 12, 2026:** target boot/load testing.
+
+Eddie described these dates as estimates, not commitments. They do not authorize purchasing, OS/BIOS changes, service exposure, or live model testing before the relevant gates pass.
 
 ## Phase 0 — Project packet and safety boundaries
 
@@ -49,7 +57,7 @@ The dashboard was found as `Onoes-Inference-Control`, imported into a fresh-hist
 
 ## Phase 3 — Define Kanban MVP requirements (AIK-03)
 
-**Status:** `RUNNING` — Codex assigned with `gpt-6-sol`, medium reasoning.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex draft verified by Echo and independently reviewed PASS; D-1–D-5 remain owner decisions, with idempotency-result retention to be included in D-4 before implementation.
 **Purpose:** specify a separate shared task service before implementation.
 
 **Deliverable:** `deliverables/KANBAN-MVP.md` plus `reports/KANBAN-ACCEPTANCE-MATRIX.md`.
@@ -68,7 +76,13 @@ The spec must cover:
 
 **Exit gate:** compact spec, threat notes, and acceptance matrix reviewed by Echo and independently reviewed; unresolved choices are explicitly listed for Eddie.
 
-## Phase 4 — Close or split follow-on work
+## Phase 4 — Prepare Inference Control security remediation plan (AIK-04-PLAN)
+
+**Status:** `RUNNING` — Codex receives only the sanitized, verified findings summarized in the task handoff.
+**Allowed scope:** project-packet plan/acceptance/receipt artifacts only; no dashboard code, secrets, runtime, or services.
+**Exit gate:** Echo verifies the proposed fixes and acceptance cases; any code remediation requires a separate exact-file task and review.
+
+## Phase 5 — Close or split follow-on work
 
 Eddie decides whether to authorize documentation edits, a separate Kanban implementation packet, and/or a separate Inference Control security-remediation project. Do not silently extend this plan into implementation.
 
