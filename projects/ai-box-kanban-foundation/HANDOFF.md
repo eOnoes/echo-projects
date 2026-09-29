@@ -2,19 +2,19 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `RUNNING` — AIK-01 audit is complete; AIK-01-DOCS applies Eddie-delegated wording to two exact docs.
-**Current phase:** 1 — Control boundary reconciliation
-**Current task:** `AIK-01-DOCS`, Echo executing documentation-only change
+**Current status:** `RUNNING` — AIK-01 and AIK-01-DOCS complete; AIK-03 in progress.
+**Current phase:** Phase 3 — AIK-03 Kanban MVP design.
+**Current task:** `AIK-03`, Codex drafting specification/acceptance matrix (`gpt-6-sol`, medium).
 **Manager:** Echo
-**Executor:** Echo for AIK-01-DOCS; Codex completed AIK-01
+**Executor:** Codex; Echo independently verifies before accepting.
 
 ## TL;DR
 
-The verified AIK-01 matrix identified three wording ambiguities. Eddie delegated the decision to Echo. The bounded AIK-01-DOCS task is updating exactly two Control Markdown files; no code or runtime work is in scope.
+AIK-01-DOCS clarified the Control boundary in exactly two Markdown files; remote readback and the clean source checkout were verified. Codex (`gpt-6-sol`, medium) is now drafting the AIK-03 Kanban MVP specification and acceptance matrix. No backend or implementation is in scope.
 
 **Last completed action**
 
-Codex's AIK-01 matrix and receipt are verified. The current AIK-01-DOCS task will apply the delegated wording to exactly two Control documents.
+Codex's AIK-01 matrix and Echo's source-document verification are complete. The delegated wording change is also complete; see `reports/AIK-01-DOCS-HANDOFF.html` and its receipt.
 
 ## Verified context
 
@@ -27,11 +27,11 @@ See `EVIDENCE.md` for claim labels and pointers.
 
 ## Current constraint
 
-Only the two named Control Markdown docs may change under AIK-01-DOCS. The operation freeze, G0–G7 gates, credentials, and AIK-03 queue remain untouched until this documentation gate passes.
+AIK-03 may write only the project packet deliverables named in its task handoff. Do not select a backend, implement code, change Control/Mind/Relay sources, or perform runtime integration.
 
 ## Next safe action
 
-Create the two-file diff, run doc/scope checks, push the task branch, and verify remote readback. Do not begin AIK-03 until this documentation gate is complete.
+Codex will complete AIK-03 with the spec, acceptance matrix, receipt, and HTML handoff. Echo will verify all claims and scope before the next phase. No backend choice, code change, or live integration is authorized.
 
 ## Do not do
 

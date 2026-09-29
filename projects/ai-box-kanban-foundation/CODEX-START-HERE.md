@@ -3,8 +3,8 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `RUNNING` — AIK-01 audit is complete; Echo is executing the delegated AIK-01-DOCS change.
-The completed AIK-01 run used `gpt-6-sol`, medium reasoning. Codex is not currently assigned; AIK-01-DOCS is a narrow Echo documentation task.
+**Current status:** `RUNNING` — AIK-03 spec task is assigned to Codex (`gpt-6-sol`, medium reasoning).
+Read `tasks/AIK-03-CODEX-HANDOFF.md` and work only inside this packet. Produce the design spec and acceptance matrix; do not choose a backend or implement code.
 
 ## Read order
 
@@ -16,7 +16,7 @@ The completed AIK-01 run used `gpt-6-sol`, medium reasoning. Codex is not curren
 
 ## Current assignment
 
-AIK-01 is complete as an executor task and Echo verification passed. Do not restart it or begin AIK-03; AIK-01-DOCS must finish and be verified first.
+AIK-03 is the active assignment. Use only the files and scope in `tasks/AIK-03-CODEX-HANDOFF.md`; do not implement any backend or source code.
 
 ## Milestone and error rule
 

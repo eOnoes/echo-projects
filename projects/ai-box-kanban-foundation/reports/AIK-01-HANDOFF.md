@@ -6,6 +6,9 @@ The [source-cited Control boundary matrix](CONTROL-BOUNDARY-MATRIX.md) identifie
 
 ## Drill-down
 
+> **Subsequent disposition:** Eddie delegated wording selection to Echo. The exact two-file update was completed under AIK-01-DOCS; see the [completion handoff](AIK-01-DOCS-HANDOFF.html) and [receipt](../receipts/AIK-01-DOCS.md).
+
+
 - **Ownership:** `docs/MIND-INTEGRATION-READINESS.md`, Ownership boundary, lines 11–20 assigns Control workflows/stages/approvals. C-01 proposes limiting that row to Control-owned oversight records and leaving the shared task owner undecided.
 - **Persistence:** `docs/SECURITY-FOUNDATION.md`, Exact remaining gates, lines 31–40 calls for an authoritative Control backend. C-03 limits that phrase to Control-owned records; it does not select a Kanban backend.
 - **Execution:** `docs/SECURITY-FOUNDATION.md`, Implemented boundary, lines 5–11 and 18–21 keeps commands frozen and chat identity unbound to command authorization. C-04/C-05 make the no-execution-from-Mind-data rule explicit.

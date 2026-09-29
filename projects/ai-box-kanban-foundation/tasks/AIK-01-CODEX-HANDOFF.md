@@ -2,7 +2,7 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Task:** `AIK-01` — Control boundary document audit
-**Status:** `SUBMITTED_FOR_REVIEW` — Codex execution complete; Echo verification passed; Eddie’s wording decision pending.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex execution and Echo verification are complete. Eddie later delegated the wording decision; the scoped follow-on AIK-01-DOCS change is complete (see its receipt and handoff).
 **Executor:** Codex, `gpt-6-sol`, medium reasoning
 **Manager:** Echo
 **Owner approval:** received in the project chat.

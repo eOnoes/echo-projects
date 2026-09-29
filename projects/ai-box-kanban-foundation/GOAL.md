@@ -5,7 +5,7 @@
 **Status:** `RUNNING`
 **Owner:** Eddie
 **Manager:** Echo
-**Executor:** Echo for AIK-01-DOCS (documentation-only); Codex (`gpt-6-sol`, medium) completed AIK-01.
+**Executor:** Codex (`gpt-6-sol`, medium) for AIK-03; Echo manages and independently verifies. Codex completed AIK-01.
 **Created:** 2026-09-28
 
 ## Project keyword
@@ -24,7 +24,7 @@ The audits found that Mind’s current `work_items` and `stage_executions` are i
 
 ## Definition of done
 
-1. The relevant Control documents have a cited contradiction matrix and proposed wording that Eddie approves; any approved source-document changes are minimal and verified.
+1. The relevant Control documents have a cited contradiction matrix and wording approved or delegated by Eddie; any delegated source-document changes are minimal and verified.
 2. The dashboard discovery/import status is recorded accurately. Its security gate is explicit, and no claim suggests it is ready to run or expose.
 3. A compact Kanban MVP specification defines tasks, actors, permissions, state transitions, mutation attribution, removal approval, idempotency, and event-feed recovery.
 4. An independent review identifies unresolved issues; the packet records decisions, evidence, and the next safe action.
@@ -43,13 +43,13 @@ The audits found that Mind’s current `work_items` and `stage_executions` are i
 
 ## Current phase and task
 
-**Current phase:** Phase 1 — Control boundary audit is complete; AIK-01-DOCS applies the delegated wording clarification.
-**Current task:** `AIK-01-DOCS` — two-file documentation-only update in progress.
-**Current status:** `RUNNING` — Echo is applying exact scoped edits; AIK-03 remains queued.
+**Current phase:** Phase 3 — Kanban MVP requirements (AIK-03) is in progress.
+**Current task:** `AIK-03` — design-only shared-task contract and acceptance matrix.
+**Current status:** `RUNNING` — Codex (`gpt-6-sol`, medium) assigned; no backend or implementation work.
 
 ## Next safe action
 
-AIK-01 audit is complete and verified. Eddie delegated the wording decision to Echo; the active bounded task edits only the two named Control docs. Echo will verify the remote diff before marking it complete; AIK-03 remains queued.
+AIK-01 and AIK-01-DOCS are complete. Codex is drafting the AIK-03 specification and acceptance matrix under the packet, with no backend or code implementation. Echo will independently review the result.
 
 ## Decision log
 
@@ -70,5 +70,8 @@ AIK-01 audit is complete and verified. Eddie delegated the wording decision to E
 - [`PROJECT-OVERRIDES.md`](PROJECT-OVERRIDES.md) — additive restrictions.
 - [`CODEX-START-HERE.md`](CODEX-START-HERE.md) — short entrypoint for Codex.
 - [`tasks/AIK-01-CODEX-HANDOFF.md`](tasks/AIK-01-CODEX-HANDOFF.md) — completed bounded audit assignment.
-- [`tasks/AIK-01-DOCS-CHANGE.md`](tasks/AIK-01-DOCS-CHANGE.md) — active two-file documentation task.
-- [`reports/`](reports/) — Markdown and HTML handoffs.
+- [`tasks/AIK-01-DOCS-CHANGE.md`](tasks/AIK-01-DOCS-CHANGE.md) — completed two-file documentation task.
+- [`tasks/AIK-03-CODEX-HANDOFF.md`](tasks/AIK-03-CODEX-HANDOFF.md) — active design-only assignment.
+- [`receipts/AIK-01-DOCS.md`](receipts/AIK-01-DOCS.md) — verification receipt.
+- [`reports/AIK-01-DOCS-HANDOFF.html`](reports/AIK-01-DOCS-HANDOFF.html) — completion handoff.
+- [`reports/AIK-01-DOCS-HANDOFF.md`](reports/AIK-01-DOCS-HANDOFF.md) — Markdown completion handoff.

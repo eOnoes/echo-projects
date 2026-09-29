@@ -1,7 +1,7 @@
 # Execution Plan
 
 **Plan state:** `RUNNING`
-**Current executor:** Echo — AIK-01-DOCS, exact two-file documentation-only task.
+**Current executor:** Codex — AIK-03, `gpt-6-sol`, medium reasoning.
 **Rule:** one `IN_PROGRESS` task at a time.
 
 ## Phase 0 — Project packet and safety boundaries
@@ -28,19 +28,16 @@
 1. Codex reads only those docs and extracts statements about task records, approvals, persistence, and execution authority.
 2. Codex writes `reports/CONTROL-BOUNDARY-MATRIX.md` with document/section references, agreement/conflict, and proposed wording.
 3. Echo verifies every citation and checks that the proposal preserves: Mind internal execution records only; Relay candidate UI, not a task service; Control oversight/approval, not execution authority.
-4. Eddie reviews the matrix and proposed wording.
-5. Only after approval may a new task authorize exact documentation-only edits to the named Control files.
+4. Eddie reviews the matrix or delegates wording selection to Echo.
+5. After explicit approval or delegation, a separate task may authorize exact documentation-only edits to named Control files.
 
-**Exit gate:** cited matrix and replacement text approved; any authorized edits have a scoped diff and doc checks; no code changes.
+**Exit gate:** cited matrix and replacement text are owner-approved or owner-delegated; any authorized edits have a scoped diff and doc checks; no code changes.
 
 **Failure route:** missing or contradictory source facts become `UNRESOLVED`; do not infer a contract or edit around the conflict. Return the decision to Eddie.
 
 ## Phase 1B — Apply delegated boundary wording (AIK-01-DOCS)
 
-**Status:** `RUNNING` — Echo applies the exact two-file Markdown scope in `tasks/AIK-01-DOCS-CHANGE.md`.
-**Owner direction:** Eddie delegated wording selection and management in the project chat.
-**Allowed files:** `docs/MIND-INTEGRATION-READINESS.md` and `docs/SECURITY-FOUNDATION.md` in Onoes-Control only.
-**Exit gate:** exact two-file diff, Markdown checks and public-content scan pass; remote readback matches; source checkout returns clean.
+**Status:** `COMPLETE` — commit `12633d4c2ccc06a7dc9b25af80b56f3e249a05ab` was fast-forwarded to private Control `master`; remote readback and clean checkout verified.
 
 ## Phase 2 — Record Inference Control discovery/import (AIK-02)
 
@@ -52,6 +49,7 @@ The dashboard was found as `Onoes-Inference-Control`, imported into a fresh-hist
 
 ## Phase 3 — Define Kanban MVP requirements (AIK-03)
 
+**Status:** `RUNNING` — Codex assigned with `gpt-6-sol`, medium reasoning.
 **Purpose:** specify a separate shared task service before implementation.
 
 **Deliverable:** `deliverables/KANBAN-MVP.md` plus `reports/KANBAN-ACCEPTANCE-MATRIX.md`.

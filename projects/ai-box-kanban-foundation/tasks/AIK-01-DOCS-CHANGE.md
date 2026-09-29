@@ -2,7 +2,7 @@
 
 **Project:** `ai-box-kanban-foundation`
 **Task ID:** `AIK-01-DOCS`
-**Status:** `IN_PROGRESS`
+**Status:** `COMPLETE` — remote file readback matched the verified commit; exactly two docs changed; Control checkout is clean.
 **Owner:** Eddie
 **Manager/executor:** Echo
 **Authority:** Eddie delegated wording selection and project management in the project chat.
@@ -47,4 +47,4 @@ The AI Box project packet may also be updated with this task's evidence, status,
 
 ## Completion condition
 
-Mark this task complete only after remote file readback matches the verified commit, the branch diff contains exactly the two named docs, and the Control source checkout is clean after promotion. AIK-03 stays queued until this gate is complete.
+Mark this task complete only after remote file readback matches the verified commit, the branch diff contains exactly the two named docs, and the Control source checkout is clean after promotion. **Complete:** commit `12633d4c2ccc06a7dc9b25af80b56f3e249a05ab`; exactly two files; remote blobs matched; Control worktree clean. AIK-03 is now active as a design-only task.
