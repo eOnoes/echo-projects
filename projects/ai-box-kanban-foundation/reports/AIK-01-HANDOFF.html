@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIK-01 — Review handoff</title>
+  <style>
+    body{font:16px/1.55 system-ui,sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem;color:#17212b;background:#fff}
+    h1,h2{line-height:1.25} a{color:#0759a5} li{margin:.55rem 0}
+    .summary{border-left:4px solid #0759a5;padding:.5rem 1rem;background:#f3f8fd}
+    .decision{border:2px solid #435a70;padding:.5rem 1rem;margin-top:1.5rem}
+    code{font-size:.9em;background:#f0f2f4;padding:.1em .25em}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>AIK-01 — Review handoff</h1>
+    <section class="summary" aria-labelledby="tldr"><h2 id="tldr">TL;DR</h2>
+      <p>The <a href="CONTROL-BOUNDARY-MATRIX.md">source-cited Control boundary matrix</a> identifies four wording decisions for Eddie: C-01, C-03, C-04, and the common boundary paragraph. The documents describe Control oversight, approval, audit, chat, and a frozen future command path. They do not establish a shared task backend or feed. No source file was changed. AIK-01 is submitted for Echo verification and Eddie's decision; it is not accepted or complete.</p>
+    </section>
+    <section aria-labelledby="detail"><h2 id="detail">Drill-down</h2>
+      <ul>
+        <li><strong>Ownership:</strong> <code>docs/MIND-INTEGRATION-READINESS.md</code>, Ownership boundary, lines 11–20. C-01 confines Control ownership to its oversight records and leaves shared task ownership undecided.</li>
+        <li><strong>Persistence:</strong> <code>docs/SECURITY-FOUNDATION.md</code>, Exact remaining gates, lines 31–40. C-03 clarifies that the authoritative Control backend is for Control-owned records, not a selected Kanban backend.</li>
+        <li><strong>Execution:</strong> <code>docs/SECURITY-FOUNDATION.md</code>, Implemented boundary, lines 5–11 and 18–21. Commands remain frozen; chat identity is not bound to command authorization. C-04/C-05 reject execution authority from Mind data.</li>
+        <li><strong>Attribution and events:</strong> <code>docs/GATE-2-INVARIANTS.md</code>, Binding and event invariants, lines 25–40. Future Control invariants do not prove board actors, permissions, task mutation/removal history, or a durable task feed.</li>
+        <li><strong>Chat:</strong> <code>docs/CHAT-PHASE3-LIVE-MESSAGING.md</code>, Decision, lines 3–5; Phase 3A, lines 17–25; Explicit non-goals, lines 41–48. Chat delivery remains separate from commands and task history.</li>
+        <li><strong>Readiness:</strong> Integration/security gates remain open in <code>docs/MIND-INTEGRATION-READINESS.md</code>, lines 22–31; <code>docs/SECURITY-FOUNDATION.md</code>, lines 31–42; and <code>docs/GATE-2-INVARIANTS.md</code>, lines 1–4. Supplied Mind G0–G7 remain open.</li>
+      </ul>
+      <p>The <a href="../receipts/AIK-01.md">receipt</a> records reads and checks. The matrix holds every finding, confidence label, citation, and proposed text. AIK-03 remains queued.</p>
+    </section>
+    <section class="decision" aria-labelledby="next"><h2 id="next">Exact next decision</h2>
+      <p>Echo verifies citations, scope, and the pushed diff. Eddie then approves the proposed boundary wording for a new, exact-file documentation-edit task, or supplies corrected ownership/execution wording. This handoff authorizes no Control edit or integration work.</p>
+    </section>
+  </main>
+</body>
+</html>

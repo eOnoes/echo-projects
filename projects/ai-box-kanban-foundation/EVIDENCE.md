@@ -14,6 +14,9 @@ Only verifiable claims belong here. Public packet entries contain no private pat
 | `E-008` | The Kanban task/feed schema and authority model are fully specified. | `UNRESOLVED` | Pending AIK-03 | Must be independently reviewed before implementation. |
 | `E-009` | The initial project packet is present on public `main` at commit `c975022afe3080f7e6bf1c6b612ed242acffd271`; remote readback matches. | `PROVEN` | GitHub commit and project-directory tree readback | Commit contains only the 12 project-packet files. |
 | `E-010` | Eddie authorized AIK-01; Echo assigned Codex with `gpt-6-sol`, medium reasoning, and read-only source scope. | `PROVEN` | Owner instruction received in this project chat | No Control source edit, service, or runtime action is authorized. |
+| `E-011` | The four named Control documents describe Control-owned oversight/approval, chat, audit, and frozen future command boundaries; their wording does not establish a canonical shared Kanban service. | `PROVEN` | [`CONTROL-BOUNDARY-MATRIX.md`](reports/CONTROL-BOUNDARY-MATRIX.md), C-01–C-12; [`AIK-01.md`](receipts/AIK-01.md) | Source lines and confidence labels are recorded per row; wording changes are proposals only. |
+| `E-012` | AIK-01 proposed a common ownership/execution boundary paragraph and exact wording decisions for Eddie. | `PROVEN` | [`CONTROL-BOUNDARY-MATRIX.md`](reports/CONTROL-BOUNDARY-MATRIX.md), “Proposed common boundary paragraph” and “Exact next decision” | Echo verification and Eddie approval remain pending; no source edit. |
+| `E-013` | The exact Control-document contradictions and required wording have been fully accepted. | `UNRESOLVED` | Supersedes the pending review in E-007; [`AIK-01-HANDOFF.md`](reports/AIK-01-HANDOFF.md) | Matrix is submitted, not accepted. |
 
 ## Evidence update rule
 
