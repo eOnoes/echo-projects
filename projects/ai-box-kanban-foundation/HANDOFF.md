@@ -2,15 +2,15 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `RUNNING` — AIK-01/01-DOCS/03 and AIK-05/06 complete with limitations; AIK-07 decision brief active.
+**Current status:** `RUNNING` — AIK-01/01-DOCS/03 and AIK-05/06 complete with limitations; AIK-07 brief ready for Echo review.
 **Current phase:** Software/product chunk, item 4 decision gate — D-1–D-5 recommendation brief.
-**Current task:** `AIK-07-KANBAN-DECISION-BRIEF`, Codex (`gpt-6-sol`, medium); packet-only and recommendation-only.
+**Current task:** `AIK-07-KANBAN-DECISION-BRIEF`, Codex (`gpt-6-sol`, medium); packet-only brief drafted for Echo review, with D-1–D-5 `PENDING`.
 **Manager:** Echo
 **Executor:** Codex; no dashboard source edits, credentials, services, or runtimes.
 
 ## TL;DR
 
-The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. The Kanban MVP contract passed independent review, but D-1–D-5 remain open. AIK-07 is preparing concise recommendations only; no choice will be made without Eddie. Item 8 stays with the separate Mind effort, and items 9–10 wait for physical hardware inspection.
+The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. The Kanban MVP contract passed independent review, but D-1–D-5 remain open. AIK-07 drafted the [owner decision brief](reports/KANBAN-DECISION-BRIEF.md) and [HTML companion](reports/KANBAN-DECISION-BRIEF.html); all five choices remain Eddie's. Item 8 stays with the separate Mind effort, and items 9–10 wait for physical hardware inspection.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
@@ -32,7 +32,7 @@ AIK-07 may write only its decision brief, HTML, receipt, and packet tracking ent
 
 ## Next safe action
 
-Verify AIK-07 citations, option recommendations, links, and remote packet branch. Then give Eddie a compact D-1–D-5 decision prompt; do not start shared-board implementation until he answers. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
+Echo verifies AIK-07 citations, option recommendations, links, and remote packet branch using the [receipt](receipts/AIK-07-DECISION-BRIEF.md). Then give Eddie the brief's compact D-1–D-5 decision prompt; do not start shared-board implementation until he answers and a separate implementation task is scoped. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
 
 ## Owner decisions still open
 
