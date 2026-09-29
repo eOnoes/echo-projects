@@ -13,6 +13,7 @@ Only verifiable claims belong here. Public packet entries contain no private pat
 | `E-007` | The exact Control-document contradictions and required wording are known. | `UNRESOLVED` | Pending AIK-01 source review | Codex must cite documents and sections; no assumed fix. |
 | `E-008` | The Kanban task/feed schema and authority model are fully specified. | `UNRESOLVED` | Pending AIK-03 | Must be independently reviewed before implementation. |
 | `E-009` | The initial project packet is present on public `main` at commit `c975022afe3080f7e6bf1c6b612ed242acffd271`; remote readback matches. | `PROVEN` | GitHub commit and project-directory tree readback | Commit contains only the 12 project-packet files. |
+| `E-010` | Eddie authorized AIK-01; Echo assigned Codex with `gpt-6-sol`, medium reasoning, and read-only source scope. | `PROVEN` | Owner instruction received in this project chat | No Control source edit, service, or runtime action is authorized. |
 
 ## Evidence update rule
 

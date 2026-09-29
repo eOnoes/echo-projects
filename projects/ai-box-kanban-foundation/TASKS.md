@@ -3,13 +3,13 @@
 ## Current task
 
 **Task:** `AIK-01` — Control boundary document audit
-**Status:** `NEEDS_APPROVAL`
-**Executor:** Codex, conditional
-**Approval required:** Eddie must authorize start.
+**Status:** `IN_PROGRESS`
+**Executor:** Codex (`gpt-6-sol`, medium reasoning)
+**Approval:** Eddie explicitly authorized start in the project chat.
 **Allowed output:** one cited contradiction matrix and proposed wording under this project’s `reports/`; no source edits.
 **Evidence required:** exact source document/section references, scope check, local validation result, and a scoped pushed branch for Echo review.
 
-No task is currently `IN_PROGRESS`.
+AIK-01 is the sole `IN_PROGRESS` task.
 
 ## Completed
 
@@ -40,7 +40,7 @@ The successful import is not runtime validation and does not close the dashboard
 
 | Task | Summary | Status | Dependency | Executor |
 |---|---|---|---|---|
-| `AIK-01` | Reconcile Control authority/boundary documents; matrix + proposed text | `NEEDS_APPROVAL` | Eddie starts task | Codex |
+| `AIK-01` | Reconcile Control authority/boundary documents; matrix + proposed text | `IN_PROGRESS` | Eddie approved; Codex assigned | Codex (`gpt-6-sol`, medium) |
 | `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `READY` | AIK-01 reviewed | Codex |
 | `AIK-04` | Inference Control security remediation | `BLOCKED` | Separate scope, approval, and review | Unassigned |
 

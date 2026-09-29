@@ -3,7 +3,8 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `READY_FOR_REVIEW` — do not start until Echo assigns a task and marks it `IN_PROGRESS`.
+**Current status:** `RUNNING` — AIK-01 is assigned and in progress.
+Codex is assigned AIK-01 with the owner-approved route `gpt-6-sol`, medium reasoning. Start only the exact task in `tasks/AIK-01-CODEX-HANDOFF.md`; do not edit Control source docs.
 
 ## Read order
 
@@ -13,9 +14,9 @@
 4. Current task in `TASKS.md`
 5. `PLAN.md`, `HANDOFF.md`, and `EVIDENCE.md`
 
-## Current first assignment (only after approval)
+## Current assignment
 
-`AIK-01`: read the named `Onoes-Control` Markdown docs; write a cited contradiction matrix and proposed wording under this packet’s `reports/`. Do not edit Control source files. Stop after the report and wait for review.
+`AIK-01` is in progress with `gpt-6-sol`, medium reasoning. Read only the named `Onoes-Control` docs and packet evidence; write a cited matrix and proposed wording under `reports/`. No source edits. If a source file is unavailable or contradictory, report `BLOCKED`/`UNRESOLVED` without guessing.
 
 ## Milestone and error rule
 

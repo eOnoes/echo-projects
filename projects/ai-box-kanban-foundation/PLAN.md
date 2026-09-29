@@ -1,7 +1,7 @@
 # Execution Plan
 
-**Plan state:** `READY_FOR_REVIEW`
-**Current executor:** None until Eddie approves a task.
+**Plan state:** `RUNNING`
+**Current executor:** Codex — `gpt-6-sol`, medium reasoning, AIK-01 only.
 **Rule:** one `IN_PROGRESS` task at a time.
 
 ## Phase 0 — Project packet and safety boundaries
@@ -16,6 +16,9 @@
 **Exit gate:** `PROVEN` — remote head and project file tree were read back; the published commit contains only the 12 files in this project packet.
 
 ## Phase 1 — Reconcile Control authority boundaries (AIK-01)
+
+**Status:** `RUNNING` — Eddie approved AIK-01; Codex is assigned the read-only audit.
+**Model:** `gpt-6-sol` · **reasoning:** medium
 
 **Purpose:** establish a single consistent statement of task ownership, verification, approval, and execution authority.
 

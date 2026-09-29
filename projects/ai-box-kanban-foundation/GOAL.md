@@ -2,10 +2,10 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Full name:** AI Box and Shared Task Board Foundation
-**Status:** `READY_FOR_REVIEW`
+**Status:** `RUNNING`
 **Owner:** Eddie
 **Manager:** Echo
-**Conditional executor:** Codex, task-by-task after approval
+**Executor:** Codex (`gpt-6-sol`, medium reasoning; task-scoped)
 **Created:** 2026-09-28
 
 ## Project keyword
@@ -43,13 +43,13 @@ The audits found that Mind’s current `work_items` and `stage_executions` are i
 
 ## Current phase and task
 
-**Current phase:** Phase 1 — Control boundary audit; awaiting Eddie’s start approval. Phase 0 packet setup is complete and verified.
-**Current task:** None in progress. `AIK-01` awaits explicit start approval.
-**Current status:** `READY_FOR_REVIEW` — the packet is ready for human judgement; no executor has been dispatched.
+**Current phase:** Phase 1 — Control boundary audit; AIK-01 is in progress.
+**Current task:** `AIK-01` — read-only Control boundary document audit.
+**Current status:** `RUNNING` — Codex assigned; no source edits authorized.
 
 ## Next safe action
 
-Eddie reviews this packet and, if its scope and Codex permissions are right, authorizes `AIK-01` (read-only Control-document audit). Do not start work from the repository merely because it has been published.
+The Codex deliverable is pending: cited contradiction matrix, proposed wording, and receipt. Echo will verify the citations and scope before accepting the task. Source edits remain unauthorized.
 
 ## Decision log
 
@@ -69,4 +69,5 @@ Eddie reviews this packet and, if its scope and Codex permissions are right, aut
 - [`CLOSURE.md`](CLOSURE.md) — closure gate.
 - [`PROJECT-OVERRIDES.md`](PROJECT-OVERRIDES.md) — additive restrictions.
 - [`CODEX-START-HERE.md`](CODEX-START-HERE.md) — short entrypoint for Codex.
+- [`tasks/AIK-01-CODEX-HANDOFF.md`](tasks/AIK-01-CODEX-HANDOFF.md) — active bounded assignment.
 - [`reports/`](reports/) — Markdown and HTML handoffs.

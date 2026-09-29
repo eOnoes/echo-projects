@@ -2,15 +2,15 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Status:** `READY_FOR_REVIEW`
+**Current status:** `RUNNING` — AIK-01 is the sole active task.
 **Current phase:** 1 — Control boundary audit
-**Current task:** `AIK-01`, awaiting Eddie’s start approval
+**Current task:** `AIK-01`, assigned to Codex (`gpt-6-sol`, medium reasoning)
 **Manager:** Echo
-**Conditional executor:** Codex
+**Executor:** Codex
 
 ## TL;DR
 
-The first-three project packet is drafted. Dashboard discovery/import is complete, but the app remains blocked from runtime use by its security gate. Control boundary reconciliation and Kanban MVP design remain open. Codex has not been dispatched.
+Eddie approved AIK-01. Codex (`gpt-6-sol`, medium reasoning) is assigned the read-only Control-doc audit. No source edits are authorized.
 
 ## Last completed action
 
@@ -25,13 +25,13 @@ Published the initial packet commit `c975022afe3080f7e6bf1c6b612ed242acffd271` t
 
 See `EVIDENCE.md` for claim labels and pointers.
 
-## Current blocker
+## Current constraint
 
-Eddie’s approval is needed to start `AIK-01` (read-only Control document audit).
+No source edits are authorized. Codex must return the cited matrix and proposed wording; Echo will verify them before AIK-01 is accepted.
 
 ## Next safe action
 
-Eddie reviews the packet. If approved, Echo dispatches Codex with the exact AIK-01 scope in `CODEX-START-HERE.md` and `AUTHORITY.md`.
+Codex completes AIK-01 by returning the cited matrix, proposed wording, receipt, and scoped branch. Echo verifies the citations/diff before the task closes.
 
 ## Do not do
 
