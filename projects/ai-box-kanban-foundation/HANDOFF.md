@@ -2,15 +2,15 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `READY` — AIK-07B Round 1 returned `NEEDS_CHANGES`; the scoped remediation handoff is ready for Codex.
+**Current status:** `RUNNING` — AIK-07B Round 1 returned `NEEDS_CHANGES`; the scoped packet corrections await Echo verification.
 **Current phase:** Item 4 contract remediation, then Rounds 2–3 and owner approval; implementation remains blocked.
 **Current task:** `AIK-07B-R1-REMEDIATION` — packet-only corrections; no code or runtime work.
 **Manager:** Echo
-**Executor:** Codex is assigned the five Round 1 corrections; Echo independently verifies each result.
+**Executor:** Codex applied the five Round 1 packet corrections; Echo independently verifies each result.
 
 ## TL;DR
 
-Eddie has recorded D-1–D-5 in [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md). AIK-07B contract work is at commit `13ebdac3691edb27fdebe1bbfc6c5961955afb02`; Kimi K3 Round 1 returned `NEEDS_CHANGES` with five findings. Echo verified the frozen files remained unchanged. The bounded Codex correction task is ready; two further distinct reviews and final owner approval must pass before implementation.
+Eddie has recorded D-1–D-5 in [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md). Round 1 audited ancestor commit `13ebdac3691edb27fdebe1bbfc6c5961955afb02` and returned `NEEDS_CHANGES` with five findings. Echo verified the frozen files remained unchanged. The bounded corrections are applied for Echo verification; two further distinct reviews and final owner approval must pass before implementation.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 

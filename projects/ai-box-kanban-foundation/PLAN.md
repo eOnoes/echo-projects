@@ -1,7 +1,7 @@
 # Execution Plan
 
 **Plan state:** `RUNNING`
-**Current executor:** Codex — AIK-07B-KANBAN-CONTRACT-UPDATE, `gpt-6-sol`, medium reasoning; packet update ready for Echo review. AIK-05 local mock is verified complete; AIK-04-PLAN is paused.
+**Current executor:** Codex — AIK-07B-R1-REMEDIATION, `gpt-6-sol`, medium reasoning; packet corrections await Echo verification. AIK-05 local mock is verified complete; AIK-04-PLAN is paused.
 **Rule:** one `IN_PROGRESS` task at a time.
 
 ## Owner-estimated AI-box schedule (planning only)
@@ -99,7 +99,7 @@ The spec must cover:
 
 ## Phase 7B — Integrate owner decisions and audit the contract (AIK-07B)
 
-**Status:** `RUNNING` — Round 1 audit returned `NEEDS_CHANGES`; five scoped corrections are prepared under `AIK-07B-R1-REMEDIATION`. Round 2–3 are not started.
+**Status:** `RUNNING` — Round 1 audit returned `NEEDS_CHANGES`; five scoped corrections are applied under `AIK-07B-R1-REMEDIATION` for Echo verification. Round 2–3 are not started.
 **Gate:** Apply and Echo-verify the R1 fixes; then complete two further distinct, sequential review/refinement rounds. No source code, backend, runtime, or service work. Final owner review precedes implementation.
 
 ## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)

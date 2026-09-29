@@ -2,7 +2,7 @@
 
 **Project:** `ai-box-kanban-foundation`
 **Task:** `AIK-07B-R1-REMEDIATION`
-**Status:** `READY` — audit findings reviewed; corrections are scoped and approved by existing packet authority.
+**Status:** `RUNNING` — scoped packet corrections applied for Echo verification; Round 2 has not started.
 **Repository/branch:** `eOnoes/echo-projects`, `docs/AIK-07B-KANBAN-CONTRACT-UPDATE`
 **Base:** `13ebdac3691edb27fdebe1bbfc6c5961955afb02`
 **Executor:** Codex `gpt-6-sol`, medium reasoning.
@@ -51,3 +51,7 @@ Do not modify the frozen Round 1 report or audit receipt. Do not change the owne
 - Update the task queue to show `AIK-07B` as `NEEDS_CHANGES`, the current R1 remediation as `READY`/`RUNNING` according to actual process state, and AIK-08 still `BLOCKED`. Repair all malformed pipe syntax in the Queue table.
 - Record exact changed paths, commit, checks, open technical choices, and confirmation of no implementation/source/runtime work.
 - Run `git diff --check`; commit and push only this branch. Do not merge `main`.
+
+## Execution status
+
+R1-01–R1-05 are recorded in the revised contract, matrix, and Queue table. The [remediation receipt](../receipts/AIK-07B-R1-REMEDIATION.md) records scope and local acceptance checks. Echo verification, Rounds 2–3, and final owner approval remain pending; AIK-08 stays blocked.

@@ -1,6 +1,6 @@
 # Closure Record
 
-**Status:** `OPEN` — AIK-07B Round 1 returned `NEEDS_CHANGES`; five contract corrections are ready for Codex. Two review/refinement rounds, Eddie's final approval, implementation, separate Mind evidence, and hardware gates remain.
+**Status:** `OPEN` — AIK-07B Round 1 returned `NEEDS_CHANGES`; five contract corrections await Echo verification. Two review/refinement rounds, Eddie's final approval, implementation, separate Mind evidence, and hardware gates remain.
 **Project ID:** `ai-box-kanban-foundation`
 
 This project is not closed. Closure requires all acceptance items below and Eddie’s final decision.
@@ -11,7 +11,7 @@ This project is not closed. Closure requires all acceptance items below and Eddi
 - [x] AIK-05 loopback-only local mock is tested and independently verified; live mode remains blocked.
 - [x] AIK-06 Control Chat navigation fix is verified on its branch with a scoped regression test and build; it is not merged/deployed, and six pre-existing suite failures are recorded.
 - [x] AIK-07 D-1–D-5 decision brief is reviewed and delivered; all five owner directions are recorded in `receipts/AIK-07B-OWNER-DECISIONS.md`.
-- [x] Item 4 design draft integrates D-1–D-5; Round 1 audit returned `NEEDS_CHANGES` and its five corrections are queued for Codex.
+- [x] Item 4 design draft integrates D-1–D-5; Round 1 audit returned `NEEDS_CHANGES` and its five corrections are applied for Echo verification.
 - [ ] Item 4 gate: remediate Round 1, pass Rounds 2–3, then Eddie approves the final contract.
 - [ ] Items 5–6: implementation is built and verified only after item 4 approval.
 - [ ] Item 8: separate Mind G0–G7 report is received and reviewed; no duplicated work.

@@ -42,6 +42,7 @@ Only verifiable claims belong here. Public packet entries contain no private pat
 
 
 | `E-036` | Kimi Code CLI Round 1, effective model `kimi-code/k3`, audited AIK-07B commit `13ebdac3691edb27fdebe1bbfc6c5961955afb02` and returned `NEEDS_CHANGES` with findings R1-01–R1-05. Echo verified all 16 frozen input hashes remained unchanged; the CLI used read-only local packet/Git inspection, no edits, code, external search, or target runtime. | `PROVEN` | [`AIK-07B-ROUND-1-AUDIT.md`](reports/AIK-07B-ROUND-1-AUDIT.md); [`AIK-07B-ROUND-1.md`](receipts/AIK-07B-ROUND-1.md); bundle SHA-256 `98fdfe561da0a1d2d00fe972f71ee4e686b6997865f93517859091525106e949` | Read-only inspection-method deviation is disclosed in the receipt. Five contract corrections are ready for Codex; Round 2 and implementation remain gated. |
+| `E-037` | R1-01–R1-05 are applied to the design contract, acceptance matrix, and task Queue for Echo verification. All A-01–A-18 remain design acceptance cases, not runtime test results. | `RUNNING` | [`AIK-07B-R1-REMEDIATION.md`](receipts/AIK-07B-R1-REMEDIATION.md); [`KANBAN-MVP.md`](deliverables/KANBAN-MVP.md); [`KANBAN-ACCEPTANCE-MATRIX.md`](reports/KANBAN-ACCEPTANCE-MATRIX.md); [`TASKS.md`](TASKS.md) | Supersedes E-035's ready-for-review status and E-036's ready-for-Codex note for current process state only. Echo verification, Rounds 2–3, and final owner approval remain; AIK-08 is blocked. |
 
 ## Evidence update rule
 

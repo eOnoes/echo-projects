@@ -5,7 +5,7 @@
 **Status:** `RUNNING`
 **Owner:** Eddie
 **Manager:** Echo
-**Current executor:** Codex (`gpt-6-sol`, medium) on AIK-07B Round 1 remediation; task handoff ready. Round 1 Kimi K3 audit returned `NEEDS_CHANGES`; Echo verified the frozen artifacts remained unchanged.
+**Current executor:** Codex (`gpt-6-sol`, medium) on AIK-07B Round 1 remediation; packet corrections await Echo verification. Round 1 Kimi K3 audit returned `NEEDS_CHANGES`; Echo verified the frozen artifacts remained unchanged.
 **Created:** 2026-09-28
 
 ## Project keyword
@@ -56,7 +56,7 @@ Eddie called these estimates, not commitments. They do not authorize purchases, 
 
 **Current phase:** Item 4 — apply Round 1 contract corrections, then complete audits 2–3 and owner approval.
 **Current task:** `AIK-07B-R1-REMEDIATION` — packet-only; no source/runtime work.
-**Current status:** `READY` — Kimi K3 Round 1 returned `NEEDS_CHANGES`; five findings and task scope are recorded; Codex dispatch is next.
+**Current status:** `RUNNING` — Kimi K3 Round 1 returned `NEEDS_CHANGES`; five scoped packet corrections are applied for Echo verification.
 
 ## Next safe action
 
