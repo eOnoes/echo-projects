@@ -33,6 +33,10 @@ After AIK-01’s output is reviewed, Codex may create/update the Kanban specific
 
 After Eddie's 2026-09-29 scope expansion, Codex may modify only the private Onoes-Control Chat navigation path and a directly related regression test in the task-named branch. The task may identify exact files by inspecting the clean Control checkout, but any edit beyond the Chat path/test or any Relay URL requires a stop and decision. No Mind/Relay source, credential, deployment, or live runtime access.
 
+## AIK-07 — D-1–D-5 decision brief
+
+Eddie authorized a packet-only decision brief. Codex may write only `reports/KANBAN-DECISION-BRIEF.md`, `reports/KANBAN-DECISION-BRIEF.html`, its receipt, and directly required task/evidence/handoff entries. All decisions remain `PENDING`; recommendations are not authorization. No code, backend, identity provider, retention period, API, or deployment choice is authorized.
+
 ### Later, separately approved work
 
 Only a new task can authorize live-mode Inference Control security changes. Any live model operations require a separate scope decision and independent review. This packet never authorizes live model operations.

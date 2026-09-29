@@ -2,21 +2,21 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `RUNNING` — AIK-01/01-DOCS/03 complete; AIK-05 local mock complete with limitations; AIK-06 active.
-**Current phase:** Software/product chunk, item 7 — Control Chat navigation.
-**Current task:** `AIK-06-CONTROL-CHAT-NAV`, Codex (`gpt-6-sol`, medium); Echo independently verifies.
+**Current status:** `RUNNING` — AIK-01/01-DOCS/03 and AIK-05/06 complete with limitations; AIK-07 decision brief active.
+**Current phase:** Software/product chunk, item 4 decision gate — D-1–D-5 recommendation brief.
+**Current task:** `AIK-07-KANBAN-DECISION-BRIEF`, Codex (`gpt-6-sol`, medium); packet-only and recommendation-only.
 **Manager:** Echo
 **Executor:** Codex; no dashboard source edits, credentials, services, or runtimes.
 
 ## TL;DR
 
-The Control boundary wording is corrected and verified. The Kanban MVP contract passed independent review, but D-1–D-5 remain open. Inference Control has a verified local mock workflow, not live-mode approval. Item 7 is the next software task. Items 4–6 wait for D-1–D-5, item 8 stays with the separate Mind effort, and items 9–10 wait for physical hardware inspection.
+The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. The Kanban MVP contract passed independent review, but D-1–D-5 remain open. AIK-07 is preparing concise recommendations only; no choice will be made without Eddie. Item 8 stays with the separate Mind effort, and items 9–10 wait for physical hardware inspection.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
 ## Last completed action
 
-AIK-05 local mock was pushed on private `codex/IC-01-LOCAL-MOCK` at `e480d8a6f92cccc20d3fdba7397145e97b537943`; Echo verified the five-file scope, remote readback, syntax checks, and 3 passing tests. AIK-03's independent review returned **PASS — ZERO GAPS**.
+AIK-05 local mock was pushed on private `codex/IC-01-LOCAL-MOCK` at `e480d8a6f92cccc20d3fdba7397145e97b537943`; Echo verified the five-file scope, remote readback, syntax checks, and 3 passing tests. AIK-06 is on `codex/AIK-06-CONTROL-CHAT-NAV` at `6c2a86551a49412ad7c3c4c9a65b1ff9fab2c66c`; Echo reran its focused test and build, compared the six failing full-suite cases against base, and verified remote blobs. It is not merged/deployed. AIK-03's independent review returned **PASS — ZERO GAPS**.
 
 ## Verified context
 
@@ -28,11 +28,11 @@ AIK-05 local mock was pushed on private `codex/IC-01-LOCAL-MOCK` at `e480d8a6f92
 
 ## Current constraint
 
-AIK-06 may modify only Control Chat navigation and its direct regression test in the private Control branch. Do not guess a Relay URL or modify the boundary/security surfaces. Inference Control stays mock-only; live auth/security and remote exposure remain blocked.
+AIK-07 may write only its decision brief, HTML, receipt, and packet tracking entries. Do not change the Kanban contract or resolve owner decisions. AIK-06's Control fix remains branch-only; do not guess a Relay URL or modify boundary/security surfaces. Inference Control stays mock-only; live auth/security and remote exposure remain blocked.
 
 ## Next safe action
 
-Verify AIK-06 tests, exact diff, and remote branch readback. Next, resolve D-1–D-5 with Eddie before items 4–6. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
+Verify AIK-07 citations, option recommendations, links, and remote packet branch. Then give Eddie a compact D-1–D-5 decision prompt; do not start shared-board implementation until he answers. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
 
 ## Owner decisions still open
 

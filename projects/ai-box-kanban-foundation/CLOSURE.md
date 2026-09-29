@@ -9,7 +9,7 @@ This project is not closed. Closure requires all acceptance items below and Eddi
 
 - [x] The first three planning items have evidence and limitations recorded.
 - [x] AIK-05 loopback-only local mock is tested and independently verified; live mode remains blocked.
-- [ ] AIK-06 Control Chat navigation fix and regression check are accepted.
+- [x] AIK-06 Control Chat navigation fix is verified on its branch with a scoped regression test and build; it is not merged/deployed, and six pre-existing suite failures are recorded.
 - [ ] Items 4–6: D-1–D-5 decisions are recorded before shared-store/Relay/Control-view implementation.
 - [ ] Item 8: separate Mind G0–G7 report is received and reviewed; no duplicated work.
 - [ ] Items 9–10: physical hardware/topology evidence and an approved Proxmox boundary decision are recorded.

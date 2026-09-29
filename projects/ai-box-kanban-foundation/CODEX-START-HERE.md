@@ -3,8 +3,8 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `RUNNING` — AIK-06-CONTROL-CHAT-NAV assigned to Codex (`gpt-6-sol`, medium reasoning).
-Read `tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md`, then its named private Control checkout only. Do not access Mind/Relay source, credentials, deployments, or live runtime.
+**Current status:** `RUNNING` — AIK-07-KANBAN-DECISION-BRIEF assigned to Codex (`gpt-6-sol`, medium reasoning).
+Read `tasks/AIK-07-KANBAN-DECISION-BRIEF-HANDOFF.md` and work only in the project packet; all D-1–D-5 choices remain Eddie's.
 
 ## Read order
 
@@ -16,7 +16,7 @@ Read `tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md`, then its named private Control 
 
 ## Current assignment
 
-AIK-06-CONTROL-CHAT-NAV is active. Change only Chat navigation and its direct regression test. Do not guess a Relay URL; if the destination is unverified, fix the crash and report routing unresolved.
+AIK-07-KANBAN-DECISION-BRIEF is active. Use only packet evidence, do not change the existing contract or select any value for Eddie. Keep D-1–D-5 pending and produce the decision brief/handoff.
 
 ## Milestone and error rule
 

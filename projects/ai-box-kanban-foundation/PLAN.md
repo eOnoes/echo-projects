@@ -90,12 +90,12 @@ The spec must cover:
 
 ## Phase 6 — Repair Control Chat navigation (AIK-06)
 
-**Status:** `RUNNING` — Codex has a bounded task; exact source edits remain inside Chat navigation and its direct regression test.
-**Exit gate:** reproduce/fix the crash; verify the actual route target; do not guess or redirect to Relay without evidence; focused tests/build and diff scope pass.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — branch `codex/AIK-06-CONTROL-CHAT-NAV`, commit `6c2a86551a49412ad7c3c4c9a65b1ff9fab2c66c`; receipt `receipts/AIK-06-CONTROL-CHAT-NAV.md`.
+**Evidence:** focused regression 1/1 pass; production build passes; six full-suite failures were reproduced at the unchanged base commit. Branch is not merged/deployed; Relay destination remains unverified and unchanged.
 
-## Phase 7 — Resolve Kanban store and contract decisions (items 4; AIK-07)
+## Phase 7 — Prepare D-1–D-5 owner decisions (items 4; AIK-07)
 
-**Status:** `BLOCKED` on Eddie's D-1–D-5 decisions. No backend, identity provider, or retention policy may be guessed.
+**Status:** `RUNNING` — Codex prepares a concise evidence-based recommendation brief from the project packet only. The decisions themselves remain `PENDING` and implementation stays blocked until Eddie answers. No backend, identity provider, or retention period may be guessed.
 
 ## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)
 
@@ -111,7 +111,7 @@ The spec must cover:
 
 ## Product-first execution order
 
-Use two dependency-based chunks: software/product work first (Phase 6 now; Phase 7 requires owner decisions; Phase 8 follows; Phase 9 stays with the separate Mind effort), then hardware boundary work (Phase 10 after physical inspection). A functioning prototype is the milestone; production readiness remains a separate gate.
+Use two dependency-based chunks: software/product first (Phase 6 branch verified; Phase 7 decision brief now; Phase 8 after owner choices; Phase 9 stays with the separate Mind effort), then hardware boundary work (Phase 10 after physical inspection). A functioning prototype is the milestone; production readiness remains a separate gate.
 
 ## Milestone/error protocol
 

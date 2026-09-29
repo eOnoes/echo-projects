@@ -2,15 +2,24 @@
 
 ## Current task
 
-**Task:** `AIK-06-CONTROL-CHAT-NAV` — repair Onoes-Control Chat navigation
+**Task:** `AIK-07-KANBAN-DECISION-BRIEF` — prepare owner-ready recommendations for D-1–D-5
 **Status:** `IN_PROGRESS`
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
-**Owner direction:** Eddie expanded work through items 4–10 and asked to move toward a functioning product; item 7 is the next independent software slice.
-**Allowed output:** Chat navigation fix and directly related regression test in the named private Control repo branch. No Relay URL guessing, unrelated app changes, credentials, deployments, or live runtime.
+**Owner direction:** Eddie asked Codex to continue through the product-first plan. AIK-06 is verified on its source branch; this bounded packet-only task prepares the decisions required for Kanban work.
+**Allowed output:** A cited D-1–D-5 decision brief in Markdown/HTML plus receipt/ledger updates. It may recommend but must not decide for Eddie or change the contract.
 
 AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-05 local mock is complete with limitations. AIK-04-PLAN is paused after independent review `NEEDS_CHANGES`. D-1–D-5 remain open; item 8 is assigned separately on Mind; items 9–10 wait for physical hardware evidence.
 
 ## Completed
+
+### AIK-06 — Control Chat navigation fix
+
+**Status:** `COMPLETE_WITH_LIMITATIONS` — branch `codex/AIK-06-CONTROL-CHAT-NAV`, commit `6c2a86551a49412ad7c3c4c9a65b1ff9fab2c66c`; not merged.
+
+- [x] Chat render crash fixed; regression test passes; production build passes.
+- [x] Six full-suite failures independently reproduced at the exact base commit; no new full-suite failures attributed to this change.
+- [x] Relay destination is unverified and unchanged; demo composer remains disabled.
+- [x] Exact remote blob readback, branch scope, clean worktree, and `git diff --check` verified.
 
 ### AIK-05 — Inference Control local-mock prototype
 
@@ -74,9 +83,9 @@ The successful import is not runtime validation and does not close the dashboard
 | `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `COMPLETE_WITH_LIMITATIONS` | Echo + independent review passed; D-1–D-5 pending | Codex, Echo verified |
 | `AIK-04-PLAN` | Draft security remediation plan | `PAUSED` | Independent review `NEEDS_CHANGES`; product-first priority | Echo |
 | `AIK-05` | Local-mock Inference Control slice | `COMPLETE_WITH_LIMITATIONS` | Remote branch and 3 tests verified; no live mode | Codex, Echo verified |
-| `AIK-06-CONTROL-CHAT-NAV` | Repair Control Chat navigation | `IN_PROGRESS` | Independent software task; verified route target required | Codex (`gpt-6-sol`, medium) |
-| `AIK-07-KANBAN-DECISIONS` | Resolve D-1–D-5 / authoritative store | `BLOCKED` | Eddie's choices required before backend selection | Eddie / Echo |
-| `AIK-08-BOARD-UI` | Relay task UI + Control oversight views | `BLOCKED` | AIK-07 contract/store decision and review | Unassigned |
+| `AIK-06-CONTROL-CHAT-NAV` | Repair Control Chat navigation | `COMPLETE_WITH_LIMITATIONS` | Branch verified, not merged; six baseline failures remain | Codex, Echo verified |
+| `AIK-07-KANBAN-DECISION-BRIEF` | Recommend options for D-1–D-5 from packet evidence | `IN_PROGRESS` | No owner decision or backend selection; packet-only | Codex (`gpt-6-sol`, medium) |
+| `AIK-08-KANBAN-VERTICAL-SLICE` | Implement first shared-board slice and Relay/Control views | `BLOCKED` | Eddie's D-1–D-5 choices and reviewed service contract | Unassigned |
 | `AIK-09-MIND-GATES` | G0–G7 review | `BLOCKED` | Separate active Mind task; consume its verified report only | Separate Codex effort |
 | `AIK-10-HARDWARE-BOUNDARY` | Confirm topology and Proxmox boundary | `BLOCKED` | Physical parts/assembly and authorization | Eddie / Echo |
 
@@ -87,6 +96,7 @@ The successful import is not runtime validation and does not close the dashboard
 - `AIK-01-DOCS` is complete; only the two named Control Markdown files changed, with remote readback verification.
 - `AIK-03` is design-only and complete with limitations; D-1–D-5 remain open and no backend or UI implementation is authorized.
 - `AIK-05` is local mock only; live security, remote access, and real model/upstream operations remain blocked.
-- `AIK-06` is limited to Chat navigation and a regression test; do not guess Relay routing.
-- Items 4–6 wait for D-1–D-5; item 8 stays with the separate Mind effort; items 9–10 wait for physical evidence.
+- `AIK-07` is read-only against the project packet; recommendations do not resolve D-1–D-5.
+- AIK-06 remains on a branch, not merged or deployed; do not guess Relay routing.
+- Items 4–6 wait for Eddie's D-1–D-5 answers; item 8 stays with the separate Mind effort; items 9–10 wait for physical evidence.
 - Never mark a task complete from an executor summary alone; Echo verifies evidence and remote files.
