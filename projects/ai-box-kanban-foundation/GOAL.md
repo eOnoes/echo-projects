@@ -5,7 +5,7 @@
 **Status:** `RUNNING`
 **Owner:** Eddie
 **Manager:** Echo
-**Current executor:** Codex (`gpt-6-sol`, medium) on AIK-07B Round 1 remediation; packet corrections await Echo verification. Round 1 Kimi K3 audit returned `NEEDS_CHANGES`; Echo verified the frozen artifacts remained unchanged.
+**Current executor:** Echo verified the five bounded corrections at `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`; prepare a separate Round 2 audit against a fresh frozen snapshot. Round 1 returned `NEEDS_CHANGES`; no implementation or runtime work has occurred.
 **Created:** 2026-09-28
 
 ## Project keyword
@@ -54,13 +54,13 @@ Eddie called these estimates, not commitments. They do not authorize purchases, 
 
 ## Current phase and task
 
-**Current phase:** Item 4 — apply Round 1 contract corrections, then complete audits 2–3 and owner approval.
-**Current task:** `AIK-07B-R1-REMEDIATION` — packet-only; no source/runtime work.
-**Current status:** `RUNNING` — Kimi K3 Round 1 returned `NEEDS_CHANGES`; five scoped packet corrections are applied for Echo verification.
+**Current phase:** Item 4 — complete audit rounds 2–3 and owner approval.
+**Current task:** `AIK-07B` Round 2 audit preparation — freeze/hash the corrected packet; read-only review only, no source/runtime work.
+**Current status:** `READY_FOR_ROUND_2` — Round 1 corrections are independently verified. The next audit requires a fresh frozen snapshot and a separate read-only auditor.
 
 ## Next safe action
 
-Echo verifies Codex's R1 corrections, then launches Round 2 against a fresh frozen snapshot. Keep the three-round gate and AIK-08 block; request Eddie's final approval only after Round 3 passes. No source-code or runtime work is active.
+Echo has verified Codex's R1 corrections; next, freeze the revised packet and run Round 2 as a separate read-only audit. Preserve the three-round gate and request Eddie's final contract approval only after Round 3; keep AIK-08 blocked. No implementation or source/runtime work.
 
 ## Decision log
 
@@ -86,7 +86,7 @@ Echo verifies Codex's R1 corrections, then launches Round 2 against a fresh froz
 - [`tasks/AIK-03-CODEX-HANDOFF.md`](tasks/AIK-03-CODEX-HANDOFF.md) — completed design-only assignment.
 - [`tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md`](tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md) — bounded Control Chat source task, now complete with limitations.
 - [`tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`](tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md) — contract integration task, currently `NEEDS_CHANGES` after Round 1.
-- [`tasks/AIK-07B-R1-REMEDIATION.md`](tasks/AIK-07B-R1-REMEDIATION.md) — current bounded corrective task.
+- [`tasks/AIK-07B-R1-REMEDIATION.md`](tasks/AIK-07B-R1-REMEDIATION.md) — remediation complete with limitations; verified commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`; next gate is a fresh Round 2 audit.
 - [`reports/AIK-07B-ROUND-1-AUDIT.md`](reports/AIK-07B-ROUND-1-AUDIT.md) and [`receipts/AIK-07B-ROUND-1.md`](receipts/AIK-07B-ROUND-1.md) — first audit and provenance receipt.
 - [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md) — exact D-1–D-5 owner directions and remaining technical gates.
 - [`reports/KANBAN-DECISION-BRIEF.md`](reports/KANBAN-DECISION-BRIEF.md) — owner decision brief.

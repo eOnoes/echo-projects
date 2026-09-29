@@ -2,15 +2,15 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `RUNNING` — AIK-07B Round 1 returned `NEEDS_CHANGES`; the scoped packet corrections await Echo verification.
-**Current phase:** Item 4 contract remediation, then Rounds 2–3 and owner approval; implementation remains blocked.
-**Current task:** `AIK-07B-R1-REMEDIATION` — packet-only corrections; no code or runtime work.
+**Current status:** `COMPLETE_WITH_LIMITATIONS` — AIK-07B Round 1 returned `NEEDS_CHANGES`; the five bounded corrections are Echo-verified. Rounds 2–3 and owner approval remain before implementation.
+**Current phase:** Item 4 contract audits; Round 1 corrections are verified, followed by Rounds 2–3 and owner approval. Implementation remains blocked.
+**Current task:** AIK-07B Round 2 audit preparation — packet freeze/hash followed by a separate read-only auditor; no code or runtime work.
 **Manager:** Echo
-**Executor:** Codex applied the five Round 1 packet corrections; Echo independently verifies each result.
+**Executor:** Codex applied the five Round 1 packet corrections; Echo verified the remote branch, changed blobs, acceptance cases, links, JSON, and Queue table at `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`.
 
 ## TL;DR
 
-Eddie has recorded D-1–D-5 in [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md). Round 1 audited ancestor commit `13ebdac3691edb27fdebe1bbfc6c5961955afb02` and returned `NEEDS_CHANGES` with five findings. Echo verified the frozen files remained unchanged. The bounded corrections are applied for Echo verification; two further distinct reviews and final owner approval must pass before implementation.
+Eddie has recorded D-1–D-5 in [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md). Round 1 audited ancestor commit `13ebdac3691edb27fdebe1bbfc6c5961955afb02` and returned `NEEDS_CHANGES` with five findings. Echo verified the frozen files remained unchanged. Codex commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53` contains the verified Round 1 corrections. Echo confirmed remote ref and all changed blobs match; five corrections resolve the contract/matrix findings. No implementation or runtime work occurred. Two further distinct reviews and final owner approval must pass before implementation.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
@@ -28,11 +28,11 @@ AIK-07B's contract update at `13ebdac3691edb27fdebe1bbfc6c5961955afb02` integrat
 
 ## Current constraint
 
-Codex may update only the packet paths listed in `tasks/AIK-07B-R1-REMEDIATION.md`. No source code, database, runtime, service, deployment, external data, or public exposure. Technical details expressly left open by Eddie remain unselected. Round 2 and implementation stay blocked until Echo verifies the remediation and later audit/owner gates pass. AIK-06 remains branch-only; do not guess a Relay URL. Inference Control stays mock-only; live auth/security remain blocked.
+Codex may update only packet paths for its bounded assignment. Round 1 remediation is verified. Round 2 may proceed only as a separate read-only audit of a fresh frozen packet; implementation, source changes, service, runtime, deployment, external data, and public exposure remain blocked until all audit/owner gates pass. Technical details expressly left open by Eddie remain unselected. AIK-06 remains branch-only; Inference Control stays mock-only.
 
 ## Next safe action
 
-Echo verifies Codex's R1 corrections, then runs Round 2 against a fresh frozen snapshot. Preserve the three-round gate and request Eddie's final contract approval only after Round 3; keep AIK-08 blocked. Do not start implementation or duplicate the separate Mind effort.
+Echo has verified the remediation. The next safe action is to freeze/hash the revised packet and run Round 2 as a separate read-only audit. Preserve the three-round gate and request Eddie's final contract approval only after Round 3; keep AIK-08 blocked. Do not start implementation or duplicate the separate Mind effort.
 
 ## Owner decisions still open
 

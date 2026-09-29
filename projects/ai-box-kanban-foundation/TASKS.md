@@ -3,8 +3,8 @@
 ## Current gate / most recent task
 
 **Task:** `AIK-07B-R1-REMEDIATION` — resolve Round 1 contract-audit findings
-**Status:** `RUNNING` — the five scoped Round 1 corrections are applied to the design packet for Echo verification. No Round 2 or implementation has started.
-**Executor:** Codex (`gpt-6-sol`, medium reasoning)
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo verified R1 corrections at Codex commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`; two further audits/refinements and Eddie's final approval remain. No implementation has started.
+**Executor:** Codex commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`, Echo verified.
 **Owner direction:** Eddie answered D-1–D-5 and asked Echo to see the product through. Preserve all choices and technical unknowns; three sequential audit/refinement rounds and final owner approval precede any build.
 **Allowed output:** Only paths listed in [`tasks/AIK-07B-R1-REMEDIATION.md`](tasks/AIK-07B-R1-REMEDIATION.md).
 **Review artifacts:** [`reports/AIK-07B-ROUND-1-AUDIT.md`](reports/AIK-07B-ROUND-1-AUDIT.md), [`receipts/AIK-07B-ROUND-1.md`](receipts/AIK-07B-ROUND-1.md), owner decision receipt, contract and matrix.
@@ -94,8 +94,8 @@ The successful import is not runtime validation and does not close the dashboard
 | `AIK-05` | Local-mock Inference Control slice | `COMPLETE_WITH_LIMITATIONS` | Remote branch and 3 tests verified; no live mode | Codex, Echo verified |
 | `AIK-06-CONTROL-CHAT-NAV` | Repair Control Chat navigation | `COMPLETE_WITH_LIMITATIONS` | Branch verified, not merged; six baseline failures remain | Codex, Echo verified |
 | `AIK-07-KANBAN-DECISION-BRIEF` | Recommend options for D-1–D-5 from packet evidence | `COMPLETE_WITH_LIMITATIONS` | All five owner directions subsequently recorded; AIK-07B integrates them into contract | Codex, Echo verified |
-| `AIK-07B-KANBAN-CONTRACT-UPDATE` | Integrate D-1–D-5 into contract, matrix, and brief | `NEEDS_CHANGES` | Round 1 findings corrected in R1 task; Echo verification, Rounds 2–3, and owner approval remain | Codex, Echo review |
-| `AIK-07B-R1-REMEDIATION` | Correct five Round 1 contract-audit findings | `RUNNING` | Packet corrections await Echo verification; Round 2 has not started | Codex, Echo review |
+| `AIK-07B-KANBAN-CONTRACT-UPDATE` | Integrate D-1–D-5 into contract, matrix, and brief | `NEEDS_CHANGES` | Round 1 corrections verified; Rounds 2–3 and owner approval remain | Codex, Echo verified |
+| `AIK-07B-R1-REMEDIATION` | Correct five Round 1 contract-audit findings | `COMPLETE_WITH_LIMITATIONS` | Exact branch commit and all changed blobs verified; Round 2 has not started | Codex, Echo verified |
 | `AIK-08-KANBAN-VERTICAL-SLICE` | Implement first shared-board slice and Relay/Control views | `BLOCKED` | Contract revised, passes three audits, and receives owner approval; technical choices gated | Unassigned |
 | `AIK-09-MIND-GATES` | G0–G7 review | `BLOCKED` | Separate active Mind task; consume its verified report only | Separate Codex effort |
 | `AIK-10-HARDWARE-BOUNDARY` | Confirm topology and Proxmox boundary | `BLOCKED` | Physical parts/assembly and authorization | Eddie / Echo |

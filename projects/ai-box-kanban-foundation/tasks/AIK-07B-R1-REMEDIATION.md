@@ -2,7 +2,7 @@
 
 **Project:** `ai-box-kanban-foundation`
 **Task:** `AIK-07B-R1-REMEDIATION`
-**Status:** `RUNNING` — scoped packet corrections applied for Echo verification; Round 2 has not started.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — R1-01–R1-05 are applied and independently verified at commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`. Echo confirmed remote branch/blob readback, exact 11-path scope, queue syntax/status, JSON, all 18 acceptance IDs, relative links, and `git diff --check`. Round 2 is not started; no implementation is authorized.
 **Repository/branch:** `eOnoes/echo-projects`, `docs/AIK-07B-KANBAN-CONTRACT-UPDATE`
 **Base:** `13ebdac3691edb27fdebe1bbfc6c5961955afb02`
 **Executor:** Codex `gpt-6-sol`, medium reasoning.
@@ -54,4 +54,4 @@ Do not modify the frozen Round 1 report or audit receipt. Do not change the owne
 
 ## Execution status
 
-R1-01–R1-05 are recorded in the revised contract, matrix, and Queue table. The [remediation receipt](../receipts/AIK-07B-R1-REMEDIATION.md) records scope and local acceptance checks. Echo verification, Rounds 2–3, and final owner approval remain pending; AIK-08 stays blocked.
+R1-01–R1-05 are recorded in the revised contract, matrix, and Queue table. The [remediation receipt](../receipts/AIK-07B-R1-REMEDIATION.md) records the exact Codex commit and Echo's independent checks. Echo verification is complete. Round 2 has not started; AIK-08 remains blocked.
