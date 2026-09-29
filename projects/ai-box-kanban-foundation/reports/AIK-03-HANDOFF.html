@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIK-03 — Review handoff</title>
+  <style>body{font:16px/1.5 system-ui,sans-serif;max-width:54rem;margin:2rem auto;padding:0 1rem;color:#202124}h1,h2{line-height:1.2}a{color:#0757a6}li{margin:.4rem 0}.status{background:#eef5ff;border-left:4px solid #0757a6;padding:.8rem 1rem}</style>
+</head>
+<body>
+  <h1>AIK-03 — Review handoff</h1>
+  <h2>TL;DR</h2>
+  <p class="status">The shared Kanban MVP contract and A-01–A-12 acceptance cases are drafted for Echo's independent review. They require authenticated board-scoped actors, attributed and idempotent writes, approval-controlled removal, and a durable replayable feed. This is a design proposal. AIK-03 is <strong>READY_FOR_REVIEW</strong>, not accepted or complete.</p>
+  <h2>What to review</h2>
+  <ul>
+    <li><a href="../deliverables/KANBAN-MVP.md">Compact contract</a>: task shape, minimal lifecycle, authorization, audit, retry, and event recovery guarantees.</li>
+    <li><a href="KANBAN-ACCEPTANCE-MATRIX.md">Acceptance matrix</a>: A-01–A-12 pass/fail cases and coverage map.</li>
+    <li><a href="../receipts/AIK-03.md">Receipt</a>: inputs, outputs, checks, and scope.</li>
+  </ul>
+  <h2>Exact decisions required from Eddie</h2>
+  <ol>
+    <li><strong>D-1:</strong> Name the future authoritative shared task service/store and operator; the packet qualifies none of Mind, Relay, or Control.</li>
+    <li><strong>D-2:</strong> Choose the trusted identity source and lifecycle for human/agent IDs, and who grants and revokes board roles.</li>
+    <li><strong>D-3:</strong> Set removal approver eligibility, self-approval policy, and reason/revision requirements. No removal approval implementation is authorized while these remain open.</li>
+    <li><strong>D-4:</strong> Set audit/event retention and replay window, expired-cursor handling, and access to removed-task history.</li>
+    <li><strong>D-5:</strong> Choose snapshot/feed interface semantics and confirm priority/source-reference conventions for the first board.</li>
+  </ol>
+  <h2>Gate and next action</h2>
+  <p>Echo verifies the remote branch's exact project-scoped diff, links, coverage, and evidence claims, then requests an independent review. Eddie can decide D-1–D-5 after seeing findings. Implementation requires a separate authorized packet. Control's operations freeze and Mind G0–G7 remain open; Onoes-Inference-Control's security gate is separate.</p>
+</body>
+</html>

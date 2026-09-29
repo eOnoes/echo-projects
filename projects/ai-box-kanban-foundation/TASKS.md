@@ -3,12 +3,14 @@
 ## Current task
 
 **Task:** `AIK-03` — define shared Kanban MVP requirements
-**Status:** `IN_PROGRESS`
+**Status:** `READY_FOR_REVIEW` — draft delivered on `codex/AIK-03`; Echo's independent review is pending.
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
 **Owner direction:** The original project scope covers items 1–3; Eddie delegated project management to Echo.
 **Allowed output:** spec, acceptance matrix, receipt, and handoff under this packet only; no backend or source-code implementation.
 
-AIK-01 and AIK-01-DOCS are complete and verified. AIK-03 is the sole `IN_PROGRESS` task.
+AIK-01 and AIK-01-DOCS are complete and verified. AIK-03 is the sole active task; no task is marked complete from the executor's draft alone.
+
+**AIK-03 deliverables:** [`deliverables/KANBAN-MVP.md`](deliverables/KANBAN-MVP.md), [`reports/KANBAN-ACCEPTANCE-MATRIX.md`](reports/KANBAN-ACCEPTANCE-MATRIX.md), [`receipts/AIK-03.md`](receipts/AIK-03.md), and [`reports/AIK-03-HANDOFF.md`](reports/AIK-03-HANDOFF.md) / [HTML](reports/AIK-03-HANDOFF.html). Eddie's D-1–D-5 decisions and independent review remain open.
 
 ## Completed
 
@@ -54,7 +56,7 @@ The successful import is not runtime validation and does not close the dashboard
 | Task | Summary | Status | Dependency | Executor |
 |---|---|---|---|---|
 | `AIK-01-DOCS` | Apply delegated boundary wording to two Control Markdown docs | `COMPLETE` | Remote readback verified | Echo |
-| `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `IN_PROGRESS` | AIK-01-DOCS verified | Codex (`gpt-6-sol`, medium) |
+| `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `READY_FOR_REVIEW` | Echo review and Eddie decisions pending | Codex (`gpt-6-sol`, medium) |
 | `AIK-04` | Inference Control security remediation | `BLOCKED` | Separate scope, approval, and review | Unassigned |
 
 ## Task rules
