@@ -2,15 +2,15 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `COMPLETE_WITH_LIMITATIONS` — AIK-07B Round 1 returned `NEEDS_CHANGES`; the five bounded corrections are Echo-verified. Rounds 2–3 and owner approval remain before implementation.
-**Current phase:** Item 4 contract audits; Round 1 corrections are verified, followed by Rounds 2–3 and owner approval. Implementation remains blocked.
-**Current task:** AIK-07B Round 2 audit preparation — packet freeze/hash followed by a separate read-only auditor; no code or runtime work.
+**Current status:** `COMPLETE_WITH_LIMITATIONS` — Round 1 corrections are verified; Round 2 DSH/Gemini returned `PASS`, with process limitations recorded in [`receipts/AIK-07B-ROUND-2.md`](receipts/AIK-07B-ROUND-2.md). Round 3 and owner approval remain before implementation.
+**Current phase:** Item 4 contract audits; Round 1 corrections are verified and Round 2 returned `PASS` with process limitations recorded. Round 3 and owner approval remain. Implementation remains blocked.
+**Current task:** AIK-07B Round 3 — freeze/hash a fresh packet including both prior audit reports/receipts; dispatch a distinct read-only auditor only. No source/runtime work.
 **Manager:** Echo
 **Executor:** Codex applied the five Round 1 packet corrections; Echo verified the remote branch, changed blobs, acceptance cases, links, JSON, and Queue table at `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`.
 
 ## TL;DR
 
-Eddie has recorded D-1–D-5 in [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md). Round 1 audited ancestor commit `13ebdac3691edb27fdebe1bbfc6c5961955afb02` and returned `NEEDS_CHANGES` with five findings. Echo verified the frozen files remained unchanged. Codex commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53` contains the verified Round 1 corrections. Echo confirmed remote ref and all changed blobs match; five corrections resolve the contract/matrix findings. No implementation or runtime work occurred. Two further distinct reviews and final owner approval must pass before implementation.
+Round 1 audit returned `NEEDS_CHANGES`; its five scoped corrections are Echo-verified at `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`. Round 2 returned `PASS` via `google/gemini-3.5-flash-lite`; its report and process limitations are in the Round 2 receipt. Prepare and freeze a distinct Round 3 audit packet. One further review and final owner approval must pass before implementation.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
@@ -28,11 +28,11 @@ AIK-07B's contract update at `13ebdac3691edb27fdebe1bbfc6c5961955afb02` integrat
 
 ## Current constraint
 
-Codex may update only packet paths for its bounded assignment. Round 1 remediation is verified. Round 2 may proceed only as a separate read-only audit of a fresh frozen packet; implementation, source changes, service, runtime, deployment, external data, and public exposure remain blocked until all audit/owner gates pass. Technical details expressly left open by Eddie remain unselected. AIK-06 remains branch-only; Inference Control stays mock-only.
+Round 1 remediation is verified; Round 2 DSH/Gemini returned `PASS`, with process limitations recorded. Round 3 may proceed as a separate read-only audit of a fresh frozen packet. Implementation, source changes, service, runtime, deployment, and public exposure remain blocked until Round 3 and owner approval pass. Technical details expressly left open by Eddie remain unselected. AIK-06 remains branch-only; Inference Control stays mock-only.
 
 ## Next safe action
 
-Echo has verified the remediation. The next safe action is to freeze/hash the revised packet and run Round 2 as a separate read-only audit. Preserve the three-round gate and request Eddie's final contract approval only after Round 3; keep AIK-08 blocked. Do not start implementation or duplicate the separate Mind effort.
+Round 2's model verdict was `PASS` with zero findings; Echo's verification and process limitations are recorded in its report/receipt. The current next step is a fresh, hash-pinned Round 3 review with a distinct auditor. After it passes, Eddie must approve the final contract before AIK-08. Do not start implementation or duplicate the separate Mind effort.
 
 ## Owner decisions still open
 

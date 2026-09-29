@@ -1,7 +1,7 @@
 # Execution Plan
 
 **Plan state:** `RUNNING`
-**Current executor:** Echo verified Codex's AIK-07B-R1-REMEDIATION commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`; the branch is ready for a separately scoped Round 2 audit. AIK-05 local mock is verified complete; AIK-04-PLAN is paused.
+**Current executor:** Echo — prepare the Round 3 frozen audit packet. Round 1 fixes are verified; Round 2 DSH/Gemini returned `PASS` with process limitations recorded. AIK-05 local mock is verified complete; AIK-04-PLAN is paused.
 **Rule:** one `IN_PROGRESS` task at a time.
 
 ## Owner-estimated AI-box schedule (planning only)
@@ -99,8 +99,8 @@ The spec must cover:
 
 ## Phase 7B — Integrate owner decisions and audit the contract (AIK-07B)
 
-**Status:** `COMPLETE_WITH_LIMITATIONS` — Round 1 audit returned `NEEDS_CHANGES`; all five scoped corrections are applied and Echo-verified at `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`. Round 2–3 and owner approval have not started.
-**Gate:** Freeze/hash the corrected packet and complete two further distinct, sequential review/refinement rounds. No source code, backend, runtime, or service work. Final owner review precedes implementation.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Round 1 returned `NEEDS_CHANGES`; corrections are verified. Round 2 independent DSH audit returned `PASS` with process/traceability limitations recorded at [`AIK-07B-ROUND-2.md`](receipts/AIK-07B-ROUND-2.md). Round 3 and owner approval remain.
+**Gate:** Freeze/hash the corrected packet and complete Round 3 as a distinct review; document Round 2's `PASS` and process limitations. No source code, backend, runtime, or service work. Final owner review precedes implementation.
 
 ## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)
 

@@ -2,14 +2,14 @@
 
 ## Current gate / most recent task
 
-**Task:** `AIK-07B-R1-REMEDIATION` — resolve Round 1 contract-audit findings
-**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo verified R1 corrections at Codex commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`; two further audits/refinements and Eddie's final approval remain. No implementation has started.
-**Executor:** Codex commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`, Echo verified.
-**Owner direction:** Eddie answered D-1–D-5 and asked Echo to see the product through. Preserve all choices and technical unknowns; three sequential audit/refinement rounds and final owner approval precede any build.
-**Allowed output:** Only paths listed in [`tasks/AIK-07B-R1-REMEDIATION.md`](tasks/AIK-07B-R1-REMEDIATION.md).
-**Review artifacts:** [`reports/AIK-07B-ROUND-1-AUDIT.md`](reports/AIK-07B-ROUND-1-AUDIT.md), [`receipts/AIK-07B-ROUND-1.md`](receipts/AIK-07B-ROUND-1.md), owner decision receipt, contract and matrix.
+**Task:** `AIK-07B` Round 3 contract audit
+**Status:** Round 2 auditor verdict `PASS`; Echo receipt records process limitations. Freeze a fresh snapshot with both prior audit reports before the final distinct audit. No implementation has started.
+**Executor:** Echo — round preparation and verification; independent auditor required for Round 3.
+**Owner direction:** Eddie asked to advance all currently actionable work. Preserve D-1–D-5 and all gated choices; three sequential audit/refinement rounds and final owner approval precede any build.
+**Allowed output:** Round 3 audit report/receipt and packet status only. No source, service, database, runtime, deployment, or implementation changes.
+**Review artifacts:** Rounds 1 and 2 reports/receipts, owner decision receipt, contract and matrix; see [`CODEX-START-HERE.md`](CODEX-START-HERE.md).
 
-AIK-01, AIK-01-DOCS, AIK-03, AIK-05, AIK-06, and AIK-07 are complete with limitations. AIK-04-PLAN is paused after independent review `NEEDS_CHANGES`. D-1–D-5 owner directions are recorded; implementation details and the audited contract gate remain. Item 8 is assigned separately on Mind; items 9–10 wait for physical hardware evidence.
+AIK-01, AIK-01-DOCS, AIK-03, AIK-05, AIK-06, and AIK-07 are complete with limitations. AIK-04-PLAN is paused after independent review `NEEDS_CHANGES`. D-1–D-5 owner directions are recorded; AIK-07B Round 1 corrections are verified and Round 2 returned `PASS` with limitations recorded; Round 3 and owner approval remain. Item 8 is assigned separately on Mind; items 9–10 wait for physical hardware evidence.
 
 ## Completed
 
@@ -94,8 +94,9 @@ The successful import is not runtime validation and does not close the dashboard
 | `AIK-05` | Local-mock Inference Control slice | `COMPLETE_WITH_LIMITATIONS` | Remote branch and 3 tests verified; no live mode | Codex, Echo verified |
 | `AIK-06-CONTROL-CHAT-NAV` | Repair Control Chat navigation | `COMPLETE_WITH_LIMITATIONS` | Branch verified, not merged; six baseline failures remain | Codex, Echo verified |
 | `AIK-07-KANBAN-DECISION-BRIEF` | Recommend options for D-1–D-5 from packet evidence | `COMPLETE_WITH_LIMITATIONS` | All five owner directions subsequently recorded; AIK-07B integrates them into contract | Codex, Echo verified |
-| `AIK-07B-KANBAN-CONTRACT-UPDATE` | Integrate D-1–D-5 into contract, matrix, and brief | `NEEDS_CHANGES` | Round 1 corrections verified; Rounds 2–3 and owner approval remain | Codex, Echo verified |
-| `AIK-07B-R1-REMEDIATION` | Correct five Round 1 contract-audit findings | `COMPLETE_WITH_LIMITATIONS` | Exact branch commit and all changed blobs verified; Round 2 has not started | Codex, Echo verified |
+| `AIK-07B-KANBAN-CONTRACT-UPDATE` | Integrate D-1–D-5 into contract, matrix, and brief | `IN_PROGRESS` | Round 1 corrections verified; Round 2 returned `PASS` with process limitations recorded; Round 3 and Eddie approval remain | Codex, Echo, DSH audit |
+| `AIK-07B-R2-AUDIT` | Independent Round 2 review of corrected packet | `COMPLETE_WITH_LIMITATIONS` | DSH/Gemini report `PASS`, zero findings; traceability limitations recorded in Round 2 receipt | DSH auditor, Echo |
+| `AIK-07B-R1-REMEDIATION` | Correct five Round 1 contract-audit findings | `COMPLETE_WITH_LIMITATIONS` | Codex commit and Echo verification are recorded in its receipt; Round 2 is recorded separately | Codex, Echo verified |
 | `AIK-08-KANBAN-VERTICAL-SLICE` | Implement first shared-board slice and Relay/Control views | `BLOCKED` | Contract revised, passes three audits, and receives owner approval; technical choices gated | Unassigned |
 | `AIK-09-MIND-GATES` | G0–G7 review | `BLOCKED` | Separate active Mind task; consume its verified report only | Separate Codex effort |
 | `AIK-10-HARDWARE-BOUNDARY` | Confirm topology and Proxmox boundary | `BLOCKED` | Physical parts/assembly and authorization | Eddie / Echo |

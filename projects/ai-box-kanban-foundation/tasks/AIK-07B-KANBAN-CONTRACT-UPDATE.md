@@ -2,7 +2,7 @@
 
 **Project:** `ai-box-kanban-foundation`
 **Task:** `AIK-07B-KANBAN-CONTRACT-UPDATE`
-**Status:** `NEEDS_CHANGES` — Round 1 Kimi K3 audit found five issues; see [`reports/AIK-07B-ROUND-1-AUDIT.md`](../reports/AIK-07B-ROUND-1-AUDIT.md) and [`receipts/AIK-07B-ROUND-1.md`](../receipts/AIK-07B-ROUND-1.md). Codex remediation is scoped in `AIK-07B-R1-REMEDIATION.md`; Echo re-review follows before Round 2.
+**Status:** `IN_PROGRESS` — Round 1 Kimi K3 findings are corrected and Echo-verified. Round 2 DSH/Gemini audit returned `PASS` with process limitations recorded in [`receipts/AIK-07B-ROUND-2.md`](../receipts/AIK-07B-ROUND-2.md). Round 3 and Eddie's final approval remain; AIK-08 is blocked.
 **Repository:** `eOnoes/echo-projects`, branch `docs/AIK-07B-KANBAN-CONTRACT-UPDATE`
 **Base:** `b220c5e02e5451f3ef068ac125d80e913f5581fd`
 **Executor:** Codex, `gpt-6-sol`, medium reasoning.

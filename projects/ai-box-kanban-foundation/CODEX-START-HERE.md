@@ -3,8 +3,8 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `READY_FOR_ROUND_2` — Round 1 returned `NEEDS_CHANGES`; all five corrections have been Echo-verified. Freeze a new snapshot for the next read-only audit. No implementation is authorized.
-Read `tasks/AIK-07B-R1-REMEDIATION.md`. Do not implement source code. AIK-08 remains blocked until all three rounds pass and Eddie approves the final contract.
+**Current status:** `READY_FOR_ROUND_3` — Round 2 independent DSH/Gemini report returned `PASS`; its process limitations are recorded in [`receipts/AIK-07B-ROUND-2.md`](receipts/AIK-07B-ROUND-2.md). Round 3 must be a distinct read-only audit of a fresh packet. No implementation is authorized.
+Read `tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md` and both Round 1/2 audit reports and receipts. Do not implement source code. AIK-08 remains blocked until Round 3 and Eddie approves the final contract.
 
 ## Read order
 
@@ -16,7 +16,7 @@ Read `tasks/AIK-07B-R1-REMEDIATION.md`. Do not implement source code. AIK-08 rem
 
 ## Current assignment
 
-Round 1 is complete with verdict `NEEDS_CHANGES`; R1-01–R1-05 are corrected and Echo-verified at commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`. Freeze a fresh packet for Round 2 using a separate read-only auditor. Do not implement source or start a service; AIK-08 remains blocked until all three rounds pass and Eddie approves the final contract.
+Round 1 is complete with verdict `NEEDS_CHANGES`; R1-01–R1-05 are corrected and Echo-verified at commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`. Round 2 returned `PASS` via `google/gemini-3.5-flash-lite`; its verification limits are in `receipts/AIK-07B-ROUND-2.md`. Freeze a fresh packet for Round 3 using a distinct read-only auditor. Do not implement source or start a service; AIK-08 remains blocked until Round 3 and Eddie's final approval.
 
 ## Milestone and error rule
 

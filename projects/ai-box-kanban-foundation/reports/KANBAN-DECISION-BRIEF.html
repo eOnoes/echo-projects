@@ -21,5 +21,5 @@
 <tr><td>Numeric production retention and capacity/deletion behavior</td><td>Before broader, public, multi-user, or production use, provide evidence for audit, tombstone, event/replay, and idempotency periods and obtain Eddie's approval. The private-trial no-expiry rule does not establish a production policy.</td></tr>
 <tr><td>Event transport and snapshot/cursor handoff mechanics</td><td>Select after stack discovery; demonstrate consistent snapshot, ordered durable replay, authorization, restart recovery, and expiry behavior against the matrix, then review the chosen interface.</td></tr>
 </tbody></table>
-<p>The three design-audit rounds have <strong>not</strong> run. AIK-08 remains blocked until those rounds pass, Eddie approves the final contract, and a separate implementation task scopes technical choices. No source, service, runtime, or deployment work is authorized by this update.</p>
+<p>The three design-audit rounds are underway: Round 1 corrections are verified; Round 2 returned <code>PASS</code> with process limitations documented in <code>receipts/AIK-07B-ROUND-2.md</code>. Round 3, Eddie's approval, and a separate implementation scope are still required. AIK-08 remains blocked; no source, service, runtime, or deployment work is authorized.</p>
 </body></html>
