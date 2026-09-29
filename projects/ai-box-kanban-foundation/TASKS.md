@@ -13,6 +13,16 @@ No task is currently `IN_PROGRESS`.
 
 ## Completed
 
+### AIK-00 — Create and publish the project packet
+
+**Status:** `COMPLETE`
+
+- [x] Publish only `projects/ai-box-kanban-foundation/` to the public project-control repository.
+- [x] Verify the remote `main` commit and packet file tree.
+- [x] Confirm the staged commit contains only 12 packet files; link, diff, secret, and private-path checks pass.
+- [x] Leave the canonical dirty clone and its unrelated changes untouched.
+- **Receipt:** initial packet commit `c975022afe3080f7e6bf1c6b612ed242acffd271`.
+
 ### AIK-02 — Find and safely import Inference Control
 
 **Status:** `COMPLETE_WITH_LIMITATIONS`

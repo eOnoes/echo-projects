@@ -12,6 +12,7 @@ Only verifiable claims belong here. Public packet entries contain no private pat
 | `E-006` | The `eOnoes/echo-projects` control-plane repository is public and allows repository-content operations. | `PROVEN` | GitHub repository metadata readback | Initial project-packet publication is tracked separately by the commit and remote readback. |
 | `E-007` | The exact Control-document contradictions and required wording are known. | `UNRESOLVED` | Pending AIK-01 source review | Codex must cite documents and sections; no assumed fix. |
 | `E-008` | The Kanban task/feed schema and authority model are fully specified. | `UNRESOLVED` | Pending AIK-03 | Must be independently reviewed before implementation. |
+| `E-009` | The initial project packet is present on public `main` at commit `c975022afe3080f7e6bf1c6b612ed242acffd271`; remote readback matches. | `PROVEN` | GitHub commit and project-directory tree readback | Commit contains only the 12 project-packet files. |
 
 ## Evidence update rule
 

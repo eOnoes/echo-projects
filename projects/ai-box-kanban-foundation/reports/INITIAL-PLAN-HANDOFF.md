@@ -2,6 +2,7 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Status:** `READY_FOR_REVIEW`
+**Published packet commit:** `c975022afe3080f7e6bf1c6b612ed242acffd271` on public `main`; remote readback verified.
 **Owner:** Eddie
 **Manager:** Echo
 **Executor:** Codex, conditional on a task-specific start approval

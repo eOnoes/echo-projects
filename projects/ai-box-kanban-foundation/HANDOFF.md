@@ -3,7 +3,7 @@
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
 **Status:** `READY_FOR_REVIEW`
-**Current phase:** 0 — packet prepared
+**Current phase:** 1 — Control boundary audit
 **Current task:** `AIK-01`, awaiting Eddie’s start approval
 **Manager:** Echo
 **Conditional executor:** Codex
@@ -14,7 +14,7 @@ The first-three project packet is drafted. Dashboard discovery/import is complet
 
 ## Last completed action
 
-Created the packet in an isolated clean clone of the public project-control repository. The initial commit and remote readback are still required before Phase 0 is complete.
+Published the initial packet commit `c975022afe3080f7e6bf1c6b612ed242acffd271` to public `main`. Remote readback confirmed the commit and all 12 project-packet files; staged scope, links, diff checks, secret scan, and path scan passed. The canonical dirty clone and its unrelated work remain untouched. Phase 0 is complete.
 
 ## Verified context
 

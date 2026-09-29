@@ -43,7 +43,7 @@ The audits found that Mind’s current `work_items` and `stage_executions` are i
 
 ## Current phase and task
 
-**Phase:** 0 — packet prepared; awaiting Eddie’s review.
+**Current phase:** Phase 1 — Control boundary audit; awaiting Eddie’s start approval. Phase 0 packet setup is complete and verified.
 **Current task:** None in progress. `AIK-01` awaits explicit start approval.
 **Current status:** `READY_FOR_REVIEW` — the packet is ready for human judgement; no executor has been dispatched.
 

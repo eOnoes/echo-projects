@@ -6,14 +6,14 @@
 
 ## Phase 0 — Project packet and safety boundaries
 
-**Status:** Complete when the initial packet is committed and public-safe.
+**Status:** `COMPLETE` — initial packet commit `c975022afe3080f7e6bf1c6b612ed242acffd271` was pushed to public `main` and read back from GitHub.
 
 - [x] Create canonical goal, charter, authority, plan, tasks, evidence, handoff, closure, overrides, and Codex entrypoint.
 - [x] Record dashboard discovery as complete and its runtime security gate as open.
 - [x] Define Codex permissions, milestone receipts, error handling, and GitHub billing limits.
-- [ ] Validate public-safe content and commit only this project directory.
+- [x] Validate public-safe content and commit only this project directory; internal links resolve, diff check passes, and credential/private-path scan is clean.
 
-**Exit gate:** packet files are present, cross-links resolve, secret/private-path scan is clean, and GitHub remote readback matches the local commit.
+**Exit gate:** `PROVEN` — remote head and project file tree were read back; the published commit contains only the 12 files in this project packet.
 
 ## Phase 1 — Reconcile Control authority boundaries (AIK-01)
 
