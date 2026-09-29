@@ -17,7 +17,7 @@
 
 ## Phase 1 — Reconcile Control authority boundaries (AIK-01)
 
-**Status:** `RUNNING` — Eddie approved AIK-01; Codex is assigned the read-only audit.
+**Status:** `SUBMITTED_FOR_OWNER_REVIEW` — Codex deliverables complete; Echo citation/scope verification passed; Eddie’s wording decision pending.
 **Model:** `gpt-6-sol` · **reasoning:** medium
 
 **Purpose:** establish a single consistent statement of task ownership, verification, approval, and execution authority.

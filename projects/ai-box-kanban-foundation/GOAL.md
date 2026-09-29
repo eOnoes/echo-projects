@@ -43,13 +43,13 @@ The audits found that Mind’s current `work_items` and `stage_executions` are i
 
 ## Current phase and task
 
-**Current phase:** Phase 1 — Control boundary audit; AIK-01 is in progress.
-**Current task:** `AIK-01` — read-only Control boundary document audit.
-**Current status:** `RUNNING` — Codex assigned; no source edits authorized.
+**Current phase:** Phase 1 — Control boundary audit; Codex has submitted AIK-01 and Echo verification passed.
+**Current task:** `AIK-01` — submitted for Eddie’s wording decision; no source edit authorized.
+**Current status:** `RUNNING` — owner review is pending; AIK-03 remains queued.
 
 ## Next safe action
 
-The Codex deliverable is pending: cited contradiction matrix, proposed wording, and receipt. Echo will verify the citations and scope before accepting the task. Source edits remain unauthorized.
+The AIK-01 deliverables are submitted and Echo has verified source citation bounds/support, task-branch scope, and remote file readback. Eddie’s wording decision is pending; source edits remain unauthorized and AIK-03 remains queued until this review.
 
 ## Decision log
 

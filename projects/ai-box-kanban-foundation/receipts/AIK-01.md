@@ -1,7 +1,7 @@
 # AIK-01 receipt
 
 **Project:** `ai-box-kanban-foundation`
-**Task status:** `SUBMITTED_FOR_REVIEW`; Echo verification and Eddie wording approval pending.
+**Task status:** `SUBMITTED_FOR_REVIEW`; Codex deliverables complete and Echo verification passed; Eddie’s wording decision pending.
 **Date:** 2026-09-28
 **Branch:** `codex/AIK-01`
 
@@ -42,6 +42,6 @@ The first `git diff --cached --check` failed with exit 1 on five trailing-whites
 
 ## Scope and unresolved questions
 
-All intended writes are under `projects/ai-box-kanban-foundation/`. No application source edit, live service, provider call, or network access was used. Only the branch push is authorized network activity.
+No application source edit or live service/model-runtime access was used. The authorized Codex inference session (`gpt-6-sol`, medium reasoning) executed this audit; the only separate GitHub network effect was the scoped branch push. No external web/API lookups were made.
 
-Unresolved: Eddie must choose the precise ownership/execution wording; the four documents do not choose a shared task backend or establish board permissions, task removal authority, or durable task replay. Echo must verify citations and the remote diff before acceptance. AIK-03 remains queued.
+Unresolved: Eddie must choose the precise ownership/execution wording; the four documents do not choose a shared task backend or establish board permissions, task removal authority, or durable task replay. Echo has independently verified the cited support, line bounds, branch scope, remote blobs, and unchanged Control checkout. AIK-03 remains queued.

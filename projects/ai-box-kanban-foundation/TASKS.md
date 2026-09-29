@@ -3,13 +3,13 @@
 ## Current task
 
 **Task:** `AIK-01` — Control boundary document audit
-**Status:** `SUBMITTED_FOR_REVIEW` — executor deliverables prepared; Echo verification and Eddie's wording decision pending.
+**Status:** `SUBMITTED_FOR_REVIEW` — Codex deliverables prepared; Echo verification passed; Eddie’s wording decision pending.
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
 **Approval:** Eddie explicitly authorized start in the project chat.
 **Allowed output:** one cited contradiction matrix and proposed wording under this project’s `reports/`; no source edits.
-**Evidence required:** exact source document/section references, scope check, local validation result, and a scoped pushed branch for Echo review.
+**Echo verification:** passed for citation line bounds/support, seven-path project scope, remote blob readback, and unchanged Control source checkout. Eddie’s wording decision remains pending.
 
-AIK-01 is the sole active task. Its [matrix](reports/CONTROL-BOUNDARY-MATRIX.md), [receipt](receipts/AIK-01.md), and [Markdown](reports/AIK-01-HANDOFF.md)/[HTML](reports/AIK-01-HANDOFF.html) handoffs are submitted for review. It is not accepted or complete.
+AIK-01 executor work is complete and Echo verification passed. It is not yet accepted as a project milestone: Eddie’s wording decision is pending. The [matrix](reports/CONTROL-BOUNDARY-MATRIX.md), [receipt](receipts/AIK-01.md), and [Markdown](reports/AIK-01-HANDOFF.md)/[HTML](reports/AIK-01-HANDOFF.html) handoffs are submitted for review.
 
 ## Completed
 
@@ -40,7 +40,7 @@ The successful import is not runtime validation and does not close the dashboard
 
 | Task | Summary | Status | Dependency | Executor |
 |---|---|---|---|---|
-| `AIK-01` | Reconcile Control authority/boundary documents; matrix + proposed text | `SUBMITTED_FOR_REVIEW` | Echo citation/diff verification and Eddie wording decision | Codex (`gpt-6-sol`, medium) |
+| `AIK-01` | Reconcile Control authority/boundary documents; matrix + proposed text | `SUBMITTED_FOR_REVIEW` | Eddie wording decision; any source edits require a new exact-file task | Codex (`gpt-6-sol`, medium) |
 | `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `READY` | AIK-01 reviewed | Codex |
 | `AIK-04` | Inference Control security remediation | `BLOCKED` | Separate scope, approval, and review | Unassigned |
 

@@ -2,7 +2,7 @@
 
 ## TL;DR
 
-The [source-cited Control boundary matrix](CONTROL-BOUNDARY-MATRIX.md) identifies four wording decisions for Eddie (C-01, C-03, C-04, and the common boundary paragraph). The reviewed documents describe Control oversight workflows, approvals, audit, chat, and a frozen future command path. They do **not** qualify Mind's internal execution records as a shared task backend, establish Relay as a task service, or establish a durable shared-task feed. No source file was changed. AIK-01 is **submitted for Echo verification and Eddie's wording decision**, not accepted or complete.
+The [source-cited Control boundary matrix](CONTROL-BOUNDARY-MATRIX.md) identifies four wording decisions for Eddie (C-01, C-03, C-04, and the common boundary paragraph). Echo independently verified the cited source support, line bounds, branch scope, and remote readback. The four documents do **not** qualify Mind's execution records or Relay's displays as a shared task service. No source file was changed. AIK-01 is submitted for Eddie's decision on proposed wording, not accepted Control text.
 
 ## Drill-down
 
@@ -17,4 +17,4 @@ The [receipt](../receipts/AIK-01.md) records the exact reads and local checks. C
 
 ## Exact next decision
 
-Echo verifies citations, branch scope, and the pushed diff. Eddie then approves the proposed boundary wording for a **new, exact-file documentation-edit task**, or provides corrected ownership/execution wording. This handoff itself authorizes no Control edits or integration work.
+Echo’s citation, scope, and remote-readback verification passed. Eddie now reviews C-01, C-03, C-04, and the common boundary paragraph. He may approve them for a **new, exact-file documentation-edit task** or provide corrected ownership/execution wording. This handoff itself authorizes no Control edits or integration work.
