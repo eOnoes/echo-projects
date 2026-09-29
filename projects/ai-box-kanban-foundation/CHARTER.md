@@ -13,7 +13,7 @@ The current applications have different roles and incomplete contracts. Mind rec
 1. **Control boundary reconciliation:** compare the relevant Control docs against the supplied Mind audit; produce a contradiction matrix and proposed text; wait for Eddie’s approval before editing source docs.
 2. **Inference Control discovery/import:** record the completed discovery, audit, sanitized standalone repository, and current security gate. Do not repeat discovery or touch legacy credential-bearing material.
 3. **Kanban MVP requirements:** specify data, identity, authorization, task lifecycle, removal approvals, mutation history, idempotency, durable event delivery/replay, and acceptance tests. Keep this design-only.
-4. **Authoritative Kanban store/contract:** resolve AIK-03 decisions D-1–D-5 with Eddie before choosing a store or identity policy.
+4. **Authoritative Kanban store/contract:** Eddie selected a dedicated logical task authority and named Echo as operator; resolve D-2–D-5 and review the contract before selecting technology or implementing a store.
 5. **Relay adapter/UI:** only after item 4; use the single reviewed service contract, not a duplicate task store.
 6. **Control oversight views:** only after the contract exists; show task history/approvals without granting execution authority.
 7. **Control Chat navigation:** repair the known crash in a bounded task; do not guess a Relay URL or route.
@@ -32,7 +32,7 @@ The current applications have different roles and incomplete contracts. Mind rec
 
 ## Out of scope
 
-- Deploying a production Kanban service or choosing a backend/identity policy without resolving D-1–D-5.
+- Deploying a production Kanban service or choosing technical backend/identity policy without resolving D-2–D-5 and reviewing the contract; D-1 establishes only the logical authority/operator.
 - Building Relay task features or Control task views before the single service contract is approved.
 - Modifying Mind or connecting it to a board; Mind G0–G7 remains a separate task.
 - Live-mode Inference Control remediation, model operations, upstream calls, or remote/public exposure under the local-mock task.

@@ -57,7 +57,7 @@ The dashboard was found as `Onoes-Inference-Control`, imported into a fresh-hist
 
 ## Phase 3 — Define Kanban MVP requirements (AIK-03)
 
-**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex draft verified by Echo and independently reviewed PASS; D-1–D-5 remain owner decisions, with idempotency-result retention to be included in D-4 before implementation.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex draft verified by Echo and independently reviewed PASS. Eddie decided D-1 at the logical/operator level; D-2–D-5 remain owner decisions. D-4 should include idempotency-outcome retention/expiry before implementation.
 **Purpose:** specify a separate shared task service before implementation.
 
 **Deliverable:** `deliverables/KANBAN-MVP.md` plus `reports/KANBAN-ACCEPTANCE-MATRIX.md`.
@@ -95,11 +95,11 @@ The spec must cover:
 
 ## Phase 7 — Prepare D-1–D-5 owner decisions (items 4; AIK-07)
 
-**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex's packet-only brief is independently checked and ready for Eddie. D-1–D-5 remain `PENDING`; service implementation and items 5–6 stay blocked until Eddie decides. No backend, identity provider, or retention period was guessed.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — brief verified; Eddie decided D-1 for a dedicated logical task authority operated by Echo with Eddie retaining policy ownership. D-2–D-5 remain `PENDING`; technology/hosting and implementation stay blocked.
 
 ## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)
 
-**Status:** `BLOCKED` until Phase 7 selects and reviews the authoritative service contract. One task authority; Relay consumes it; Control remains oversight/approval only.
+**Status:** `BLOCKED` until D-2–D-5 are decided and the contract is updated/reviewed. One task authority; Relay consumes it; Control remains oversight/approval only.
 
 ## Phase 9 — Mind G0–G7 review (item 8; external task)
 

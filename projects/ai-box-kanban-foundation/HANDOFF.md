@@ -2,15 +2,15 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `WAITING_FOR_OWNER_DECISIONS` — AIK-07 is complete with limitations; D-1–D-5 remain pending.
+**Current status:** `WAITING_FOR_OWNER_DECISIONS` — D-1 is recorded; D-2–D-5 remain pending.
 **Current phase:** Item 4 owner decision gate; no implementation task is active.
-**Current task:** Eddie to review the decision brief and answer D-1–D-5; Codex is idle until a new bounded task is authorized.
+**Current task:** Eddie to review the decision brief and answer D-2–D-5; Codex is idle until a new bounded task is authorized.
 **Manager:** Echo
 **Executor:** Echo coordinates; no active Codex task. No credentials, services, or runtimes.
 
 ## TL;DR
 
-The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. AIK-07's [owner decision brief](reports/KANBAN-DECISION-BRIEF.md) and [HTML companion](reports/KANBAN-DECISION-BRIEF.html) are independently verified; D-1–D-5 remain Eddie's choices. Item 8 stays with the separate Mind effort, and items 9–10 wait for physical hardware inspection.
+The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. AIK-07's [owner decision brief](reports/KANBAN-DECISION-BRIEF.md) and [HTML companion](reports/KANBAN-DECISION-BRIEF.html) are independently verified. Eddie decided D-1; D-2–D-5 remain his choices. Item 8 stays with the separate Mind effort, and items 9–10 wait for physical hardware inspection.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
@@ -28,15 +28,15 @@ AIK-07 is on `codex/AIK-07-KANBAN-DECISION-BRIEF` at `fa8fc4bedb1eb94006e230a1d8
 
 ## Current constraint
 
-No new Codex scope is active until Eddie answers D-1–D-5. Do not change the Kanban contract or resolve owner decisions. AIK-06's Control fix remains branch-only; do not guess a Relay URL or modify boundary/security surfaces. Inference Control stays mock-only; live auth/security and remote exposure remain blocked.
+No new Codex scope is active until Eddie answers D-2–D-5. D-1 selects a dedicated logical authority operated by Echo; technology/hosting remain open. Do not change the Kanban contract or resolve other owner decisions. AIK-06's Control fix remains branch-only; do not guess a Relay URL or modify boundary/security surfaces. Inference Control stays mock-only; live auth/security and remote exposure remain blocked.
 
 ## Next safe action
 
-Eddie reviews the [D-1–D-5 decision brief](reports/KANBAN-DECISION-BRIEF.md) and supplies the owner choices. Do not start shared-board implementation until those answers are recorded and a separate scoped task is approved. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
+Eddie reviews the [D-1–D-5 decision brief](reports/KANBAN-DECISION-BRIEF.md) and supplies D-2–D-5. Do not start shared-board implementation until those answers are recorded and the contract is updated/reviewed in a separate scoped task. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
 
 ## Owner decisions still open
 
-- Kanban D-1–D-5: authoritative store/operator, identity/grants, removal policy, retention including idempotency outcomes, and snapshot/feed interface.
+- D-1 decided: dedicated logical service/store; Echo operator; Eddie owner/policy authority. Technology/hosting remain open. D-2–D-5: identity/grants, removal policy, retention including idempotency outcomes, and snapshot/feed interface.
 - Relay destination URL only if it is not verifiable in the existing Control configuration.
 - Physical hardware and topology confirmation; dates are estimates only.
 

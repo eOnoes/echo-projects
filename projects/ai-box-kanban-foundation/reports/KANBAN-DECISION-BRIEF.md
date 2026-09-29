@@ -1,6 +1,6 @@
 # Kanban D-1–D-5 — owner decision brief
 
-**Status:** recommendation only. **D-1: PENDING · D-2: PENDING · D-3: PENDING · D-4: PENDING · D-5: PENDING.** Eddie has made none of these choices in this packet.
+**Current status:** D-1 decided by Eddie on 2026-09-29; D-2–D-5 remain `PENDING`. The per-gate recommendation text below preserves the state when this brief was issued. See [`AIK-07-D1-DECISION.md`](../receipts/AIK-07-D1-DECISION.md). This brief is advisory and does not authorize implementation.
 
 ## Phone TL;DR
 
@@ -10,19 +10,19 @@ The reviewed contract describes one authenticated, board-scoped task authority w
 
 | Gate | Answer Eddie needs to supply | Current state |
 |---|---|---|
-| D-1 | Which **one** service/store is authoritative, and who operates it? | **PENDING** |
+| D-1 | Which **one** service/store is authoritative, and who operates it? | **DECIDED:** dedicated logical task service/store; Echo operates; Eddie retains owner/policy authority. Technology/hosting open. |
 | D-2 | What verified identity source/lifecycle supplies stable human and agent IDs, and who grants/revokes board read, write, and approve-removal roles? | **PENDING** |
 | D-3 | Who may approve removal, may a requester approve their own request, and what reason/revision rule applies? | **PENDING** |
 | D-4 | How long are audit/history, events, replay cursors, removed-task history, and idempotency outcomes retained; who may read removed-task history; what is the expired-cursor policy? | **PENDING** |
 | D-5 | What concrete snapshot/feed interface and handoff will clients use, and are `low|normal|high` priority and optional opaque `source_ref` suitable for the first board? | **PENDING** |
 
-These answers select policy and implementation scope; this brief does not record an owner decision. Any candidate technology or numerical period needs evidence and an explicit owner choice before implementation. [Contract, “Threat notes and decisions”](../deliverables/KANBAN-MVP.md) · [Review note E-024](../EVIDENCE.md)
+D-2–D-5 still require owner decisions; D-1 is recorded in the decision receipt linked above. These choices select policy and implementation scope; this brief does not authorize implementation. Any candidate technology or numerical period needs evidence and an explicit owner choice before implementation. [Contract, “Threat notes and decisions”](../deliverables/KANBAN-MVP.md) · [Review note E-024](../EVIDENCE.md)
 
-## D-1 — authoritative service/store and operator · **PENDING**
+## D-1 — authoritative service/store and operator · **DECIDED**
 
-**Exact choice.** Name the single authoritative shared task service/store and its operator. **Packet fact.** Mind's internal execution records, Relay's todo/goal display, and Control's oversight records are not qualified as the shared board. The contract requires a durable task/history/idempotency/event authority; the charter bars a competing store. [Contract, “Purpose and boundary” and “Event feed and recovery”](../deliverables/KANBAN-MVP.md) · [Charter, items 4–6](../CHARTER.md) · [E-001–E-003, E-019](../EVIDENCE.md)
+**Owner decision (2026-09-29).** Use one dedicated logical task service/store; Echo operates it; Eddie retains owner/policy authority. The database, runtime, hosting, and deployment are not selected. See [`AIK-07-D1-DECISION.md`](../receipts/AIK-07-D1-DECISION.md). **Packet fact.** Mind's internal execution records, Relay's todo/goal display, and Control's oversight records are not qualified as the shared board. The contract requires a durable task/history/idempotency/event authority; the charter bars a competing store. [Contract, “Purpose and boundary” and “Event feed and recovery”](../deliverables/KANBAN-MVP.md) · [Charter, items 4–6](../CHARTER.md) · [E-001–E-003, E-019](../EVIDENCE.md)
 
-**Supported options.** Establish a separate service/store for the reviewed contract; or qualify a proposed existing component against that same contract and acceptance matrix before naming it. The packet supports neither a named candidate nor a product comparison. **Recommendation.** Favor one dedicated logical task authority with a named operator, while leaving technology and hosting open. This keeps Relay a client and Control an oversight consumer; it adds an operated component and requires durability/recovery evidence. **Unknown.** Candidate service, store, operator, operational capacity, and qualification evidence. **Unblocks.** A bounded service implementation task and the later Relay/Control adapters, after the other gates and contract review. [Contract](../deliverables/KANBAN-MVP.md) · [Matrix A-09–A-12](KANBAN-ACCEPTANCE-MATRIX.md) · [Plan, phases 7–8](../PLAN.md)
+**Supported options.** Establish a separate service/store for the reviewed contract; or qualify a proposed existing component against that same contract and acceptance matrix before naming it. The packet supports neither a named candidate nor a product comparison. **Recommendation.** Favor one dedicated logical task authority with a named operator, while leaving technology and hosting open. This keeps Relay a client and Control an oversight consumer; it adds an operated component and requires durability/recovery evidence. **Unknown.** Specific database/runtime/hosting, operating capacity, and qualification evidence remain open. **Unblocks.** D-1 alone does not unblock implementation; D-2–D-5 and contract review are still required before a scoped build task. [Contract](../deliverables/KANBAN-MVP.md) · [Matrix A-09–A-12](KANBAN-ACCEPTANCE-MATRIX.md) · [Plan, phases 7–8](../PLAN.md)
 
 ## D-2 — identity and grants · **PENDING**
 
@@ -50,4 +50,4 @@ These answers select policy and implementation scope; this brief does not record
 
 ## First testable slice after the gates
 
-Once Eddie resolves D-1–D-5 and a separate implementation task is scoped, test **one board, one authoritative task store, verified human/agent actors, board read/write grants, create/read/edit/complete/reopen, append-only attribution, idempotent retry across restart, a consistent snapshot, and ordered replay after disconnect**. Include denial and cross-board fixtures so the slice demonstrates the contract's authority boundary. Use A-01–A-07 and A-09–A-12 as observable checks; add A-08 when D-3 authorizes the removal path. Relay may later present the same service; Control may later show oversight and approvals. Neither creates a second task authority or execution permission. This is a proposed test scope, not authorization to implement or a claim of passing tests. [Contract](../deliverables/KANBAN-MVP.md) · [Matrix](KANBAN-ACCEPTANCE-MATRIX.md) · [Charter, items 4–6](../CHARTER.md) · [Plan, phases 7–8](../PLAN.md)
+After Eddie resolves D-2–D-5, the contract is updated/reviewed, and a separate implementation task is scoped, test **one board, one authoritative task store, verified human/agent actors, board read/write grants, create/read/edit/complete/reopen, append-only attribution, idempotent retry across restart, a consistent snapshot, and ordered replay after disconnect**. Include denial and cross-board fixtures so the slice demonstrates the contract's authority boundary. Use A-01–A-07 and A-09–A-12 as observable checks; add A-08 when D-3 authorizes the removal path. Relay may later present the same service; Control may later show oversight and approvals. Neither creates a second task authority or execution permission. This is a proposed test scope, not authorization to implement or a claim of passing tests. [Contract](../deliverables/KANBAN-MVP.md) · [Matrix](KANBAN-ACCEPTANCE-MATRIX.md) · [Charter, items 4–6](../CHARTER.md) · [Plan, phases 7–8](../PLAN.md)

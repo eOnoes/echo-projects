@@ -4,7 +4,7 @@
 **Branch:** `codex/AIK-07-KANBAN-DECISION-BRIEF`
 **Starting HEAD:** `6fc3e9f329e0ffb829652186ecc5d33b4aaeb1d4`
 **Starting HEAD parent:** `e2a419a9bf164707e7c7a31996219bfa49103a67`
-**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo verified the pushed branch `codex/AIK-07-KANBAN-DECISION-BRIEF` at `fa8fc4bedb1eb94006e230a1d85e75b7f253dc64`; the six allowed task-output paths match remote blobs, all report links resolve, the HTML parses, D-1–D-5 remain pending, and public-content checks pass.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo verified the brief branch; at brief issuance D-1–D-5 were pending. Eddie later decided D-1 in [`AIK-07-D1-DECISION.md`](AIK-07-D1-DECISION.md); D-2–D-5 remain pending.
 
 ## Output
 

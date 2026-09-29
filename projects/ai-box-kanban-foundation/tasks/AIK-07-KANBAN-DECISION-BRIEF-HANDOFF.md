@@ -2,7 +2,7 @@
 
 **Project:** `ai-box-kanban-foundation`
 **Task:** `AIK-07-KANBAN-DECISION-BRIEF`
-**Status:** `COMPLETE_WITH_LIMITATIONS` — recommendation brief delivered; D-1–D-5 remain Eddie's pending choices.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — recommendation brief delivered; Eddie decided D-1 for a dedicated logical authority operated by Echo, with Eddie retaining policy authority. D-2–D-5 remain pending.
 **Repository:** `eOnoes/echo-projects`, branch `codex/AIK-07-KANBAN-DECISION-BRIEF`
 **Base:** `e2a419a9bf164707e7c7a31996219bfa49103a67`
 **Executor:** Codex, `gpt-6-sol`, medium reasoning

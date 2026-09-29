@@ -2,14 +2,14 @@
 
 ## Current gate / most recent task
 
-**Task:** `AIK-07-KANBAN-DECISION-BRIEF` — completed; awaiting Eddie's D-1–D-5 choices
-**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo independently verified the brief and remote branch; D-1–D-5 remain `PENDING` for Eddie.
+**Task:** `AIK-07-KANBAN-DECISION-BRIEF` — complete; awaiting Eddie's D-2–D-5 choices
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Echo verified the brief; Eddie has decided D-1. D-2–D-5 remain `PENDING`.
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
-**Owner direction:** Eddie asked Codex to continue through the product-first plan. AIK-06 is verified on its source branch; this bounded packet-only task prepares the decisions required for Kanban work.
+**Owner direction:** Eddie asked Codex to continue through the product-first plan. AIK-06 is verified on its source branch; AIK-07 prepared the owner choices required for Kanban work.
 **Allowed output:** A cited D-1–D-5 decision brief in Markdown/HTML plus receipt/ledger updates. It may recommend but must not decide for Eddie or change the contract.
-**Review artifacts:** [`reports/KANBAN-DECISION-BRIEF.md`](reports/KANBAN-DECISION-BRIEF.md), [`reports/KANBAN-DECISION-BRIEF.html`](reports/KANBAN-DECISION-BRIEF.html), and [`receipts/AIK-07-DECISION-BRIEF.md`](receipts/AIK-07-DECISION-BRIEF.md). Echo verified the branch; no implementation task is active.
+**Review artifacts:** [`reports/KANBAN-DECISION-BRIEF.md`](reports/KANBAN-DECISION-BRIEF.md), [`reports/KANBAN-DECISION-BRIEF.html`](reports/KANBAN-DECISION-BRIEF.html), and [`receipts/AIK-07-DECISION-BRIEF.md`](receipts/AIK-07-DECISION-BRIEF.md). Echo verified the branch; D-1 is recorded; no implementation task is active.
 
-AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-05 local mock is complete with limitations. AIK-04-PLAN is paused after independent review `NEEDS_CHANGES`. D-1–D-5 remain open; item 8 is assigned separately on Mind; items 9–10 wait for physical hardware evidence.
+AIK-01, AIK-01-DOCS, AIK-03, AIK-05, AIK-06, and AIK-07 are complete with limitations. AIK-04-PLAN is paused after independent review `NEEDS_CHANGES`. D-1 is recorded; D-2–D-5 remain open. Item 8 is assigned separately on Mind; items 9–10 wait for physical hardware evidence.
 
 ## Completed
 
@@ -18,7 +18,7 @@ AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-05 local mock
 **Status:** `COMPLETE_WITH_LIMITATIONS` — branch `codex/AIK-07-KANBAN-DECISION-BRIEF`, commit `fa8fc4bedb1eb94006e230a1d85e75b7f253dc64`; six changed task-output blobs match remote and links/content checks pass.
 
 - [x] Provides packet-cited facts, supported options, recommendations, tradeoffs, unknowns, and a first testable slice.
-- [x] D-1–D-5 remain `PENDING`; no code, backend, identity provider, numeric retention period, protocol, or deployment was selected.
+- [x] At brief issuance D-1–D-5 were pending; Eddie subsequently decided D-1 (receipt `AIK-07-D1-DECISION.md`); D-2–D-5 remain pending.
 - [x] Echo review complete; brief is ready for Eddie's choices.
 
 ### AIK-06 — Control Chat navigation fix
@@ -54,7 +54,7 @@ AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-05 local mock
 
 ### AIK-03 — Define Kanban MVP requirements
 
-**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex draft verified by Echo and independently reviewed `PASS — ZERO GAPS` by Mimo v2.5. D-1–D-5 remain owner decisions; D-4 should explicitly include idempotency-outcome retention/expiry before implementation.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex draft verified by Echo and independently reviewed `PASS — ZERO GAPS`. Eddie decided D-1 at the logical/operator level; D-2–D-5 remain owner decisions.
 
 - [x] Compact contract and A-01–A-12 acceptance matrix.
 - [x] Exact eight-file project-packet scope, remote readback, links, JSON example, diff check, and content scan verified.
@@ -89,12 +89,12 @@ The successful import is not runtime validation and does not close the dashboard
 | Task | Summary | Status | Dependency | Executor |
 |---|---|---|---|---|
 | `AIK-01-DOCS` | Apply delegated boundary wording to two Control Markdown docs | `COMPLETE` | Remote readback verified | Echo |
-| `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `COMPLETE_WITH_LIMITATIONS` | Echo + independent review passed; D-1–D-5 pending | Codex, Echo verified |
+| `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `COMPLETE_WITH_LIMITATIONS` | Independent review passed; D-1 recorded; D-2–D-5 pending | Codex, Echo verified |
 | `AIK-04-PLAN` | Draft security remediation plan | `PAUSED` | Independent review `NEEDS_CHANGES`; product-first priority | Echo |
 | `AIK-05` | Local-mock Inference Control slice | `COMPLETE_WITH_LIMITATIONS` | Remote branch and 3 tests verified; no live mode | Codex, Echo verified |
 | `AIK-06-CONTROL-CHAT-NAV` | Repair Control Chat navigation | `COMPLETE_WITH_LIMITATIONS` | Branch verified, not merged; six baseline failures remain | Codex, Echo verified |
-| `AIK-07-KANBAN-DECISION-BRIEF` | Recommend options for D-1–D-5 from packet evidence | `COMPLETE_WITH_LIMITATIONS` | Brief verified; Eddie's five choices pending | Codex, Echo verified |
-| `AIK-08-KANBAN-VERTICAL-SLICE` | Implement first shared-board slice and Relay/Control views | `BLOCKED` | Eddie's D-1–D-5 choices and reviewed service contract | Unassigned |
+| `AIK-07-KANBAN-DECISION-BRIEF` | Recommend options for D-1–D-5 from packet evidence | `COMPLETE_WITH_LIMITATIONS` | D-1 recorded; D-2–D-5 choices pending | Codex, Echo verified |
+| `AIK-08-KANBAN-VERTICAL-SLICE` | Implement first shared-board slice and Relay/Control views | `BLOCKED` | Eddie's D-2–D-5 choices and reviewed service contract; D-1 logical authority decided | Unassigned |
 | `AIK-09-MIND-GATES` | G0–G7 review | `BLOCKED` | Separate active Mind task; consume its verified report only | Separate Codex effort |
 | `AIK-10-HARDWARE-BOUNDARY` | Confirm topology and Proxmox boundary | `BLOCKED` | Physical parts/assembly and authorization | Eddie / Echo |
 
@@ -103,9 +103,9 @@ The successful import is not runtime validation and does not close the dashboard
 - One task may be `IN_PROGRESS` at a time.
 - `AIK-01` is complete with limitations; its deliverable is the verified boundary matrix in this packet.
 - `AIK-01-DOCS` is complete; only the two named Control Markdown files changed, with remote readback verification.
-- `AIK-03` is design-only and complete with limitations; D-1–D-5 remain open and no backend or UI implementation is authorized.
+- `AIK-03` is design-only and complete with limitations; D-1 is recorded, D-2–D-5 remain open, and no backend or UI implementation is authorized.
 - `AIK-05` is local mock only; live security, remote access, and real model/upstream operations remain blocked.
-- `AIK-07` is complete as a recommendation brief; it does not resolve D-1–D-5.
+- `AIK-07` delivered recommendations without deciding for Eddie; Eddie later recorded D-1; D-2–D-5 remain pending.
 - AIK-06 remains on a branch, not merged or deployed; do not guess Relay routing.
-- Items 4–6 wait for Eddie's D-1–D-5 answers; item 8 stays with the separate Mind effort; items 9–10 wait for physical evidence.
+- D-1 is decided only at the logical/operator boundary; D-2–D-5 remain owner gates. Items 5–6 wait for the contract update/review; item 8 stays with the separate Mind effort; items 9–10 wait for physical evidence.
 - Never mark a task complete from an executor summary alone; Echo verifies evidence and remote files.

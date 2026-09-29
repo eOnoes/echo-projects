@@ -26,7 +26,7 @@ The audits found that Mind’s current `work_items` and `stage_executions` are i
 
 1. The Control authority boundary is verified and the named documentation changes are recorded.
 2. The Inference Control local-mock slice is usable for bounded UI/workflow testing; this does not qualify live mode.
-3. The Kanban contract is reviewed, and D-1–D-5 are resolved before selecting or implementing a backend.
+3. The Kanban contract is reviewed, D-1's logical authority/operator decision is recorded, and D-2–D-5 are resolved before selecting technical implementation details.
 4. Relay and Control use one reviewed task service and do not create competing authority or execution paths.
 5. The Control Chat navigation crash is repaired and regression-tested without guessing a Relay target.
 6. The separate Mind effort supplies its own G0–G7 evidence; no duplicate inspection or integration is implied.
@@ -35,7 +35,7 @@ The audits found that Mind’s current `work_items` and `stage_executions` are i
 
 ## Explicit non-goals
 
-- Do not build or deploy a shared Kanban service, Relay adapter, or Control task view before D-1–D-5 are resolved and the single service contract is reviewed; any prototype needs its own scoped task.
+- Do not build or deploy a shared Kanban service, Relay adapter, or Control task view before D-2–D-5 are resolved and the single service contract is reviewed. D-1 selects only a dedicated logical task authority/operator; technology, hosting, and deployment remain unselected.
 - Do not repurpose Mind’s internal execution ledger as the user-facing task store.
 - Do not authorize Control to execute work from Mind data.
 - Do not enable real model/upstream operations or expose the dashboard. The owner-authorized loopback-only mock prototype is the sole current application-code exception; live-mode fixes require separate scope and review.
@@ -60,11 +60,11 @@ Eddie called these estimates, not commitments. They do not authorize purchases, 
 
 ## Next safe action
 
-Verify AIK-06 against its exact acceptance criteria. Then prepare the D-1–D-5 decision checkpoint for Eddie before items 4–6. Keep item 8 with the separate Mind task. Schedule items 9–10 after physical hardware inspection; dates remain estimates and no live inference starts without security approval.
+Verify AIK-06 against its exact acceptance criteria. AIK-07's brief is complete and D-1 is recorded; obtain Eddie's D-2–D-5 decisions before items 4–6. Keep item 8 with the separate Mind task. Schedule items 9–10 after physical hardware inspection; dates remain estimates and no live inference starts without security approval.
 
 ## Decision log
 
-- The project scope is expanded by Eddie through backlog items 4–10, staged by dependency; D-1–D-5, the separate Mind G0–G7 effort, and hardware delivery remain gates.
+- The project scope is expanded by Eddie through backlog items 4–10, staged by dependency; D-2–D-5, the separate Mind G0–G7 effort, and hardware delivery remain gates. D-1's logical authority/operator is recorded; tech/hosting remain open.
 - The local-mock prototype is a bounded product slice only; live security, remote use, and real model operations remain gated.
 - Mind remains the memory and internal execution-record system. Shared Kanban is a separate contract/store decision.
 - AIK-06 is separately approved for Chat navigation only; route targets are evidence-based and source changes stay on its task branch.
@@ -85,10 +85,10 @@ Verify AIK-06 against its exact acceptance criteria. Then prepare the D-1–D-5 
 - [`tasks/AIK-01-DOCS-CHANGE.md`](tasks/AIK-01-DOCS-CHANGE.md) — completed two-file documentation task.
 - [`tasks/AIK-03-CODEX-HANDOFF.md`](tasks/AIK-03-CODEX-HANDOFF.md) — completed design-only assignment.
 - [`tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md`](tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md) — bounded Control Chat source task, now complete with limitations.
-- [`tasks/AIK-07-KANBAN-DECISION-BRIEF-HANDOFF.md`](tasks/AIK-07-KANBAN-DECISION-BRIEF-HANDOFF.md) — completed recommendation-only task; all D-1–D-5 remain pending.
+- [`tasks/AIK-07-KANBAN-DECISION-BRIEF-HANDOFF.md`](tasks/AIK-07-KANBAN-DECISION-BRIEF-HANDOFF.md) — completed recommendation-only task; D-1 is decided; D-2–D-5 remain pending.
 - [`reports/KANBAN-DECISION-BRIEF.md`](reports/KANBAN-DECISION-BRIEF.md) — owner decision brief.
 - [`reports/KANBAN-DECISION-BRIEF.html`](reports/KANBAN-DECISION-BRIEF.html) — phone-friendly brief.
-- [`receipts/AIK-07-DECISION-BRIEF.md`](receipts/AIK-07-DECISION-BRIEF.md) — task and verification receipt.
+- [`receipts/AIK-07-D1-DECISION.md`](receipts/AIK-07-D1-DECISION.md) — Eddie's D-1 decision; D-2–D-5 remain pending.
 - [`receipts/AIK-05-LOCAL-MOCK.md`](receipts/AIK-05-LOCAL-MOCK.md) — verified local-mock prototype receipt.
 - [`receipts/AIK-06-CONTROL-CHAT-NAV.md`](receipts/AIK-06-CONTROL-CHAT-NAV.md) — verified branch-only Chat fix receipt.
 - [`tasks/AIK-04-PLAN-CODEX-HANDOFF.md`](tasks/AIK-04-PLAN-CODEX-HANDOFF.md) — paused read-only security-plan task.

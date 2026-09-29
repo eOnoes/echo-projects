@@ -1,6 +1,6 @@
 # AIK-03 — Kanban MVP acceptance matrix
 
-**Status:** proposed design checks, not executed tests. These cases apply to a future implementation after Eddie resolves D-1–D-5 in the [spec](../deliverables/KANBAN-MVP.md). A pass requires the stated observable result; a fail is any contrary result. Fixtures use two boards, two authenticated actors with different grants, a separately authorized removal approver, and a durable restart point. Self-approval is tested against the policy Eddie selects, not presumed allowed.
+**Status:** proposed design checks, not executed tests. These cases apply to a future implementation after Eddie resolves D-2–D-5 and the contract is updated/reviewed in the [spec](../deliverables/KANBAN-MVP.md); D-1 logical authority/operator is recorded. A pass requires the stated observable result; a fail is any contrary result. Fixtures use two boards, two authenticated actors with different grants, a separately authorized removal approver, and a durable restart point. Self-approval is tested against the policy Eddie selects, not presumed allowed.
 
 | ID | Guarantee / scenario | Pass criterion | Fail criterion |
 |---|---|---|---|
@@ -17,4 +17,4 @@
 | A-11 | Replay from cursor older than configured retention and attempt to infer position from cursor bytes. | Explicit expired-cursor response requires a fresh consistent snapshot; cursor grants no access and exposes no authoritative semantics. | Silent truncation, unauthorized access, or cursor-derived authority. |
 | A-12 | Supply Mind execution record, Relay todo item, Control approval/chat event, or dashboard datum as a task authority or execution command. | None creates/changes a board task or authorizes execution without a separately authenticated, authorized task mutation; board data stays within its granted scope. | Cross-system data implicitly becomes a task write or command. |
 
-**Coverage:** identity and authorization A-01–A-03; attribution/audit A-04; fields and lifecycle A-04–A-05; idempotency A-06–A-07; removal A-08; ordered replay/retention A-09–A-11; privacy and system boundaries A-02–A-03/A-12. D-1–D-5 remain decisions, so this matrix is an implementation gate proposal, not a claim of passing runtime behavior.
+**Coverage:** identity and authorization A-01–A-03; attribution/audit A-04; fields and lifecycle A-04–A-05; idempotency A-06–A-07; removal A-08; ordered replay/retention A-09–A-11; privacy and system boundaries A-02–A-03/A-12. D-1 logical authority/operator is recorded; D-2–D-5 remain decisions, so this matrix is an implementation gate proposal, not a claim of passing runtime behavior.

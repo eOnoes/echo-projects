@@ -3,8 +3,8 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `WAITING_FOR_OWNER_DECISIONS` — AIK-07 brief is complete with limitations; D-1–D-5 remain Eddie's choices.
-No Codex task is active. Do not start AIK-08 implementation until Eddie answers D-1–D-5 and Echo issues a separate scoped task.
+**Current status:** `WAITING_FOR_OWNER_DECISIONS` — D-1 is recorded; D-2–D-5 remain Eddie's choices.
+No Codex task is active. Do not start AIK-08 implementation until Eddie answers D-2–D-5, the contract is updated/reviewed, and Echo issues a separate scoped task.
 
 ## Read order
 
@@ -16,7 +16,7 @@ No Codex task is active. Do not start AIK-08 implementation until Eddie answers 
 
 ## Current assignment
 
-No active assignment. AIK-07 is complete; wait for Eddie's D-1–D-5 choices before preparing a new task.
+No active assignment. AIK-07 is complete; D-1 selects a dedicated logical service/store operated by Echo with Eddie retaining policy authority. Wait for Eddie's D-2–D-5 choices before preparing a new task.
 
 ## Milestone and error rule
 
