@@ -3,11 +3,11 @@
 ## Current gate / most recent task
 
 **Task:** `AIK-07B-KANBAN-CONTRACT-UPDATE` — integrate recorded owner decisions into the design contract
-**Status:** `READY` — owner directions D-1–D-5 are recorded; no implementation task is active.
+**Status:** `READY_FOR_REVIEW` — D-1–D-5 integrated in the contract, matrix, and brief; no audit round or implementation task has run.
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
 **Owner direction:** Eddie answered D-1–D-5 and asked Echo to see the product through. AIK-07B is a bounded packet-only contract revision; three distinct audit/refinement rounds and final owner review precede any build.
 **Allowed output:** Only paths listed in [`tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`](tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md).
-**Review artifacts:** [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md), current Kanban contract/matrix, and task receipt. Echo will verify each branch and audit round.
+**Review artifacts:** [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md), current Kanban contract/matrix, and task receipt. Echo will verify this branch, then launch each audit round separately.
 
 AIK-01, AIK-01-DOCS, AIK-03, AIK-05, AIK-06, and AIK-07 are complete with limitations. AIK-04-PLAN is paused after independent review `NEEDS_CHANGES`. D-1–D-5 owner directions are recorded; implementation details and the audited contract gate remain. Item 8 is assigned separately on Mind; items 9–10 wait for physical hardware evidence.
 
@@ -94,7 +94,7 @@ The successful import is not runtime validation and does not close the dashboard
 | `AIK-05` | Local-mock Inference Control slice | `COMPLETE_WITH_LIMITATIONS` | Remote branch and 3 tests verified; no live mode | Codex, Echo verified |
 | `AIK-06-CONTROL-CHAT-NAV` | Repair Control Chat navigation | `COMPLETE_WITH_LIMITATIONS` | Branch verified, not merged; six baseline failures remain | Codex, Echo verified |
 | `AIK-07-KANBAN-DECISION-BRIEF` | Recommend options for D-1–D-5 from packet evidence | `COMPLETE_WITH_LIMITATIONS` | All five owner directions subsequently recorded; AIK-07B integrates them into contract | Codex, Echo verified |
-|| `AIK-07B-KANBAN-CONTRACT-UPDATE` | Integrate D-1–D-5 into contract, matrix, and brief | `READY` | Owner decisions recorded; three audit/refinement rounds remain | Codex, Echo review |
+|| `AIK-07B-KANBAN-CONTRACT-UPDATE` | Integrate D-1–D-5 into contract, matrix, and brief | `READY_FOR_REVIEW` | Owner decisions recorded; three audit/refinement rounds remain | Codex, Echo review |
 || `AIK-08-KANBAN-VERTICAL-SLICE` | Implement first shared-board slice and Relay/Control views | `BLOCKED` | Contract revised, passes three audits, and receives owner approval; technical choices gated | Unassigned |
 | `AIK-09-MIND-GATES` | G0–G7 review | `BLOCKED` | Separate active Mind task; consume its verified report only | Separate Codex effort |
 | `AIK-10-HARDWARE-BOUNDARY` | Confirm topology and Proxmox boundary | `BLOCKED` | Physical parts/assembly and authorization | Eddie / Echo |

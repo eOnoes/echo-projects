@@ -3,7 +3,7 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `READY` — Eddie recorded D-1–D-5; AIK-07B is the active bounded packet-only contract update.
+**Current status:** `READY_FOR_REVIEW` — AIK-07B integrates D-1–D-5 in the packet; Echo review and three separate audit rounds remain.
 Read `tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`. Do not implement source code. AIK-08 remains blocked until three distinct audit/refinement rounds pass and Eddie approves the final contract.
 
 ## Read order
@@ -16,7 +16,7 @@ Read `tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`. Do not implement source code. AI
 
 ## Current assignment
 
-Current assignment: AIK-07B contract integration only. All five owner directions are in `receipts/AIK-07B-OWNER-DECISIONS.md`; preserve open technical choices. The manager will launch each audit round separately. Do not run audits or implementation in this task.
+AIK-07B contract integration is ready for Echo review. All five owner directions are in `receipts/AIK-07B-OWNER-DECISIONS.md`; open technical choices remain gated. The manager launches each audit round separately. No audit or implementation occurred in this task.
 
 ## Milestone and error rule
 

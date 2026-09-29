@@ -5,7 +5,7 @@
 **Status:** `RUNNING`
 **Owner:** Eddie
 **Manager:** Echo
-**Current executor:** Codex (`gpt-6-sol`, medium) on AIK-06 Control Chat navigation; Echo verifies. AIK-05 local-mock prototype is complete with limitations; AIK-04-PLAN is paused after review NEEDS_CHANGES.
+**Current executor:** Codex (`gpt-6-sol`, medium) on AIK-07B packet contract update; Echo review pending. AIK-05 local-mock prototype is complete with limitations; AIK-04-PLAN is paused after review NEEDS_CHANGES.
 **Created:** 2026-09-28
 
 ## Project keyword
@@ -56,11 +56,11 @@ Eddie called these estimates, not commitments. They do not authorize purchases, 
 
 **Current phase:** Item 4 — integrate D-1–D-5 into the contract, then complete three distinct audits before owner approval.
 **Current task:** `AIK-07B-KANBAN-CONTRACT-UPDATE` — packet-only; no source/runtime work.
-**Current status:** `READY` — Codex handoff prepared on a clean isolated branch; dispatch pending.
+**Current status:** `READY_FOR_REVIEW` — AIK-07B contract, matrix, and brief updated; three audit rounds remain unrun.
 
 ## Next safe action
 
-AIK-07B integrates the recorded D-1–D-5 owner decisions into the Kanban contract and acceptance matrix. Echo will run three distinct audit/refinement rounds and request Eddie's final approval before AIK-08 implementation. No source-code or runtime work is active.
+Echo reviews the AIK-07B packet update, then launches three distinct audit/refinement rounds and requests Eddie's final approval before AIK-08 implementation. No source-code or runtime work is active.
 
 ## Decision log
 

@@ -1,7 +1,7 @@
 # Execution Plan
 
 **Plan state:** `RUNNING`
-**Current executor:** Codex — AIK-06-CONTROL-CHAT-NAV, `gpt-6-sol`, medium reasoning. AIK-05 local mock is verified complete; AIK-04-PLAN is paused.
+**Current executor:** Codex — AIK-07B-KANBAN-CONTRACT-UPDATE, `gpt-6-sol`, medium reasoning; packet update ready for Echo review. AIK-05 local mock is verified complete; AIK-04-PLAN is paused.
 **Rule:** one `IN_PROGRESS` task at a time.
 
 ## Owner-estimated AI-box schedule (planning only)
@@ -57,7 +57,7 @@ The dashboard was found as `Onoes-Inference-Control`, imported into a fresh-hist
 
 ## Phase 3 — Define Kanban MVP requirements (AIK-03)
 
-**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex draft verified by Echo and independently reviewed PASS. Eddie decided D-1 at the logical/operator level; D-2–D-5 remain owner decisions. D-4 should include idempotency-outcome retention/expiry before implementation.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex draft verified by Echo and independently reviewed PASS. Eddie decided D-1 at the logical/operator level; D-2–D-5 were later owner-decided and integrated under AIK-07B. D-4 private-trial no-expiry and the production retention gate are explicit.
 **Purpose:** specify a separate shared task service before implementation.
 
 **Deliverable:** `deliverables/KANBAN-MVP.md` plus `reports/KANBAN-ACCEPTANCE-MATRIX.md`.
@@ -69,7 +69,7 @@ The spec must cover:
 - Stable authenticated human/agent identity and board-scoped authorization; a shared service key or request-supplied actor name is not identity.
 - Mutation attribution, append-only audit history, idempotency, and safe duplicate handling.
 - Durable event delivery, ordering, replay cursor, retention, and recovery after restart/disconnection.
-- Separation of responsibilities: task store/contract not chosen yet; Relay candidate UI; Control verification/approval; Mind memory and internal execution records.
+- Separation of responsibilities: dedicated logical task service/store is the chosen authority under D-1; Relay remains a client, Control oversight/approval, and Mind memory/internal execution records. Technology remains unselected.
 - Acceptance cases for unauthorized writes, attribution, repeated requests, removal approval, event replay, and feed recovery.
 
 **Non-goal:** no backend choice or code implementation in this phase.
@@ -99,7 +99,7 @@ The spec must cover:
 
 ## Phase 7B — Integrate owner decisions and audit the contract (AIK-07B)
 
-**Status:** `READY` — Codex may update only the project-packet contract, acceptance matrix, owner brief, and named task/evidence/handoff records.
+**Status:** `READY_FOR_REVIEW` — AIK-07B integrated D-1–D-5 in the project-packet contract, acceptance matrix, and owner brief. Its receipt records local checks; Echo review remains. No audit round has run.
 **Gate:** Three distinct review/refinement rounds against the revised contract. No source code, backend, runtime, or service work. Final owner review precedes implementation.
 
 ## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)
@@ -116,7 +116,7 @@ The spec must cover:
 
 ## Product-first execution order
 
-Use dependency-based chunks: Phase 6 Chat fix is branch-verified; D-1–D-5 are recorded; Phase 7B updates and audits the contract; Phase 8 implementation follows only after three audit rounds and owner approval; Phase 9 stays with the separate Mind effort; hardware follows physical inspection. A functioning private prototype is the target; production readiness remains a separate gate.
+Use dependency-based chunks: Phase 6 Chat fix is branch-verified; D-1–D-5 are recorded; Phase 7B updates the contract, then Echo launches three separate audits; Phase 8 implementation follows only after three audit rounds and owner approval; Phase 9 stays with the separate Mind effort; hardware follows physical inspection. A functioning private prototype is the target; production readiness remains a separate gate.
 
 ## Milestone/error protocol
 

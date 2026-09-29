@@ -2,15 +2,15 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `READY` — D-1–D-5 owner directions are recorded; AIK-07B packet task is prepared, Codex dispatch pending.
+**Current status:** `READY_FOR_REVIEW` — AIK-07B packet integration is drafted; Echo review and three separate design audits remain.
 **Current phase:** Item 4 contract integration and three audit/refinement rounds; no implementation task is active.
 **Current task:** `AIK-07B-KANBAN-CONTRACT-UPDATE` — project-packet-only; Codex receives a separate handoff. AIK-08 remains blocked pending contract audits and owner review.
 **Manager:** Echo
-**Executor:** Echo coordinates; no active Codex task. No credentials, services, or runtimes.
+**Executor:** Codex completed the AIK-07B packet edit; Echo reviews. No credentials, services, or runtimes.
 
 ## TL;DR
 
-The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. Eddie has recorded D-1–D-5 in [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md). Codex may now update the design contract and acceptance matrix only. Three distinct audit/refinement rounds and final owner review must pass before any implementation. Item 8 stays with the separate Mind effort; items 9–10 wait for physical inspection.
+The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. Eddie has recorded D-1–D-5 in [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md). Codex has updated the design contract, acceptance matrix, and brief under AIK-07B. Three distinct audit/refinement rounds and final owner review must pass before any implementation. Item 8 stays with the separate Mind effort; items 9–10 wait for physical inspection.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
@@ -32,7 +32,7 @@ Codex may update only the packet paths listed in `tasks/AIK-07B-KANBAN-CONTRACT-
 
 ## Next safe action
 
-Dispatch AIK-07B on the named branch; Echo reviews its contract update, then runs audit rounds 1–3 sequentially with remediation and fresh rechecks. Ask Eddie to approve the final audited contract before AIK-08. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
+Echo reviews the AIK-07B contract update and receipt, then runs audit rounds 1–3 sequentially with remediation and fresh rechecks. Ask Eddie to approve the final audited contract before AIK-08. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
 
 ## Owner decisions still open
 

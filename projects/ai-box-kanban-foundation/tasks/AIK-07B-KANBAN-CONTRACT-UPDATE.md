@@ -2,7 +2,7 @@
 
 **Project:** `ai-box-kanban-foundation`
 **Task:** `AIK-07B-KANBAN-CONTRACT-UPDATE`
-**Status:** `READY` — all D-1–D-5 owner directions recorded.
+**Status:** `READY_FOR_REVIEW` — D-1–D-5 integrated into the packet contract, matrix, and brief; Echo review pending.
 **Repository:** `eOnoes/echo-projects`, branch `docs/AIK-07B-KANBAN-CONTRACT-UPDATE`
 **Base:** `b220c5e02e5451f3ef068ac125d80e913f5581fd`
 **Executor:** Codex, `gpt-6-sol`, medium reasoning.
@@ -62,3 +62,7 @@ No other files. Do not edit Doctrine or any source/application repository.
 7. Commit and push only this task branch. Report exact changed paths, commit, checks, unresolved technical choices, and confirm no source/service/runtime work occurred.
 
 Do not merge this branch into `main`; Echo will review and promote only after verification.
+
+## Execution record
+
+The design update is recorded in [the task receipt](../receipts/AIK-07B-CONTRACT-UPDATE.md). No audit round was run. AIK-08 remains blocked pending three distinct audits, final owner approval, and separately scoped implementation discovery.
