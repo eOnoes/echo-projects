@@ -5,7 +5,7 @@
 **Status:** `RUNNING`
 **Owner:** Eddie
 **Manager:** Echo
-**Current executor:** Codex (`gpt-6-sol`, medium) on AIK-07B packet contract update; Echo review pending. AIK-05 local-mock prototype is complete with limitations; AIK-04-PLAN is paused after review NEEDS_CHANGES.
+**Current executor:** Codex (`gpt-6-sol`, medium) on AIK-07B Round 1 remediation; task handoff ready. Round 1 Kimi K3 audit returned `NEEDS_CHANGES`; Echo verified the frozen artifacts remained unchanged.
 **Created:** 2026-09-28
 
 ## Project keyword
@@ -54,13 +54,13 @@ Eddie called these estimates, not commitments. They do not authorize purchases, 
 
 ## Current phase and task
 
-**Current phase:** Item 4 — integrate D-1–D-5 into the contract, then complete three distinct audits before owner approval.
-**Current task:** `AIK-07B-KANBAN-CONTRACT-UPDATE` — packet-only; no source/runtime work.
-**Current status:** `READY_FOR_REVIEW` — AIK-07B contract, matrix, and brief updated; three audit rounds remain unrun.
+**Current phase:** Item 4 — apply Round 1 contract corrections, then complete audits 2–3 and owner approval.
+**Current task:** `AIK-07B-R1-REMEDIATION` — packet-only; no source/runtime work.
+**Current status:** `READY` — Kimi K3 Round 1 returned `NEEDS_CHANGES`; five findings and task scope are recorded; Codex dispatch is next.
 
 ## Next safe action
 
-Echo reviews the AIK-07B packet update, then launches three distinct audit/refinement rounds and requests Eddie's final approval before AIK-08 implementation. No source-code or runtime work is active.
+Echo verifies Codex's R1 corrections, then launches Round 2 against a fresh frozen snapshot. Keep the three-round gate and AIK-08 block; request Eddie's final approval only after Round 3 passes. No source-code or runtime work is active.
 
 ## Decision log
 
@@ -85,7 +85,9 @@ Echo reviews the AIK-07B packet update, then launches three distinct audit/refin
 - [`tasks/AIK-01-DOCS-CHANGE.md`](tasks/AIK-01-DOCS-CHANGE.md) — completed two-file documentation task.
 - [`tasks/AIK-03-CODEX-HANDOFF.md`](tasks/AIK-03-CODEX-HANDOFF.md) — completed design-only assignment.
 - [`tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md`](tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md) — bounded Control Chat source task, now complete with limitations.
-- [`tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`](tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md) — current bounded packet-only task; three audit rounds follow separately.
+- [`tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`](tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md) — contract integration task, currently `NEEDS_CHANGES` after Round 1.
+- [`tasks/AIK-07B-R1-REMEDIATION.md`](tasks/AIK-07B-R1-REMEDIATION.md) — current bounded corrective task.
+- [`reports/AIK-07B-ROUND-1-AUDIT.md`](reports/AIK-07B-ROUND-1-AUDIT.md) and [`receipts/AIK-07B-ROUND-1.md`](receipts/AIK-07B-ROUND-1.md) — first audit and provenance receipt.
 - [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md) — exact D-1–D-5 owner directions and remaining technical gates.
 - [`reports/KANBAN-DECISION-BRIEF.md`](reports/KANBAN-DECISION-BRIEF.md) — owner decision brief.
 - [`reports/KANBAN-DECISION-BRIEF.html`](reports/KANBAN-DECISION-BRIEF.html) — phone-friendly brief.

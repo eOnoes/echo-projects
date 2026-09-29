@@ -2,12 +2,12 @@
 
 ## Current gate / most recent task
 
-**Task:** `AIK-07B-KANBAN-CONTRACT-UPDATE` — integrate recorded owner decisions into the design contract
-**Status:** `READY_FOR_REVIEW` — D-1–D-5 integrated in the contract, matrix, and brief; no audit round or implementation task has run.
+**Task:** `AIK-07B-R1-REMEDIATION` — resolve Round 1 contract-audit findings
+**Status:** `READY` — Round 1 Kimi K3 audit returned `NEEDS_CHANGES`; five findings are recorded; scoped corrections are ready for Codex. No Round 2 or implementation has started.
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
-**Owner direction:** Eddie answered D-1–D-5 and asked Echo to see the product through. AIK-07B is a bounded packet-only contract revision; three distinct audit/refinement rounds and final owner review precede any build.
-**Allowed output:** Only paths listed in [`tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`](tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md).
-**Review artifacts:** [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md), current Kanban contract/matrix, and task receipt. Echo will verify this branch, then launch each audit round separately.
+**Owner direction:** Eddie answered D-1–D-5 and asked Echo to see the product through. Preserve all choices and technical unknowns; three sequential audit/refinement rounds and final owner approval precede any build.
+**Allowed output:** Only paths listed in [`tasks/AIK-07B-R1-REMEDIATION.md`](tasks/AIK-07B-R1-REMEDIATION.md).
+**Review artifacts:** [`reports/AIK-07B-ROUND-1-AUDIT.md`](reports/AIK-07B-ROUND-1-AUDIT.md), [`receipts/AIK-07B-ROUND-1.md`](receipts/AIK-07B-ROUND-1.md), owner decision receipt, contract and matrix.
 
 AIK-01, AIK-01-DOCS, AIK-03, AIK-05, AIK-06, and AIK-07 are complete with limitations. AIK-04-PLAN is paused after independent review `NEEDS_CHANGES`. D-1–D-5 owner directions are recorded; implementation details and the audited contract gate remain. Item 8 is assigned separately on Mind; items 9–10 wait for physical hardware evidence.
 

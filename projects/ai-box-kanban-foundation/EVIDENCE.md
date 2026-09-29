@@ -41,6 +41,8 @@ Only verifiable claims belong here. Public packet entries contain no private pat
 | `E-035` | AIK-07B integrates D-1–D-5 into the design contract, A-01–A-18 acceptance matrix, and Markdown/HTML owner brief. | `READY_FOR_REVIEW` | [`AIK-07B-CONTRACT-UPDATE.md`](receipts/AIK-07B-CONTRACT-UPDATE.md); [`KANBAN-MVP.md`](deliverables/KANBAN-MVP.md); [`KANBAN-ACCEPTANCE-MATRIX.md`](reports/KANBAN-ACCEPTANCE-MATRIX.md) | Design only. Three audit rounds and Eddie's final approval remain; technical choices require later evidence-backed selection. No runtime test is claimed. |
 
 
+| `E-036` | Kimi Code CLI Round 1, effective model `kimi-code/k3`, audited AIK-07B commit `13ebdac3691edb27fdebe1bbfc6c5961955afb02` and returned `NEEDS_CHANGES` with findings R1-01–R1-05. Echo verified all 16 frozen input hashes remained unchanged; the CLI used read-only local packet/Git inspection, no edits, code, external search, or target runtime. | `PROVEN` | [`AIK-07B-ROUND-1-AUDIT.md`](reports/AIK-07B-ROUND-1-AUDIT.md); [`AIK-07B-ROUND-1.md`](receipts/AIK-07B-ROUND-1.md); bundle SHA-256 `98fdfe561da0a1d2d00fe972f71ee4e686b6997865f93517859091525106e949` | Read-only inspection-method deviation is disclosed in the receipt. Five contract corrections are ready for Codex; Round 2 and implementation remain gated. |
+
 ## Evidence update rule
 
 Append new IDs; never overwrite prior claims. Preserve the exact command/result or document section reference in a task receipt. If a claim changes, append a superseding entry with the reason and link the old ID.

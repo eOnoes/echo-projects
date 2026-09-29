@@ -3,8 +3,8 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `READY_FOR_REVIEW` — AIK-07B integrates D-1–D-5 in the packet; Echo review and three separate audit rounds remain.
-Read `tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`. Do not implement source code. AIK-08 remains blocked until three distinct audit/refinement rounds pass and Eddie approves the final contract.
+**Current status:** `READY` — Round 1 Kimi K3 audit returned `NEEDS_CHANGES`; Codex remediation is prepared. Two distinct audit/refinement rounds and owner review remain.
+Read `tasks/AIK-07B-R1-REMEDIATION.md`. Do not implement source code. AIK-08 remains blocked until all three rounds pass and Eddie approves the final contract.
 
 ## Read order
 
@@ -16,7 +16,7 @@ Read `tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`. Do not implement source code. AI
 
 ## Current assignment
 
-AIK-07B contract integration is ready for Echo review. All five owner directions are in `receipts/AIK-07B-OWNER-DECISIONS.md`; open technical choices remain gated. The manager launches each audit round separately. No audit or implementation occurred in this task.
+Round 1 is complete with verdict `NEEDS_CHANGES`. Read `tasks/AIK-07B-R1-REMEDIATION.md`, its linked Kimi audit report, and the provenance receipt. This is a packet-only correction task. Do not start Round 2, modify source, or implement a service; Echo will verify before the next audit.
 
 ## Milestone and error rule
 

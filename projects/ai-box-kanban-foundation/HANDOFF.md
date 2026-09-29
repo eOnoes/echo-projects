@@ -2,21 +2,21 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `READY_FOR_REVIEW` — AIK-07B packet integration is drafted; Echo review and three separate design audits remain.
-**Current phase:** Item 4 contract integration and three audit/refinement rounds; no implementation task is active.
-**Current task:** `AIK-07B-KANBAN-CONTRACT-UPDATE` — project-packet-only; Codex receives a separate handoff. AIK-08 remains blocked pending contract audits and owner review.
+**Current status:** `READY` — AIK-07B Round 1 returned `NEEDS_CHANGES`; the scoped remediation handoff is ready for Codex.
+**Current phase:** Item 4 contract remediation, then Rounds 2–3 and owner approval; implementation remains blocked.
+**Current task:** `AIK-07B-R1-REMEDIATION` — packet-only corrections; no code or runtime work.
 **Manager:** Echo
-**Executor:** Codex completed the AIK-07B packet edit; Echo reviews. No credentials, services, or runtimes.
+**Executor:** Codex is assigned the five Round 1 corrections; Echo independently verifies each result.
 
 ## TL;DR
 
-The Control boundary wording is corrected and verified. AIK-06 fixed the Control Chat render crash on a branch; its focused test and production build pass, while six baseline full-suite failures remain. Eddie has recorded D-1–D-5 in [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md). Codex has updated the design contract, acceptance matrix, and brief under AIK-07B. Three distinct audit/refinement rounds and final owner review must pass before any implementation. Item 8 stays with the separate Mind effort; items 9–10 wait for physical inspection.
+Eddie has recorded D-1–D-5 in [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md). AIK-07B contract work is at commit `13ebdac3691edb27fdebe1bbfc6c5961955afb02`; Kimi K3 Round 1 returned `NEEDS_CHANGES` with five findings. Echo verified the frozen files remained unchanged. The bounded Codex correction task is ready; two further distinct reviews and final owner approval must pass before implementation.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
 ## Last completed action
 
-AIK-07 is on `codex/AIK-07-KANBAN-DECISION-BRIEF` at `fa8fc4bedb1eb94006e230a1d85e75b7f253dc64`; Echo verified the brief. Eddie then recorded D-1–D-5 in the owner-decision receipt. AIK-05 local mock remains mock-only at `e480d8a6f92cccc20d3fdba7397145e97b537943`. AIK-06 Chat fix remains branch-only at `6c2a86551a49412ad7c3c4c9a65b1ff9fab2c66c`; focused test/build pass, six baseline full-suite failures remain, and Relay routing is unresolved. AIK-03's independent review returned **PASS — ZERO GAPS**.
+AIK-07B's contract update at `13ebdac3691edb27fdebe1bbfc6c5961955afb02` integrated all five owner directions. Kimi K3 Round 1 returned `NEEDS_CHANGES`; Echo verified the frozen 16-file inputs remained hash-identical. The five corrections are now bounded in `AIK-07B-R1-REMEDIATION`; no implementation or runtime work occurred.
 
 ## Verified context
 
@@ -28,11 +28,11 @@ AIK-07 is on `codex/AIK-07-KANBAN-DECISION-BRIEF` at `fa8fc4bedb1eb94006e230a1d8
 
 ## Current constraint
 
-Codex may update only the packet paths listed in `tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`. No source code, database, runtime, service, deployment, external data, or public exposure. Technical details expressly left open by Eddie remain unselected. Three independent audit/refinement rounds and final owner review precede AIK-08. AIK-06 remains branch-only; do not guess a Relay URL. Inference Control stays mock-only; live auth/security remain blocked.
+Codex may update only the packet paths listed in `tasks/AIK-07B-R1-REMEDIATION.md`. No source code, database, runtime, service, deployment, external data, or public exposure. Technical details expressly left open by Eddie remain unselected. Round 2 and implementation stay blocked until Echo verifies the remediation and later audit/owner gates pass. AIK-06 remains branch-only; do not guess a Relay URL. Inference Control stays mock-only; live auth/security remain blocked.
 
 ## Next safe action
 
-Echo reviews the AIK-07B contract update and receipt, then runs audit rounds 1–3 sequentially with remediation and fresh rechecks. Ask Eddie to approve the final audited contract before AIK-08. Keep item 8 with the separate Mind task; start items 9–10 only after physical parts/topology can be inspected.
+Echo verifies Codex's R1 corrections, then runs Round 2 against a fresh frozen snapshot. Preserve the three-round gate and request Eddie's final contract approval only after Round 3; keep AIK-08 blocked. Do not start implementation or duplicate the separate Mind effort.
 
 ## Owner decisions still open
 

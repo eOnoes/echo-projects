@@ -99,8 +99,8 @@ The spec must cover:
 
 ## Phase 7B — Integrate owner decisions and audit the contract (AIK-07B)
 
-**Status:** `READY_FOR_REVIEW` — AIK-07B integrated D-1–D-5 in the project-packet contract, acceptance matrix, and owner brief. Its receipt records local checks; Echo review remains. No audit round has run.
-**Gate:** Three distinct review/refinement rounds against the revised contract. No source code, backend, runtime, or service work. Final owner review precedes implementation.
+**Status:** `RUNNING` — Round 1 audit returned `NEEDS_CHANGES`; five scoped corrections are prepared under `AIK-07B-R1-REMEDIATION`. Round 2–3 are not started.
+**Gate:** Apply and Echo-verify the R1 fixes; then complete two further distinct, sequential review/refinement rounds. No source code, backend, runtime, or service work. Final owner review precedes implementation.
 
 ## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)
 

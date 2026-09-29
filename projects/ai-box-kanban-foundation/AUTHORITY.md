@@ -38,6 +38,11 @@ After Eddie's 2026-09-29 scope expansion, Codex may modify only the private Onoe
 Eddie has recorded D-1–D-5 in `receipts/AIK-07B-OWNER-DECISIONS.md`. Codex may modify only the exact paths named in `tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md` to revise the contract, acceptance matrix, decision brief, and packet tracking. This is design-only. Do not run the three audit rounds inside the update task; Echo launches each fresh round separately. No source code, service, database, runtime, deployment, or public exposure is authorized. Preserve all open technical choices and keep AIK-08 blocked until three audit/refinement rounds and Eddie's final design approval pass.
 
 
+## AIK-07B-R1 — apply Round 1 contract corrections
+
+The Kimi K3 Round 1 report and audit receipt are authoritative inputs: `reports/AIK-07B-ROUND-1-AUDIT.md` and `receipts/AIK-07B-ROUND-1.md`. Codex may modify only the paths listed in `tasks/AIK-07B-R1-REMEDIATION.md`. This remains design-only; Echo verifies the corrections, then starts Round 2 separately. Do not run Round 2 or implement a service in this task.
+
+
 ### Later, separately approved work
 
 Only a new task can authorize live-mode Inference Control security changes. Any live model operations require a separate scope decision and independent review. This packet never authorizes live model operations.

@@ -1,6 +1,6 @@
 # AIK-07B contract update receipt
 
-**Status:** `READY_FOR_REVIEW` — packet design update completed on `docs/AIK-07B-KANBAN-CONTRACT-UPDATE`; Echo review pending.
+**Status:** `NEEDS_CHANGES` — Echo review is complete; Round 1 returned findings R1-01–R1-05. See [`AIK-07B-ROUND-1.md`](AIK-07B-ROUND-1.md). Codex remediation task is ready; implementation remains blocked.
 **Authority:** [D-1–D-5 owner decision receipt](AIK-07B-OWNER-DECISIONS.md).
 
 ## Result
