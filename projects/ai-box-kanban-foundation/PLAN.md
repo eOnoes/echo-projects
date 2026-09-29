@@ -1,7 +1,7 @@
 # Execution Plan
 
 **Plan state:** `RUNNING`
-**Current executor:** Echo — prepare the Round 3 frozen audit packet. Round 1 fixes are verified; Round 2 DSH/Gemini returned `PASS` with process limitations recorded. AIK-05 local mock is verified complete; AIK-04-PLAN is paused.
+**Current executor:** Eddie — final owner review. The three audit/refinement rounds are recorded; Round 1 corrections were verified and Rounds 2–3 returned `PASS` with limitations documented. Implementation remains unauthorized pending Eddie's explicit approval.
 **Rule:** one `IN_PROGRESS` task at a time.
 
 ## Owner-estimated AI-box schedule (planning only)
@@ -99,12 +99,12 @@ The spec must cover:
 
 ## Phase 7B — Integrate owner decisions and audit the contract (AIK-07B)
 
-**Status:** `COMPLETE_WITH_LIMITATIONS` — Round 1 returned `NEEDS_CHANGES`; corrections are verified. Round 2 independent DSH audit returned `PASS` with process/traceability limitations recorded at [`AIK-07B-ROUND-2.md`](receipts/AIK-07B-ROUND-2.md). Round 3 and owner approval remain.
-**Gate:** Freeze/hash the corrected packet and complete Round 3 as a distinct review; document Round 2's `PASS` and process limitations. No source code, backend, runtime, or service work. Final owner review precedes implementation.
+**Status:** `READY_FOR_OWNER_REVIEW` — Round 1 findings are corrected; Rounds 2–3 independent audits returned `PASS`, with trace/report limitations recorded in their receipts. Eddie's final approval remains before implementation.
+**Gate:** Three audit/refinement rounds are recorded; Round 1 corrections are verified and Rounds 2–3 returned `PASS` with limitations. Eddie's final contract approval is the remaining design gate. No source code, backend, runtime, or service work before approval; implementation still requires a separate task and authorization.
 
 ## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)
 
-**Status:** `BLOCKED` until the contract update passes three distinct audit/refinement rounds and Eddie approves the final design. One task authority; Relay consumes it; Control remains oversight/approval only.
+**Status:** `BLOCKED` — the design review/refinement rounds are recorded; Eddie's final contract approval and a separately authorized implementation task are required before this phase starts. One task authority; Relay consumes it; Control remains oversight/approval only.
 
 ## Phase 9 — Mind G0–G7 review (item 8; external task)
 

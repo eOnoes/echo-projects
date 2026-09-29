@@ -5,7 +5,7 @@
 **Status:** `RUNNING`
 **Owner:** Eddie
 **Manager:** Echo
-**Current executor:** Echo — prepare a fresh Round 3 packet; Round 1 corrections are verified and Round 2 returned `PASS` with process limitations recorded. No implementation or runtime work has occurred.
+**Current executor:** Eddie — final owner review. Three audit/refinement rounds are recorded; Round 1 findings were corrected and Rounds 2–3 returned `PASS` with limitations documented. No implementation or runtime work has occurred.
 **Created:** 2026-09-28
 
 ## Project keyword
@@ -54,13 +54,13 @@ Eddie called these estimates, not commitments. They do not authorize purchases, 
 
 ## Current phase and task
 
-**Current phase:** Item 4 — Round 1 corrections verified; Round 2 returned `PASS` with process limitations recorded; prepare Round 3, then owner approval.
-**Current task:** `AIK-07B` Round 3 — freeze/hash a fresh corrected packet for a distinct read-only auditor; no source/runtime work.
-**Current status:** `READY_FOR_ROUND_3` — Round 2 DSH/Gemini returned `PASS`; process limitations are disclosed in the Round 2 receipt. Eddie's final approval and AIK-08 remain blocked.
+**Current phase:** Item 4 — three review/refinement rounds recorded; Eddie's final contract approval is next.
+**Current task:** `AIK-07B` — Eddie final contract review; no source/runtime work.
+**Current status:** `READY_FOR_OWNER_REVIEW` — Round 1 findings corrected; Rounds 2–3 returned `PASS` with report/process limitations disclosed in their receipts. AIK-08 remains blocked until Eddie approves.
 
 ## Next safe action
 
-Round 2's model verdict was `PASS` with zero findings; Echo's verification and process limitations are in the Round 2 report/receipt. The next safe action is to freeze/hash a fresh Round 3 packet, including both prior reports and receipts, then send it to a distinct read-only auditor. Preserve the three-round gate; keep AIK-08 blocked until Round 3 and Eddie's final approval. No implementation or source/runtime work.
+Rounds 2–3 returned `PASS` with process/report limitations; both reports and receipts are linked in the packet map. The next safe action is Eddie's final contract review; no build is authorized.
 
 ## Decision log
 
@@ -86,8 +86,9 @@ Round 2's model verdict was `PASS` with zero findings; Echo's verification and p
 - [`tasks/AIK-03-CODEX-HANDOFF.md`](tasks/AIK-03-CODEX-HANDOFF.md) — completed design-only assignment.
 - [`tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md`](tasks/AIK-06-CONTROL-CHAT-NAV-HANDOFF.md) — bounded Control Chat source task, now complete with limitations.
 - [Round 2 independent audit report](reports/AIK-07B-ROUND-2-AUDIT.md) and [receipt](receipts/AIK-07B-ROUND-2.md) — model verdict `PASS`; process limitations recorded.
+- [Round 3 independent audit report](reports/AIK-07B-ROUND-3-AUDIT.md) and [receipt](receipts/AIK-07B-ROUND-3.md) — model verdict `PASS`; report limitations recorded; Eddie's review remains.
 - [Round 1 remediation task](tasks/AIK-07B-R1-REMEDIATION.md) — complete with limitations; verified commit `7020c77469585062ed6fe9136a0dbf4c8e7f2e53`.
-- [Kanban contract-update task](tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md) — Round 3 and owner approval remain.
+- [Kanban contract-update task](tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md) — ready for Eddie's final owner review; implementation remains blocked.
 
 - [`reports/AIK-07B-ROUND-1-AUDIT.md`](reports/AIK-07B-ROUND-1-AUDIT.md) and [`receipts/AIK-07B-ROUND-1.md`](receipts/AIK-07B-ROUND-1.md) — first audit and provenance receipt.
 - [`receipts/AIK-07B-OWNER-DECISIONS.md`](receipts/AIK-07B-OWNER-DECISIONS.md) — exact D-1–D-5 owner directions and remaining technical gates.

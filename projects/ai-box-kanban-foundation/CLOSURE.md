@@ -1,6 +1,6 @@
 # Closure Record
 
-**Status:** `OPEN` — Round 1 corrections are verified and Round 2 returned `PASS` with limitations recorded. One further distinct audit, Eddie's final approval, implementation, separate Mind evidence, and hardware gates remain.
+**Status:** `OPEN` — Three audit/refinement rounds are recorded. Round 1 corrections are verified; Rounds 2–3 returned `PASS` with limitations recorded. Eddie's final approval, implementation, separate Mind evidence, and hardware gates remain.
 **Project ID:** `ai-box-kanban-foundation`
 
 This project is not closed. Closure requires all acceptance items below and Eddie’s final decision.
@@ -11,8 +11,8 @@ This project is not closed. Closure requires all acceptance items below and Eddi
 - [x] AIK-05 loopback-only local mock is tested and independently verified; live mode remains blocked.
 - [x] AIK-06 Control Chat navigation fix is verified on its branch with a scoped regression test and build; it is not merged/deployed, and six pre-existing suite failures are recorded.
 - [x] AIK-07 D-1–D-5 decision brief is reviewed and delivered; all five owner directions are recorded in `receipts/AIK-07B-OWNER-DECISIONS.md`.
-- [x] Item 4 design draft integrates D-1–D-5; Round 1 corrections are verified and Round 2 returned `PASS` with process limitations recorded.
-- [ ] Item 4 gate: complete Round 3 and obtain Eddie's final contract approval.
+- [x] Item 4 design draft integrates D-1–D-5; Round 1 corrections are verified and Rounds 2–3 returned `PASS` with process/report limitations recorded.
+- [ ] Item 4 gate: Eddie's final contract approval.
 - [ ] Items 5–6: implementation is built and verified only after item 4 approval.
 - [ ] Item 8: separate Mind G0–G7 report is received and reviewed; no duplicated work.
 - [ ] Items 9–10: physical hardware/topology evidence and an approved Proxmox boundary decision are recorded.
