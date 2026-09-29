@@ -3,8 +3,8 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `SUBMITTED_FOR_REVIEW` — Echo verified the AIK-01 branch; Eddie’s wording decision is pending.
-The AIK-01 run used the owner-approved route `gpt-6-sol`, medium reasoning, and is complete. Do not restart it or begin AIK-03; wait for Eddie’s wording decision and a new task assignment.
+**Current status:** `RUNNING` — AIK-01 audit is complete; Echo is executing the delegated AIK-01-DOCS change.
+The completed AIK-01 run used `gpt-6-sol`, medium reasoning. Codex is not currently assigned; AIK-01-DOCS is a narrow Echo documentation task.
 
 ## Read order
 
@@ -16,7 +16,7 @@ The AIK-01 run used the owner-approved route `gpt-6-sol`, medium reasoning, and 
 
 ## Current assignment
 
-AIK-01 is complete as an executor task and submitted for Eddie’s wording decision. Echo verified citations and branch scope. Do not begin AIK-03 or edit Control source until a new task is assigned.
+AIK-01 is complete as an executor task and Echo verification passed. Do not restart it or begin AIK-03; AIK-01-DOCS must finish and be verified first.
 
 ## Milestone and error rule
 

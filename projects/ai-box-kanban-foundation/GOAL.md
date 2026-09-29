@@ -5,7 +5,7 @@
 **Status:** `RUNNING`
 **Owner:** Eddie
 **Manager:** Echo
-**Executor:** Codex (`gpt-6-sol`, medium reasoning; task-scoped)
+**Executor:** Echo for AIK-01-DOCS (documentation-only); Codex (`gpt-6-sol`, medium) completed AIK-01.
 **Created:** 2026-09-28
 
 ## Project keyword
@@ -43,13 +43,13 @@ The audits found that Mind’s current `work_items` and `stage_executions` are i
 
 ## Current phase and task
 
-**Current phase:** Phase 1 — Control boundary audit; Codex has submitted AIK-01 and Echo verification passed.
-**Current task:** `AIK-01` — submitted for Eddie’s wording decision; no source edit authorized.
-**Current status:** `RUNNING` — owner review is pending; AIK-03 remains queued.
+**Current phase:** Phase 1 — Control boundary audit is complete; AIK-01-DOCS applies the delegated wording clarification.
+**Current task:** `AIK-01-DOCS` — two-file documentation-only update in progress.
+**Current status:** `RUNNING` — Echo is applying exact scoped edits; AIK-03 remains queued.
 
 ## Next safe action
 
-The AIK-01 deliverables are submitted and Echo has verified source citation bounds/support, task-branch scope, and remote file readback. Eddie’s wording decision is pending; source edits remain unauthorized and AIK-03 remains queued until this review.
+AIK-01 audit is complete and verified. Eddie delegated the wording decision to Echo; the active bounded task edits only the two named Control docs. Echo will verify the remote diff before marking it complete; AIK-03 remains queued.
 
 ## Decision log
 
@@ -69,5 +69,6 @@ The AIK-01 deliverables are submitted and Echo has verified source citation boun
 - [`CLOSURE.md`](CLOSURE.md) — closure gate.
 - [`PROJECT-OVERRIDES.md`](PROJECT-OVERRIDES.md) — additive restrictions.
 - [`CODEX-START-HERE.md`](CODEX-START-HERE.md) — short entrypoint for Codex.
-- [`tasks/AIK-01-CODEX-HANDOFF.md`](tasks/AIK-01-CODEX-HANDOFF.md) — active bounded assignment.
+- [`tasks/AIK-01-CODEX-HANDOFF.md`](tasks/AIK-01-CODEX-HANDOFF.md) — completed bounded audit assignment.
+- [`tasks/AIK-01-DOCS-CHANGE.md`](tasks/AIK-01-DOCS-CHANGE.md) — active two-file documentation task.
 - [`reports/`](reports/) — Markdown and HTML handoffs.

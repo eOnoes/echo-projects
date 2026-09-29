@@ -2,19 +2,19 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `RUNNING` — Codex submitted AIK-01 and Echo verified the deliverables; Eddie’s wording decision is pending.
-**Current phase:** 1 — Control boundary audit
-**Current task:** `AIK-01`, submitted by Codex and verified by Echo; Eddie’s wording decision pending
+**Current status:** `RUNNING` — AIK-01 audit is complete; AIK-01-DOCS applies Eddie-delegated wording to two exact docs.
+**Current phase:** 1 — Control boundary reconciliation
+**Current task:** `AIK-01-DOCS`, Echo executing documentation-only change
 **Manager:** Echo
-**Executor:** Codex
+**Executor:** Echo for AIK-01-DOCS; Codex completed AIK-01
 
 ## TL;DR
 
-Codex completed the read-only audit on `codex/AIK-01`. Echo verified the source citation ranges/support, seven-file scope, remote readback, and clean Control source checkout. The matrix proposes wording for C-01, C-03, C-04, and a common boundary paragraph. No Control source was changed; Eddie’s decision is pending.
+The verified AIK-01 matrix identified three wording ambiguities. Eddie delegated the decision to Echo. The bounded AIK-01-DOCS task is updating exactly two Control Markdown files; no code or runtime work is in scope.
 
-## Last completed action
+**Last completed action**
 
-AIK-01 commit `91930e6b56b56c9de5a4877c87cf425488942f55` was pushed to `codex/AIK-01`. Remote readback matched all seven changed file blobs; all changes are confined to this packet. Echo checked 22 cited line ranges against the source documents and confirmed the source checkout remained clean.
+Codex's AIK-01 matrix and receipt are verified. The current AIK-01-DOCS task will apply the delegated wording to exactly two Control documents.
 
 ## Verified context
 
@@ -27,15 +27,15 @@ See `EVIDENCE.md` for claim labels and pointers.
 
 ## Current constraint
 
-The matrix is a proposal, not accepted Control wording. No source edits are authorized. AIK-03 remains queued until Eddie reviews the matrix and resolves the boundary wording or directs a separate documentation task.
+Only the two named Control Markdown docs may change under AIK-01-DOCS. The operation freeze, G0–G7 gates, credentials, and AIK-03 queue remain untouched until this documentation gate passes.
 
 ## Next safe action
 
-Eddie reviews C-01, C-03, C-04, and the common boundary paragraph. He may approve them for a **separate exact-file documentation-edit task** or provide corrected ownership/execution wording. No source edits or AIK-03 start are authorized by this handoff.
+Create the two-file diff, run doc/scope checks, push the task branch, and verify remote readback. Do not begin AIK-03 until this documentation gate is complete.
 
 ## Do not do
 
-- Do not edit Control source docs until Eddie approves proposed wording.
+- Do not edit any Control file outside the two exact Markdown paths authorized by AIK-01-DOCS.
 - Do not implement a Kanban backend or modify Relay, Control, or Mind code.
 - Do not read or handle credentials; do not rotate the existing key.
 - Do not inspect the dirty Mind workspace or legacy dashboard configuration.

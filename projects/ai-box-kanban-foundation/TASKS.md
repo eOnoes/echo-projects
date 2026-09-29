@@ -2,16 +2,20 @@
 
 ## Current task
 
-**Task:** `AIK-01` — Control boundary document audit
-**Status:** `SUBMITTED_FOR_REVIEW` — Codex deliverables prepared; Echo verification passed; Eddie’s wording decision pending.
-**Executor:** Codex (`gpt-6-sol`, medium reasoning)
-**Approval:** Eddie explicitly authorized start in the project chat.
-**Allowed output:** one cited contradiction matrix and proposed wording under this project’s `reports/`; no source edits.
-**Echo verification:** passed for citation line bounds/support, seven-path project scope, remote blob readback, and unchanged Control source checkout. Eddie’s wording decision remains pending.
+**Task:** `AIK-01-DOCS` — apply delegated Control boundary wording
+**Status:** `IN_PROGRESS`
+**Executor:** Echo
+**Approval:** Eddie delegated wording selection and management in the project chat.
+**Allowed files:** only `Onoes-Control/docs/MIND-INTEGRATION-READINESS.md` and `Onoes-Control/docs/SECURITY-FOUNDATION.md`, plus this packet's evidence/handoff records.
+**Checks:** exact two-file diff, `git diff --check`, Markdown link check, private-content scan, remote readback; no source-code changes.
 
-AIK-01 executor work is complete and Echo verification passed. It is not yet accepted as a project milestone: Eddie’s wording decision is pending. The [matrix](reports/CONTROL-BOUNDARY-MATRIX.md), [receipt](receipts/AIK-01.md), and [Markdown](reports/AIK-01-HANDOFF.md)/[HTML](reports/AIK-01-HANDOFF.html) handoffs are submitted for review.
+AIK-01 audit is complete and verified. AIK-01-DOCS is the sole `IN_PROGRESS` task.
 
 ## Completed
+
+### AIK-01 — Control boundary audit
+
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex delivered the cited matrix; Echo verified citations and scope. Eddie delegated the wording decision to Echo for the bounded follow-on AIK-01-DOCS task.
 
 ### AIK-00 — Create and publish the project packet
 
@@ -40,14 +44,15 @@ The successful import is not runtime validation and does not close the dashboard
 
 | Task | Summary | Status | Dependency | Executor |
 |---|---|---|---|---|
-| `AIK-01` | Reconcile Control authority/boundary documents; matrix + proposed text | `SUBMITTED_FOR_REVIEW` | Eddie wording decision; any source edits require a new exact-file task | Codex (`gpt-6-sol`, medium) |
-| `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `READY` | AIK-01 reviewed | Codex |
+| `AIK-01-DOCS` | Apply delegated boundary wording to the two exact Control Markdown docs | `IN_PROGRESS` | Complete two-file checks and verify remote readback | Echo |
+| `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `READY` | AIK-01-DOCS verified | Codex |
 | `AIK-04` | Inference Control security remediation | `BLOCKED` | Separate scope, approval, and review | Unassigned |
 
 ## Task rules
 
 - One task may be `IN_PROGRESS` at a time.
-- `AIK-01` is read-only against source repos; its deliverable is confined to this packet.
+- `AIK-01` is complete with limitations; its deliverable is the verified boundary matrix in this packet.
+- `AIK-01-DOCS` is the active bounded documentation-only task; it may edit exactly the two named Control Markdown files.
 - `AIK-03` is design-only; no backend or UI implementation.
 - `AIK-04` is not authorized by this packet and must precede any live model/runtime use.
 - Never mark a task complete from an executor summary alone; Echo verifies evidence and remote files.

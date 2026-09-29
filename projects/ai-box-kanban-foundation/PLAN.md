@@ -1,7 +1,7 @@
 # Execution Plan
 
 **Plan state:** `RUNNING`
-**Current executor:** Codex — `gpt-6-sol`, medium reasoning, AIK-01 only.
+**Current executor:** Echo — AIK-01-DOCS, exact two-file documentation-only task.
 **Rule:** one `IN_PROGRESS` task at a time.
 
 ## Phase 0 — Project packet and safety boundaries
@@ -17,7 +17,7 @@
 
 ## Phase 1 — Reconcile Control authority boundaries (AIK-01)
 
-**Status:** `SUBMITTED_FOR_OWNER_REVIEW` — Codex deliverables complete; Echo citation/scope verification passed; Eddie’s wording decision pending.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Codex's cited matrix is verified; its recommendations now flow into AIK-01-DOCS under Eddie's delegated wording authority.
 **Model:** `gpt-6-sol` · **reasoning:** medium
 
 **Purpose:** establish a single consistent statement of task ownership, verification, approval, and execution authority.
@@ -35,9 +35,16 @@
 
 **Failure route:** missing or contradictory source facts become `UNRESOLVED`; do not infer a contract or edit around the conflict. Return the decision to Eddie.
 
+## Phase 1B — Apply delegated boundary wording (AIK-01-DOCS)
+
+**Status:** `RUNNING` — Echo applies the exact two-file Markdown scope in `tasks/AIK-01-DOCS-CHANGE.md`.
+**Owner direction:** Eddie delegated wording selection and management in the project chat.
+**Allowed files:** `docs/MIND-INTEGRATION-READINESS.md` and `docs/SECURITY-FOUNDATION.md` in Onoes-Control only.
+**Exit gate:** exact two-file diff, Markdown checks and public-content scan pass; remote readback matches; source checkout returns clean.
+
 ## Phase 2 — Record Inference Control discovery/import (AIK-02)
 
-**Status:** Complete.
+**Status:** `COMPLETE_WITH_LIMITATIONS`.
 
 The dashboard was found as `Onoes-Inference-Control`, imported into a fresh-history private repository, and scanned before publication. The existing key was not rotated and is not part of the new repo. The prototype is not safe to run or expose; its security gate is a separate follow-on project. No live runtime test is established by the import.
 
