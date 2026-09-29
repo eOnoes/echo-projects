@@ -2,19 +2,26 @@
 
 **Project ID:** `ai-box-kanban-foundation`
 **Canonical entrypoint:** `GOAL.md`
-**Current status:** `RUNNING` — AIK-01 and AIK-01-DOCS complete; AIK-03 complete with limitations; AIK-04-PLAN active.
+**Current status:** `RUNNING` — AIK-01 and AIK-01-DOCS complete; AIK-03 complete with limitations; AIK-04-PLAN ready for Echo review.
 **Current phase:** Phase 4 — read-only Inference Control security-remediation planning.
-**Current task:** `AIK-04-PLAN`, Codex (`gpt-6-sol`, medium); Echo independently verifies.
+**Current task:** `AIK-04-PLAN`, `READY_FOR_REVIEW`; Codex (`gpt-6-sol`, medium) drafted, Echo independently verifies.
 **Manager:** Echo
 **Executor:** Codex; no dashboard source edits, credentials, services, or runtimes.
 
 ## TL;DR
 
-The Control boundary wording is corrected and verified. The Kanban MVP contract and acceptance matrix are complete with limitations: an independent reviewer passed them, but Eddie's D-1–D-5 decisions remain open; D-4 should explicitly cover idempotency-outcome retention before implementation. Codex is now drafting a **read-only** security-remediation plan from the sanitized audit findings.
+The Control boundary wording is corrected and verified. The Kanban MVP contract and acceptance matrix are complete with limitations: an independent reviewer passed them, but Eddie's D-1–D-5 decisions remain open; D-4 should explicitly cover idempotency-outcome retention before implementation. Codex has drafted a **read-only** security plan for all seven supplied Inference Control findings and nine mock/fixture acceptance cases. It awaits Echo review; no fix or test has been performed.
 
 Eddie's estimated AI-box schedule is: parts by **Oct 6**, assembly by **Oct 11**, boot/load testing on **Oct 12**. These are estimates, not commitments.
 
-## Last completed action
+## Current packet output
+
+- [Security plan](deliverables/INFERENCE-CONTROL-SECURITY-PLAN.md): prioritized fail-closed sequence and dependencies for F1–F7.
+- [Acceptance matrix](reports/INFERENCE-CONTROL-SECURITY-ACCEPTANCE.md): S-01–S-09 proposed mock/fixture cases.
+- [Milestone handoff](reports/AIK-04-PLAN-HANDOFF.md) and [HTML](reports/AIK-04-PLAN-HANDOFF.html): concise review entrypoint.
+- Exact code paths and implementation policy values remain `UNRESOLVED` for a separately approved task.
+
+## Last accepted action
 
 AIK-03 was pushed on `codex/AIK-03`; Echo verified the eight-file project-only scope, 27 remote packet blobs, links, JSON example, HTML, diff, and safety scans. Independent `mimo-v2.5` review returned **PASS — ZERO GAPS**.
 
@@ -32,7 +39,7 @@ AIK-04-PLAN may write only project-packet documents from the supplied sanitized 
 
 ## Next safe action
 
-Verify Codex's AIK-04-PLAN deliverables and remote readback. Then present the plan and acceptance criteria for owner review before any source-code remediation task is opened. No live boot/load test may bypass the security gate.
+Echo verifies the AIK-04-PLAN exact diff, local checks, and remote readback, then presents the plan and acceptance criteria for owner review. Any source remediation needs a separate exact-file task. No live boot/load test may bypass the security gate.
 
 ## Owner decisions still open
 

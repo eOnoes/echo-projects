@@ -3,12 +3,12 @@
 ## Current task
 
 **Task:** `AIK-04-PLAN` — draft a read-only Inference Control security-remediation plan
-**Status:** `IN_PROGRESS`
+**Status:** `READY_FOR_REVIEW` — Codex plan and acceptance matrix drafted; Echo verification and remote readback pending.
 **Executor:** Codex (`gpt-6-sol`, medium reasoning)
 **Owner direction:** Eddie asked Echo to keep Codex moving toward AI-box readiness; this task is planning-only.
 **Allowed output:** security plan, acceptance matrix, receipt, and handoff under this project packet only; no dashboard source change, credential, or runtime.
 
-AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-03 decisions D-1–D-5 remain open; D-4 should specify idempotency-outcome retention before implementation.
+AIK-01, AIK-01-DOCS, and AIK-03 are complete with limitations. AIK-03 decisions D-1–D-5 remain open; D-4 should specify idempotency-outcome retention before implementation. AIK-04-PLAN has proposed F1–F7 behavior and S-01–S-09 mock/fixture cases. No code fix or test is claimed.
 
 ## Completed
 
@@ -64,12 +64,12 @@ The successful import is not runtime validation and does not close the dashboard
 |---|---|---|---|---|
 | `AIK-01-DOCS` | Apply delegated boundary wording to two Control Markdown docs | `COMPLETE` | Remote readback verified | Echo |
 | `AIK-03` | Draft shared Kanban MVP contract and acceptance matrix | `COMPLETE_WITH_LIMITATIONS` | Echo + independent review passed; D-1–D-5 pending | Codex, Echo verified |
-| `AIK-04-PLAN` | Draft read-only security remediation plan from the sanitized audit findings | `IN_PROGRESS` | User asked to prepare the remaining readiness work; no source edits | Codex (`gpt-6-sol`, medium) |
+| `AIK-04-PLAN` | Draft read-only security remediation plan from the sanitized audit findings | `READY_FOR_REVIEW` | Echo must verify branch, remote readback, and plan before completion | Codex (`gpt-6-sol`, medium) |
 | `AIK-04` | Inference Control security remediation/code changes | `BLOCKED` | Separate exact-file implementation task, review, and authorization | Unassigned |
 
 ## Task rules
 
-- One task may be `IN_PROGRESS` at a time.
+- One task may be `IN_PROGRESS` at a time; `READY_FOR_REVIEW` is not `COMPLETE`.
 - `AIK-01` is complete with limitations; its deliverable is the verified boundary matrix in this packet.
 - `AIK-01-DOCS` is complete; only the two named Control Markdown files changed, with remote readback verification.
 - `AIK-03` is design-only and complete with limitations; D-1–D-5 remain open and no backend or UI implementation is authorized.

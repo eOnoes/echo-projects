@@ -30,6 +30,9 @@ Only verifiable claims belong here. Public packet entries contain no private pat
 | `E-024` | D-4 should explicitly set idempotency-outcome retention/expiry before implementation, in addition to audit/event and replay retention. | `UNRESOLVED` | Echo review note; [`KANBAN-MVP.md`](deliverables/KANBAN-MVP.md), D-4 | Include this when Eddie resolves D-4; not runtime evidence. |
 | `E-025` | Eddie estimates all AI-box parts by Oct 6, assembly by Oct 11, and boot/load testing on Oct 12, 2026. | `PROVEN` | Owner message, 2026-09-28 | Owner explicitly called these estimates; not commitments or authorization. |
 | `E-026` | AIK-04-PLAN is an active read-only plan task; source remediation, key handling, and live runtime remain out of scope. | `PROVEN` | Owner's project-continuation instruction; `tasks/AIK-04-PLAN-CODEX-HANDOFF.md` | Actual code remediation remains a separate blocked task. |
+| `E-027` | The AIK-04-PLAN artifact maps all seven supplied findings to proposed fail-closed behavior and dependencies. | `PROVEN` | [`INFERENCE-CONTROL-SECURITY-PLAN.md`](deliverables/INFERENCE-CONTROL-SECURITY-PLAN.md), F1–F7 | This proves the plan exists, not that fixes exist or pass. Echo review pending. |
+| `E-028` | Nine proposed mock/fixture cases cover all seven findings with denial inputs, permitted controls, and safe side-effect expectations. | `PROVEN` | [`INFERENCE-CONTROL-SECURITY-ACCEPTANCE.md`](reports/INFERENCE-CONTROL-SECURITY-ACCEPTANCE.md), S-01–S-09 | Cases were specified, not executed. |
+| `E-029` | Exact code-path mapping and implementation policy values are unknown from the sanitized packet. | `UNRESOLVED` | [Security plan](deliverables/INFERENCE-CONTROL-SECURITY-PLAN.md), “Acceptance and stop rule”; [acceptance matrix](reports/INFERENCE-CONTROL-SECURITY-ACCEPTANCE.md), “Test prerequisites and unresolved design inputs” | Later, separately approved exact-file task must verify before code work. |
 
 ## Evidence update rule
 
