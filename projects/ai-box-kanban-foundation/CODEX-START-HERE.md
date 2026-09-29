@@ -3,8 +3,8 @@
 **Project:** `ai-box-kanban-foundation`
 **Repository:** `eOnoes/echo-projects` (public, repository-content-only)
 **Canonical goal:** `projects/ai-box-kanban-foundation/GOAL.md`
-**Current status:** `WAITING_FOR_OWNER_DECISIONS` — D-1 is recorded; D-2–D-5 remain Eddie's choices.
-No Codex task is active. Do not start AIK-08 implementation until Eddie answers D-2–D-5, the contract is updated/reviewed, and Echo issues a separate scoped task.
+**Current status:** `READY` — Eddie recorded D-1–D-5; AIK-07B is the active bounded packet-only contract update.
+Read `tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md`. Do not implement source code. AIK-08 remains blocked until three distinct audit/refinement rounds pass and Eddie approves the final contract.
 
 ## Read order
 
@@ -16,10 +16,10 @@ No Codex task is active. Do not start AIK-08 implementation until Eddie answers 
 
 ## Current assignment
 
-No active assignment. AIK-07 is complete; D-1 selects a dedicated logical service/store operated by Echo with Eddie retaining policy authority. Wait for Eddie's D-2–D-5 choices before preparing a new task.
+Current assignment: AIK-07B contract integration only. All five owner directions are in `receipts/AIK-07B-OWNER-DECISIONS.md`; preserve open technical choices. The manager will launch each audit round separately. Do not run audits or implementation in this task.
 
 ## Milestone and error rule
 
 For project-packet tasks, update `TASKS.md`, append `EVIDENCE.md`, refresh `HANDOFF.md`, create a receipt, and provide Markdown plus HTML milestone reports. For a task assigned to a separate source repository, write only in the named branch/paths in its task handoff, return the exact commit and checks, and do not edit the packet from that source checkout. Echo updates the packet after independently verifying the remote diff. Never force-push or push directly to `main`. Stop on secrets, conflicting instructions, unrelated dirty files, live-service needs, or work outside the assigned paths.
 
-**GitHub billing-safe mode is active:** no Actions, Codespaces, Packages, deployments, runners, releases, or paid features. Do not read or handle credentials. No source-code or live-model task is active; AIK-06 remains branch-only and AIK-07 is recommendation-only.
+**GitHub billing-safe mode is active:** no Actions, Codespaces, Packages, deployments, runners, releases, or paid features. Do not read or handle credentials. No source-code or live-model task is active; AIK-06 remains branch-only. AIK-07B is packet-only.

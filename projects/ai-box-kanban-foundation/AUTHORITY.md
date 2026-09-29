@@ -33,9 +33,10 @@ After AIK-01’s output is reviewed, Codex may create/update the Kanban specific
 
 After Eddie's 2026-09-29 scope expansion, Codex may modify only the private Onoes-Control Chat navigation path and a directly related regression test in the task-named branch. The task may identify exact files by inspecting the clean Control checkout, but any edit beyond the Chat path/test or any Relay URL requires a stop and decision. No Mind/Relay source, credential, deployment, or live runtime access.
 
-## AIK-07 — D-1–D-5 decision brief
+## AIK-07B — integrate owner decisions into the design contract
 
-Eddie authorized a packet-only decision brief. Codex may write only `reports/KANBAN-DECISION-BRIEF.md`, `reports/KANBAN-DECISION-BRIEF.html`, its receipt, and directly required task/evidence/handoff entries. All decisions remain `PENDING`; recommendations are not authorization. No code, backend, identity provider, retention period, API, or deployment choice is authorized.
+Eddie has recorded D-1–D-5 in `receipts/AIK-07B-OWNER-DECISIONS.md`. Codex may modify only the exact paths named in `tasks/AIK-07B-KANBAN-CONTRACT-UPDATE.md` to revise the contract, acceptance matrix, decision brief, and packet tracking. This is design-only. Do not run the three audit rounds inside the update task; Echo launches each fresh round separately. No source code, service, database, runtime, deployment, or public exposure is authorized. Preserve all open technical choices and keep AIK-08 blocked until three audit/refinement rounds and Eddie's final design approval pass.
+
 
 ### Later, separately approved work
 

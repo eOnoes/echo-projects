@@ -95,11 +95,16 @@ The spec must cover:
 
 ## Phase 7 — Prepare D-1–D-5 owner decisions (items 4; AIK-07)
 
-**Status:** `COMPLETE_WITH_LIMITATIONS` — brief verified; Eddie decided D-1 for a dedicated logical task authority operated by Echo with Eddie retaining policy ownership. D-2–D-5 remain `PENDING`; technology/hosting and implementation stay blocked.
+**Status:** `COMPLETE_WITH_LIMITATIONS` — Eddie's D-1–D-5 policy directions are recorded in `receipts/AIK-07B-OWNER-DECISIONS.md`; technical implementation choices remain open.
+
+## Phase 7B — Integrate owner decisions and audit the contract (AIK-07B)
+
+**Status:** `READY` — Codex may update only the project-packet contract, acceptance matrix, owner brief, and named task/evidence/handoff records.
+**Gate:** Three distinct review/refinement rounds against the revised contract. No source code, backend, runtime, or service work. Final owner review precedes implementation.
 
 ## Phase 8 — Build Relay task UI and Control oversight views (items 5–6; AIK-08)
 
-**Status:** `BLOCKED` until D-2–D-5 are decided and the contract is updated/reviewed. One task authority; Relay consumes it; Control remains oversight/approval only.
+**Status:** `BLOCKED` until the contract update passes three distinct audit/refinement rounds and Eddie approves the final design. One task authority; Relay consumes it; Control remains oversight/approval only.
 
 ## Phase 9 — Mind G0–G7 review (item 8; external task)
 
@@ -111,7 +116,7 @@ The spec must cover:
 
 ## Product-first execution order
 
-Use two dependency-based chunks: software/product first (Phase 6 branch verified; Phase 7 brief delivered, awaiting Eddie's choices; Phase 8 after owner choices; Phase 9 stays with the separate Mind effort), then hardware boundary work (Phase 10 after physical inspection). A functioning prototype is the milestone; production readiness remains a separate gate.
+Use dependency-based chunks: Phase 6 Chat fix is branch-verified; D-1–D-5 are recorded; Phase 7B updates and audits the contract; Phase 8 implementation follows only after three audit rounds and owner approval; Phase 9 stays with the separate Mind effort; hardware follows physical inspection. A functioning private prototype is the target; production readiness remains a separate gate.
 
 ## Milestone/error protocol
 
