@@ -1,0 +1,18 @@
+# Evidence Register
+
+Only verifiable claims belong here. Public packet entries contain no private paths, credentials, hostnames, or unredacted artifacts.
+
+| ID | Claim | State | Source / pointer | Notes |
+|---|---|---|---|---|
+| `E-001` | Mind’s current `work_items` / `stage_executions` are internal execution tracking and are not a qualified general-purpose Kanban backend. | `PROVEN` | User-supplied read-only Mind audit conclusion, 2026-09-28 | G0–G7 remain open; no integration readiness implied. |
+| `E-002` | Relay’s existing todo/goal displays are not a shared task service; a versioned authenticated task/feed contract is not established. | `PROVEN` | User-supplied read-only cross-app audit conclusion | Relay remains a candidate UI/chat surface. |
+| `E-003` | Control is intended for oversight and approval; it must not authorize execution from Mind data. | `PROVEN` | User-supplied read-only Mind audit recommendation | Control persistence and boundary docs still require reconciliation. |
+| `E-004` | The remembered model dashboard is Onoes-Inference-Control; a sanitized fresh-history private repository exists. | `PROVEN` | Verified local/remote import and secret scan; project name only | No private URL or credential copied into this public packet. |
+| `E-005` | The dashboard is not ready for live runtime or network use until security fixes, tests, and independent review pass. | `PROVEN` | Sanitized dashboard security audit | AMD/ROCm capability is not established; no live model test is claimed. |
+| `E-006` | The `eOnoes/echo-projects` control-plane repository is public and allows repository-content operations. | `PROVEN` | GitHub repository metadata readback | Initial project-packet publication is tracked separately by the commit and remote readback. |
+| `E-007` | The exact Control-document contradictions and required wording are known. | `UNRESOLVED` | Pending AIK-01 source review | Codex must cite documents and sections; no assumed fix. |
+| `E-008` | The Kanban task/feed schema and authority model are fully specified. | `UNRESOLVED` | Pending AIK-03 | Must be independently reviewed before implementation. |
+
+## Evidence update rule
+
+Append new IDs; never overwrite prior claims. Preserve the exact command/result or document section reference in a task receipt. If a claim changes, append a superseding entry with the reason and link the old ID.

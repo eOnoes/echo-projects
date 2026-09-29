@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>AI Box &amp; Kanban — Project Handoff</title>
+<style>
+:root{--ink:#18212b;--muted:#516174;--paper:#f4f7fa;--card:#fff;--line:#d9e2ea;--blue:#155eef;--green:#157347;--amber:#8d5700;--red:#a52828;--pale-blue:#edf3ff;--pale-green:#ebf7ef;--pale-amber:#fff6e5;--pale-red:#fff0ee}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:900px;margin:auto;padding:20px 15px 44px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:13px 0;box-shadow:0 2px 8px #16273a0a}.hero{border-top:5px solid var(--blue);padding:22px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:var(--blue);font-size:.75rem;font-weight:800}h1{font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.1;margin:.3rem 0 .6rem}h2{font-size:1.25rem;margin:0 0 .7rem}h3{font-size:1rem;margin:.1rem 0 .4rem}p{margin:.45rem 0 .75rem}.muted{color:var(--muted)}.tldr{background:var(--pale-blue);border:1px solid #cad8ff;border-radius:11px;padding:14px;margin-top:14px}.pill{display:inline-block;border-radius:999px;padding:3px 9px;font-size:.76rem;font-weight:750;background:#eef1f4;color:#374657}.pill.done{background:var(--pale-green);color:var(--green)}.pill.wait{background:var(--pale-amber);color:var(--amber)}.pill.stop{background:var(--pale-red);color:var(--red)}.decision{background:var(--pale-amber);border:1px solid #f0d295;border-radius:9px;padding:13px;margin-top:12px}.alert{border-left:5px solid var(--red);background:var(--pale-red);padding:12px 14px;border-radius:7px;margin:10px 0}ul,ol{padding-left:1.25rem}li{margin:.38rem 0}code{background:#eff2f5;padding:.1rem .3rem;border-radius:4px;overflow-wrap:anywhere}details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:11px 0}summary{font-weight:780;cursor:pointer}details[open] summary{margin-bottom:10px}.footer{border-top:1px solid var(--line);padding-top:12px;color:var(--muted);font-size:.88rem;margin-top:18px}@media(max-width:520px){main{padding:12px 10px 30px}.card{padding:14px;border-radius:11px}.hero{padding:17px}details{padding:12px}}
+</style>
+</head>
+<body><main>
+<header class="card hero">
+  <div class="eyebrow">Project handoff · review draft</div>
+  <h1>AI Box &amp; Shared Task Board</h1>
+  <p class="muted"><strong>Project ID:</strong> ai-box-kanban-foundation · <strong>Status:</strong> READY_FOR_REVIEW</p>
+  <p><strong>Result:</strong> The first-three project packet is prepared; no Codex task has started.</p>
+  <section class="tldr" aria-labelledby="tldr-title">
+    <h2 id="tldr-title">TL;DR</h2>
+    <ul>
+      <li>The three items are captured: reconcile Control authority docs; record the completed Inference Control discovery/import; define the shared Kanban MVP.</li>
+      <li>Dashboard discovery is complete, but the app is <strong>not safe to run or expose</strong> until its separate security gate passes.</li>
+      <li>Codex’s first job is bounded: after approval, read Control docs and write a cited matrix in this packet. No source edits.</li>
+      <li>Milestone updates go to a task-scoped Codex branch; Echo verifies the remote diff/evidence before promotion to <code>main</code>.</li>
+    </ul>
+  </section>
+  <div class="decision"><strong>Next decision:</strong> reply <strong>“Start AIK-01”</strong> to authorize the read-only Control-document audit, or request packet changes first.</div>
+</header>
+
+<details>
+  <summary>Current state and completed work</summary>
+  <p><span class="pill done">AIK-02 COMPLETE</span> Onoes-Inference-Control was located and imported into a sanitized private repository with fresh history. The shared key was not copied or rotated. No runtime readiness is claimed.</p>
+  <p><span class="pill wait">AIK-01 NEEDS APPROVAL</span> Control boundary reconciliation is not started. Codex must cite conflicts and propose wording; source docs remain untouched until Eddie approves.</p>
+  <p><span class="pill wait">AIK-03 READY AFTER AIK-01</span> Kanban requirements remain to be specified: identity, permissions, lifecycle, audit, idempotency, and event replay/recovery.</p>
+  <div class="alert"><strong>Safety gate:</strong> do not run or expose Inference Control or connect it to live runtimes until security remediation, tests, and independent review are complete.</div>
+</details>
+
+<details>
+  <summary>Proposed sequence and acceptance</summary>
+  <ol>
+    <li><strong>AIK-01 — Control boundary audit:</strong> compare the named docs; produce a contradiction matrix and proposed wording. Eddie approves before source edits.</li>
+    <li><strong>AIK-02 — Dashboard discovery/import:</strong> complete; record security limitations accurately.</li>
+    <li><strong>AIK-03 — Kanban MVP specification:</strong> design-only contract for actor identity, authorization, task transitions, removal approval, audit, idempotency, and recoverable event delivery. No backend choice or code.</li>
+    <li><strong>Separate follow-up:</strong> Inference Control security remediation, required before runtime tests but outside this low-hanging-fruit packet.</li>
+  </ol>
+  <p>Acceptance requires cited source evidence, explicit decisions, safe retries and audit history in the Kanban design, and no implementation before the owner approves the design gate.</p>
+</details>
+
+<details>
+  <summary>Codex permissions and error handling</summary>
+  <ul>
+    <li>One assigned task at a time. No work starts until Echo assigns a task and marks it IN_PROGRESS.</li>
+    <li>For AIK-01, read only the named Control Markdown docs and write the matrix under this project packet. Do not edit Control source.</li>
+    <li>For AIK-03, create the Kanban spec and acceptance matrix under this packet. No backend/UI implementation.</li>
+    <li>On failure, preserve exact output; diagnose and repair only within scope; rerun focused and relevant complete checks; record results.</li>
+    <li>Never skip tests, weaken thresholds, suppress errors, or report a failure as success. Stop as BLOCKED for credentials, unrelated dirty files, wider scope, live services, or missing approval.</li>
+    <li>No credential access or rotation, dirty Mind workspace inspection, live models, OS changes, paid resources, GitHub Actions, Codespaces, Packages, deployments, or direct push to <code>main</code>.</li>
+  </ul>
+</details>
+
+<details>
+  <summary>Milestone verification and GitHub flow</summary>
+  <ol>
+    <li>Codex updates TASKS, EVIDENCE, HANDOFF, adds a receipt, and writes Markdown plus HTML milestone reports.</li>
+    <li>Codex pushes only the project folder to <code>codex/&lt;TASK-ID&gt;</code>, without force-push.</li>
+    <li>Echo reads the exact remote commit and diff, verifies the evidence/checks, and only then promotes accepted project-packet changes to <code>main</code>.</li>
+  </ol>
+  <p>A status message or pushed report is a claim, not completion proof. Completion requires verified files and acceptance evidence.</p>
+</details>
+
+<details>
+  <summary>Packet contents</summary>
+  <ul>
+    <li><code>GOAL.md</code> — canonical goal and current state.</li>
+    <li><code>CHARTER.md</code> — purpose, scope, and acceptance.</li>
+    <li><code>AUTHORITY.md</code> / <code>PROJECT-OVERRIDES.md</code> — permitted actions, errors, and hard limits.</li>
+    <li><code>PLAN.md</code> / <code>TASKS.md</code> — phases and one-task-at-a-time queue.</li>
+    <li><code>EVIDENCE.md</code> / <code>HANDOFF.md</code> / <code>CLOSURE.md</code> — proof, resumption, and closure gate.</li>
+    <li><code>CODEX-START-HERE.md</code> — compact Codex entrypoint.</li>
+  </ul>
+</details>
+
+<footer class="footer">GitHub billing-safe: repository content only. Status: READY_FOR_REVIEW · Codex not dispatched · No credentials, live models, code implementation, or OS changes authorized.</footer>
+</main></body></html>
